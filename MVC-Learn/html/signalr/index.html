@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/jquery-2.2.3.min.js"></script>
+    <script src="../../Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+</head>
+<body>
+    <script>
+        $(function () {
+            var chatHub = $.connection.chatHub;
+            chatHub.client.hello = function () {
+                console.log('hello');
+            };
+            $.connection.hub.start().done(function () {
+                chatHub.server.hello();
+            });
+        });
+    </script>
+</body>
+</html>
