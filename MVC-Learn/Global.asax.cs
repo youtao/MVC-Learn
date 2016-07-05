@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StackExchange.Profiling;
+using StackExchange.Profiling.EntityFramework6;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,15 @@ namespace MVC_Learn
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            MiniProfilerEF6.Initialize();
+        }
+        protected void Application_BeginRequest()
+        {
+            MiniProfiler.Start();
+        }
+        protected void Application_EndRequest()
+        {
+            MiniProfiler.Stop();
         }
     }
 }
