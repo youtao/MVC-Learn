@@ -173,6 +173,11 @@
     <Content Include="Areas\MVC\Views\_ViewStart.cshtml" />
     <Content Include="Areas\MVC\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\MVC\Views\Home\Index.cshtml" />
+    <Content Include="Areas\MVC\Views\Article\Create.cshtml" />
+    <Content Include="Areas\MVC\Views\Article\Delete.cshtml" />
+    <Content Include="Areas\MVC\Views\Article\Details.cshtml" />
+    <Content Include="Areas\MVC\Views\Article\Edit.cshtml" />
+    <Content Include="Areas\MVC\Views\Article\Index.cshtml" />
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -198,11 +203,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\MVC\Controllers\ArticleController.cs" />
     <Compile Include="Areas\MVC\Controllers\HomeController.cs" />
     <Compile Include="Areas\MVC\MVCAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607051619348_初始化.cs" />
+    <Compile Include="Migrations\201607051619348_初始化.Designer.cs">
+      <DependentUpon>201607051619348_初始化.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607051629057_修改时间.cs" />
+    <Compile Include="Migrations\201607051629057_修改时间.Designer.cs">
+      <DependentUpon>201607051629057_修改时间.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\LearnDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalR\ChatHub.cs" />
     <Compile Include="Startup.cs" />
@@ -224,7 +242,14 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\MVC\Models\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201607051619348_初始化.resx">
+      <DependentUpon>201607051619348_初始化.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607051629057_修改时间.resx">
+      <DependentUpon>201607051629057_修改时间.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
