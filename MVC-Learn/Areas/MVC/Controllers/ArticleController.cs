@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EntityFramework.Extensions;
 using MVC_Learn.Models;
 
 namespace MVC_Learn.Areas.MVC.Controllers
@@ -48,7 +49,7 @@ namespace MVC_Learn.Areas.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = await _db.Article.SingleOrDefaultAsync(e => e.Unique == id);
+            Article article = await _db.Article.FirstOrDefaultAsync(e => e.Unique == id);
             if (article == null)
             {
                 return HttpNotFound();
@@ -80,13 +81,13 @@ namespace MVC_Learn.Areas.MVC.Controllers
         }
 
         // GET: MVC/Article/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = await _db.Article.FindAsync(id);
+            Article article = await _db.Article.FirstOrDefaultAsync(e => e.Unique == id);
             if (article == null)
             {
                 return HttpNotFound();
@@ -99,25 +100,30 @@ namespace MVC_Learn.Areas.MVC.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Author,Content,Description,Unique,CreateTime")] Article article)
+        public async Task<ActionResult> Edit([Bind(Include = "Unique,Title,Author,Content,Description")] Article article)
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(article).State = EntityState.Modified;
-                await _db.SaveChangesAsync();
+                await this._db.Article.Where(e => e.Unique == article.Unique).UpdateAsync(e => new Article()
+                {
+                    Title = article.Title,
+                    Author = article.Author,
+                    Content = article.Content,
+                    Description = article.Description
+                });
                 return RedirectToAction("Index");
             }
             return View(article);
         }
 
         // GET: MVC/Article/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = await _db.Article.FindAsync(id);
+            Article article = await _db.Article.FirstOrDefaultAsync(e => e.Unique == id);
             if (article == null)
             {
                 return HttpNotFound();
@@ -128,11 +134,9 @@ namespace MVC_Learn.Areas.MVC.Controllers
         // POST: MVC/Article/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            Article article = await _db.Article.FindAsync(id);
-            _db.Article.Remove(article);
-            await _db.SaveChangesAsync();
+            await this._db.Article.Where(e => e.Unique == id).DeleteAsync();
             return RedirectToAction("Index");
         }
 
