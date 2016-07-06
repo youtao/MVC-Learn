@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
@@ -13,12 +14,31 @@ namespace MVC_Learn.Areas.MVC.Controllers
 {
     public class ArticleController : Controller
     {
-        private LearnDbContext db = new LearnDbContext();
+        private readonly LearnDbContext _db = new LearnDbContext();
 
         // GET: MVC/Article
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Article.ToListAsync());
+            var list = _db.Article.OrderByDescending(e => e.Id).Take(20).Select(e => new
+            {
+                e.Uinque,
+                e.Title,
+                e.Author,
+                e.Description,
+                e.CreateTime
+            })
+             .ToList()
+             .Select(e =>
+             {
+                 dynamic obj = new ExpandoObject();
+                 obj.Unique = e.Uinque.ToString();
+                 obj.Title = e.Title;
+                 obj.Author = e.Author;
+                 obj.Description = e.Description;
+                 obj.CreateTime = e.CreateTime;
+                 return obj;
+             });
+            return View(list);
         }
 
         // GET: MVC/Article/Details/5
@@ -28,7 +48,7 @@ namespace MVC_Learn.Areas.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = await db.Article.FindAsync(id);
+            Article article = await _db.Article.FindAsync(id);
             if (article == null)
             {
                 return HttpNotFound();
@@ -51,8 +71,8 @@ namespace MVC_Learn.Areas.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Article.Add(article);
-                await db.SaveChangesAsync();
+                _db.Article.Add(article);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +86,7 @@ namespace MVC_Learn.Areas.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = await db.Article.FindAsync(id);
+            Article article = await _db.Article.FindAsync(id);
             if (article == null)
             {
                 return HttpNotFound();
@@ -83,8 +103,8 @@ namespace MVC_Learn.Areas.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(article).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _db.Entry(article).State = EntityState.Modified;
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(article);
@@ -97,7 +117,7 @@ namespace MVC_Learn.Areas.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = await db.Article.FindAsync(id);
+            Article article = await _db.Article.FindAsync(id);
             if (article == null)
             {
                 return HttpNotFound();
@@ -110,9 +130,9 @@ namespace MVC_Learn.Areas.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Article article = await db.Article.FindAsync(id);
-            db.Article.Remove(article);
-            await db.SaveChangesAsync();
+            Article article = await _db.Article.FindAsync(id);
+            _db.Article.Remove(article);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +140,7 @@ namespace MVC_Learn.Areas.MVC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

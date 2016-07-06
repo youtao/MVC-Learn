@@ -172,7 +172,6 @@
     <Content Include="Areas\MVC\Views\web.config" />
     <Content Include="Areas\MVC\Views\_ViewStart.cshtml" />
     <Content Include="Areas\MVC\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\MVC\Views\Home\Index.cshtml" />
     <Content Include="Areas\MVC\Views\Article\Create.cshtml" />
     <Content Include="Areas\MVC\Views\Article\Delete.cshtml" />
     <Content Include="Areas\MVC\Views\Article\Details.cshtml" />
@@ -204,7 +203,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\MVC\Controllers\ArticleController.cs" />
-    <Compile Include="Areas\MVC\Controllers\HomeController.cs" />
     <Compile Include="Areas\MVC\MVCAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -266,7 +264,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>47987</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:47987/</IISUrl>
+          <IISUrl>http://localhost:47985/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

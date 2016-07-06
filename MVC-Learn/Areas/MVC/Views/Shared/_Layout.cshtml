@@ -15,7 +15,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("MVC-Learn", "Index", "Home", new { area = "MVC" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("MVC-Learn", "Index", "Article", new { area = "MVC" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -34,6 +34,6 @@
 
     <script src="~/Scripts/jquery-2.2.3.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+    @StackExchange.Profiling.MiniProfiler.RenderIncludes(showTimeWithChildren:true)
 </body>
 </html>
