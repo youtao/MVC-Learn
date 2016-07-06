@@ -15,8 +15,12 @@ namespace MVC_Learn
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+#if DEBUG
             MiniProfilerEF6.Initialize();
+#endif
+
         }
+#if DEBUG
         protected void Application_BeginRequest()
         {
             MiniProfiler.Start();
@@ -25,5 +29,7 @@ namespace MVC_Learn
         {
             MiniProfiler.Stop();
         }
+#endif
+
     }
 }
