@@ -10,8 +10,10 @@ namespace MVC_Learn.Models
     [Table("Article")]
     public class Article : BaseModel
     {
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string Author { get; set; }
 
         public string Content { get; set; }

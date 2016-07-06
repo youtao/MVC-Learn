@@ -18,7 +18,8 @@ namespace MVC_Learn.Models
         public int Id { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Uinque { get; set; }
+        [Index(name:"Index_Unique",IsUnique = true)]
+        public Guid Unique { get; set; }
 
         public DateTime CreateTime { get; set; }
     }

@@ -7,31 +7,19 @@ using Microsoft.AspNet.SignalR;
 
 namespace MVC_Learn.SignalR
 {
-    public class ChatHub : Hub
+    public class ChatHub : Hub<IChatHub>
     {
         public void Hello()
         {
-            Clients.All.hello();
+            Clients.All.Hello();
         }
+    }
 
-        public override Task OnConnected()
-        {
-            var connectionId = this.Context.ConnectionId;
-            return base.OnConnected();
-        }
-
-
-
-        public override Task OnReconnected()
-        {
-            var connectionId = this.Context.ConnectionId;
-            return base.OnReconnected();
-        }
-
-        public override Task OnDisconnected(bool stopCalled)
-        {
-            var connectionId = this.Context.ConnectionId;
-            return base.OnDisconnected(stopCalled);
-        }
+    public interface IChatHub
+    {
+        /// <summary>
+        /// 上线通知
+        /// </summary>
+        void Hello();
     }
 }

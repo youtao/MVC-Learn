@@ -21,7 +21,7 @@ namespace MVC_Learn.Areas.MVC.Controllers
         {
             var list = _db.Article.OrderByDescending(e => e.Id).Take(20).Select(e => new
             {
-                e.Uinque,
+                Uinque = e.Unique,
                 e.Title,
                 e.Author,
                 e.Description,
@@ -42,13 +42,13 @@ namespace MVC_Learn.Areas.MVC.Controllers
         }
 
         // GET: MVC/Article/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = await _db.Article.FindAsync(id);
+            Article article = await _db.Article.SingleOrDefaultAsync(e => e.Unique == id);
             if (article == null)
             {
                 return HttpNotFound();
@@ -67,7 +67,7 @@ namespace MVC_Learn.Areas.MVC.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Author,Content,Description,Uinque,CreateTime")] Article article)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Author,Content,Description,Unique,CreateTime")] Article article)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace MVC_Learn.Areas.MVC.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Author,Content,Description,Uinque,CreateTime")] Article article)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Author,Content,Description,Unique,CreateTime")] Article article)
         {
             if (ModelState.IsValid)
             {

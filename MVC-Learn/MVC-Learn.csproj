@@ -197,7 +197,7 @@
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js">
       <DependentUpon>jquery.signalR-2.2.0.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +214,18 @@
     <Compile Include="Migrations\201607051629057_修改时间.cs" />
     <Compile Include="Migrations\201607051629057_修改时间.Designer.cs">
       <DependentUpon>201607051629057_修改时间.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607061540275_修改Unique字段.cs" />
+    <Compile Include="Migrations\201607061540275_修改Unique字段.Designer.cs">
+      <DependentUpon>201607061540275_修改Unique字段.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607061544246_Unique添加索引.cs" />
+    <Compile Include="Migrations\201607061544246_Unique添加索引.Designer.cs">
+      <DependentUpon>201607061544246_Unique添加索引.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607061549078_标题和作者不为空.cs" />
+    <Compile Include="Migrations\201607061549078_标题和作者不为空.Designer.cs">
+      <DependentUpon>201607061549078_标题和作者不为空.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
@@ -247,6 +259,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607051629057_修改时间.resx">
       <DependentUpon>201607051629057_修改时间.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607061540275_修改Unique字段.resx">
+      <DependentUpon>201607061540275_修改Unique字段.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607061544246_Unique添加索引.resx">
+      <DependentUpon>201607061544246_Unique添加索引.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607061549078_标题和作者不为空.resx">
+      <DependentUpon>201607061549078_标题和作者不为空.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
