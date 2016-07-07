@@ -245,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\MVC\Controllers\AccountController.cs" />
     <Compile Include="Areas\MVC\Controllers\ArticleController.cs" />
     <Compile Include="Areas\MVC\MVCAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
@@ -298,6 +299,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\MVC\Models\" />
+    <Folder Include="Areas\MVC\Views\Account\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
