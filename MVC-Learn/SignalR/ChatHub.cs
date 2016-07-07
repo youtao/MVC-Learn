@@ -7,7 +7,7 @@ using Microsoft.AspNet.SignalR;
 
 namespace MVC_Learn.SignalR
 {
-    public class ChatHub : Hub<IChatHub>
+    public class ChatHub : BaseHub<IChatHub>
     {
         public void Hello()
         {

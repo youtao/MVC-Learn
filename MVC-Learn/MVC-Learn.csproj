@@ -283,6 +283,7 @@
     <Compile Include="Models\LearnDbContext.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalR\BaseHub.cs" />
     <Compile Include="SignalR\ChatHub.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
