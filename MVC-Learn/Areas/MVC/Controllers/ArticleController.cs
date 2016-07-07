@@ -9,14 +9,15 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EntityFramework.Extensions;
+using Microsoft.Ajax.Utilities;
 using MVC_Learn.Models;
+using Newtonsoft.Json;
 
 namespace MVC_Learn.Areas.MVC.Controllers
 {
     public class ArticleController : Controller
     {
         private readonly LearnDbContext _db = new LearnDbContext();
-
         // GET: MVC/Article
         public ActionResult Index()
         {
