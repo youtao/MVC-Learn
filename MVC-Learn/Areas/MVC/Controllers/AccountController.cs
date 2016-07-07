@@ -12,5 +12,9 @@ namespace MVC_Learn.Areas.MVC.Controllers
         {
             return View();
         }
+        public ActionResult Signout()
+        {
+            return View();
+        }
     }
 }
