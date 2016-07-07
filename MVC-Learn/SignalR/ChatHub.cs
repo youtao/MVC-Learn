@@ -11,7 +11,7 @@ namespace MVC_Learn.SignalR
     {
         public void Hello()
         {
-            Clients.All.Hello();
+            Clients.Others.Hello(this.Context.ConnectionId);
         }
     }
 
@@ -20,6 +20,6 @@ namespace MVC_Learn.SignalR
         /// <summary>
         /// 上线通知
         /// </summary>
-        void Hello();
+        void Hello(string connectionId);
     }
 }

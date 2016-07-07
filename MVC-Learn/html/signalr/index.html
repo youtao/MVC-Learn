@@ -4,16 +4,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <meta charset="utf-8" />
-    <script src="../../Scripts/jquery-2.2.3.min.js"></script>
+    <script src="../../Scripts/jquery-2.2.4.min.js"></script>
     <script src="../../Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="/signalr/hubs"></script>
 </head>
-<body>
+<body style="font-family:'Microsoft Yahei'">
     <script>
         $(function () {
             var chatHub = $.connection.chatHub;
-            chatHub.client.hello = function () {
-                console.log('hello');
+            chatHub.client.hello = function (connctionid) {
+                $('body').append('<h5>' + connctionid + '上线了</h5>');
             };
             $.connection.hub.start().done(function () {
                 chatHub.server.hello();

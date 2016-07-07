@@ -30,6 +30,5 @@ namespace MVC_Learn
             MiniProfiler.Stop();
         }
 #endif
-
     }
 }
