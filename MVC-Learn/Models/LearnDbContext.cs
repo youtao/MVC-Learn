@@ -13,5 +13,8 @@ namespace MVC_Learn.Models
 
         }
         public virtual DbSet<Article> Article { get; set; }
+        public virtual DbSet<Connection> Connection { get; set; }
+        public virtual DbSet<Group> Group { get; set; }
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
     }
 }

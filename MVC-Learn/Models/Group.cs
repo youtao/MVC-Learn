@@ -8,24 +8,25 @@ using System.Web;
 namespace MVC_Learn.Models
 {
     /// <summary>
-    /// 模型基础类
+    /// SignalR组
     /// </summary>
-    public class BaseModel
+    [Table("SignalR_Group")]
+    public class Group : BaseModel
     {
-        public BaseModel()
-        {
-            this.CreateTime = DateTime.Now;
-        }
+        /// <summary>
+        /// 组名
+        /// </summary>
+        [Required]
+        public string GroupName { get; set; }
+
+        #region 导航属性
 
         /// <summary>
-        /// 主键Id
+        /// 用户
         /// </summary>
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public virtual ICollection<UserInfo> UserInfos { get; set; }
 
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreateTime { get; set; }
+        #endregion
+
     }
 }
