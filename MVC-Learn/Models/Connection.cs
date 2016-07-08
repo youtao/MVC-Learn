@@ -13,6 +13,11 @@ namespace MVC_Learn.Models
     [Table("SignalR_Connection")]
     public class Connection : BaseModel
     {
+        public Connection()
+        {
+            this.Connected = true;
+        }
+
         /// <summary>
         /// 连接Id
         /// </summary>

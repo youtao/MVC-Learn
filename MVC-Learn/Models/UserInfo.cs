@@ -34,12 +34,12 @@ namespace MVC_Learn.Models
         /// <summary>
         /// 上次登录时间
         /// </summary>
-        public DateTime LastLoginTime { get; set; }
+        public DateTime LoginTime { get; set; }
 
         /// <summary>
         /// 上次登出时间
         /// </summary>
-        public DateTime? LastSignoutTime { get; set; }
+        public DateTime? SignoutTime { get; set; }
 
         #region 导航属性
 

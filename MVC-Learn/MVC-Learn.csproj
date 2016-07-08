@@ -275,6 +275,10 @@
     <Compile Include="Migrations\201607071411044_添加SignalR相关.Designer.cs">
       <DependentUpon>201607071411044_添加SignalR相关.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607080222483_修改UserInfo字段名.cs" />
+    <Compile Include="Migrations\201607080222483_修改UserInfo字段名.Designer.cs">
+      <DependentUpon>201607080222483_修改UserInfo字段名.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -321,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607071411044_添加SignalR相关.resx">
       <DependentUpon>201607071411044_添加SignalR相关.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607080222483_修改UserInfo字段名.resx">
+      <DependentUpon>201607080222483_修改UserInfo字段名.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
