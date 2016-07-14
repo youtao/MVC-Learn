@@ -542,6 +542,7 @@
     <Content Include="Areas\MVC\Views\Article\Details.cshtml" />
     <Content Include="Areas\MVC\Views\Article\Edit.cshtml" />
     <Content Include="Areas\MVC\Views\Article\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
     <Content Include="Scripts\bootstrap.js" />
@@ -613,6 +614,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\MVC\Controllers\AccountController.cs" />
     <Compile Include="Areas\MVC\Controllers\ArticleController.cs" />
     <Compile Include="Areas\MVC\MVCAreaRegistration.cs" />
@@ -671,6 +673,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\MVC\Models\" />
     <Folder Include="Areas\MVC\Views\Account\" />
     <Folder Include="Controllers\" />
