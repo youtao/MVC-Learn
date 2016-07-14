@@ -169,6 +169,7 @@
     <Content Include="Content\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
+    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\black\accordion.css" />
     <Content Include="Content\themes\black\calendar.css" />
     <Content Include="Content\themes\black\combo.css" />
@@ -543,12 +544,23 @@
     <Content Include="Areas\MVC\Views\Article\Edit.cshtml" />
     <Content Include="Areas\MVC\Views\Article\Index.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfo\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfo\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfo\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfo\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfo\Index.cshtml" />
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js">
       <DependentUpon>bootstrap.js</DependentUpon>
     </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js">
       <DependentUpon>jquery-2.2.4.js</DependentUpon>
     </None>
@@ -585,6 +597,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\locale\easyui-lang-af.js" />
     <Content Include="Scripts\locale\easyui-lang-am.js" />
@@ -615,6 +628,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserInfoController.cs" />
     <Compile Include="Areas\MVC\Controllers\AccountController.cs" />
     <Compile Include="Areas\MVC\Controllers\ArticleController.cs" />
     <Compile Include="Areas\MVC\MVCAreaRegistration.cs" />
@@ -673,9 +687,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\MVC\Models\" />
     <Folder Include="Areas\MVC\Views\Account\" />
     <Folder Include="Controllers\" />
