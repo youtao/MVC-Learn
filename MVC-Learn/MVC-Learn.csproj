@@ -169,7 +169,6 @@
     <Content Include="Content\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\black\accordion.css" />
     <Content Include="Content\themes\black\calendar.css" />
     <Content Include="Content\themes\black\combo.css" />
@@ -229,6 +228,9 @@
     <Content Include="Content\themes\bootstrap\datebox.css" />
     <Content Include="Content\themes\bootstrap\dialog.css" />
     <Content Include="Content\themes\bootstrap\easyui.css" />
+    <Content Include="Content\themes\bootstrap\easyui.min.css">
+      <DependentUpon>easyui.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\bootstrap\filebox.css" />
     <Content Include="Content\themes\bootstrap\images\accordion_arrows.png" />
     <Content Include="Content\themes\bootstrap\images\blank.gif" />
@@ -551,16 +553,13 @@
     <Content Include="Areas\Admin\Views\UserInfo\Details.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\Index.cshtml" />
+    <None Include="bundleconfig.json" />
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js">
       <DependentUpon>bootstrap.js</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js">
       <DependentUpon>jquery-2.2.4.js</DependentUpon>
     </None>
@@ -597,7 +596,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\locale\easyui-lang-zh_CN.min.js">
+      <DependentUpon>easyui-lang-zh_CN.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\locale\easyui-lang-af.js" />
     <Content Include="Scripts\locale\easyui-lang-am.js" />
@@ -690,6 +691,9 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\MVC\Models\" />
     <Folder Include="Areas\MVC\Views\Account\" />
+    <Folder Include="assets\css\" />
+    <Folder Include="assets\images\" />
+    <Folder Include="assets\js\admin\userinfo\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>

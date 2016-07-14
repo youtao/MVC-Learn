@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "Content/themes/bootstrap/easyui.min.css",
+    "inputFiles": [
+      "Content/themes/bootstrap/easyui.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/locale/easyui-lang-zh_CN.min.js",
+    "inputFiles": [
+      "Scripts/locale/easyui-lang-zh_CN.js"
+    ]
+  }
+]
