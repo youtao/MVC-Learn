@@ -544,9 +544,6 @@
     <Content Include="Areas\MVC\Views\Article\Index.cshtml" />
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
-    <None Include="Scripts\jquery-2.2.3.intellisense.js">
-      <DependentUpon>jquery-2.2.3.js</DependentUpon>
-    </None>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js">
       <DependentUpon>bootstrap.js</DependentUpon>
@@ -557,12 +554,8 @@
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js">
       <DependentUpon>jquery-2.2.4.js</DependentUpon>
-	</Content>
-    <Content Include="Scripts\easyloader.js" />
-    <Content Include="Scripts\jquery-2.2.3.js" />
-    <Content Include="Scripts\jquery-2.2.3.min.js">
-      <DependentUpon>jquery-2.2.3.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery.easyui-1.4.5.js" />
     <Content Include="Scripts\jquery.easyui-1.4.5.min.js">
       <DependentUpon>jquery.easyui-1.4.5.js</DependentUpon>
