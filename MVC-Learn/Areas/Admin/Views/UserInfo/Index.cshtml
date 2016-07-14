@@ -1,14 +1,54 @@
-﻿@section cust_script
+﻿@section style{
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+}
+
+@section cust_script
 {
     <script src="~/assets/js/admin/userinfo/index.min.js"></script>
 }
 
-<div class="easyui-layout" style="width: 1000px; height:800px; margin: 20px auto">
+<div class="easyui-layout" style="width: 1000px; height:800px; margin: 0 auto">
     <div data-options="region:'north',title:'操作'" style="height: 200px;"></div>
     <div data-options="region:'center',title:'用户'">
-        <table id="user-list"></table>
+        <table id="user-list" style="height:100%;"></table>
+
+
+        <div id="user-list-toolbar">
+            <div>
+                <a id="add-user" href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加用户</a>
+                <a id="delete-user" href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除用户</a>
+                <a href="javascript:void(0);" class="easyui-menubutton" style="position:relative;float:right;"
+                   data-options="menu:'#more',iconCls:'icon-more'">更多</a>
+                <div id="more" style="width:150px;">
+                    <div data-options="iconCls:'icon-undo'">Undo</div>
+                    <div data-options="iconCls:'icon-redo'">Redo</div>
+                    <div class="menu-sep"></div>
+                    <div>Cut</div>
+                    <div>Copy</div>
+                    <div>Paste</div>
+                    <div class="menu-sep"></div>
+                    <div data-options="iconCls:'icon-remove'">Delete</div>
+                    <div>Select All</div>
+                </div>
+            </div>
+            @*<div>
+                    Date From: <input class="easyui-datebox" style="width:80px">
+                    To: <input class="easyui-datebox" style="width:80px">
+                    Language:
+                    <select class="easyui-combobox" panelHeight="auto" style="width:100px">
+                        <option value="java">Java</option>
+                        <option value="c">C</option>
+                        <option value="basic">Basic</option>
+                        <option value="perl">Perl</option>
+                        <option value="python">Python</option>
+                    </select>
+                    <a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+                </div>*@
+        </div>
+
+
     </div>
-    <div data-options="region:'east',title:'角色'" style="width: 30%"></div>        
+    <div data-options="region:'east',title:'角色'" style="width: 30%"></div>
     <div data-options="region:'south',title:'说明'" style="height:100px;"></div>
 </div>
 
