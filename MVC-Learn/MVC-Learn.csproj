@@ -161,6 +161,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\admin.css">
+      <DependentUpon>admin.less</DependentUpon>
+    </Content>
+    <Content Include="assets\css\admin.min.css">
+      <DependentUpon>admin.css</DependentUpon>
+    </Content>
+    <Content Include="assets\js\admin\userinfo\index.js" />
+    <Content Include="assets\js\admin\userinfo\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css">
       <DependentUpon>bootstrap-theme.css</DependentUpon>
@@ -553,7 +563,12 @@
     <Content Include="Areas\Admin\Views\UserInfo\Details.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\Index.cshtml" />
+    <Content Include="assets\css\admin.less" />
     <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
     <Content Include="Scripts\bootstrap.js" />
@@ -691,9 +706,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\MVC\Models\" />
     <Folder Include="Areas\MVC\Views\Account\" />
-    <Folder Include="assets\css\" />
     <Folder Include="assets\images\" />
-    <Folder Include="assets\js\admin\userinfo\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>

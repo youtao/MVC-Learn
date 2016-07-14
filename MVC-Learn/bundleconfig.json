@@ -10,5 +10,11 @@
     "inputFiles": [
       "Scripts/locale/easyui-lang-zh_CN.js"
     ]
+  },
+  {
+    "outputFileName": "assets/js/admin/userinfo/index.min.js",
+    "inputFiles": [
+      "assets/js/admin/userinfo/index.js"
+    ]
   }
 ]

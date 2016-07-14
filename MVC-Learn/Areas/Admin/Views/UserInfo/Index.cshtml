@@ -1,1 +1,14 @@
-﻿
+﻿@section cust_script
+{
+    <script src="~/assets/js/admin/userinfo/index.min.js"></script>
+}
+
+<div class="easyui-layout" style="width: 1000px; height:800px; margin: 20px auto">
+    <div data-options="region:'north',title:'操作'" style="height: 200px;"></div>
+    <div data-options="region:'center',title:'用户'">
+        <table id="user-list"></table>
+    </div>
+    <div data-options="region:'east',title:'角色'" style="width: 30%"></div>        
+    <div data-options="region:'south',title:'说明'" style="height:100px;"></div>
+</div>
+
