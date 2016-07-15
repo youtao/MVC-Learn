@@ -90,21 +90,6 @@ namespace MVC_Learn.Areas.Admin.Controllers
             return View(userInfo);
         }
 
-        // GET: Admin/UserInfo/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            UserInfo userInfo = await db.UserInfo.FindAsync(id);
-            if (userInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userInfo);
-        }
-
         // POST: Admin/UserInfo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

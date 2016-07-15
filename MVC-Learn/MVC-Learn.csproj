@@ -559,7 +559,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\UserInfo\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\Details.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\Index.cshtml" />
