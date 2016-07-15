@@ -16,9 +16,9 @@ namespace MVC_Learn.Areas.Admin.Controllers
         private LearnDbContext db = new LearnDbContext();
 
         // GET: Admin/UserInfo
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.UserInfo.ToListAsync());
+            return View();
         }
 
         // GET: Admin/UserInfo/Details/5
