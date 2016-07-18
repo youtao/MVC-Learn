@@ -53,47 +53,28 @@
             { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
             { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
             { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '否' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '否' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '否' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
-            { Unique: '123456', UserName: 'youtao', NickName: 'youtao', CreateTime: '2016-07-14', Age: '18', Online: '是' },
         ],
-        //toolbar: [{
-        //    iconCls: 'icon-add',
-        //    text: '添加用户',
-        //    handler: function () {
-        //        $.messager.show({
-        //            title: '添加用户',
-        //            msg: '此功能稍后开放',
-        //            timeout: 5000,
-        //            showType: 'slide'
-        //        });
-        //    }
-        //}, '-', {
-        //    text: '删除用户',
-        //    iconCls: 'icon-remove',
-        //    handler: function () {
-        //        var list = [];
-        //        $('#user-list').datagrid('getChecked').forEach(function (item) {
-        //            list.push(item.Unique);
-        //        });
-        //    }
-        //}, '-', {
-        //    text: '工具',
-        //    iconCls: 'icon-more',
-        //    handler: function () {
+        toolbar: '#user-list-toolbar',
 
-        //    }
-        //}]
-        toolbar: '#user-list-toolbar'
+        onClickRow: function (index, data) {
+            $('#user-edit')
+                .propertygrid({
+                    showGroup: true
+                });
+            $('#user-edit').propertygrid('loadData', { total: 0, rows: [] });
+            for (var key in data) {
+                if (data.hasOwnProperty(key)) {
+                    var row = {
+                        name: key,
+                        value: data[key],
+                        group: '账号设置',
+                        editor: 'text'
+                    }
+                    $('#user-edit').propertygrid('appendRow', row);
+                };
+                
+            }
+        }
     });
 
     $('#add-user').click(function () {
