@@ -547,18 +547,6 @@
       <DependentUpon>bootstrap-theme.css</DependentUpon>
     </Content>
     <Content Include="html\signalr\index.html" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-signalr-hub.js" />
-    <Content Include="Scripts\angular-signalr-hub.min.js">
-      <DependentUpon>angular-signalr-hub.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js">
-      <DependentUpon>angular.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\angular.min.js.map">
-      <DependentUpon>angular.min.js</DependentUpon>
-    </Content>
     <Content Include="Areas\MVC\Views\web.config" />
     <Content Include="Areas\MVC\Views\_ViewStart.cshtml" />
     <Content Include="Areas\MVC\Views\Shared\_Layout.cshtml" />
