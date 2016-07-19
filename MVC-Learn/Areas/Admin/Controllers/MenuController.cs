@@ -14,12 +14,10 @@ namespace MVC_Learn.Areas.Admin.Controllers
     public class MenuController : Controller
     {
         private LearnDbContext db = new LearnDbContext();
-
-        // GET: Admin/Menu
-        public async Task<ActionResult> Index()
-        {
-            var menu = db.Menu.Include(m => m.Parent);
-            return View(await menu.ToListAsync());
+                
+        public  ActionResult Index()
+        {            
+            return View();
         }
 
         // GET: Admin/Menu/Details/5
