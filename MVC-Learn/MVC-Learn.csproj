@@ -608,6 +608,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\locale\easyui-lang-zh_CN.min.js">
       <DependentUpon>easyui-lang-zh_CN.js</DependentUpon>
     </Content>
