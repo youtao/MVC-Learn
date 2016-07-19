@@ -28,7 +28,7 @@ namespace MVC_Learn.SignalR
                     {
                         ConnectionId = this.Context.ConnectionId,
                         UserAgent = this.Context.Headers["User-Agent"],
-                        UserId = user.Id,
+                        UserInfoId = user.Id,
                         CreateTime = now,
                     });
                     await Db.SaveChangesAsync();
@@ -59,12 +59,12 @@ namespace MVC_Learn.SignalR
                           Connected = false
                       });
                 var count = Db.Connection.Count(e =>
-                    e.UserId == connection.UserId &&
+                    e.UserInfoId == connection.UserInfoId &&
                     e.Connected == true &&
                     e.CreateTime >= connection.UserInfo.LoginTime);
                 if (count <= 0)
                 {
-                    await this.Db.UserInfo.Where(e => e.Id == connection.UserId).UpdateAsync(e => new UserInfo()
+                    await this.Db.UserInfo.Where(e => e.Id == connection.UserInfoId).UpdateAsync(e => new UserInfo()
                     {
                         SignoutTime = DateTime.Now // 最后一个连接退出
                     });

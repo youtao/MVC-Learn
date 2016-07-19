@@ -21,7 +21,7 @@ namespace MVC_Learn.Models
         /// 主键Id
         /// </summary>
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// 创建时间

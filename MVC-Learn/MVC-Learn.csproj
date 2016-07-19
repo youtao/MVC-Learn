@@ -703,13 +703,22 @@
     <Compile Include="Migrations\201607080222483_修改UserInfo字段名.Designer.cs">
       <DependentUpon>201607080222483_修改UserInfo字段名.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607191453004_修改主键类型为long.cs" />
+    <Compile Include="Migrations\201607191453004_修改主键类型为long.Designer.cs">
+      <DependentUpon>201607191453004_修改主键类型为long.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607191456502_添加Menu模型.cs" />
+    <Compile Include="Migrations\201607191456502_添加Menu模型.Designer.cs">
+      <DependentUpon>201607191456502_添加Menu模型.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Article.cs" />
-    <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\Connection.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\LearnDbContext.cs" />
-    <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Models\Article\Article.cs" />
+    <Compile Include="Models\Context\BaseModel.cs" />
+    <Compile Include="Models\User\Connection.cs" />
+    <Compile Include="Models\User\Group.cs" />
+    <Compile Include="Models\Context\LearnDbContext.cs" />
+    <Compile Include="Models\Menu\Menu.cs" />
+    <Compile Include="Models\User\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalR\BaseHub.cs" />
     <Compile Include="SignalR\ChatHub.cs" />
@@ -754,6 +763,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607080222483_修改UserInfo字段名.resx">
       <DependentUpon>201607080222483_修改UserInfo字段名.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607191453004_修改主键类型为long.resx">
+      <DependentUpon>201607191453004_修改主键类型为long.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607191456502_添加Menu模型.resx">
+      <DependentUpon>201607191456502_添加Menu模型.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

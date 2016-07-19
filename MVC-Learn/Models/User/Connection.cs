@@ -37,7 +37,7 @@ namespace MVC_Learn.Models
         #region 导航属性
 
         [ForeignKey("UserInfo")]
-        public int UserId { get; set; }
+        public long UserInfoId { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
 
