@@ -627,6 +627,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\js-cookie\js.cookie.js" />
+    <Content Include="Scripts\js-cookie\js.cookie.min.js">
+      <DependentUpon>js.cookie.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\locale\easyui-lang-zh_CN.min.js">
       <DependentUpon>easyui-lang-zh_CN.js</DependentUpon>
     </Content>

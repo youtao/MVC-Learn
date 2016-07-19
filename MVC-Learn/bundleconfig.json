@@ -28,5 +28,11 @@
     "inputFiles": [
       "Content/themes/black/easyui.css"
     ]
+  },
+  {
+    "outputFileName": "Scripts/js-cookie/js.cookie.min.js",
+    "inputFiles": [
+      "Scripts/js-cookie/js.cookie.js"
+    ]
   }
 ]
