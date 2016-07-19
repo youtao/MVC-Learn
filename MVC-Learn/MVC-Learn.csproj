@@ -167,6 +167,10 @@
     <Content Include="assets\css\admin.min.css">
       <DependentUpon>admin.css</DependentUpon>
     </Content>
+    <Content Include="assets\js\admin\common.js" />
+    <Content Include="assets\js\admin\common.min.js">
+      <DependentUpon>common.js</DependentUpon>
+    </Content>
     <Content Include="assets\js\admin\userinfo\index.js" />
     <Content Include="assets\js\admin\userinfo\index.min.js">
       <DependentUpon>index.js</DependentUpon>
@@ -179,6 +183,10 @@
     <Content Include="Content\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css">
+      <DependentUpon>font-awesome.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\black\accordion.css" />
     <Content Include="Content\themes\black\calendar.css" />
     <Content Include="Content\themes\black\combo.css" />
@@ -188,6 +196,9 @@
     <Content Include="Content\themes\black\datebox.css" />
     <Content Include="Content\themes\black\dialog.css" />
     <Content Include="Content\themes\black\easyui.css" />
+    <Content Include="Content\themes\black\easyui.min.css">
+      <DependentUpon>easyui.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\black\filebox.css" />
     <Content Include="Content\themes\black\images\accordion_arrows.png" />
     <Content Include="Content\themes\black\images\blank.gif" />
@@ -516,6 +527,7 @@
     <Content Include="Content\themes\metro\validatebox.css" />
     <Content Include="Content\themes\metro\window.css" />
     <Content Include="Content\themes\mobile.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -568,6 +580,11 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
     <Content Include="Scripts\bootstrap.js" />
@@ -597,7 +614,9 @@
       <DependentUpon>jquery.validate.js</DependentUpon>
     </None>
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.min.js">
+      <DependentUpon>jquery.signalR-2.2.1.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js">
       <DependentUpon>jquery.validate.js</DependentUpon>
@@ -608,8 +627,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\knockout-3.4.0.debug.js" />
-    <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\locale\easyui-lang-zh_CN.min.js">
       <DependentUpon>easyui-lang-zh_CN.js</DependentUpon>
     </Content>
@@ -638,6 +655,10 @@
     <Content Include="Scripts\locale\easyui-lang-tr.js" />
     <Content Include="Scripts\locale\easyui-lang-zh_CN.js" />
     <Content Include="Scripts\locale\easyui-lang-zh_TW.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js">
+      <DependentUpon>vue.js</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

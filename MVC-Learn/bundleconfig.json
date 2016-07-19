@@ -16,5 +16,17 @@
     "inputFiles": [
       "assets/js/admin/userinfo/index.js"
     ]
+  },
+  {
+    "outputFileName": "assets/js/admin/common.min.js",
+    "inputFiles": [
+      "assets/js/admin/common.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/themes/black/easyui.min.css",
+    "inputFiles": [
+      "Content/themes/black/easyui.css"
+    ]
   }
 ]

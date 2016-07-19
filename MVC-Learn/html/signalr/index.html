@@ -2,22 +2,47 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>signalr</title>
     <meta charset="utf-8" />
-    <script src="../../Scripts/jquery-2.2.4.min.js"></script>
-    <script src="../../Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-2.2.4.min.js"></script>
+    <script src="/Scripts/vue.min.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="/assets/js/admin/common.min.js"></script>
     <script src="/signalr/hubs"></script>
 </head>
-<body style="font-family:'Microsoft Yahei'">
+<body style="font-family: 'Microsoft Yahei'" id="body">
+    <i class="fa fa-github"></i>
+    <ul>
+        <li v-for="message in messages">
+            {{message}}
+        </li>
+    </ul>
     <script>
         $(function () {
+            var vue = new Vue({
+                el: '#body',
+                data: {
+                    messages: []
+                }
+            });
             var chatHub = $.connection.chatHub;
             chatHub.client.hello = function (connctionid) {
-                $('body').append('<h5>' + connctionid + '上线了</h5>');
+                var now = new Date();
+                vue.messages.push(`${now.Format('yyyy-MM-dd hh:mm:ss')}=>${connctionid}上线啦`);
+
             };
-            $.connection.hub.start().done(function () {
-                chatHub.server.hello();
-            });
+            $.connection.hub.start()
+                .done(function () {
+                    chatHub.server.hello();
+                });
+
+            vue.$watch('messages',
+                function(newVal, oldVal) {
+                    console.log(newVal);
+                    console.log(oldVal);
+                });
+
         });
     </script>
 </body>
