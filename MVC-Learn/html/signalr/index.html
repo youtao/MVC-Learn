@@ -14,8 +14,9 @@
 <body style="font-family: 'Microsoft Yahei'" id="body">
     <i class="fa fa-github"></i>
     <ul>
-        <li v-for="message in messages">
-            {{message}}
+        <li v-for="message in messages">            
+            <i class="fa fa-user" v-bind:style="message.style"></i>
+            <span>{{message.connectionId}}{{message.status}}--{{message.time}}</span>             
         </li>
     </ul>
     <script>
@@ -27,18 +28,35 @@
                 }
             });
             var chatHub = $.connection.chatHub;
-            chatHub.client.hello = function (connctionid) {
+            chatHub.client.start = function (connctionid) {
+                var now = new Date();                                
+                vue.messages.push({
+                    connectionId: connctionid,
+                    status:'连接',
+                    time: now.Format('hh:mm:ss:S'),
+                    style: {
+                        color: 'green'
+                    }
+                });
+            };
+            chatHub.client.leave = function (connctionid) {
                 var now = new Date();
-                vue.messages.push(`${now.Format('yyyy-MM-dd hh:mm:ss')}=>${connctionid}上线啦`);
-
+                vue.messages.push({
+                    connectionId: connctionid,
+                    status: '断开',
+                    time: now.Format('hh:mm:ss:S'),
+                    style: {
+                        color: 'gray'
+                    }                    
+                });
             };
             $.connection.hub.start()
                 .done(function () {
-                    chatHub.server.hello();
+                    chatHub.server.start();
                 });
 
             vue.$watch('messages',
-                function(newVal, oldVal) {
+                function (newVal, oldVal) {
                     console.log(newVal);
                     console.log(oldVal);
                 });

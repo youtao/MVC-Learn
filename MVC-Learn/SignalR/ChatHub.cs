@@ -9,17 +9,30 @@ namespace MVC_Learn.SignalR
 {
     public class ChatHub : BaseHub<IChatHub>
     {
-        public void Hello()
+        public void Start()
         {
-            Clients.Others.Hello(this.Context.ConnectionId);
+            this.Clients.Others.Start(this.Context.ConnectionId);
         }
+
+        public override Task OnDisconnected(bool stopCalled)
+        {
+            this.Clients.Others.Leave(this.Context.ConnectionId);
+            return base.OnDisconnected(stopCalled);
+        }
+
     }
 
     public interface IChatHub
     {
         /// <summary>
-        /// 上线通知
+        /// 连接
         /// </summary>
-        void Hello(string connectionId);
+        void Start(string connectionId);
+
+        /// <summary>
+        /// 离开
+        /// </summary>
+        /// <param name="connectionId"></param>
+        void Leave(string connectionId);
     }
 }
