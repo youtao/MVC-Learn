@@ -12,6 +12,19 @@ namespace MVC_Learn.Models
         {
 
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Group>() // UserInfo_Group 中间表
+                .HasMany(e => e.UserInfos)
+                .WithMany(e => e.Groups)
+                .Map(e =>
+                {
+                    e.ToTable("SignalR_MT_UserInfo_Group");
+                    e.MapLeftKey("UserInfo_Id");
+                    e.MapRightKey("Group_Id");                    
+                });
+            base.OnModelCreating(modelBuilder);
+        }
         #region Article
 
         /// <summary>
@@ -47,6 +60,6 @@ namespace MVC_Learn.Models
         public virtual DbSet<UserInfo> UserInfo { get; set; }
 
         #endregion
-        
+
     }
 }

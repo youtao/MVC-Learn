@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_Learn.Models
 {
-    [Table("Menu")]
+    [Table("System_Menu")]
     public class Menu : BaseModel
     {
         /// <summary>

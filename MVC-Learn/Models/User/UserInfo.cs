@@ -10,7 +10,7 @@ namespace MVC_Learn.Models
     /// <summary>
     /// 用户
     /// </summary>
-    [Table("UserInfo")]
+    [Table("System_UserInfo")]
     public class UserInfo : BaseModel
     {
         /// <summary>
