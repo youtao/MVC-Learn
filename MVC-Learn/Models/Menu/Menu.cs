@@ -6,6 +6,12 @@ namespace MVC_Learn.Models
     [Table("System_Menu")]
     public class Menu : BaseModel
     {
+        public Menu()
+        {
+            this.Title = "Title";
+            this.Url = "javascript:void(0);";
+            this.Icon = "";
+        }
         /// <summary>
         /// 标题
         /// </summary>

@@ -2,5 +2,9 @@
   {
     "outputFile": "assets/css/admin.css",
     "inputFile": "assets/css/admin.less"
+  },
+  {
+    "outputFile": "assets/css/admin/common.css",
+    "inputFile": "assets/css/admin/common.less"
   }
 ]

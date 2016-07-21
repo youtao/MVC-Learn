@@ -34,5 +34,11 @@
     "inputFiles": [
       "Scripts/js-cookie/js.cookie.js"
     ]
+  },
+  {
+    "outputFileName": "assets/js/admin/menu/index.min.js",
+    "inputFiles": [
+      "assets/js/admin/menu/index.js"
+    ]
   }
 ]

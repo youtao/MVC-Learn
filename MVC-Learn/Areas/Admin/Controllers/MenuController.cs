@@ -14,10 +14,28 @@ namespace MVC_Learn.Areas.Admin.Controllers
     public class MenuController : Controller
     {
         private LearnDbContext db = new LearnDbContext();
-                
-        public  ActionResult Index()
-        {            
+
+        public ActionResult Index()
+        {
             return View();
+        }
+
+        /// <summary>
+        /// 根据父键获取菜单
+        /// </summary>
+        /// <param name="parentId">父键Id</param>
+        /// <returns></returns>
+        public async Task<JsonResult> GetMenu(long? parentId = null)
+        {
+            var json = await db.Menu.Where(e => e.ParentId == parentId).Select(e => new
+            {
+                e.Id,
+                e.Title,
+                e.Url,
+                e.Icon,                
+                HasChildren = e.Children.Any()
+            }).ToListAsync();
+            return this.Json(json, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Admin/Menu/Details/5

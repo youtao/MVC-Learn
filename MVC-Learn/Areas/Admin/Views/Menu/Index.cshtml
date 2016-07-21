@@ -4,7 +4,16 @@
 
 @section cust_script
 {
-    
+    <script src="~/assets/js/admin/menu/index.min.js"></script>
 }
 
 
+<div class="easyui-layout main-layout">
+    <div data-options="region:'center',title:'菜单',iconCls:'fa fa-user'">
+        <table id="menu-list" style="height:100%;"></table>        
+    </div>
+    <div data-options="region:'east',title:'菜单编辑',iconCls:'fa fa-edit'" style="width: 30%">
+        <table id="menu-edit" style="height: 100%;"></table>
+    </div>
+    <div data-options="region:'south',title:'说明',iconCls:'fa fa-info-circle'" style="height: 150px;"></div>
+</div>
