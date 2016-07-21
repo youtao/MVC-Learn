@@ -307,6 +307,9 @@
     <Content Include="Content\themes\default\datebox.css" />
     <Content Include="Content\themes\default\dialog.css" />
     <Content Include="Content\themes\default\easyui.css" />
+    <Content Include="Content\themes\default\easyui.min.css">
+      <DependentUpon>easyui.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\default\filebox.css" />
     <Content Include="Content\themes\default\images\accordion_arrows.png" />
     <Content Include="Content\themes\default\images\blank.gif" />
@@ -489,6 +492,9 @@
     <Content Include="Content\themes\metro\datebox.css" />
     <Content Include="Content\themes\metro\dialog.css" />
     <Content Include="Content\themes\metro\easyui.css" />
+    <Content Include="Content\themes\metro\easyui.min.css">
+      <DependentUpon>easyui.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\metro\filebox.css" />
     <Content Include="Content\themes\metro\images\accordion_arrows.png" />
     <Content Include="Content\themes\metro\images\blank.gif" />

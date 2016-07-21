@@ -40,5 +40,17 @@
     "inputFiles": [
       "assets/js/admin/menu/index.js"
     ]
+  },
+  {
+    "outputFileName": "Content/themes/metro/easyui.min.css",
+    "inputFiles": [
+      "Content/themes/metro/easyui.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/themes/default/easyui.min.css",
+    "inputFiles": [
+      "Content/themes/default/easyui.css"
+    ]
   }
 ]

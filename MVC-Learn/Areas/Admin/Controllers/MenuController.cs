@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_Learn.Models;
+using EntityFramework.Extensions;
 
 namespace MVC_Learn.Areas.Admin.Controllers
 {
@@ -32,109 +33,54 @@ namespace MVC_Learn.Areas.Admin.Controllers
                 e.Id,
                 e.Title,
                 e.Url,
-                e.Icon,                
+                e.Icon,
                 HasChildren = e.Children.Any()
             }).ToListAsync();
             return this.Json(json, JsonRequestBehavior.AllowGet);
         }
 
-        // GET: Admin/Menu/Details/5
-        public async Task<ActionResult> Details(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Menu menu = await db.Menu.FindAsync(id);
-            if (menu == null)
-            {
-                return HttpNotFound();
-            }
-            return View(menu);
-        }
-
-        // GET: Admin/Menu/Create
-        public ActionResult Create()
-        {
-            ViewBag.ParentId = new SelectList(db.Menu, "Id", "Title");
-            return View();
-        }
-
-        // POST: Admin/Menu/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Url,Icon,ParentId,CreateTime")] Menu menu)
+        //[ValidateAntiForgeryToken]
+        public JsonResult Create([Bind(Include = "Title,Url,Icon,ParentId")] Menu menu)
         {
+            var menuId = -1L;
             if (ModelState.IsValid)
             {
                 db.Menu.Add(menu);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                db.SaveChanges();
+                menuId = menu.Id;
             }
-
-            ViewBag.ParentId = new SelectList(db.Menu, "Id", "Title", menu.ParentId);
-            return View(menu);
+            return Json(new { MenuId = menuId });
         }
 
-        // GET: Admin/Menu/Edit/5
-        public async Task<ActionResult> Edit(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Menu menu = await db.Menu.FindAsync(id);
-            if (menu == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.ParentId = new SelectList(db.Menu, "Id", "Title", menu.ParentId);
-            return View(menu);
-        }
-
-        // POST: Admin/Menu/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Url,Icon,ParentId,CreateTime")] Menu menu)
+        //[ValidateAntiForgeryToken]
+        public async Task<JsonResult> Edit([Bind(Include = "Id,Title,Url,Icon")] Menu param)
         {
+            var result = false;
             if (ModelState.IsValid)
             {
-                db.Entry(menu).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                result = true;
+                await db.Menu.Where(e => e.Id == param.Id).UpdateAsync(e => new Menu()
+                {
+                    Title = param.Title,
+                    Url = param.Url,
+                    Icon = param.Icon
+                });
             }
-            ViewBag.ParentId = new SelectList(db.Menu, "Id", "Title", menu.ParentId);
-            return View(menu);
+            return this.Json(result);
         }
 
-        // GET: Admin/Menu/Delete/5
-        public async Task<ActionResult> Delete(long? id)
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<JsonResult> Delete(long id)
         {
-            if (id == null)
+            var result = false;
+            result = await db.Menu.Where(e => e.Id == id).UpdateAsync(e => new Menu()
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Menu menu = await db.Menu.FindAsync(id);
-            if (menu == null)
-            {
-                return HttpNotFound();
-            }
-            return View(menu);
-        }
 
-        // POST: Admin/Menu/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(long id)
-        {
-            Menu menu = await db.Menu.FindAsync(id);
-            db.Menu.Remove(menu);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            }) > 0; // TODO:软删除
+            return Json("");
         }
 
         protected override void Dispose(bool disposing)
