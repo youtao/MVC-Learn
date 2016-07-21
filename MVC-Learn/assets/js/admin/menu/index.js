@@ -14,11 +14,11 @@
         lines: true,
         columns: [[
             {
-                field: 'Title', title: 'title', width: '30%', editor: 'text'
+                field: 'Title', title: '标题', width: '30%', editor: 'text'
             },
-            { field: 'Url', title: 'url', width: '40%', editor: 'text' },
+            { field: 'Url', title: '地址', width: '40%', editor: 'text' },
             {
-                field: 'Icon', title: 'icon', width: '20%', align: 'center', editor: 'text', formatter: function (node) {
+                field: 'Icon', title: '图标', width: '20%', align: 'center', editor: 'text', formatter: function (node) {
                     var html = '<i class="' + node + '"></i>&nbsp;&nbsp;&nbsp;' + node;
                     return html;
                 }
@@ -27,7 +27,7 @@
         toolbar: [
             {
                 text: '添加',
-                iconCls: 'fa fa-create',
+                iconCls: 'fa fa-plus',
                 handler: function () {
 
                 }
@@ -57,7 +57,7 @@
                 }
             }, '-', {
                 text: '取消',
-                iconCls: 'fa fa-user',
+                iconCls: 'fa fa-undo',
                 handler: function () {
                     if (config.editingId != undefined) {
                         $('#menu-list').treegrid('cancelEdit', config.editingId);

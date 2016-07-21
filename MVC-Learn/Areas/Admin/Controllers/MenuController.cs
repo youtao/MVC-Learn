@@ -28,7 +28,10 @@ namespace MVC_Learn.Areas.Admin.Controllers
         /// <returns></returns>
         public async Task<JsonResult> GetMenu(long? parentId = null)
         {
-            var json = await db.Menu.Where(e => e.ParentId == parentId).Select(e => new
+            var json = await db.Menu.Where(e =>
+            e.ParentId == parentId &&
+            e.Delete == false)
+            .Select(e => new
             {
                 e.Id,
                 e.Title,
