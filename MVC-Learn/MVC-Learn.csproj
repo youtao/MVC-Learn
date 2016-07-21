@@ -723,6 +723,10 @@
     <Compile Include="Migrations\201607211222261_修改中间表.Designer.cs">
       <DependentUpon>201607211222261_修改中间表.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607211503435_添加软删除字段.cs" />
+    <Compile Include="Migrations\201607211503435_添加软删除字段.Designer.cs">
+      <DependentUpon>201607211503435_添加软删除字段.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article\Article.cs" />
     <Compile Include="Models\Context\BaseModel.cs" />
@@ -787,6 +791,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607211222261_修改中间表.resx">
       <DependentUpon>201607211222261_修改中间表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607211503435_添加软删除字段.resx">
+      <DependentUpon>201607211503435_添加软删除字段.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
