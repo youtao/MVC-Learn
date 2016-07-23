@@ -39,16 +39,17 @@ namespace WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public JsonResult Create([Bind(Include = "Title,Url,Icon,ParentId")] Menu menu)
+        public async Task<JsonResult> Create([Bind(Include = "Title,Url,Icon,ParentId")] Menu entity)
         {
-            var menuId = -1L;
+            var result = false;
             if (ModelState.IsValid)
             {
-                db.Menu.Add(menu);
-                db.SaveChanges();
-                menuId = menu.Id;
+                entity.Order = db.Menu.Count(e => e.ParentId == entity.ParentId);
+                db.Menu.Add(entity);
+                await db.SaveChangesAsync();
+                result = true;
             }
-            return Json(new { MenuId = menuId });
+            return Json(result);
         }
 
         [HttpPost]
@@ -73,12 +74,64 @@ namespace WebUI.Areas.Admin.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<JsonResult> Delete(long id)
         {
-            var result = false;
-            result = await db.Menu.Where(e => e.Id == id).UpdateAsync(e => new Menu()
+            var result = await db.Menu.Where(e => e.Id == id).UpdateAsync(e => new Menu()
             {
 
             }) > 0; // TODO:软删除
-            return Json("");
+            return Json(result);
+        }
+
+        public async Task<JsonResult> Order([Bind(Include = "Id,Order,ParentId")]Menu param)
+        {
+            var result = false;
+            if (ModelState.IsValid)
+            {
+                var menu = db.Menu.FirstOrDefault(e => e.Id == param.Id);
+                if (menu == null)
+                {
+                    return Json(false);
+                }
+
+                if (menu.ParentId != param.ParentId) // 父Id改变了
+                {
+                    await db.Menu.Where(e => e.ParentId == param.ParentId && e.Order >= param.Order).UpdateAsync(e => new Menu()
+                    {
+                        Order = e.Order + 1 // 下面加1
+                    });
+                }
+                else // 
+                {
+                    if (menu.Order < param.Order) // 从上往下移动
+                    {
+                        await db.Menu.Where(e =>
+                        e.ParentId == param.ParentId &&
+                        e.Order > menu.Order && // 不包含自己
+                        e.Order <= param.Order) // 包含最下面被影响的
+                        .UpdateAsync(e => new Menu()
+                        {
+                            Order = e.Order - 1 // 上面减1
+                        });
+                    }
+                    else
+                    {
+                        await db.Menu.Where(e =>
+                        e.ParentId == param.ParentId &&
+                        e.Order >= param.Order && // 包含最上面被影响的
+                        e.Order < menu.Order) // 不包含自己
+                        .UpdateAsync(e => new Menu()
+                        {
+                            Order = e.Order + 1 // 下面加1
+                        });
+                    }
+                }
+                await db.Menu.Where(e => e.Id == param.Id).UpdateAsync(e => new Menu()
+                {
+                    Order = param.Order,
+                    ParentId = param.ParentId
+                });
+                result = true;
+            }
+            return Json(result);
         }
 
         protected override void Dispose(bool disposing)
