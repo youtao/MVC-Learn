@@ -1,6 +1,7 @@
 ﻿$(function () {
     var config = {
-        editingId: undefined
+        editing: false, // 是否编辑中
+        editingId: undefined, // 编辑Id        
     }
 
     $('#menu-list').treegrid({
@@ -12,7 +13,10 @@
         rownumbers: true,
         animate: true,
         lines: true,
+        checkOnSelect: false,
+        selectOnCheck: false,
         columns: [[
+            { field: 'Unique', checkbox: true },
             {
                 field: 'Title', title: '标题', width: '30%', editor: 'text'
             },
@@ -29,19 +33,51 @@
                 text: '添加',
                 iconCls: 'fa fa-plus',
                 handler: function () {
+                    if (config.editing) {
+                        if (config.editingId != undefined) { // 编辑中
+                            $('#menu-list').treegrid('select', config.editingId);
+                        } else { // 添加中
+                            $('#menu-list').treegrid('select', -1);
+                        }
+                        return;
+                    }
+                    config.editing = true;
 
+                    var parent = null;
+                    var node = $('#menu-list').treegrid('getSelected');
+                    if (node) {
+                        parent = node.Id;
+                    }
+
+                    $('#menu-list').treegrid('append', {
+                        parent: parent,
+                        data: [
+                        {
+                            Id: -1,
+                            Title: '',
+                            Url: '',
+                            Icon: '',
+                            ParentId: parent
+                        }]
+                    });
+                    $('#menu-list').treegrid('beginEdit', -1);
                 }
             }, '-', {
                 text: '编辑',
                 iconCls: 'fa fa-edit',
                 handler: function () {
-                    if (config.editingId != undefined) {
-                        $('#menu-list').treegrid('select', config.editingId);
+                    if (config.editing) {
+                        if (config.editingId != undefined) { //编辑中
+                            $('#menu-list').treegrid('select', config.editingId);
+                        } else { // 添加中
+                            $('#menu-list').treegrid('select', -1);
+                        }
                         return;
                     }
                     var row = $('#menu-list').treegrid('getSelected');
                     if (row) {
-                        config.editingId = row.Id
+                        config.editing = true;
+                        config.editingId = row.Id;
                         $('#menu-list').treegrid('beginEdit', config.editingId);
                     }
                 }
@@ -49,21 +85,30 @@
                 text: '保存',
                 iconCls: 'fa fa-save',
                 handler: function () {
-                    if (config.editingId != undefined) {
-                        var t = $('#tg');
-                        $('#menu-list').treegrid('endEdit', config.editingId);
+                    if (config) {
+                        if (config.editingId != undefined) {
+                            $('#menu-list').treegrid('endEdit', config.editingId);
+                        } else {
+                            $('#menu-list').treegrid('endEdit', -1);
+                        }
                         config.editingId = undefined;
+                        config.editing = false;
                     }
                 }
             }, '-', {
                 text: '取消',
                 iconCls: 'fa fa-undo',
                 handler: function () {
-                    if (config.editingId != undefined) {
-                        $('#menu-list').treegrid('cancelEdit', config.editingId);
+                    $('#menu-list').treegrid('unselectAll');
+                    if (config.editing) {
+                        if (config.editingId != undefined) { // 修改中
+                            $('#menu-list').treegrid('cancelEdit', config.editingId);
+                        } else { //添加中                            
+                            $('#menu-list').treegrid('remove', -1);
+                        }
                         config.editingId = undefined;
+                        config.editing = false;
                     }
-
 
                 }
             }],
@@ -80,13 +125,26 @@
             $('#menu-list').treegrid('options').url = "/admin/menu/getmenu?ParentId=" + node.Id;
         },
         onAfterEdit: function (node) { // TODO:判断是否更新或添加成功
-            $.post('/admin/menu/edit', {
+            var url = '/admin/menu/edit';
+            var data = {
                 Id: node.Id,
                 Title: node.Title,
                 Url: node.Url,
-                Icon: node.Icon,
-            }, function (response) {
-                console.log(response);
+                Icon: node.Icon
+            }
+            if (node.Id < 0) {
+                data.ParentId = node.ParentId;
+                url = '/admin/menu/create';
+            }
+            $.post(url, data, function (response) {
+                if (node.Id < 0) {
+                    if (node.ParentId) {
+                        $('#menu-list').treegrid('reload', node.ParentId);
+                    } else {
+                        $('#menu-list').treegrid('unselectAll'); // 如果是全部从新加载则一定要移除之前所有的选择
+                        $('#menu-list').treegrid('reload');
+                    }
+                }
             });
         }
     });

@@ -74,11 +74,11 @@ namespace WebUI.Areas.Admin.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<JsonResult> Delete(long id)
         {
-            var result = await db.Menu.Where(e => e.Id == id).UpdateAsync(e => new Menu()
+            await db.Menu.Where(e => e.Id == id).UpdateAsync(e => new Menu()
             {
-
-            }) > 0; // TODO:软删除
-            return Json(result);
+                Delete = true
+            });
+            return Json(true);
         }
 
         public async Task<JsonResult> Order([Bind(Include = "Id,Order,ParentId")]Menu param)
