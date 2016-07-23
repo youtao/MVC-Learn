@@ -28,6 +28,11 @@ namespace WebUI.Models
         public string Icon { get; set; }
 
         /// <summary>
+        /// 排序
+        /// </summary>        
+        public int Order { get; set; }
+
+        /// <summary>
         /// 父级菜单Id
         /// </summary>
         [ForeignKey("Parent")]
