@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using StackExchange.Profiling
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -14,10 +15,10 @@
     <script src="~/Scripts/locale/easyui-lang-zh_CN.min.js"></script>
     <script src="~/Scripts/js-cookie/js.cookie.min.js"></script>
 </head>
-<body>
+<body class="easyui-layout">
     @RenderBody()
-    @RenderSection("part_script",false)
-    @RenderSection("cust_script",false)
-    @StackExchange.Profiling.MiniProfiler.RenderIncludes(showTimeWithChildren: true)
+    @RenderSection("part_script", false)
+    @RenderSection("cust_script", false)
+    @StackExchange.Profiling.MiniProfiler.RenderIncludes(showTimeWithChildren: true, position: RenderPosition.BottomRight)
 </body>
 </html>

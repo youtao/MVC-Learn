@@ -6,31 +6,29 @@
 {
     <script src="~/assets/js/admin/userinfo/index.min.js"></script>
 }
-<div class="easyui-layout main-layout">    
-    <div data-options="region:'center',title:'用户',iconCls:'fa fa-user'">
-        <table id="user-list" style="height:100%;"></table>
-        <div id="user-list-toolbar">
-            <div>
-                <a id="add-user" href="javascript:void(0);" class="easyui-linkbutton" iconCls="fa fa-user-plus" plain="true">添加用户</a>
-                <a id="delete-user" href="javascript:void(0);" class="easyui-linkbutton" iconCls="fa fa-trash" plain="true">删除用户</a>
-                <a href="javascript:void(0);" class="easyui-menubutton" style="position:relative;float:right;"
-                   data-options="menu:'#more',iconCls:'fa fa-bars'">更多</a>
-                <div id="more" style="width:150px;">
-                    <div data-options="iconCls:'fa fa-undo'">Undo</div>
-                    <div data-options="iconCls:'fa fa-repeat'">Redo</div>
-                    <div class="menu-sep"></div>
-                    <div data-options="iconCls:'fa fa-cut'">Cut</div>
-                    <div data-options="iconCls:'fa fa-copy'">Copy</div>
-                    <div data-options="iconCls:'fa fa-paste'">Paste</div>
-                    <div class="menu-sep"></div>
-                    <div data-options="iconCls:'fa fa-trash-o'">Delete</div>
-                </div>
+<div data-options="region:'center',title:'用户',iconCls:'fa fa-user'">
+    <table id="user-list" style="height:100%;"></table>
+    <div id="user-list-toolbar">
+        <div>
+            <a id="add-user" href="javascript:void(0);" class="easyui-linkbutton" iconCls="fa fa-user-plus" plain="true">添加用户</a>
+            <a id="delete-user" href="javascript:void(0);" class="easyui-linkbutton" iconCls="fa fa-trash" plain="true">删除用户</a>
+            <a href="javascript:void(0);" class="easyui-menubutton" style="position:relative;float:right;"
+               data-options="menu:'#more',iconCls:'fa fa-bars'">更多</a>
+            <div id="more" style="width:150px;">
+                <div data-options="iconCls:'fa fa-undo'">Undo</div>
+                <div data-options="iconCls:'fa fa-repeat'">Redo</div>
+                <div class="menu-sep"></div>
+                <div data-options="iconCls:'fa fa-cut'">Cut</div>
+                <div data-options="iconCls:'fa fa-copy'">Copy</div>
+                <div data-options="iconCls:'fa fa-paste'">Paste</div>
+                <div class="menu-sep"></div>
+                <div data-options="iconCls:'fa fa-trash-o'">Delete</div>
             </div>
         </div>
     </div>
-    <div data-options="region:'east',title:'用户编辑',iconCls:'fa fa-edit'" style="width: 30%">
-        <table id="user-edit" style="height: 100%;"></table>
-    </div>
-    <div data-options="region:'south',title:'说明',iconCls:'fa fa-info-circle'" style="height: 150px;"></div>
 </div>
+<div data-options="region:'east',title:'用户编辑',iconCls:'fa fa-edit'" style="width: 30%">
+    <table id="user-edit" style="height: 100%;"></table>
+</div>
+<div data-options="region:'south',title:'说明',iconCls:'fa fa-info-circle'" style="height: 150px;"></div>
 
