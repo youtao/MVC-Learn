@@ -8,7 +8,7 @@
         pagination: true,
         singleSelect: true,
         checkOnSelect: false,
-        selectOnCheck: false,
+        selectOnCheck: false,        
         columns: [
             [
                 { field: 'Unique', checkbox: true },

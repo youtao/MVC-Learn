@@ -30,7 +30,7 @@ namespace WebUI.Models
         /// <summary>
         /// 排序
         /// </summary>        
-        public int Order { get; set; }
+        public int MenuOrder { get; set; }
 
         /// <summary>
         /// 父级菜单Id

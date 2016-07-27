@@ -1,7 +1,7 @@
 ﻿$(function () {
     var config = {
         editing: false, // 是否编辑中
-        editingId: undefined, // 编辑Id        
+        editingId: undefined // 编辑Id        
     }
 
     $('#menu-list').treegrid({
@@ -114,9 +114,8 @@
             }],
         loadFilter: function (data, parent) {
             for (var i = 0; i < data.length; i++) {
-                if (data[i].HasChildren) {
+                if (data[i].Count) {
                     data[i].state = 'closed';
-                    data[i].children = [];
                 }
             }
             return data;
@@ -146,6 +145,59 @@
                     }
                 }
             });
+        }
+    });
+
+    $('#menu-order').tree({
+        url: '/admin/menu/getmenu',
+        dnd: true,
+        loadFilter: function (data, parent) {
+            for (var i = 0; i < data.length; i++) {
+                data[i].id = data[i].Id;
+                data[i].text = data[i].Title;
+                if (data[i].Count) {
+                    data[i].state = 'closed';
+                }
+            }
+            return data;
+        },
+        onBeforeExpand: function (node) {
+            $('#menu-order').tree('options').url = "/admin/menu/getmenu?ParentId=" + node.Id;
+        },
+        onDrop: function (target, source, point) {
+            var menuOrder = 0;
+            var parent = '';
+            if (point === 'append') {
+                parent = $('#menu-order').tree('getNode', target);
+                if (parent) {
+                    menuOrder = parent.children.length - 1;
+                }
+            } else {
+                parent = $('#menu-order').tree('getParent', target);
+                if (point === 'top') {
+                    menuOrder = $('#menu-order').tree('getNode', target).MenuOrder;
+                    if (menuOrder !== 0) {
+                        menuOrder--;
+                    }
+
+                } else {
+                    menuOrder = $('#menu-order').tree('getNode', target).MenuOrder + 1;
+                }
+            }
+            var parentId = null;
+            if (parent) {
+                parentId = parent.Id;
+            }
+
+            $.post('/admin/menu/Order',
+                {
+                    Id: source.Id,
+                    ParentId: parentId,
+                    MenuOrder: menuOrder
+                },
+                function (response) {
+
+                });
         }
     });
 });

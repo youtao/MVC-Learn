@@ -52,5 +52,11 @@
     "inputFiles": [
       "Content/themes/default/easyui.css"
     ]
+  },
+  {
+    "outputFileName": "Scripts/treegrid-dnd.min.js",
+    "inputFiles": [
+      "Scripts/treegrid-dnd.js"
+    ]
   }
 ]

@@ -180,13 +180,9 @@
       <DependentUpon>index.js</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css">
-      <DependentUpon>bootstrap-theme.css</DependentUpon>
-    </Content>
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css">
-      <DependentUpon>bootstrap.css</DependentUpon>
-    </Content>
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css">
       <DependentUpon>font-awesome.css</DependentUpon>
@@ -540,22 +536,6 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map">
-      <DependentUpon>bootstrap.min.css</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap.css.map">
-      <DependentUpon>bootstrap.css</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap-theme.min.css.map">
-      <DependentUpon>bootstrap-theme.min.css</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap-theme.css.map">
-      <DependentUpon>bootstrap-theme.css</DependentUpon>
-    </Content>
     <Content Include="html\signalr\index.html" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
@@ -573,16 +553,22 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js">
-      <DependentUpon>bootstrap.js</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-2.2.4.intellisense.js">
       <DependentUpon>jquery-2.2.4.js</DependentUpon>
     </None>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js">
       <DependentUpon>jquery-2.2.4.js</DependentUpon>
@@ -599,23 +585,13 @@
     <Content Include="Scripts\jquery-2.2.4.min.map">
       <DependentUpon>jquery-2.2.4.min.js</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery.validate-vsdoc.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </None>
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js">
       <DependentUpon>jquery.signalR-2.2.1.js</DependentUpon>
     </Content>
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery.validate.unobtrusive.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
-      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
-    </Content>
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\js-cookie\js.cookie.js" />
     <Content Include="Scripts\js-cookie\js.cookie.min.js">
       <DependentUpon>js.cookie.js</DependentUpon>
@@ -648,6 +624,10 @@
     <Content Include="Scripts\locale\easyui-lang-tr.js" />
     <Content Include="Scripts\locale\easyui-lang-zh_CN.js" />
     <Content Include="Scripts\locale\easyui-lang-zh_TW.js" />
+    <Content Include="Scripts\treegrid-dnd.js" />
+    <Content Include="Scripts\treegrid-dnd.min.js">
+      <DependentUpon>treegrid-dnd.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js">
       <DependentUpon>vue.js</DependentUpon>
@@ -715,6 +695,10 @@
     <Compile Include="Migrations\201607231522252_Menu增加排序字段.cs" />
     <Compile Include="Migrations\201607231522252_Menu增加排序字段.Designer.cs">
       <DependentUpon>201607231522252_Menu增加排序字段.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607271555522_修改字段名.cs" />
+    <Compile Include="Migrations\201607271555522_修改字段名.Designer.cs">
+      <DependentUpon>201607271555522_修改字段名.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article\Article.cs" />
@@ -784,6 +768,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607231522252_Menu增加排序字段.resx">
       <DependentUpon>201607231522252_Menu增加排序字段.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607271555522_修改字段名.resx">
+      <DependentUpon>201607271555522_修改字段名.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Data.Entity;
+using System.Web.Mvc;
 using System.Web.Routing;
 using StackExchange.Profiling;
 using StackExchange.Profiling.EntityFramework6;
+using WebUI.Models;
 
 namespace WebUI
 {
@@ -14,11 +16,21 @@ namespace WebUI
 #if DEBUG
             MiniProfilerEF6.Initialize();
 #else
-            Database.SetInitializer<LearnDbContext>(null);
+            MiniProfilerEF6.Initialize();
+            Database.SetInitializer<LearnDbContext>(null);            
 #endif
 
         }
 #if DEBUG
+        protected void Application_BeginRequest()
+        {
+            MiniProfiler.Start();
+        }
+        protected void Application_EndRequest()
+        {
+            MiniProfiler.Stop();
+        }
+#else
         protected void Application_BeginRequest()
         {
             MiniProfiler.Start();
