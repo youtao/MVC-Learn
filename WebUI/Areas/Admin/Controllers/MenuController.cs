@@ -61,8 +61,7 @@ namespace WebUI.Areas.Admin.Controllers
         {
             var result = false;
             if (ModelState.IsValid)
-            {
-                result = true;
+            {                
                 await db.Menu.Where(e => e.Id == param.Id).UpdateAsync(e => new Menu()
                 {
                     Title = param.Title,

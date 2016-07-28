@@ -171,6 +171,10 @@
     <Content Include="assets\js\admin\common.min.js">
       <DependentUpon>common.js</DependentUpon>
     </Content>
+    <Content Include="assets\js\admin\home\index.js" />
+    <Content Include="assets\js\admin\home\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
     <Content Include="assets\js\admin\menu\index.js" />
     <Content Include="assets\js\admin\menu\index.min.js">
       <DependentUpon>index.js</DependentUpon>

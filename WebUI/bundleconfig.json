@@ -58,5 +58,11 @@
     "inputFiles": [
       "Scripts/treegrid-dnd.js"
     ]
+  },
+  {
+    "outputFileName": "assets/js/admin/home/index.min.js",
+    "inputFiles": [
+      "assets/js/admin/home/index.js"
+    ]
   }
 ]
