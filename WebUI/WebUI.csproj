@@ -596,13 +596,6 @@
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js">
       <DependentUpon>jquery.signalR-2.2.1.js</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery.validate-vsdoc.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </None>
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\js-cookie\js.cookie.js" />
     <Content Include="Scripts\js-cookie\js.cookie.min.js">
       <DependentUpon>js.cookie.js</DependentUpon>
@@ -610,7 +603,6 @@
     <Content Include="Scripts\locale\easyui-lang-zh_CN.min.js">
       <DependentUpon>easyui-lang-zh_CN.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\locale\easyui-lang-af.js" />
     <Content Include="Scripts\locale\easyui-lang-am.js" />
     <Content Include="Scripts\locale\easyui-lang-ar.js" />
@@ -653,6 +645,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserInfoController.cs" />
+    <Compile Include="Filter\AllowCrosAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
