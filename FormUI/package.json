@@ -6,5 +6,8 @@
   "author": {
     "name": "lytlc"
   },
-  "scripts": {"start": "app.js"}
+  "scripts": {
+
+    "start": "app.js"
+  }
 }
