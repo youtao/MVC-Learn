@@ -1,0 +1,10 @@
+{
+  "name": "form-ui",
+  "version": "0.0.0",
+  "description": "FormUI",
+  "main": "app.js",
+  "author": {
+    "name": "lytlc"
+  },
+  "scripts": {"start": "app.js"}
+}
