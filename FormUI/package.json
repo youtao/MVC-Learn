@@ -7,7 +7,9 @@
     "name": "lytlc"
   },
   "scripts": {
-
     "start": "app.js"
+  },
+  "devDependencies": {
+    "mongoose": "^4.5.8"
   }
 }
