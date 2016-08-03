@@ -649,70 +649,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607051619348_初始化.cs" />
-    <Compile Include="Migrations\201607051619348_初始化.Designer.cs">
-      <DependentUpon>201607051619348_初始化.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607051629057_修改时间.cs" />
-    <Compile Include="Migrations\201607051629057_修改时间.Designer.cs">
-      <DependentUpon>201607051629057_修改时间.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607061540275_修改Unique字段.cs" />
-    <Compile Include="Migrations\201607061540275_修改Unique字段.Designer.cs">
-      <DependentUpon>201607061540275_修改Unique字段.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607061544246_Unique添加索引.cs" />
-    <Compile Include="Migrations\201607061544246_Unique添加索引.Designer.cs">
-      <DependentUpon>201607061544246_Unique添加索引.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607061549078_标题和作者不为空.cs" />
-    <Compile Include="Migrations\201607061549078_标题和作者不为空.Designer.cs">
-      <DependentUpon>201607061549078_标题和作者不为空.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607071411044_添加SignalR相关.cs" />
-    <Compile Include="Migrations\201607071411044_添加SignalR相关.Designer.cs">
-      <DependentUpon>201607071411044_添加SignalR相关.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607080222483_修改UserInfo字段名.cs" />
-    <Compile Include="Migrations\201607080222483_修改UserInfo字段名.Designer.cs">
-      <DependentUpon>201607080222483_修改UserInfo字段名.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607191453004_修改主键类型为long.cs" />
-    <Compile Include="Migrations\201607191453004_修改主键类型为long.Designer.cs">
-      <DependentUpon>201607191453004_修改主键类型为long.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607191456502_添加Menu模型.cs" />
-    <Compile Include="Migrations\201607191456502_添加Menu模型.Designer.cs">
-      <DependentUpon>201607191456502_添加Menu模型.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607211159367_修改表名.cs" />
-    <Compile Include="Migrations\201607211159367_修改表名.Designer.cs">
-      <DependentUpon>201607211159367_修改表名.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607211222261_修改中间表.cs" />
-    <Compile Include="Migrations\201607211222261_修改中间表.Designer.cs">
-      <DependentUpon>201607211222261_修改中间表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607211503435_添加软删除字段.cs" />
-    <Compile Include="Migrations\201607211503435_添加软删除字段.Designer.cs">
-      <DependentUpon>201607211503435_添加软删除字段.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607231522252_Menu增加排序字段.cs" />
-    <Compile Include="Migrations\201607231522252_Menu增加排序字段.Designer.cs">
-      <DependentUpon>201607231522252_Menu增加排序字段.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607271555522_修改字段名.cs" />
-    <Compile Include="Migrations\201607271555522_修改字段名.Designer.cs">
-      <DependentUpon>201607271555522_修改字段名.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Article\Article.cs" />
-    <Compile Include="Models\Context\BaseModel.cs" />
-    <Compile Include="Models\User\Connection.cs" />
-    <Compile Include="Models\User\Group.cs" />
-    <Compile Include="Models\Context\LearnDbContext.cs" />
-    <Compile Include="Models\Menu\Menu.cs" />
-    <Compile Include="Models\User\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalR\BaseHub.cs" />
     <Compile Include="SignalR\ChatHub.cs" />
@@ -735,48 +671,10 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607051619348_初始化.resx">
-      <DependentUpon>201607051619348_初始化.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607051629057_修改时间.resx">
-      <DependentUpon>201607051629057_修改时间.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607061540275_修改Unique字段.resx">
-      <DependentUpon>201607061540275_修改Unique字段.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607061544246_Unique添加索引.resx">
-      <DependentUpon>201607061544246_Unique添加索引.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607061549078_标题和作者不为空.resx">
-      <DependentUpon>201607061549078_标题和作者不为空.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607071411044_添加SignalR相关.resx">
-      <DependentUpon>201607071411044_添加SignalR相关.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607080222483_修改UserInfo字段名.resx">
-      <DependentUpon>201607080222483_修改UserInfo字段名.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607191453004_修改主键类型为long.resx">
-      <DependentUpon>201607191453004_修改主键类型为long.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607191456502_添加Menu模型.resx">
-      <DependentUpon>201607191456502_添加Menu模型.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607211159367_修改表名.resx">
-      <DependentUpon>201607211159367_修改表名.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607211222261_修改中间表.resx">
-      <DependentUpon>201607211222261_修改中间表.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607211503435_添加软删除字段.resx">
-      <DependentUpon>201607211503435_添加软删除字段.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607231522252_Menu增加排序字段.resx">
-      <DependentUpon>201607231522252_Menu增加排序字段.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607271555522_修改字段名.resx">
-      <DependentUpon>201607271555522_修改字段名.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{62c8cb2b-62d4-423c-bcc2-4bf4f743ba4f}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,8 +3,6 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using StackExchange.Profiling;
 using StackExchange.Profiling.EntityFramework6;
-using WebGrease.Configuration;
-using WebUI.Models;
 
 namespace WebUI
 {

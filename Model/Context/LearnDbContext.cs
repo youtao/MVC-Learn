@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace WebUI.Models
+namespace Model
 {
     public class LearnDbContext : DbContext
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EntityFramework.Extensions;
 using Microsoft.AspNet.SignalR;
-using WebUI.Models;
+using Model;
 
 namespace WebUI.SignalR
 {

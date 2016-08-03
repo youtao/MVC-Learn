@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using EntityFramework.Extensions;
-using WebUI.Models;
+using Model;
 
 namespace WebUI.Areas.Admin.Controllers
 {

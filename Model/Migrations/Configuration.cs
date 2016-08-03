@@ -1,16 +1,18 @@
-using System.Data.Entity.Migrations;
-using WebUI.Models;
-
-namespace WebUI.Migrations
+namespace Model.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<LearnDbContext>
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<Model.LearnDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(LearnDbContext context)
+        protected override void Seed(Model.LearnDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -23,7 +25,7 @@ namespace WebUI.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
-            //
-        }
+            //            
+        }         
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebUI.Models
+namespace Model
 {
     [Table("System_Menu")]
     public class Menu : BaseModel

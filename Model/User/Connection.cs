@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebUI.Models
+namespace Model
 {
     /// <summary>
     /// SignalR连接信息

@@ -2,7 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using WebUI.Models;
+using Model;
 
 namespace WebUI.Areas.Admin.Controllers
 {
