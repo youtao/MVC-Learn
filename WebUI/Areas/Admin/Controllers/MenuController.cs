@@ -37,7 +37,7 @@ namespace WebUI.Areas.Admin.Controllers
             })
             .OrderBy(e => e.MenuOrder)
             .ToListAsync();
-            return this.Json(json, JsonRequestBehavior.AllowGet);
+            return this.Json(json);
         }
 
         [HttpPost]

@@ -10,9 +10,9 @@ namespace WebUI
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-                                                            
+            AreaRegistration.RegisterAllAreas();                                                            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 #if DEBUG
             MiniProfilerEF6.Initialize();
 #else

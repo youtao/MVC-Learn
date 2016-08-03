@@ -7,8 +7,7 @@
     $('#menu-list').treegrid({
         url: '/admin/menu/getmenu',
         idField: 'Id',
-        treeField: 'Title',
-        method: 'GET',
+        treeField: 'Title',        
         loadMsg: '拼命加载中...',
         rownumbers: true,
         animate: true,
