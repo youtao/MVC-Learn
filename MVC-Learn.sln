@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelDTO", "ModelDTO\ModelD
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "FormUI", "FormUI\FormUI.njsproj", "{8BF7D970-B000-4C42-A8CA-984B3C1F86BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8BF7D970-B000-4C42-A8CA-984B3C1F86BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BF7D970-B000-4C42-A8CA-984B3C1F86BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BF7D970-B000-4C42-A8CA-984B3C1F86BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
