@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Hierarchy;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Model
 {
@@ -10,11 +13,11 @@ namespace Model
         {
             this.Title = "Title";
             this.Url = "javascript:void(0);";
-            this.Icon = "";
+            this.Icon = "";            
         }
         /// <summary>
         /// 标题
-        /// </summary>
+        /// </summary>        
         public string Title { get; set; }
 
         /// <summary>

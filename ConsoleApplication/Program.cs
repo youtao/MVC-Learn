@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Hierarchy;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -17,21 +19,26 @@ namespace ConsoleApplication
             Database.SetInitializer<LearnDbContext>(null);
             using (LearnDbContext db = new LearnDbContext())
             {
-                db.UserInfo.ToList();                
-
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                var sql = @"select Id,Title,Url,Icon,MenuOrder,ParentId,CreateTime,[Delete] from dbo.System_Menu";
-                var query = db.Database.SqlQuery<Menu>(sql);
-                var bySql = query.ToList();
-                stopwatch.Stop();
-                Console.WriteLine(stopwatch.ElapsedMilliseconds);                
-
-                stopwatch.Restart();
-                var byEf = db.Menu.ToList();
-                stopwatch.Stop();
-                Console.WriteLine(stopwatch.ElapsedMilliseconds);
-                Console.ReadKey();
+                //var parent = HierarchyId.GetRoot();                
+                //var level = parent.GetLevel();
+                //var list = db.Department.Where(e => e.Path.IsDescendantOf(parent) && e.Path.GetLevel() == level).ToList();
+                //for (int i = 0; i < 20; i++)
+                //{
+                //    var count = db.Department.Count() + 1;
+                //    var last = db.Department.OrderByDescending(e => e.Path).FirstOrDefault(e => e.Path.GetLevel() == 1);
+                //    var path = new HierarchyId("/1/");
+                //    if (last != null)
+                //    {
+                //        path = HierarchyId.GetRoot().GetDescendant(last.Path, null);
+                //    }
+                //    Department department = new Department()
+                //    {
+                //        Name = "部门" + count,
+                //        Path = path
+                //    };
+                //    db.Department.Add(department);                    
+                //    db.SaveChanges();
+                //}
             }
         }
     }

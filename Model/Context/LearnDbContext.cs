@@ -1,15 +1,16 @@
-﻿using System.Data.Entity;
+﻿using System.Data;
+using System.Data.Entity;
+using System.Runtime.CompilerServices;
 
 namespace Model
 {
     public class LearnDbContext : DbContext
     {
         public LearnDbContext() : base("LearnDbContext")
-        {
-
+        {            
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+        {            
             modelBuilder.Entity<Group>() // UserInfo_Group 中间表
                 .HasMany(e => e.UserInfos)
                 .WithMany(e => e.Groups)
@@ -18,7 +19,7 @@ namespace Model
                     e.ToTable("SignalR_MT_UserInfo_Group");
                     e.MapLeftKey("UserInfo_Id");
                     e.MapRightKey("Group_Id");                    
-                });
+                });            
             base.OnModelCreating(modelBuilder);
         }
         #region Article
@@ -26,7 +27,7 @@ namespace Model
         /// <summary>
         /// 文章
         /// </summary>
-        public virtual DbSet<Article> Article { get; set; }
+        public virtual DbSet<Article> Article { get; set; }        
 
         #endregion
 
@@ -54,6 +55,7 @@ namespace Model
         /// 用户
         /// </summary>
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
 
         #endregion
 
