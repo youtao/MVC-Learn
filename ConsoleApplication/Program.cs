@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Model;
 using NLog;
 using NLog.Config;
+using NLog.Layouts;
 
 namespace ConsoleApplication
 {
@@ -20,7 +21,7 @@ namespace ConsoleApplication
         static void Main(string[] args)
         {
             ConfigurationItemFactory.Default.Targets.RegisterDefinition("hello-world", typeof(HelloWorldLayoutRenderer));
-            LogManager.Configuration.Variables["name"] = "youtao";
+            LogManager.Configuration.Variables["name"] = "youtao";            
         //for (int i = 0; i < 100; i++)
         //{                
         //    _logger.Trace("Sample trace message");

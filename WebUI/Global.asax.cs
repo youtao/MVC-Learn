@@ -1,8 +1,8 @@
 ﻿using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Model;
 using StackExchange.Profiling;
-using StackExchange.Profiling.EntityFramework6;
 
 namespace WebUI
 {
@@ -13,32 +13,16 @@ namespace WebUI
             AreaRegistration.RegisterAllAreas();                                                            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-#if DEBUG
-            MiniProfilerEF6.Initialize();
-#else
-            MiniProfilerEF6.Initialize();
-            Database.SetInitializer<LearnDbContext>(null);            
-#endif
+            Database.SetInitializer<LearnDbContext>(null);
+        }
+        protected void Application_BeginRequest()
+        {
+            MiniProfiler.Start();
+        }
 
-        }
-#if DEBUG
-        protected void Application_BeginRequest()
-        {
-            MiniProfiler.Start();
-        }
         protected void Application_EndRequest()
         {
             MiniProfiler.Stop();
         }
-#else
-        protected void Application_BeginRequest()
-        {
-            MiniProfiler.Start();
-        }
-        protected void Application_EndRequest()
-        {
-            MiniProfiler.Stop();
-        }
-#endif
     }
 }

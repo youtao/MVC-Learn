@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using EntityFramework.Extensions;
 using Model;
+using NLog;
 
 namespace WebUI.Areas.Admin.Controllers
 {
     public class MenuController : Controller
     {
         private LearnDbContext db = new LearnDbContext();
-
         public ActionResult Index()
         {
             return View();
