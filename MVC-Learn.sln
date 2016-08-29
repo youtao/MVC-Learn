@@ -13,6 +13,10 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "FormUI", "FormUI\FormUI.njs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI.UnitTest", "Tests\WebUI.UnitTest\WebUI.UnitTest.csproj", "{C9FD3473-E890-4518-A884-D92A551F6C3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E6A0DF2D-83C2-4F8D-91FF-F339910D64CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +43,15 @@ Global
 		{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF3BE911-D1E8-43A1-9823-0C0BA893B2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9FD3473-E890-4518-A884-D92A551F6C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9FD3473-E890-4518-A884-D92A551F6C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9FD3473-E890-4518-A884-D92A551F6C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9FD3473-E890-4518-A884-D92A551F6C3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C9FD3473-E890-4518-A884-D92A551F6C3C} = {E6A0DF2D-83C2-4F8D-91FF-F339910D64CB}
 	EndGlobalSection
 EndGlobal

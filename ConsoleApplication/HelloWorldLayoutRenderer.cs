@@ -8,7 +8,7 @@ namespace ConsoleApplication
     public class HelloWorldLayoutRenderer : LayoutRenderer
     {
         protected override void Append(StringBuilder builder, LogEventInfo logEvent)
-        {
+        {            
             builder.Append("hello world");
         }
     }

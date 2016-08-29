@@ -6,14 +6,14 @@ namespace Model.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.0-alpha1")]
-    public sealed partial class HierarchyId不允许为空 : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class 初始化 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(HierarchyId不允许为空));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(初始化));
         
         string IMigrationMetadata.Id
         {
-            get { return "201608210930215_HierarchyId不允许为空"; }
+            get { return "201608291024560_初始化"; }
         }
         
         string IMigrationMetadata.Source

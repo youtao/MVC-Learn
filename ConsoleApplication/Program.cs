@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Hierarchy;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -17,46 +16,21 @@ namespace ConsoleApplication
 {
     class Program
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
-        {
+        {            
             ConfigurationItemFactory.Default.Targets.RegisterDefinition("hello-world", typeof(HelloWorldLayoutRenderer));
-            LogManager.Configuration.Variables["name"] = "youtao";            
-        //for (int i = 0; i < 100; i++)
-        //{                
-        //    _logger.Trace("Sample trace message");
-        //    _logger.Debug("Sample debug message");
-        //    _logger.Info("Sample informational message");
-        //    _logger.Warn("Sample warning message");
-        //    _logger.Error("Sample error message");
-        //    _logger.Fatal("Sample fatal error message");
-        //}        
-        _logger.Trace("Sample trace message");
-            //Database.SetInitializer<LearnDbContext>(null);
-            //using (LearnDbContext db = new LearnDbContext())
-            //{
-            //    var parent = HierarchyId.GetRoot();
-            //    var level = parent.GetLevel();
-            //    var list = db.Department.Where(e => e.Path.IsDescendantOf(parent) && e.Path.GetLevel() == level).ToList();
-            //    for (int i = 0; i < 20; i++)
-            //    {
-            //        var count = db.Department.Count() + 1;
-            //        var last = db.Department.OrderByDescending(e => e.Path).FirstOrDefault(e => e.Path.GetLevel() == 1);
-            //        var path = new HierarchyId("/1/");
-            //        if (last != null)
-            //        {
-            //            path = HierarchyId.GetRoot().GetDescendant(last.Path, null);
-            //        }
-            //        Department department = new Department()
-            //        {
-            //            Name = "部门" + count,
-            //            Path = path
-            //        };
-            //        db.Department.Add(department);
-            //        db.SaveChanges();
-            //    }
+            LogManager.Configuration.Variables["name"] = "youtao";
+            //for (int i = 0; i < 100; i++)
+            //{                
+            //    _logger.Trace("Sample trace message");
+            //    _logger.Debug("Sample debug message");
+            //    _logger.Info("Sample informational message");
+            //    _logger.Warn("Sample warning message");
+            //    _logger.Error("Sample error message");
+            //    _logger.Fatal("Sample fatal error message");
             //}
-            Console.ReadKey();
+            Logger.Trace("Sample trace message");           
         }
     }
 }

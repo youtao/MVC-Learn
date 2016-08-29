@@ -30,12 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=6847f3395fc61b47, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFrameworkWithHierarchyId.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=6847f3395fc61b47, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFrameworkWithHierarchyId.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -53,30 +53,13 @@
     <Compile Include="Context\BaseModel.cs" />
     <Compile Include="Context\LearnDbContext.cs" />
     <Compile Include="Menu\Menu.cs" />
-    <Compile Include="Migrations\201608031454513_项目初始化.cs" />
-    <Compile Include="Migrations\201608031454513_项目初始化.Designer.cs">
-      <DependentUpon>201608031454513_项目初始化.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608210902247_添加部门表.cs" />
-    <Compile Include="Migrations\201608210902247_添加部门表.Designer.cs">
-      <DependentUpon>201608210902247_添加部门表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608210910560_HierarchyId自增.cs" />
-    <Compile Include="Migrations\201608210910560_HierarchyId自增.Designer.cs">
-      <DependentUpon>201608210910560_HierarchyId自增.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608210925272_允许为空.cs" />
-    <Compile Include="Migrations\201608210925272_允许为空.Designer.cs">
-      <DependentUpon>201608210925272_允许为空.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608210930215_HierarchyId不允许为空.cs" />
-    <Compile Include="Migrations\201608210930215_HierarchyId不允许为空.Designer.cs">
-      <DependentUpon>201608210930215_HierarchyId不允许为空.cs</DependentUpon>
+    <Compile Include="Migrations\201608291024560_初始化.cs" />
+    <Compile Include="Migrations\201608291024560_初始化.Designer.cs">
+      <DependentUpon>201608291024560_初始化.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\Connection.cs" />
-    <Compile Include="User\Department.cs" />
     <Compile Include="User\Group.cs" />
     <Compile Include="User\UserInfo.cs" />
   </ItemGroup>
@@ -85,20 +68,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608031454513_项目初始化.resx">
-      <DependentUpon>201608031454513_项目初始化.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608210902247_添加部门表.resx">
-      <DependentUpon>201608210902247_添加部门表.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608210910560_HierarchyId自增.resx">
-      <DependentUpon>201608210910560_HierarchyId自增.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608210925272_允许为空.resx">
-      <DependentUpon>201608210925272_允许为空.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608210930215_HierarchyId不允许为空.resx">
-      <DependentUpon>201608210930215_HierarchyId不允许为空.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608291024560_初始化.resx">
+      <DependentUpon>201608291024560_初始化.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

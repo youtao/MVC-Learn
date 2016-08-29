@@ -1,8 +1,12 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity.Core.Mapping;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Infrastructure;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Model;
 using StackExchange.Profiling;
+using System.Data.Entity;
 
 namespace WebUI
 {
@@ -10,10 +14,22 @@ namespace WebUI
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();                                                            
+            AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+#if !DEBUG
             Database.SetInitializer<LearnDbContext>(null);
+#endif
+
+            using (LearnDbContext dbContext = new LearnDbContext())
+            {
+                var objectContext = ((IObjectContextAdapter)dbContext).ObjectContext;
+                var mappingCollection = (StorageMappingItemCollection)objectContext.MetadataWorkspace.GetItemCollection(DataSpace.CSSpace);
+                mappingCollection.GenerateViews(new List<EdmSchemaError>());
+            }
+
+
         }
         protected void Application_BeginRequest()
         {

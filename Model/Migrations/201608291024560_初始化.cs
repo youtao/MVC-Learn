@@ -3,7 +3,7 @@ namespace Model.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class 项目初始化 : DbMigration
+    public partial class 初始化 : DbMigration
     {
         public override void Up()
         {

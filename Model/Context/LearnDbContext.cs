@@ -55,7 +55,6 @@ namespace Model
         /// 用户
         /// </summary>
         public virtual DbSet<UserInfo> UserInfo { get; set; }
-        public virtual DbSet<Department> Department { get; set; }
 
         #endregion
 
