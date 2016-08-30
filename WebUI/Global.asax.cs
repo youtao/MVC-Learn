@@ -7,6 +7,7 @@ using System.Web.Routing;
 using Model;
 using StackExchange.Profiling;
 using System.Data.Entity;
+using StackExchange.Profiling.EntityFramework6;
 
 namespace WebUI
 {
@@ -17,19 +18,13 @@ namespace WebUI
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-
-#if !DEBUG
-            Database.SetInitializer<LearnDbContext>(null);
-#endif
-
+            MiniProfilerEF6.Initialize();
             using (LearnDbContext dbContext = new LearnDbContext())
             {
                 var objectContext = ((IObjectContextAdapter)dbContext).ObjectContext;
                 var mappingCollection = (StorageMappingItemCollection)objectContext.MetadataWorkspace.GetItemCollection(DataSpace.CSSpace);
                 mappingCollection.GenerateViews(new List<EdmSchemaError>());
             }
-
-
         }
         protected void Application_BeginRequest()
         {
