@@ -17,8 +17,11 @@ namespace WebUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);            
             MiniProfilerEF6.Initialize();
+#if !DEBUG
+            Database.SetInitializer<LearnDbContext>(null);
+#endif
             using (LearnDbContext dbContext = new LearnDbContext())
             {
                 var objectContext = ((IObjectContextAdapter)dbContext).ObjectContext;

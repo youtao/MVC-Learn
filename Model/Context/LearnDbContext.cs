@@ -8,9 +8,6 @@ namespace Model
     {
         public LearnDbContext() : base("LearnDbContext")
         {
-#if !DEBUG
-            Database.SetInitializer<LearnDbContext>(null);
-#endif
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
