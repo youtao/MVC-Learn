@@ -40,25 +40,8 @@ namespace ConsoleApplication
             ////}
             //Logger.Trace("Sample trace message");
 
-            Database.SetInitializer<LearnDbContext>(null);
-            using (LearnDbContext db = new LearnDbContext())
-            {
-                Stopwatch stopwatch = Stopwatch.StartNew();
-                Mapper.Initialize(e =>
-                e.CreateMap<Menu, MenuDto>()
-                .ForMember(dto => dto.Count,
-                conf => conf.MapFrom(src => src.Children.Count(ef => ef.Delete == false)))
-                );
 
-                var list = db.Menu.Take(10).ProjectTo<MenuDto>().AsNoTracking().ToList();
 
-                stopwatch.Stop();
-                var json = JsonConvert.SerializeObject(list);
-
-                JsonConvert.SerializeObject(list);
-                File.WriteAllText("json.json", json);
-                Console.WriteLine(stopwatch.ElapsedMilliseconds);
-            }
             Console.WriteLine("ok");
             Console.ReadKey();
         }

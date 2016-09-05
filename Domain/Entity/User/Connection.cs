@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Model
+namespace Domain.Entity
 {
     /// <summary>
     /// SignalR连接信息
     /// </summary>
     [Table("SignalR_Connection")]
-    public class Connection : BaseModel
+    public class Connection : AggregateRoot
     {
         public Connection()
         {
@@ -33,12 +33,11 @@ namespace Model
         #region 导航属性
 
         [ForeignKey("UserInfo")]
-        public long UserInfoId { get; set; }
+        public long UserId { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
 
         #endregion
 
     }
-    // todo:连接页面,连接时间...
 }
