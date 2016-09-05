@@ -1,8 +1,7 @@
 ﻿using System;
-using Model.Migrations;
 using Newtonsoft.Json;
 
-namespace ConsoleApplication
+namespace ModelDTO.JsonExtensions
 {
     public class StringDateTimeConverter : JsonConverter
     {

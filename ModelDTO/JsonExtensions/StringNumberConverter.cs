@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace ConsoleApplication
+namespace ModelDTO.JsonExtensions
 {
     public class StringNumberConverter : JsonConverter
     {

@@ -2,8 +2,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using EntityFramework.Extensions;
 using Model;
+using ModelDTO.Menu;
 using NLog;
 
 namespace WebUI.Areas.Admin.Controllers
@@ -23,20 +26,18 @@ namespace WebUI.Areas.Admin.Controllers
         /// <returns></returns>
         public async Task<JsonResult> GetMenu(long? parentId = null)
         {
+            Mapper.Initialize(e =>
+            e.CreateMap<Menu, MenuDto>()
+            .ForMember(dto => dto.Count,
+            conf => conf.MapFrom(src => src.Children.Count(ef => ef.Delete == false)))
+            );
             var json = await _db.Menu.Where(e =>
-            e.ParentId == parentId &&
-            e.Delete == false)
-            .Select(e => new
-            {
-                e.Id,
-                e.Title,
-                e.Url,
-                e.Icon,
-                e.Children.Count,
-                MenuOrder = e.MenuOrder
-            })
-            .OrderBy(e => e.MenuOrder)
-            .ToListAsync();
+                    e.ParentId == parentId &&
+                    e.Delete == false)
+                .ProjectTo<MenuDto>()
+                .OrderBy(e => e.MenuOrder)
+                .AsNoTracking()
+                .ToListAsync();
             return this.Json(json, JsonRequestBehavior.AllowGet);
         }
 

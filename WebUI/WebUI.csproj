@@ -689,6 +689,10 @@
     <Folder Include="assets\images\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModelDTO\ModelDTO.csproj">
+      <Project>{B657CC89-611F-4648-8691-AE6F9F7F809B}</Project>
+      <Name>ModelDTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{62c8cb2b-62d4-423c-bcc2-4bf4f743ba4f}</Project>
       <Name>Model</Name>

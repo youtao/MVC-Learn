@@ -75,8 +75,6 @@
     <Compile Include="HelloWorldLayoutRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringDateTimeConverter.cs" />
-    <Compile Include="StringNumberConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -89,6 +87,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModelDTO\ModelDTO.csproj">
+      <Project>{B657CC89-611F-4648-8691-AE6F9F7F809B}</Project>
+      <Name>ModelDTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{62c8cb2b-62d4-423c-bcc2-4bf4f743ba4f}</Project>
       <Name>Model</Name>

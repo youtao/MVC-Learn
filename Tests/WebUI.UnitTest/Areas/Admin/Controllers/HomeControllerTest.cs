@@ -21,12 +21,5 @@ namespace WebUI.UnitTest.Areas.Admin.Controllers
         {
             this._controller = null;
         }
-
-        [Test]
-        public void Index_Valid_ReturnViewResult()
-        {
-            ViewResult result = _controller.Index() as ViewResult;
-            Assert.IsNotNull(result);
-        }
     }
 }

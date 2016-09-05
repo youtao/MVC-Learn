@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Model;
+using ModelDTO.Menu;
 using Nelibur.ObjectMapper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -45,7 +46,8 @@ namespace ConsoleApplication
                 Stopwatch stopwatch = Stopwatch.StartNew();
                 Mapper.Initialize(e =>
                 e.CreateMap<Menu, MenuDto>()
-                .ForMember(dto => dto.MenuId, conf => conf.MapFrom(src => src.Id))
+                .ForMember(dto => dto.Count,
+                conf => conf.MapFrom(src => src.Children.Count(ef => ef.Delete == false)))
                 );
 
                 var list = db.Menu.Take(10).ProjectTo<MenuDto>().AsNoTracking().ToList();
@@ -59,35 +61,6 @@ namespace ConsoleApplication
             }
             Console.WriteLine("ok");
             Console.ReadKey();
-        }
-    }
-
-    public class MenuDto
-    {
-        [JsonConverter(typeof(StringNumberConverter))]
-        public long MenuId { get; set; }
-        public string Title { get; set; }
-        public string Url { get; set; }
-        public string Icon { get; set; }
-
-        [JsonConverter(typeof(StringDateTimeConverter))]
-        public DateTime CreateTime { get; set; }
-
-        [JsonIgnore]
-        public long? ParentId { get; set; }
-
-        [JsonProperty("ParentId")]
-        public string ParentIdToJson
-        {
-            get
-            {
-                var result = string.Empty;
-                if (this.ParentId!=null)
-                {
-                    result = ParentId.ToString();
-                }
-                return result;
-            }
         }
     }
 }
