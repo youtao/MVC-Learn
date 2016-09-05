@@ -40,5 +40,8 @@ namespace ModelDTO.Menu
         /// 排序
         /// </summary>
         public int MenuOrder { get; set; }
+
+        [JsonConverter(typeof(StringDateTimeConverter))]
+        public DateTime CreateTime { get; set; }
     }
 }

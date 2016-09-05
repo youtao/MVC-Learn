@@ -7,11 +7,13 @@ using AutoMapper.QueryableExtensions;
 using EntityFramework.Extensions;
 using Model;
 using ModelDTO.Menu;
+using Newtonsoft.Json;
 using NLog;
+using WebUI.JsonNET;
 
 namespace WebUI.Areas.Admin.Controllers
 {
-    public class MenuController : Controller
+    public class MenuController : BaseController
     {
         private readonly LearnDbContext _db = new LearnDbContext();
         public ActionResult Index()
@@ -31,14 +33,14 @@ namespace WebUI.Areas.Admin.Controllers
             .ForMember(dto => dto.Count,
             conf => conf.MapFrom(src => src.Children.Count(ef => ef.Delete == false)))
             );
-            var json = await _db.Menu.Where(e =>
+            var list = await _db.Menu.Where(e =>
                     e.ParentId == parentId &&
                     e.Delete == false)
                 .ProjectTo<MenuDto>()
                 .OrderBy(e => e.MenuOrder)
                 .AsNoTracking()
                 .ToListAsync();
-            return this.Json(json, JsonRequestBehavior.AllowGet);
+            return this.Json(list, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
