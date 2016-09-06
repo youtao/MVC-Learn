@@ -2,37 +2,27 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ModelDTO.Menu;
-using NUnit.Framework;
-using NUnit.Framework.Internal;
 using WebUI.Areas.Admin.Controllers;
+using Xunit;
 
 namespace WebUI.UnitTest.Areas.Admin.Controllers
 {
-    [TestFixture]
-    public class MenuControllerTest
+    public class MenuControllerFacts
     {
-        private MenuController _menuController;
-
-        [SetUp]
-        public void SetUp()
+        private readonly MenuController _menuController;
+        public  MenuControllerFacts()
         {
             this._menuController = new MenuController();
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            this._menuController = null;
-        }
-
-        [Test]
+        [Fact]
         public async Task GetMenu_Valid_ReturnJsonresultAsync()
         {
             var task = await this._menuController.GetMenu();
             var data = task.Data as List<MenuDto>;
-            Assert.IsNotNull(data);
+            Assert.NotNull(data);
             var result = data.Count > 0;
-            Assert.IsTrue(result);
+            Assert.True(result);
         }
     }
 }

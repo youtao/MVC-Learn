@@ -3,14 +3,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Moq;
-using NUnit.Framework;
+using Xunit;
 
 namespace WebUI.UnitTest
 {
-    [TestFixture]
-    public class RouteConfigTest
+    public class RouteConfigFacts
     {
-        [Test]
+        [Fact]
         public void RegisterRoutes_Valid()
         {
             var mock = new Mock<HttpContextBase>();
@@ -20,11 +19,12 @@ namespace WebUI.UnitTest
 
             RouteData routeData = routes.GetRouteData(mock.Object);
 
-            Assert.IsNotNull(routeData);
-            Assert.IsInstanceOf<StopRoutingHandler>(routeData.RouteHandler);
+            Assert.NotNull(routeData);
+            Assert.IsAssignableFrom<StopRoutingHandler>(routeData.RouteHandler);
+
         }
 
-        [Test]
+        [Fact]
         public void RegisterRoutes_Valid_ToHomePage()
         {
             var mock = new Mock<HttpContextBase>();
@@ -34,10 +34,10 @@ namespace WebUI.UnitTest
 
             RouteData routeData = routes.GetRouteData(mock.Object);
 
-            Assert.IsNotNull(routeData);
-            Assert.AreEqual("Admin", routeData.Values["controller"]);
-            Assert.AreEqual("Menu", routeData.Values["action"]);
-            Assert.AreEqual(UrlParameter.Optional, routeData.Values["id"]);
+            Assert.NotNull(routeData);
+            Assert.Equal("Admin", routeData.Values["controller"]);
+            Assert.Equal("Menu", routeData.Values["action"]);
+            Assert.Equal(UrlParameter.Optional, routeData.Values["id"]);
         }
     }
 }
