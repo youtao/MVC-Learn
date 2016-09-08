@@ -23,6 +23,7 @@ namespace WebUI.UnitTest.Areas.Admin.Controllers
             Assert.NotNull(data);
             var result = data.Count > 0;
             Assert.True(result);
+            Console.WriteLine("123");
         }
     }
 }

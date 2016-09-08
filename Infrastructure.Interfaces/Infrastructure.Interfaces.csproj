@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6D627F38-90B4-44AD-86DD-9ACDA6B6271D}</ProjectGuid>
+    <ProjectGuid>{2BC9E6E1-4189-4D81-AE0B-08F69BA9CD16}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain</RootNamespace>
-    <AssemblyName>Domain</AssemblyName>
+    <RootNamespace>Infrastructure.Interfaces</RootNamespace>
+    <AssemblyName>Infrastructure.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,19 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Article\Article.cs" />
-    <Compile Include="AggregateRoot.cs" />
-    <Compile Include="Entity\Article\ArticleExt.cs" />
-    <Compile Include="Entity\Menu\Menu.cs" />
-    <Compile Include="Entity\User\Connection.cs" />
-    <Compile Include="Entity\User\Group.cs" />
-    <Compile Include="Entity\User\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DomainService\" />
-    <Folder Include="IRepository\" />
-    <Folder Include="ValueObject\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
