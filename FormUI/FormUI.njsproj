@@ -12,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8bf7d970-b000-4c42-a8ca-984b3c1f86be</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app.js</StartupFile>
+    <StartupFile>server\index.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -30,13 +30,44 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app.js" />
-    <Content Include="html\modal.html" />
+    <Compile Include="server\index.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="static\styles\home.css" />
+    <Content Include="static\styles\layout.css" />
+    <Content Include="typings.json" />
+    <Content Include="views\home.html" />
+    <Content Include="views\_layout.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="html\" />
+    <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\highcharts\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\js-cookie\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\vue\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+    <TypeScriptCompile Include="typings\modules\express\index.d.ts" />
+    <TypeScriptCompile Include="typings\modules\mongoose\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="static\" />
+    <Folder Include="static\images\" />
+    <Folder Include="static\scripts\" />
+    <Folder Include="static\styles\" />
+    <Folder Include="views\" />
+    <Folder Include="server\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\bootstrap\" />
+    <Folder Include="typings\globals\highcharts\" />
+    <Folder Include="typings\globals\jquery\" />
+    <Folder Include="typings\globals\js-cookie\" />
+    <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\vue\" />
+    <Folder Include="typings\modules\" />
+    <Folder Include="typings\modules\express\" />
+    <Folder Include="typings\modules\mongoose\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
