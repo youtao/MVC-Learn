@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcLearnEntity", "MvcLearnE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Interfaces", "Application.Interfaces\Application.Interfaces.csproj", "{A07183F8-45CE-4787-B377-EC340125A53E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSignalR", "WebSignalR\WebSignalR.csproj", "{FB2AF458-58E0-4B17-B5FB-8D953FD7912C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{A07183F8-45CE-4787-B377-EC340125A53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A07183F8-45CE-4787-B377-EC340125A53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A07183F8-45CE-4787-B377-EC340125A53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB2AF458-58E0-4B17-B5FB-8D953FD7912C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB2AF458-58E0-4B17-B5FB-8D953FD7912C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB2AF458-58E0-4B17-B5FB-8D953FD7912C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2AF458-58E0-4B17-B5FB-8D953FD7912C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,5 +122,6 @@ Global
 		{2F7EA780-A061-4101-A390-6F80690983F2} = {E04E1EB4-720C-4D3B-AF02-F0DC2F144411}
 		{50AD72AA-6867-43D2-9A4B-1B28EEF93BE3} = {2F7EA780-A061-4101-A390-6F80690983F2}
 		{A07183F8-45CE-4787-B377-EC340125A53E} = {100A230A-3FBF-4F5F-A4FC-AA482BB7DD58}
+		{FB2AF458-58E0-4B17-B5FB-8D953FD7912C} = {FA834933-AE83-4AA5-AABF-2A6821DE02DF}
 	EndGlobalSection
 EndGlobal
