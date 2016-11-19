@@ -16,7 +16,7 @@ namespace WebUI.JsonNET
         public override void ExecuteResult(ControllerContext context)
         {
             if (context == null)
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
             HttpResponseBase response = context.HttpContext.Response;
             response.ContentType =
                 !string.IsNullOrEmpty(ContentType) ? ContentType : "application/json";

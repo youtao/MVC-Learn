@@ -1,13 +1,13 @@
 ﻿$(function () {
     var config = {
         editing: false, // 是否编辑中
-        editingId: undefined // 编辑Id        
+        editingId: undefined // 编辑Id
     }
 
     $('#menu-list').treegrid({
         url: '/admin/menu/getmenu',
         idField: 'Id',
-        treeField: 'Title',        
+        treeField: 'Title',
         loadMsg: '拼命加载中...',
         rownumbers: true,
         animate: true,
@@ -102,7 +102,7 @@
                     if (config.editing) {
                         if (config.editingId != undefined) { // 修改中
                             $('#menu-list').treegrid('cancelEdit', config.editingId);
-                        } else { //添加中                            
+                        } else { //添加中
                             $('#menu-list').treegrid('remove', -1);
                         }
                         config.editingId = undefined;

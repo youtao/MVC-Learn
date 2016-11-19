@@ -5,12 +5,7 @@
 
     $('#accordion-main').accordion({
         fit: true,
-        border: 0,
-        //onAdd: function (title, index) {
-        //    var panel = $('#accordion-main').accordion('getPanel', index);
-        //    panel.content = '111';
-        //    console.log(panel)
-        //}
+        border: 0
     });
 
     $.get('/admin/menu/getmenu',
@@ -22,7 +17,7 @@
                     iconCls: parent[i].Icon,
                     href: '/admin/menu/getmenu?parentId=' + parent[i].Id,
                     extractor: function (data) {
-                        var html = '';                        
+                        var html = '';
                         data = JSON.parse(data);
                         for (var j = 0; j < data.length; j++) {
                             html += '<p style="font-size:14px;text-align:center;margin-top:3px;margin-bottom:3px;">';
@@ -32,7 +27,7 @@
                                 data[j].Title +
                                 '</a>';
                             html += '</p><hr>';
-                        }                        
+                        }
                         return html;
                     }
                 });
@@ -40,14 +35,14 @@
 
         });
 
-    $('a').click(function() {
-            
-        });
+    $('a').click(function () {
+
+    });
 
     $('#accordion-main')
         .on('click',
             'a[name=menu-button]',
-            function() {
+            function () {
                 var url = $(this).attr('data-url');
                 var title = $(this).text();
                 var icon = $(this).attr('data-icon');
@@ -56,7 +51,7 @@
                     title: title,
                     closable: true,
                     icon: icon,
-                    loadMsg:'ddd',
+                    loadMsg: 'ddd',
                     content: content
                 });
             });

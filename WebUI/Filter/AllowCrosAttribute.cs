@@ -16,6 +16,6 @@ namespace WebUI.Filter
             //    filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
             //}
             //base.OnActionExecuting(filterContext);
-        }        
+        }
     }
 }

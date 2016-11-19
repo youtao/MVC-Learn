@@ -1,14 +1,14 @@
 [
   {
-    "outputFileName": "Content/themes/bootstrap/easyui.min.css",
+    "outputFileName": "assets/js/admin/home/index.min.js",
     "inputFiles": [
-      "Content/themes/bootstrap/easyui.css"
+      "assets/js/admin/home/index.js"
     ]
   },
   {
-    "outputFileName": "Scripts/locale/easyui-lang-zh_CN.min.js",
+    "outputFileName": "assets/js/admin/menu/index.min.js",
     "inputFiles": [
-      "Scripts/locale/easyui-lang-zh_CN.js"
+      "assets/js/admin/menu/index.js"
     ]
   },
   {
@@ -21,48 +21,6 @@
     "outputFileName": "assets/js/admin/common.min.js",
     "inputFiles": [
       "assets/js/admin/common.js"
-    ]
-  },
-  {
-    "outputFileName": "Content/themes/black/easyui.min.css",
-    "inputFiles": [
-      "Content/themes/black/easyui.css"
-    ]
-  },
-  {
-    "outputFileName": "Scripts/js-cookie/js.cookie.min.js",
-    "inputFiles": [
-      "Scripts/js-cookie/js.cookie.js"
-    ]
-  },
-  {
-    "outputFileName": "assets/js/admin/menu/index.min.js",
-    "inputFiles": [
-      "assets/js/admin/menu/index.js"
-    ]
-  },
-  {
-    "outputFileName": "Content/themes/metro/easyui.min.css",
-    "inputFiles": [
-      "Content/themes/metro/easyui.css"
-    ]
-  },
-  {
-    "outputFileName": "Content/themes/default/easyui.min.css",
-    "inputFiles": [
-      "Content/themes/default/easyui.css"
-    ]
-  },
-  {
-    "outputFileName": "Scripts/treegrid-dnd.min.js",
-    "inputFiles": [
-      "Scripts/treegrid-dnd.js"
-    ]
-  },
-  {
-    "outputFileName": "assets/js/admin/home/index.min.js",
-    "inputFiles": [
-      "assets/js/admin/home/index.js"
     ]
   }
 ]

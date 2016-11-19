@@ -1,7 +1,7 @@
 ﻿Date.prototype.Format = /**
                          * 格式化日期时间
                          * @param {string} fmt 日期格式
-                         * @returns {string} 
+                         * @returns {string}
                          */
     function (fmt) {
         var o = {
@@ -25,7 +25,7 @@
 Date.prototype.AddDate = /**
                           * 添加天数
                           * @param {number} days 要增加的天数
-                          * @returns {string} 
+                          * @returns {string}
                           */
     function (days) {
         this.setDate(this.getDate() + days);

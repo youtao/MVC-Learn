@@ -6,7 +6,7 @@ namespace WebUI.Filter
 {
     public class Logging
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();        
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// 记录操作记录

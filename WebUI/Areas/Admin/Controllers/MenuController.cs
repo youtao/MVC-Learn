@@ -13,7 +13,7 @@ using WebUI.JsonNET;
 
 namespace WebUI.Areas.Admin.Controllers
 {
-    public class MenuController : BaseController
+    public class MenuController : JsonNetController
     {
         private readonly LearnDbContext _db = new LearnDbContext();
         public ActionResult Index()
