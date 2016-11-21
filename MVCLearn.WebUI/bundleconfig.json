@@ -1,14 +1,26 @@
 [
   {
-    "outputFileName": "assets/js/admin/home/index.min.js",
+    "outputFileName": "assets/js/Admin/Home/Index.min.js",
     "inputFiles": [
-      "assets/js/admin/home/index.js"
+      "assets/js/Admin/Home/Index.js"
     ]
   },
   {
-    "outputFileName": "assets/js/admin/common.min.js",
+    "outputFileName": "assets/js/Admin/User/Index.min.js",
     "inputFiles": [
-      "assets/js/admin/common.js"
+      "assets/js/Admin/User/Index.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/js/Global.min.js",
+    "inputFiles": [
+      "assets/js/Global.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/js/Utils.min.js",
+    "inputFiles": [
+      "assets/js/Utils.js"
     ]
   }
 ]

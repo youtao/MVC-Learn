@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section CustScripts
+{
+    <script src="~/assets/js/Admin/User/Index.min.js"></script>
+}
+
+<table class="table table-striped table-bordered table-hover" id="user-table">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>昵称</th>
+            <th>上次登录</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="(item,index) in users">
+            <td>{{index+1}}</td>
+            <td>{{UserName}}</td>
+            <td>{{NikeName}}</td>
+            <td>{{LoginTime}}</td>
+        </tr>
+    </tbody>
+</table>

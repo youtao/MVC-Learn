@@ -135,19 +135,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\admin\common.css">
-      <DependentUpon>common.less</DependentUpon>
+    <Content Include="assets\css\Admin\Common.css">
+      <DependentUpon>Common.less</DependentUpon>
     </Content>
-    <Content Include="assets\css\admin\common.min.css">
-      <DependentUpon>common.css</DependentUpon>
+    <Content Include="assets\css\Admin\Common.min.css">
+      <DependentUpon>Common.css</DependentUpon>
     </Content>
-    <Content Include="assets\js\admin\common.js" />
-    <Content Include="assets\js\admin\common.min.js">
-      <DependentUpon>common.js</DependentUpon>
+    <Content Include="assets\js\Admin\User\Index.js" />
+    <Content Include="assets\js\Admin\User\Index.min.js">
+      <DependentUpon>Index.js</DependentUpon>
     </Content>
-    <Content Include="assets\js\admin\home\index.js" />
-    <Content Include="assets\js\admin\home\index.min.js">
-      <DependentUpon>index.js</DependentUpon>
+    <Content Include="assets\js\Global.js" />
+    <Content Include="assets\js\Global.min.js">
+      <DependentUpon>Global.js</DependentUpon>
+    </Content>
+    <Content Include="assets\js\Utils.js" />
+    <Content Include="assets\js\Admin\Home\Index.js" />
+    <Content Include="assets\js\Utils.min.js">
+      <DependentUpon>Utils.js</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css">
@@ -167,7 +172,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="assets\css\admin\common.less" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -190,11 +194,27 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="assets\css\Admin\Common.less" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="node_modules\vue\dist\vue.common.js">
+      <DependentUpon>vue.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\vue\dist\vue.js" />
+    <Content Include="node_modules\vue\dist\vue.min.js">
+      <DependentUpon>vue.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\vue\dist\vue.runtime.js">
+      <DependentUpon>vue.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\vue\dist\vue.runtime.min.js">
+      <DependentUpon>vue.runtime.js</DependentUpon>
+    </Content>
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
@@ -216,6 +236,7 @@
     </Content>
     <Content Include="Scripts\js-cookie\js.cookie-2.1.3.min.js" />
     <Content Include="Scripts\js-cookie\js.cookie.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -226,6 +247,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="AutofacModules\ServiceModule.cs" />
     <Compile Include="Filter\AllowCrosAttribute.cs" />
     <Compile Include="Filter\MvcExceptionAttribute.cs" />

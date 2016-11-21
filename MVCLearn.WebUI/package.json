@@ -1,0 +1,11 @@
+{
+  "name": "mvc_learn",
+  "version": "1.0.0",
+  "author": {
+    "name": "youtao"
+  },
+  "dependencies": {
+    "highcharts": "^5.0.3",
+    "vue": "^2.0.8"
+  }
+}
