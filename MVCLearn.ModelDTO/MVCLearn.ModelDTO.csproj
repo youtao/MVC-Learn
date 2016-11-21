@@ -56,6 +56,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCLearn.ModelEnum\MVCLearn.ModelEnum.csproj">
+      <Project>{e311a5a4-2cff-427d-ba2c-61619199c22a}</Project>
+      <Name>MVCLearn.ModelEnum</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

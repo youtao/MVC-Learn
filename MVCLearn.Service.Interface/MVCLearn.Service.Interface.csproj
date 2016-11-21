@@ -40,7 +40,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllServiceInterface.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllServiceInterface.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCLearn.ModelBCL\MVCLearn.ModelBCL.csproj">
+      <Project>{a6262567-b980-44b1-9212-5e2481655aee}</Project>
+      <Name>MVCLearn.ModelBCL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.ModelDbContext\MVCLearn.ModelDbContext.csproj">
+      <Project>{8bd18f91-c9e6-44ea-9bc7-8e37d27009f3}</Project>
+      <Name>MVCLearn.ModelDbContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.ModelDTO\MVCLearn.ModelDTO.csproj">
+      <Project>{b657cc89-611f-4648-8691-ae6f9f7f809b}</Project>
+      <Name>MVCLearn.ModelDTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.ModelEnum\MVCLearn.ModelEnum.csproj">
+      <Project>{e311a5a4-2cff-427d-ba2c-61619199c22a}</Project>
+      <Name>MVCLearn.ModelEnum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.Model\MVCLearn.Model.csproj">
+      <Project>{62c8cb2b-62d4-423c-bcc2-4bf4f743ba4f}</Project>
+      <Name>MVCLearn.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AllServiceInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AllServiceInterface.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
