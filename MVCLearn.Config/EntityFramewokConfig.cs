@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Infrastructure;
@@ -14,7 +15,7 @@ namespace MVCLearn.Config
         public static void HeatLoad()
         {
 #if !DEBUG
-            Database.SetInitializer<CoalCostDbContext>(null);
+            Database.SetInitializer<LearnDbContext>(null);
 #endif
             using (var dbContext = new LearnDbContext())
             {

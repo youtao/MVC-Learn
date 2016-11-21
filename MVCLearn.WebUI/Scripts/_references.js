@@ -8,3 +8,5 @@
 /// <reference path="jquery-3.1.1.slim.js" />
 /// <reference path="js-cookie/js.cookie.js" />
 /// <reference path="js-cookie/js.cookie-2.1.3.min.js" />
+/// <reference path="../node_modules/vue/dist/vue.js" />
+/// <reference path="../node_modules/highcharts/js/highcharts.src.js" />

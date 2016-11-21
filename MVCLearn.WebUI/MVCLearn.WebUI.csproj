@@ -201,6 +201,35 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="node_modules\highcharts\css\highcharts.css" />
+    <Content Include="node_modules\highcharts\js\highcharts-3d.js" />
+    <Content Include="node_modules\highcharts\js\highcharts-3d.src.js">
+      <DependentUpon>highcharts-3d.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\highcharts\js\highcharts-more.js" />
+    <Content Include="node_modules\highcharts\js\highcharts-more.src.js">
+      <DependentUpon>highcharts-more.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\highcharts\js\highcharts.js" />
+    <Content Include="node_modules\highcharts\js\highcharts.src.js">
+      <DependentUpon>highcharts.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\highcharts\js\highmaps.js" />
+    <Content Include="node_modules\highcharts\js\highmaps.src.js">
+      <DependentUpon>highmaps.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\highcharts\js\highstock.js" />
+    <Content Include="node_modules\highcharts\js\highstock.src.js">
+      <DependentUpon>highstock.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\highcharts\js\themes\dark-blue.js" />
+    <Content Include="node_modules\highcharts\js\themes\dark-green.js" />
+    <Content Include="node_modules\highcharts\js\themes\dark-unica.js" />
+    <Content Include="node_modules\highcharts\js\themes\gray.js" />
+    <Content Include="node_modules\highcharts\js\themes\grid-light.js" />
+    <Content Include="node_modules\highcharts\js\themes\grid.js" />
+    <Content Include="node_modules\highcharts\js\themes\sand-signika.js" />
+    <Content Include="node_modules\highcharts\js\themes\skies.js" />
     <Content Include="node_modules\vue\dist\vue.common.js">
       <DependentUpon>vue.js</DependentUpon>
     </Content>

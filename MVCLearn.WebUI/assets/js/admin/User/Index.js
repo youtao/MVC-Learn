@@ -1,21 +1,21 @@
 ﻿var currentpage = {
     init: function () {
-        var v = new Vue({
-            el: '#user-table',
+        var vue_users = new Vue({
+            el: '#vue-users',
             data: {
                 users: []
             }
         });
-        this.loadData(v);
+        this.loadData(vue_users);
     },
-    loadData: function (v) {
+    loadData: function (vue_users) {
         var _this = this;
         $.get(GlobalConfig.Server + 'User', null, function (res) {
-            _this.fillData(v, res);
+            _this.fillData(vue_users, res);
         });
     },
-    fillData: function (v, data) {
-        v.users = data.data;
+    fillData: function (vue_users, res) {
+        vue_users.users = res.data;
     }
 };
 $(function () {
