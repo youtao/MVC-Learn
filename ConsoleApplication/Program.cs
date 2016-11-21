@@ -9,8 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using MVCLearn.ModelBCL;
 using MVCLearn.ModelDbContext;
 using Newtonsoft.Json;
