@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using MVCLearn.ModelBCL;
+using MVCLearn.ModelDbContext;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using NLog;
@@ -36,8 +38,6 @@ namespace ConsoleApplication
             ////    _logger.Fatal("Sample fatal error message");
             ////}
             //Logger.Trace("Sample trace message");
-
-
 
             Console.WriteLine("ok");
             Console.ReadKey();

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using MVCLearn.ModelBCL;
 
 namespace MVCLearn.Model
 {
@@ -12,6 +13,7 @@ namespace MVCLearn.Model
             this.Url = "javascript:void(0);";
             this.Icon = "";
         }
+
         /// <summary>
         /// 标题
         /// </summary>
@@ -36,13 +38,13 @@ namespace MVCLearn.Model
         /// 父级菜单Id
         /// </summary>
         [ForeignKey("Parent")]
-        public long? ParentId { get; set; }
+        public long? ParentID { get; set; }
 
         public virtual Menu Parent { get; set; }
 
         /// <summary>
         /// 直接子菜单
         /// </summary>
-        public virtual ICollection<Menu> Children { get; set; }
+        public virtual List<Menu> Children { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MVCLearn.ModelBCL;
 
 namespace MVCLearn.Model
 {
@@ -21,7 +22,7 @@ namespace MVCLearn.Model
         /// <summary>
         /// 用户
         /// </summary>
-        public virtual ICollection<UserInfo> UserInfos { get; set; }
+        public virtual List<UserInfo> UserInfos { get; set; }
 
         #endregion
 

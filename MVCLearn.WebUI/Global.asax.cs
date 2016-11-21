@@ -4,7 +4,7 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Infrastructure;
 using System.Web.Mvc;
 using System.Web.Routing;
-using MVCLearn.Model;
+using MVCLearn.ModelDbContext;
 using StackExchange.Profiling;
 using StackExchange.Profiling.EntityFramework6;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MVCLearn.ModelBCL;
 
 namespace MVCLearn.Model
 {
@@ -44,12 +45,12 @@ namespace MVCLearn.Model
         /// <summary>
         /// SignalR连接Id
         /// </summary>
-        public virtual ICollection<Connection> Connections { get; set; }
+        public virtual List<Connection> Connections { get; set; }
 
         /// <summary>
         /// SignalR组
         /// </summary>
-        public virtual ICollection<Group> Groups { get; set; }
+        public virtual List<Group> Groups { get; set; }
 
         #endregion
     }

@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using EntityFramework.Extensions;
 using Microsoft.AspNet.SignalR;
 using MVCLearn.Model;
+using MVCLearn.ModelBCL;
+using MVCLearn.ModelDbContext;
 
 namespace MVCLearn.WebUI.SignalR
 {
@@ -26,15 +28,14 @@ namespace MVCLearn.WebUI.SignalR
                     {
                         ConnectionId = this.Context.ConnectionId,
                         UserAgent = this.Context.Headers["User-Agent"],
-                        UserInfoId = user.Id,
-                        CreateTime = now,
+                        UserInfoID = user.ID
                     });
                     await Db.SaveChangesAsync();
                     if (user.SignoutTime != null) // 全部连接退出后第一次登录
                     {
                         //user.LoginTime = now;
                         //user.SignoutTime = null;
-                        await Db.UserInfo.Where(e => e.Id == user.Id).UpdateAsync(e => new UserInfo()
+                        await Db.UserInfo.Where(e => e.ID == user.ID).UpdateAsync(e => new UserInfo()
                         {
                             LoginTime = now,
                             SignoutTime = null
@@ -57,12 +58,12 @@ namespace MVCLearn.WebUI.SignalR
                           Connected = false
                       });
                 var count = Db.Connection.Count(e =>
-                    e.UserInfoId == connection.UserInfoId &&
+                    e.UserInfoID == connection.UserInfoID &&
                     e.Connected == true &&
                     e.CreateTime >= connection.UserInfo.LoginTime);
                 if (count <= 0)
                 {
-                    await this.Db.UserInfo.Where(e => e.Id == connection.UserInfoId).UpdateAsync(e => new UserInfo()
+                    await this.Db.UserInfo.Where(e => e.ID == connection.UserInfoID).UpdateAsync(e => new UserInfo()
                     {
                         SignoutTime = DateTime.Now // 最后一个连接退出
                     });

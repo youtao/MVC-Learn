@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
+using MVCLearn.Model;
 
-namespace MVCLearn.Model
+namespace MVCLearn.ModelDbContext
 {
     public class LearnDbContext : DbContext
     {
@@ -36,6 +37,7 @@ namespace MVCLearn.Model
         /// SignalR-连接
         /// </summary>
         public virtual DbSet<Connection> Connection { get; set; }
+
         /// <summary>
         /// SignalR-组
         /// </summary>

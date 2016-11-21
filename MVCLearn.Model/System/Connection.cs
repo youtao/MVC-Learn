@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MVCLearn.ModelBCL;
 
 namespace MVCLearn.Model
 {
@@ -33,7 +34,7 @@ namespace MVCLearn.Model
         #region 导航属性
 
         [ForeignKey("UserInfo")]
-        public long UserInfoId { get; set; }
+        public long UserInfoID { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
 

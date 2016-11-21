@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MVCLearn.Model
+namespace MVCLearn.ModelBCL
 {
     /// <summary>
     /// 模型基础类
@@ -18,12 +18,12 @@ namespace MVCLearn.Model
         /// 主键Id
         /// </summary>
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public long ID { get; set; }
 
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreateTime { get; set; }
+        public DateTime CreateTime { get; }
 
         /// <summary>
         /// 是否删除
