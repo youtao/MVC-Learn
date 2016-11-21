@@ -1,4 +1,6 @@
 ﻿using System;
+using MVCLearn.ModelDTO.JsonExtensions;
+using Newtonsoft.Json;
 
 namespace MVCLearn.ModelDTO
 {
@@ -22,6 +24,7 @@ namespace MVCLearn.ModelDTO
         /// <summary>
         /// 上次登录时间
         /// </summary>
+        [JsonConverter(typeof(StringDateTimeConverter))]
         public DateTime LoginTime { get; set; }
     }
 }

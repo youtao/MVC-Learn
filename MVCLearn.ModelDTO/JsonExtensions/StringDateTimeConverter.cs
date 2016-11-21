@@ -5,32 +5,22 @@ namespace MVCLearn.ModelDTO.JsonExtensions
 {
     public class StringDateTimeConverter : JsonConverter
     {
-        /// <summary>
-        /// 时间字符串格式
-        /// </summary>
-        public string Format { get; set; } = "yyyy-MM-dd HH:mm:ss:fff";
-
-        /// <summary>
-        /// 默认值
-        /// </summary>
-        public string Default { get; set; } = string.Empty;
-
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value == null)
             {
-                writer.WriteValue(Default);
+                writer.WriteValue(string.Empty);
             }
             else
             {
                 try
                 {
                     var time = (DateTime)value;
-                    writer.WriteValue(time.ToString(this.Format));
+                    writer.WriteValue(time.ToString("yyyy-MM-dd HH:mm:ss:fff"));
                 }
                 catch (Exception)
                 {
-                    throw;
+                    writer.WriteValue(string.Empty);
                 }
             }
         }

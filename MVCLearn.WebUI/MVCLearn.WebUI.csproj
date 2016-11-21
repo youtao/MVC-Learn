@@ -149,14 +149,6 @@
     <Content Include="assets\js\admin\home\index.min.js">
       <DependentUpon>index.js</DependentUpon>
     </Content>
-    <Content Include="assets\js\admin\menu\index.js" />
-    <Content Include="assets\js\admin\menu\index.min.js">
-      <DependentUpon>index.js</DependentUpon>
-    </Content>
-    <Content Include="assets\js\admin\userinfo\index.js" />
-    <Content Include="assets\js\admin\userinfo\index.min.js">
-      <DependentUpon>index.js</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css">
       <DependentUpon>bootstrap-theme.css</DependentUpon>
@@ -175,8 +167,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\UserInfo\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="assets\css\admin\common.less" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -236,8 +226,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserInfoController.cs" />
     <Compile Include="AutofacModules\ServiceModule.cs" />
     <Compile Include="Filter\AllowCrosAttribute.cs" />
     <Compile Include="Filter\MvcExceptionAttribute.cs" />

@@ -6,18 +6,6 @@
     ]
   },
   {
-    "outputFileName": "assets/js/admin/menu/index.min.js",
-    "inputFiles": [
-      "assets/js/admin/menu/index.js"
-    ]
-  },
-  {
-    "outputFileName": "assets/js/admin/userinfo/index.min.js",
-    "inputFiles": [
-      "assets/js/admin/userinfo/index.js"
-    ]
-  },
-  {
     "outputFileName": "assets/js/admin/common.min.js",
     "inputFiles": [
       "assets/js/admin/common.js"
