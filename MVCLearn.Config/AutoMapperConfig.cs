@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using MVCLearn.Model;
+using MVCLearn.ModelDTO;
 
 namespace MVCLearn.Config
 {
@@ -17,7 +19,9 @@ namespace MVCLearn.Config
     {
         public DefaultProfile()
         {
-
+            // model->dto this.CreateMap<model, dto>();
+            this.CreateMap<UserInfo, UserInfoDto>() // UserInfo-->UserInfoDto
+                .ForMember(dto => dto.UserID, conf => conf.MapFrom(model => model.ID));
         }
     }
 }

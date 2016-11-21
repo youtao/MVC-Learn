@@ -45,6 +45,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AllServiceInterface.tt</DependentUpon>
     </Compile>
+    <Compile Include="partial\IUserInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

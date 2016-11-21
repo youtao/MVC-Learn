@@ -5,10 +5,25 @@ using MVCLearn.Service.Interface;
 
 namespace MVCLearn.Service
 {
-	public partial class MenuService : BaseService<LearnDbContext,MenuInfo>, IMenuService
+	public partial class MenuInfoService : BaseService<LearnDbContext,MenuInfo>, IMenuInfoService
 	{
-		public MenuService() { }
-		public MenuService(HttpContextBase httpContext) : base(httpContext) { }
+		public MenuInfoService() { }
+		public MenuInfoService(HttpContextBase httpContext) : base(httpContext) { }
+	}
+	public partial class PrivilegeService : BaseService<LearnDbContext,Privilege>, IPrivilegeService
+	{
+		public PrivilegeService() { }
+		public PrivilegeService(HttpContextBase httpContext) : base(httpContext) { }
+	}
+	public partial class RoleInfoService : BaseService<LearnDbContext,RoleInfo>, IRoleInfoService
+	{
+		public RoleInfoService() { }
+		public RoleInfoService(HttpContextBase httpContext) : base(httpContext) { }
+	}
+	public partial class UserInfoService : BaseService<LearnDbContext,UserInfo>, IUserInfoService
+	{
+		public UserInfoService() { }
+		public UserInfoService(HttpContextBase httpContext) : base(httpContext) { }
 	}
 	public partial class ConnectionService : BaseService<LearnDbContext,Connection>, IConnectionService
 	{
@@ -19,10 +34,5 @@ namespace MVCLearn.Service
 	{
 		public GroupService() { }
 		public GroupService(HttpContextBase httpContext) : base(httpContext) { }
-	}
-	public partial class UserInfoService : BaseService<LearnDbContext,UserInfo>, IUserInfoService
-	{
-		public UserInfoService() { }
-		public UserInfoService(HttpContextBase httpContext) : base(httpContext) { }
 	}
 }
