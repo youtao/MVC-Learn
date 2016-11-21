@@ -1,4 +1,6 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
+using MVCLearn.WebAPI.Filter;
 
 namespace MVCLearn.WebAPI
 {
@@ -10,12 +12,13 @@ namespace MVCLearn.WebAPI
 
             // Web API 路由
             config.MapHttpAttributeRoutes();
-
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Filters.Add(new WebApiExceptionFilter());
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Filters;
+using MVCLearn.Config;
 
 namespace MVCLearn.WebAPI
 {
@@ -7,6 +9,9 @@ namespace MVCLearn.WebAPI
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            EntityFramewokConfig.HeatLoad();
+            AutoMapperConfig.MapperInitialize();
+            AutofacConfig.ConfigureContainer();
         }
     }
 }

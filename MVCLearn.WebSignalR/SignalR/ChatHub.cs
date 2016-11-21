@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MVCLearn.WebUI.SignalR
+namespace MVCLearn.WebSignalR.SignalR
 {
     public class ChatHub : BaseHub<IChatHub>
     {

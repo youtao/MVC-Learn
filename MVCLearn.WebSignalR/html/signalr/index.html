@@ -5,7 +5,8 @@
     <title>signalr</title>
     <meta charset="utf-8" />
     <link href="/Content/font-awesome.min.css" rel="stylesheet" />
-    <script src="/Scripts/jquery-2.2.4.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.1.min.js"></script>
     <script src="/Scripts/vue.min.js"></script>
     <script src="/Scripts/jquery.signalR-2.2.1.min.js"></script>
     <script src="/assets/js/admin/common.min.js"></script>
@@ -14,9 +15,9 @@
 <body style="font-family: 'Microsoft Yahei'" id="body">
     <i class="fa fa-github"></i>
     <ul>
-        <li v-for="message in messages">            
+        <li v-for="message in messages">
             <i class="fa fa-user" v-bind:style="message.style"></i>
-            <span>{{message.connectionId}}{{message.status}}--{{message.time}}</span>             
+            <span>{{message.connectionId}}{{message.status}}--{{message.time}}</span>
         </li>
     </ul>
     <script>
@@ -29,7 +30,7 @@
             });
             var chatHub = $.connection.chatHub;
             chatHub.client.start = function (connctionid) {
-                var now = new Date();                                
+                var now = new Date();
                 vue.messages.push({
                     connectionId: connctionid,
                     status:'连接',
@@ -47,7 +48,7 @@
                     time: now.Format('hh:mm:ss:S'),
                     style: {
                         color: 'gray'
-                    }                    
+                    }
                 });
             };
             $.connection.hub.start()

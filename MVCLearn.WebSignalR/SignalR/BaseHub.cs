@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using EntityFramework.Extensions;
 using Microsoft.AspNet.SignalR;
 using MVCLearn.Model;
-using MVCLearn.ModelBCL;
 using MVCLearn.ModelDbContext;
 
-namespace MVCLearn.WebUI.SignalR
+namespace MVCLearn.WebSignalR.SignalR
 {
     public class BaseHub<T> : Hub<T> where T : class
     {
@@ -33,13 +31,11 @@ namespace MVCLearn.WebUI.SignalR
                     await Db.SaveChangesAsync();
                     if (user.SignoutTime != null) // 全部连接退出后第一次登录
                     {
-                        //user.LoginTime = now;
-                        //user.SignoutTime = null;
-                        await Db.UserInfo.Where(e => e.ID == user.ID).UpdateAsync(e => new UserInfo()
-                        {
-                            LoginTime = now,
-                            SignoutTime = null
-                        });
+                        //await Db.UserInfo.Where(e => e.ID == user.ID).UpdateAsync(e => new UserInfo()
+                        //{
+                        //    LoginTime = now,
+                        //    SignoutTime = null
+                        //});
                     }
                 }
             }
@@ -52,21 +48,21 @@ namespace MVCLearn.WebUI.SignalR
             var connection = this.Db.Connection.FirstOrDefault(e => e.ConnectionId == this.Context.ConnectionId);
             if (connection != null)
             {
-                Db.Connection.Where(e => e.ConnectionId == this.Context.ConnectionId)
-                      .Update(e => new Connection()
-                      {
-                          Connected = false
-                      });
+                //Db.Connection.Where(e => e.ConnectionId == this.Context.ConnectionId)
+                //      .Update(e => new Connection()
+                //      {
+                //          Connected = false
+                //      });
                 var count = Db.Connection.Count(e =>
                     e.UserInfoID == connection.UserInfoID &&
                     e.Connected == true &&
                     e.CreateTime >= connection.UserInfo.LoginTime);
                 if (count <= 0)
                 {
-                    await this.Db.UserInfo.Where(e => e.ID == connection.UserInfoID).UpdateAsync(e => new UserInfo()
-                    {
-                        SignoutTime = DateTime.Now // 最后一个连接退出
-                    });
+                    //await this.Db.UserInfo.Where(e => e.ID == connection.UserInfoID).UpdateAsync(e => new UserInfo()
+                    //{
+                    //    SignoutTime = DateTime.Now // 最后一个连接退出
+                    //});
                 }
             }
             await base.OnDisconnected(stopCalled);

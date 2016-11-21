@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
-using MVCLearn.WebUI.JsonNET;
 
-namespace MVCLearn.WebUI
+namespace MVCLearn.WebUI.JsonNET
 {
     public class JsonNetController : Controller
     {

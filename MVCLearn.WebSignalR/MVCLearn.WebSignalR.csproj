@@ -55,6 +55,10 @@
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Redis, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Redis.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
       <Private>True</Private>
@@ -84,6 +88,11 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="StackExchange.Redis.StrongName, Version=1.1.608.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.StrongName.1.1.608\lib\net46\StackExchange.Redis.StrongName.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,6 +138,7 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js">
       <DependentUpon>jquery-3.1.1.js</DependentUpon>
     </None>
+    <Content Include="html\signalr\index.html" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js">
       <DependentUpon>jquery-3.1.1.js</DependentUpon>
@@ -151,6 +161,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalR\BaseHub.cs" />
+    <Compile Include="SignalR\ChatHub.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -172,6 +185,44 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCLearn.Config\MVCLearn.Config.csproj">
+      <Project>{55a55665-a315-43d3-a8ee-2033dab0f5a2}</Project>
+      <Name>MVCLearn.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.Log\MVCLearn.Log.csproj">
+      <Project>{23e5f599-d0ea-43ae-a99b-d742cfd03a61}</Project>
+      <Name>MVCLearn.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.ModelBCL\MVCLearn.ModelBCL.csproj">
+      <Project>{a6262567-b980-44b1-9212-5e2481655aee}</Project>
+      <Name>MVCLearn.ModelBCL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.ModelDbContext\MVCLearn.ModelDbContext.csproj">
+      <Project>{8bd18f91-c9e6-44ea-9bc7-8e37d27009f3}</Project>
+      <Name>MVCLearn.ModelDbContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.ModelDTO\MVCLearn.ModelDTO.csproj">
+      <Project>{b657cc89-611f-4648-8691-ae6f9f7f809b}</Project>
+      <Name>MVCLearn.ModelDTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.ModelEnum\MVCLearn.ModelEnum.csproj">
+      <Project>{e311a5a4-2cff-427d-ba2c-61619199c22a}</Project>
+      <Name>MVCLearn.ModelEnum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.Model\MVCLearn.Model.csproj">
+      <Project>{62c8cb2b-62d4-423c-bcc2-4bf4f743ba4f}</Project>
+      <Name>MVCLearn.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.Service.Interface\MVCLearn.Service.Interface.csproj">
+      <Project>{ab987f93-de64-49f6-81f9-02626bda0453}</Project>
+      <Name>MVCLearn.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.Service\MVCLearn.Service.csproj">
+      <Project>{4f854e06-d046-45e5-b561-bb14b30119f7}</Project>
+      <Name>MVCLearn.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

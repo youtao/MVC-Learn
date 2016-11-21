@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity.Core.Mapping;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Data.Entity.Infrastructure;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
-using MVCLearn.ModelDbContext;
+using MVCLearn.Config;
 using StackExchange.Profiling;
 using StackExchange.Profiling.EntityFramework6;
 
@@ -18,15 +14,9 @@ namespace MVCLearn.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             MiniProfilerEF6.Initialize();
-#if !DEBUG
-            Database.SetInitializer<LearnDbContext>(null);
-#endif
-            using (LearnDbContext dbContext = new LearnDbContext())
-            {
-                var objectContext = ((IObjectContextAdapter)dbContext).ObjectContext;
-                var mappingCollection = (StorageMappingItemCollection)objectContext.MetadataWorkspace.GetItemCollection(DataSpace.CSSpace);
-                mappingCollection.GenerateViews(new List<EdmSchemaError>());
-            }
+            EntityFramewokConfig.HeatLoad();
+            AutoMapperConfig.MapperInitialize();
+            AutofacConfig.ConfigureContainer();
         }
         protected void Application_BeginRequest()
         {
