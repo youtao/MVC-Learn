@@ -4,10 +4,10 @@ using MVCLearn.ModelBCL;
 
 namespace MVCLearn.Model
 {
-    [Table("System_Menu")]
-    public class Menu : BaseModel
+    [Table("Privilege_MenuInfo")]
+    public class MenuInfo : BaseModel
     {
-        public Menu()
+        public MenuInfo()
         {
             this.Title = "Title";
             this.Url = "javascript:void(0);";
@@ -32,7 +32,7 @@ namespace MVCLearn.Model
         /// <summary>
         /// 排序
         /// </summary>
-        public int MenuOrder { get; set; }
+        public int Order { get; set; }
 
         /// <summary>
         /// 父级菜单Id
@@ -40,11 +40,11 @@ namespace MVCLearn.Model
         [ForeignKey("Parent")]
         public long? ParentID { get; set; }
 
-        public virtual Menu Parent { get; set; }
+        public virtual MenuInfo Parent { get; set; }
 
         /// <summary>
         /// 直接子菜单
         /// </summary>
-        public virtual List<Menu> Children { get; set; }
+        public virtual List<MenuInfo> Children { get; set; }
     }
 }

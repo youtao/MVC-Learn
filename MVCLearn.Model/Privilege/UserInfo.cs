@@ -9,7 +9,7 @@ namespace MVCLearn.Model
     /// <summary>
     /// 用户
     /// </summary>
-    [Table("System_UserInfo")]
+    [Table("Privilege_UserInfo")]
     public class UserInfo : BaseModel
     {
         /// <summary>
@@ -39,19 +39,5 @@ namespace MVCLearn.Model
         /// 上次登出时间
         /// </summary>
         public DateTime? SignoutTime { get; set; }
-
-        #region 导航属性
-
-        /// <summary>
-        /// SignalR连接Id
-        /// </summary>
-        public virtual List<Connection> Connections { get; set; }
-
-        /// <summary>
-        /// SignalR组
-        /// </summary>
-        public virtual List<Group> Groups { get; set; }
-
-        #endregion
     }
 }

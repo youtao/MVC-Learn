@@ -5,7 +5,7 @@ using MVCLearn.Service.Interface;
 
 namespace MVCLearn.Service
 {
-	public partial class MenuService : BaseService<LearnDbContext,Menu>, IMenuService
+	public partial class MenuService : BaseService<LearnDbContext,MenuInfo>, IMenuService
 	{
 		public MenuService() { }
 		public MenuService(HttpContextBase httpContext) : base(httpContext) { }

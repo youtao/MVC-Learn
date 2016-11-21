@@ -12,26 +12,38 @@ namespace MVCLearn.ModelDbContext
         {
             modelBuilder.Entity<Group>() // UserInfo_Group 中间表
                 .HasMany(e => e.UserInfos)
-                .WithMany(e => e.Groups)
+                .WithMany()
                 .Map(e =>
                 {
                     e.ToTable("SignalR_MT_UserInfo_Group");
-                    e.MapLeftKey("UserInfo_Id");
-                    e.MapRightKey("Group_Id");
+                    e.MapLeftKey("UserInfo_ID");
+                    e.MapRightKey("Group_ID");
                 });
             base.OnModelCreating(modelBuilder);
         }
 
-        #region Menu
+        #region Privilege
 
         /// <summary>
         /// 菜单
         /// </summary>
-        public virtual DbSet<Menu> Menu { get; set; }
+        public virtual DbSet<MenuInfo> MenuInfo { get; set; }
+        /// <summary>
+        /// 权限
+        /// </summary>
+        public virtual DbSet<Privilege> Privilege { get; set; }
+        /// <summary>
+        /// 角色
+        /// </summary>
+        public virtual DbSet<RoleInfo> RoleInfo { get; set; }
+        /// <summary>
+        /// 用户
+        /// </summary>
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
 
         #endregion
 
-        #region User
+        #region SignalR
 
         /// <summary>
         /// SignalR-连接
@@ -42,11 +54,6 @@ namespace MVCLearn.ModelDbContext
         /// SignalR-组
         /// </summary>
         public virtual DbSet<Group> Group { get; set; }
-
-        /// <summary>
-        /// 用户
-        /// </summary>
-        public virtual DbSet<UserInfo> UserInfo { get; set; }
 
         #endregion
 

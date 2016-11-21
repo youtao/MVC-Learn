@@ -25,15 +25,15 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
         public async Task<JsonResult> GetMenu(long? parentId = null)
         {
             //Mapper.Initialize(e =>
-            //e.CreateMap<Menu, MenuDto>()
+            //e.CreateMap<MenuInfo, MenuDto>()
             //.ForMember(dto => dto.Count,
             //conf => conf.MapFrom(src => src.Children.Count(ef => ef.Delete == false)))
             //);
-            //var list = await _db.Menu.Where(e =>
+            //var list = await _db.MenuInfo.Where(e =>
             //        e.ParentID == parentId &&
             //        e.Delete == false)
             //    .ProjectTo<MenuDto>()
-            //    .OrderBy(e => e.MenuOrder)
+            //    .OrderBy(e => e.Order)
             //    .AsNoTracking()
             //    .ToListAsync();
             return this.Json(new object(), JsonRequestBehavior.AllowGet);
@@ -41,13 +41,13 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<JsonResult> Create([Bind(Include = "Title,Url,Icon,ParentID")] Menu entity)
+        public async Task<JsonResult> Create([Bind(Include = "Title,Url,Icon,ParentID")] MenuInfo entity)
         {
             var result = false;
             if (ModelState.IsValid)
             {
-                entity.MenuOrder = _db.Menu.Count(e => e.ParentID == entity.ParentID);
-                _db.Menu.Add(entity);
+                entity.Order = _db.MenuInfo.Count(e => e.ParentID == entity.ParentID);
+                _db.MenuInfo.Add(entity);
                 await _db.SaveChangesAsync();
                 result = true;
             }
@@ -56,12 +56,12 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<JsonResult> Edit([Bind(Include = "Id,Title,Url,Icon")] Menu param)
+        public async Task<JsonResult> Edit([Bind(Include = "Id,Title,Url,Icon")] MenuInfo param)
         {
             var result = false;
             if (ModelState.IsValid)
             {
-                await _db.Menu.Where(e => e.ID == param.ID).UpdateAsync(e => new Menu()
+                await _db.MenuInfo.Where(e => e.ID == param.ID).UpdateAsync(e => new MenuInfo()
                 {
                     Title = param.Title,
                     Url = param.Url,
@@ -75,19 +75,19 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<JsonResult> Delete(long id)
         {
-            await _db.Menu.Where(e => e.ID == id).UpdateAsync(e => new Menu()
+            await _db.MenuInfo.Where(e => e.ID == id).UpdateAsync(e => new MenuInfo()
             {
                 Delete = true
             });
             return Json(true);
         }
 
-        public async Task<JsonResult> Order([Bind(Include = "Id,MenuOrder,ParentID")]Menu param)
+        public async Task<JsonResult> Order([Bind(Include = "Id,Order,ParentID")]MenuInfo param)
         {
             var result = false;
             if (ModelState.IsValid)
             {
-                var menu = _db.Menu.FirstOrDefault(e => e.ID == param.ID);
+                var menu = _db.MenuInfo.FirstOrDefault(e => e.ID == param.ID);
                 if (menu == null)
                 {
                     return Json(false);
@@ -96,59 +96,59 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
                 if (menu.ParentID != param.ParentID) // 父Id改变了
                 {
                     var list =
-                        _db.Menu.Where(e => e.ParentID == param.ParentID && e.MenuOrder >= param.MenuOrder)
+                        _db.MenuInfo.Where(e => e.ParentID == param.ParentID && e.Order >= param.Order)
                             .Select(e => e.ID)
                             .ToList();
                     if (list.Count > 0)
                     {
-                        await _db.Menu.Where(e => list.Contains(e.ID)).UpdateAsync(e => new Menu()
+                        await _db.MenuInfo.Where(e => list.Contains(e.ID)).UpdateAsync(e => new MenuInfo()
                         {
-                            MenuOrder = e.MenuOrder + 1 // 下面加1
+                            Order = e.Order + 1 // 下面加1
                         });
                     }
                 }
                 else
                 {
-                    if (menu.MenuOrder < param.MenuOrder) // 从上往下移动
+                    if (menu.Order < param.Order) // 从上往下移动
                     {
-                        var list = _db.Menu.Where(e =>
+                        var list = _db.MenuInfo.Where(e =>
                             e.ParentID == param.ParentID &&
-                            e.MenuOrder > menu.MenuOrder && // 不包含自己
-                            e.MenuOrder <= param.MenuOrder) // 包含最下面被影响的
+                            e.Order > menu.Order && // 不包含自己
+                            e.Order <= param.Order) // 包含最下面被影响的
                             .Select(e => e.ID)
                             .ToList();
                         if (list.Count > 0)
                         {
-                            await _db.Menu.Where(e => list.Contains(e.ID))
-                            .UpdateAsync(e => new Menu()
+                            await _db.MenuInfo.Where(e => list.Contains(e.ID))
+                            .UpdateAsync(e => new MenuInfo()
                             {
-                                MenuOrder = e.MenuOrder - 1 // 上面减1
+                                Order = e.Order - 1 // 上面减1
                             });
                         }
 
                     }
                     else
                     {
-                        var list = _db.Menu.Where(e =>
+                        var list = _db.MenuInfo.Where(e =>
                             e.ParentID == param.ParentID &&
-                            e.MenuOrder >= param.MenuOrder && // 包含最上面被影响的
-                            e.MenuOrder < menu.MenuOrder)  // 不包含自己
+                            e.Order >= param.Order && // 包含最上面被影响的
+                            e.Order < menu.Order)  // 不包含自己
                             .Select(e => e.ID)
                             .ToList();
                         if (list.Count > 0)
                         {
-                            _db.Menu.Where(e => list.Contains(e.ID))
-                            .Update(e => new Menu()
+                            _db.MenuInfo.Where(e => list.Contains(e.ID))
+                            .Update(e => new MenuInfo()
                             {
-                                MenuOrder = e.MenuOrder + 1 // 下面加1
+                                Order = e.Order + 1 // 下面加1
                             });
                         }
 
                     }
                 }
-                await _db.Menu.Where(e => e.ID == param.ID).UpdateAsync(e => new Menu()
+                await _db.MenuInfo.Where(e => e.ID == param.ID).UpdateAsync(e => new MenuInfo()
                 {
-                    MenuOrder = param.MenuOrder,
+                    Order = param.Order,
                     ParentID = param.ParentID
                 });
                 result = true;
