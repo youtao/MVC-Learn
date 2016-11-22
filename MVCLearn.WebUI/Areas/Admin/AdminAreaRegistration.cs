@@ -9,9 +9,10 @@ namespace MVCLearn.WebUI.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Admin",
-                "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+               name: "Admin",
+               url: "Admin/{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+               namespaces:new []{ "MVCLearn.WebUI.Areas.Admin.Controllers" }
             );
         }
     }
