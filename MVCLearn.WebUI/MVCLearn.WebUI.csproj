@@ -201,6 +201,7 @@
     <Content Include="Areas\Home\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Home\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Home\Views\Home\Index.cshtml" />
+    <Content Include="assets\json\menus.json" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
