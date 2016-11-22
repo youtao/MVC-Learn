@@ -16,8 +16,14 @@
     <script src="~/assets/js/Utils.js"></script>
     <script src="~/assets/js/Global.js"></script>
 </head>
-<body class="container">
-    @RenderBody()
+<body>
+    <div id="page-container">
+        <div id="left-menu"></div>
+        <div id="main-content">
+            @RenderBody()
+        </div>
+    </div>
+
     @RenderSection("LibScripts", false)
     @RenderSection("CustScripts", false)
     @StackExchange.Profiling.MiniProfiler.RenderIncludes(showTimeWithChildren: true, position: RenderPosition.Left)
