@@ -1,6 +1,6 @@
 ﻿[
   {
-    "outputFile": "assets/css/Admin/Common.css",
-    "inputFile": "assets/css/Admin/Common.less"
+    "outputFile": "assets/css/Admin/theme.css",
+    "inputFile": "assets/css/Admin/theme.less"
   }
 ]

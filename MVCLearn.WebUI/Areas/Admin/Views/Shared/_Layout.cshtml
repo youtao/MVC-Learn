@@ -8,22 +8,38 @@
     @RenderSection("Styles", false)
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
-    <link href="~/assets/css/Admin/Common.css" rel="stylesheet" />
+    <link href="~/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" rel="stylesheet" />
+    <link href="~/assets/css/Admin/theme.min.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/node_modules/vue/dist/vue.js"></script>
     <script src="~/Scripts/js-cookie/js.cookie.js"></script>
+    <script src="~/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Scripts/jquery.ba-resize.min.js"></script>
     <script src="~/assets/js/Utils.js"></script>
     <script src="~/assets/js/Global.js"></script>
 </head>
 <body>
     <div id="page-container">
-        <div id="left-menu"></div>
-        <div id="main-content">
-            @RenderBody()
+        <div id="left-menu">
+            <div id="left-menu-inner">
+                <div id="left-menu-inner-heard">
+                    <p>baobao</p>
+                </div>
+            </div>
+        </div>
+        <div id="right-content">
+            <div id="page-heard"></div>
+            <div id="page-title"></div>
+            <div id="page-body">
+                @RenderBody()
+            </div>
+            <footer id="page-footer">
+                <p>© @DateTime.Now.Year <strong>MVC-Learn</strong> - Collect from youtao
+                </p>
+            </footer>
         </div>
     </div>
-
     @RenderSection("LibScripts", false)
     @RenderSection("CustScripts", false)
     @StackExchange.Profiling.MiniProfiler.RenderIncludes(showTimeWithChildren: true, position: RenderPosition.Left)
