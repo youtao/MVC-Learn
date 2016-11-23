@@ -16,16 +16,23 @@ body {
 #left-menu {
   display: table-cell;
   position: relative;
-  width: 300px;
+  width: 340px;
   height: 100%;
   background-color: #2c2e2f;
 }
 #left-menu a {
   color: #979898;
   text-decoration: none;
+  transition: all 220ms ease-in-out;
+  outline: none !important;
+  background: transparent;
 }
 #left-menu a:hover {
   color: #ffffff;
+}
+#left-menu li {
+  list-style: none;
+  display: list-item;
 }
 #left-menu #left-menu-inner {
   position: fixed;
@@ -44,9 +51,44 @@ body {
   font-size: 25px;
   margin-left: 40px;
 }
-#left-menu #left-menu-inner > ul {
+#left-menu #left-menu-inner #left-menu-inner-main {
   padding: 20px 40px;
   list-style: none;
+}
+#left-menu #left-menu-inner #left-menu-inner-main ul {
+  display: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+}
+#left-menu #left-menu-inner #left-menu-inner-main li.has-sub > a:before {
+  position: relative;
+  display: inline-block;
+  font-family: 'FontAwesome';
+  content: '\f107';
+  float: right;
+  color: #6d747a;
+  margin-left: 10px;
+  transform: rotate(-90deg);
+  transition: all 150ms ease-in-out;
+}
+#left-menu #left-menu-inner #left-menu-inner-main li.has-sub.expanded > a:before {
+  transform: rotate(0deg);
+}
+#left-menu #left-menu-inner #left-menu-inner-main a {
+  display: block;
+  padding: 13px 5px;
+  border-bottom: 1px solid #313437;
+}
+#left-menu #left-menu-inner #left-menu-inner-main a span {
+  display: inline-block;
+}
+#left-menu #left-menu-inner #left-menu-inner-main a span.menu-icon {
+  margin-right: 10px;
+}
+#left-menu #left-menu-inner #left-menu-inner-main a span.menu-title {
+  padding-right: 10px;
 }
 #right-content {
   display: table-cell;
