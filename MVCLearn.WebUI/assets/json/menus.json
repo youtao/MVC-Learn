@@ -1,33 +1,39 @@
 ﻿[
   {
-    "title": "第一级--01",
+    "title": "Tips.net",
+    "icon": "fa fa-windows",
     "url": "javascript:void(0);",
     "children": [
       {
-        "title": "第二级--01",
-        "url": "javascript:void(0);",
+        "title": "PowerShell 在线教程",
+        "icon": "fa fa-book",
+        "url": "http://www.pstips.net/powershell-online-tutorials/",
         "children": []
       },
       {
-        "title": "第二级--02",
-        "url": "javascript:void(0);",
+        "title": " PowerShell 视频教程",
+        "icon": "fa fa-file-video-o",
+        "url": "http://www.pstips.net/cat/powershell-%e8%a7%86%e9%a2%91%e6%95%99%e7%a8%8b",
         "children": []
       },
       {
-        "title": "第二级--02",
-        "url": "javascript:void(0);",
+        "title": "PowerShell团队博客",
+        "icon": "fa fa-location-arrow",
+        "url": "http://www.pstips.net/cat/powershell/powershell-team-blog",
         "children": []
       },
       {
-        "title": "第二级--02",
-        "url": "javascript:void(0);",
+        "title": "PowerShell资讯",
+        "icon": "fa fa-newspaper-o",
+        "url": "http://www.pstips.net/cat/powershell/powershell-news",
         "children": []
       }
     ]
   },
   {
-    "title": "第一级--02",
-    "url": "javascript:void(0);",
+    "title": "User",
+    "url": "/Admin/User/Index",
+    "icon": "fa fa-user",
     "children": []
   },
   {

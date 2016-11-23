@@ -1,6 +1,14 @@
 ﻿[
   {
-    "outputFile": "assets/css/Admin/theme.css",
-    "inputFile": "assets/css/Admin/theme.less"
+    "outputFile": "assets/css/Admin/_layout.css",
+    "inputFile": "assets/css/Admin/_layout.less"
+  },
+  {
+    "outputFile": "assets/css/Admin/Home/Index.css",
+    "inputFile": "assets/css/Admin/Home/Index.less"
+  },
+  {
+    "outputFile": "assets/css/Admin/_iframe.layout.css",
+    "inputFile": "assets/css/Admin/_iframe.layout.less"
   }
 ]

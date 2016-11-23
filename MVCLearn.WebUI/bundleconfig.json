@@ -12,15 +12,21 @@
     ]
   },
   {
-    "outputFileName": "assets/js/Global.min.js",
+    "outputFileName": "assets/js/utils.min.js",
     "inputFiles": [
-      "assets/js/Global.js"
+      "assets/js/utils.js"
     ]
   },
   {
-    "outputFileName": "assets/js/Utils.min.js",
+    "outputFileName": "assets/js/_layout.min.js",
     "inputFiles": [
-      "assets/js/Utils.js"
+      "assets/js/_layout.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/js/_iframe.layout.min.js",
+    "inputFiles": [
+      "assets/js/_iframe.layout.js"
     ]
   }
 ]

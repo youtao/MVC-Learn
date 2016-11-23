@@ -59,12 +59,13 @@ function leftMenuListener() {
         var _this = $(this);
         if (_this.hasClass('has-sub')) {
             if (_this.hasClass('expanded')) {
-                _this.find('ul').css('display', 'none');
-                _this.find('li').removeClass('expanded');
-                _this.removeClass('expanded');
+                _this.find('ul').css('display', 'none'); // 子元素
+                _this.find('li').removeClass('expanded'); // 子元素
+                _this.removeClass('expanded'); // 当前
             } else {
-                _this.find('> ul').css('display', 'block');
-                _this.addClass('expanded');
+                $('#left-menu-inner-main ul').css('display', 'none');
+                $('#left-menu-inner-main li').removeClass('expanded');
+                expandMenu(_this);
             }
         }
     });
@@ -84,5 +85,17 @@ function footer() {
         $pageFooter.css('margin-top', marginTop);
     } else {
         $pageFooter.css('margin-top', 30);
+    }
+}
+function expandMenu($element) {
+    if ($element.is('li')) {
+        $element.addClass('expanded');
+        $element.find('> ul').css('display', 'block');
+        arguments.callee($element.parent());
+    } else if ($element.is('ul')) {
+        var id = $element.attr('id');
+        if (id !== 'left-menu-inner-main') {
+            arguments.callee($element.parent());
+        }
     }
 }
