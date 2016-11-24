@@ -1,4 +1,7 @@
-﻿var currentpage = {
+﻿$(function () {
+    _page.init();
+});
+var _page = {
     init: function () {
         var vue_users = new Vue({
             el: '#vue-users',
@@ -18,6 +21,3 @@
         vue_users.users = res.data;
     }
 };
-$(function () {
-    currentpage.init();
-});

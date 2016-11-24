@@ -8,9 +8,6 @@
         footer();
     });
 });
-var GlobalConfig = {
-    Server: 'http://localhost:33826/api/'
-};
 function letfMenu() {
     $.get('/assets/json/menus.json', null, function (res) {
         var html = recursiveMenu(res);
