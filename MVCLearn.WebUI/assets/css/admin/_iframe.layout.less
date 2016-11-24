@@ -1,9 +1,10 @@
 ﻿body {
     background-color: #eeeeee;
+    font-family: 'Microsoft YaHei';
 }
 
 #page-title {
-    display:none;
+    display: none;
     background: #f8f8f8;
     height: 80px;
     box-shadow: 0 1px 0 rgba(0,1,1,.08), inset 0 1px 0 #ededed;
@@ -13,7 +14,7 @@
 }
 
 #page-footer {
-    display:none;
+    display: none;
     padding: 20px 30px;
     border-top: 1px solid #dddddd;
 }
@@ -46,5 +47,17 @@ table {
             margin: 0;
             float: right;
         }
+    }
+}
+
+table.table-tree {
+    .tree-operator {
+        &:hover {
+            color: mediumseagreen;
+            cursor: pointer;
+        }
+    }
+    .tree-folder {
+        width:12px;
     }
 }

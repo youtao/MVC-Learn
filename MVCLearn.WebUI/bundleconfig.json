@@ -28,5 +28,11 @@
     "inputFiles": [
       "assets/js/_iframe.layout.js"
     ]
+  },
+  {
+    "outputFileName": "assets/js/Admin/Menu/Index.min.js",
+    "inputFiles": [
+      "assets/js/Admin/Menu/Index.js"
+    ]
   }
 ]

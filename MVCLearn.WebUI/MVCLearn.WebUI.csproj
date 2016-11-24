@@ -156,6 +156,10 @@
     <Content Include="assets\js\Admin\Home\Index.min.js">
       <DependentUpon>Index.js</DependentUpon>
     </Content>
+    <Content Include="assets\js\Admin\Menu\Index.js" />
+    <Content Include="assets\js\Admin\Menu\Index.min.js">
+      <DependentUpon>Index.js</DependentUpon>
+    </Content>
     <Content Include="assets\js\Admin\User\Index.js" />
     <Content Include="assets\js\Admin\User\Index.min.js">
       <DependentUpon>Index.js</DependentUpon>
