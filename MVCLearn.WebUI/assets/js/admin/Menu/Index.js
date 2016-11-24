@@ -66,6 +66,7 @@ function menuListener() {
                 var $trNext = $($trNextAll[j]);
                 var dataLevel = parseInt($trNext.attr('data-level'));
                 if (dataLevel === nextLevel) $trNext.show();
+
                 else {
                     if (dataLevel === level) break; // 遇到同级不在继续
                     if (dataLevel !== nextLevel) continue; // 下下一级

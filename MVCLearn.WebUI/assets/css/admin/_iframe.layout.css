@@ -41,3 +41,6 @@ table.table-tree .tree-operator:hover {
 table.table-tree .tree-folder {
   width: 12px;
 }
+table.table-tree tr {
+  transition-duration: 1s;
+}
