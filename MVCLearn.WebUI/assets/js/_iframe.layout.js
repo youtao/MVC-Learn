@@ -1,7 +1,8 @@
 ﻿$(function () {
-    if ($('#page-title').html().trim() <= 0) {
-        $('#page-title').hide();// 没有内容就隐藏
+    if ($('#page-title').html().trim() > 0) {
+        $('#page-title').show();// 没有内容就显示
     }
+    footer();
     $('#page-body').resize(function () {
         footer();
     });
@@ -28,4 +29,5 @@ function footer() {
     } else {
         $pageFooter.css('margin-top', 30);
     }
+    $pageFooter.show();//初始化完后再显示
 }

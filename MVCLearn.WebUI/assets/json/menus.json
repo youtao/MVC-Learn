@@ -105,8 +105,9 @@
     ]
   },
   {
-    "title": "第一级--04",
-    "url": "javascript:void(0);",
+    "title": "菜单",
+    "icon": "",
+    "url": "/Admin/Menu/Index",
     "children": []
   },
   {

@@ -98,7 +98,6 @@ body {
   background-color: #ffffff;
   height: 80px;
   border-bottom: 1px solid #e7e7e7;
-  box-shadow: 0 0 3px rgba(89, 89, 89, 0.25);
 }
 #right-content #page-iframe {
   overflow: hidden;

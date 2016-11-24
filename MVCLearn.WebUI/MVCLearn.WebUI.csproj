@@ -224,6 +224,7 @@
     <Content Include="assets\css\Admin\Home\Index.less" />
     <Content Include="Areas\Admin\Views\Shared\_IFrameLayout.cshtml" />
     <Content Include="assets\css\Admin\_iframe.layout.less" />
+    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -319,6 +320,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Home\Controllers\HomeController.cs" />
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />

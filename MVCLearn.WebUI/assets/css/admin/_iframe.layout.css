@@ -2,11 +2,13 @@
   background-color: #eeeeee;
 }
 #page-title {
+  display: none;
   background: #f8f8f8;
   height: 80px;
   box-shadow: 0 1px 0 rgba(0, 1, 1, 0.08), inset 0 1px 0 #ededed;
 }
 #page-footer {
+  display: none;
   padding: 20px 30px;
   border-top: 1px solid #dddddd;
 }
