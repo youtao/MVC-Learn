@@ -23,9 +23,14 @@ table th {
 .panel-body {
   padding: 10px 15px;
 }
-.panel-body .toolbar-right button {
-  float: right;
-  margin-left: 5px;
+div.btn-group.pull-right ul.dropdown-menu {
+  min-width: inherit;
+}
+div.btn-group.pull-right ul.dropdown-menu .divider {
+  margin: 0;
+}
+div.btn-group.pull-right ul.dropdown-menu a {
+  padding: 3px 12px;
 }
 .panel-footer .pagination-right {
   height: 34px;

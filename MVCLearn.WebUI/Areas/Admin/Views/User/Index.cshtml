@@ -12,19 +12,41 @@
         用户列表
     </div>
     <div class="panel-body">
-        <div class="toolbar-right">
-            <button class="btn btn-default btn-xs">
-                <span class="fa fa-print"></span> 打印
+        <div class="btn-group pull-right">
+            <button class="btn btn-default">
+                <span class="fa fa-plus text-success"></span> 添加
             </button>
-            <button class="btn btn-default btn-xs">
-                <span class="fa fa-file-excel-o"></span> Excel
+            <button class="btn btn-default">
+                <span class="fa fa-edit text-info"></span> 编辑
             </button>
-            <button class="btn btn-default btn-xs">
-                <span class="fa fa-edit"></span> 编辑
+            <button class="btn btn-default">
+                <span class="fa fa-trash text-danger"></span> 删除
             </button>
-            <button class="btn btn-default btn-xs">
-                <span class="fa fa-plus"></span> 添加
-            </button>
+            <div class="btn-group">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="fa fa-list text-primary"></span>
+                    更多<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="fa fa-file-excel-o" style="color: green;"></span> Excel
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="fa fa-print"></span> 打印
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="fa fa-share-alt-square" style="color:#FF6C00"></span> 分享
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <table class="table table-striped table-bordered table-condensed">

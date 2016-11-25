@@ -288,12 +288,12 @@
     </Content>
     <None Include="node_modules\_references.js" />
     <Content Include="package.json" />
-    <None Include="Properties\PublishProfiles\local.pubxml" />
-    <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js">
       <DependentUpon>bootstrap.js</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js">
       <DependentUpon>jquery-3.1.1.js</DependentUpon>
     </None>
