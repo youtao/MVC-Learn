@@ -96,7 +96,7 @@ var _page = {
     initIframe: function (src) {
         if (!src) return;
         this.onresize();
-        var iframe = '<iframe src="' + src + '"></iframe>';
+        var iframe = '<iframe src="' + src + '" onload="iframeOnLoad()"></iframe>';
         $('#page-iframe').html(iframe);
         this.iframeSrc = src;
     },
@@ -108,3 +108,11 @@ var _page = {
         $pageIframe.css('height', height);
     }
 };
+
+function iframeOnLoad() {
+    window.toastr.success('', '页面加载成功', {
+        closeButton: true,
+        positionClass: "toast-top-right",
+        timeOut: "5000"
+    });
+}

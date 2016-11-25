@@ -273,6 +273,11 @@
     <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.jquery.min.js" />
     <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.js" />
     <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.min.js" />
+    <Content Include="node_modules\toastr\build\toastr.css" />
+    <Content Include="node_modules\toastr\build\toastr.min.css">
+      <DependentUpon>toastr.css</DependentUpon>
+    </Content>
+    <Content Include="node_modules\toastr\build\toastr.min.js" />
     <Content Include="node_modules\vue\dist\vue.common.js">
       <DependentUpon>vue.js</DependentUpon>
     </Content>
@@ -286,6 +291,7 @@
     <Content Include="node_modules\vue\dist\vue.runtime.min.js">
       <DependentUpon>vue.runtime.js</DependentUpon>
     </Content>
+    <Content Include="node_modules\toastr\build\toastr.js.map" />
     <None Include="node_modules\_references.js" />
     <Content Include="package.json" />
     <Content Include="Scripts\bootstrap.js" />
