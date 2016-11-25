@@ -89,10 +89,111 @@ body {
 #right-page {
   display: table-cell;
 }
-#page-heard {
+div#page-heard {
   background-color: #ffffff;
   height: 80px;
-  border-bottom: 1px solid #e7e7e7;
+}
+div#page-heard ul.menu-nav {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+div#page-heard ul.menu-nav li.menu-nav-item {
+  height: 80px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  float: left;
+  position: relative;
+  border: 1px solid #ffffff;
+  border-top: 0;
+  border-bottom: 0;
+}
+div#page-heard ul.menu-nav li.menu-nav-item::before {
+  content: '';
+  position: absolute;
+  height: 2px;
+  top: 0px;
+  left: 0;
+  right: 0;
+  background: #68b828;
+  display: none;
+}
+div#page-heard ul.menu-nav li.menu-nav-item:hover::before {
+  display: block;
+}
+div#page-heard ul.menu-nav li.menu-nav-item > a {
+  display: block;
+  padding: 30px 20px;
+  position: relative;
+  z-index: 5;
+}
+div#page-heard ul.menu-nav li.menu-nav-item > a .fa {
+  font-size: 15px;
+}
+div#page-heard ul.menu-nav li.menu-nav-item > a .badge {
+  min-width: 18px;
+  padding: 4px;
+  font-size: 9px;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+div#page-heard ul.menu-nav li.menu-nav-item > a .badge-green {
+  background-color: #8dc63f;
+}
+div#page-heard ul.menu-nav li.menu-nav-item > a .badge-purple {
+  background-color: #7c38bc;
+}
+div#page-heard ul.menu-nav li.open {
+  border-left-color: #dddddd;
+  border-right-color: #dddddd;
+}
+div#page-heard ul.menu-nav li.open > a {
+  border-bottom: 1px solid #ffffff;
+}
+div#page-heard ul.menu-nav li.open::before {
+  display: block;
+}
+div#page-heard ul.menu-nav li.open .menu-message {
+  display: block;
+}
+div#page-heard ul.menu-nav .menu-message {
+  display: none;
+  width: 370px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  list-style: none;
+  font-size: 12px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  left: -1px;
+  z-index: 3;
+  top: 80px;
+  height: 280px;
+}
+div#page-heard ul.menu-nav .menu-message a {
+  position: relative;
+  display: block;
+  padding: 20px 30px;
+}
+div#page-heard ul.menu-nav .menu-message a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 1px;
+  background: #ededed;
+  bottom: 0;
+  left: 30px;
+  right: 30px;
+}
+div#page-heard li {
+  list-style: none;
+}
+div#page-heard a {
+  text-decoration: none;
+  color: #979898;
 }
 #page-iframe {
   overflow: hidden;

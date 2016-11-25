@@ -4,10 +4,13 @@
 
 var _page = {
     iframeSrc: '',
+    lastLoadIframeTime: -1,
     init: function () {
         $(window).resize(this.onresize);
         this.initMenu();
         this.initIframe(GlobalConfig.IframeSrc);
+        this.eventListener();
+        this.scrollbalMenu();
     },
     initMenu: function () {
         var _this = this;
@@ -18,7 +21,6 @@ var _page = {
             var end = html.substring(3, html.length);
             html = start + id + end;
             $('#menu-inner').append(html);
-            $('#menu-inner').perfectScrollbar();
             _this.menuListener();
         });
     },
@@ -96,7 +98,8 @@ var _page = {
     initIframe: function (src) {
         if (!src) return;
         this.onresize();
-        var iframe = '<iframe src="' + src + '" onload="iframeOnLoad()"></iframe>';
+        this.lastLoadIframeTime = new Date().getTime();
+        var iframe = '<iframe src="' + src + '" onload="iframeOnLoad();"></iframe>';
         $('#page-iframe').html(iframe);
         this.iframeSrc = src;
     },
@@ -106,13 +109,33 @@ var _page = {
         var $pageIframe = $('#page-iframe');
         height = height - $pageHeard.outerHeight();
         $pageIframe.css('height', height);
+    },
+    eventListener: function () {
+        $('#page-heard li.menu-nav-item')
+            .click(function () {
+                $(this).siblings().removeClass('open');
+                if ($(this).hasClass('open')) $(this).removeClass('open');
+                else $(this).addClass('open');
+            });
+    },
+    scrollbalMenu: function () {
+        $('#menu-inner').perfectScrollbar();
+        $('.menu-message').perfectScrollbar();
     }
 };
 
 function iframeOnLoad() {
-    window.toastr.success('', '页面加载成功', {
+    var start = _page.lastLoadIframeTime;
+    if (start < 0) return;
+    var now = new Date();
+    var time = now.getTime() - start;
+    time = (time / 1000).toFixed(2);
+    var title = now.Format('yyyy-MM-dd hh:mm');
+    var message = '页面加载完成(耗时:' + time + 's)';
+    window.toastr.success(message, title, {
         closeButton: true,
         positionClass: "toast-top-right",
         timeOut: "5000"
     });
+    _page.lastLoadIframeTime = -1; // 只在每个iframe第一次加载时才弹提示
 }
