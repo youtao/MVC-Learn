@@ -7,6 +7,19 @@
     <script src="~/assets/js/Admin/User/Index.min.js"></script>
 }
 
+@section PageTitle{
+    <ol class="breadcrumb">
+        <li>
+            <span class="fa fa-home"></span>
+            <a href="javascript:void(0);">Admin</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">User</a>
+        </li>
+        <li class="active">Index</li>
+    </ol>
+}
+
 <div class="panel panel-default" id="vue-users">
     <div class="panel-heading">
         用户列表
@@ -30,7 +43,7 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a href="javascript:void(0);">
-                            <span class="fa fa-file-excel-o" style="color: green;"></span> Excel
+                            <span class="fa fa-file-excel-o"></span> Excel
                         </a>
                     </li>
                     <li class="divider"></li>
@@ -42,7 +55,7 @@
                     <li class="divider"></li>
                     <li>
                         <a href="javascript:void(0);">
-                            <span class="fa fa-share-alt-square" style="color:#FF6C00"></span> 分享
+                            <span class="fa fa-share-alt-square"></span> 分享
                         </a>
                     </li>
                 </ul>

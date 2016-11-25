@@ -16,8 +16,9 @@ var _layout = {
     },
     initPageTitle: function () {
         var $pageTitle = $('#page-title');
-        if ($pageTitle.html().trim() > 0)
+        if ($pageTitle.html().trim().length > 0)
             $pageTitle.show();// 没有内容就显示
+
     },
     onresize: function (e) {
         var height = $(window).height();
