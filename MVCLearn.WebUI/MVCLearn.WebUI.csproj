@@ -49,8 +49,8 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Autofac, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.2.0\lib\net45\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.2.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.2.1\lib\net45\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -314,6 +314,10 @@
       <DependentUpon>jquery-3.1.1.slim.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.ba-resize.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.min.js">
+      <DependentUpon>jquery.signalR-2.2.1.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\js-cookie\js.cookie-2.1.3.min.js" />
     <Content Include="Scripts\js-cookie\js.cookie.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map">
@@ -322,8 +326,8 @@
     <Content Include="Scripts\jquery-3.1.1.min.map">
       <DependentUpon>jquery-3.1.1.min.js</DependentUpon>
     </Content>
-    <None Include="Scripts\_references.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

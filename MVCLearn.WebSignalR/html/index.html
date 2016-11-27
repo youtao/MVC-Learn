@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>signalr</title>
+    <meta charset="utf-8" />
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+</head>
+<body>
+    <script>
+        $(function () {
+            var chatHub = $.connection.chatHub;
+            chatHub.client.start = function (connctionid) {
+
+            };
+            chatHub.client.leave = function (connctionid) {
+
+            };
+            $.connection.hub.start()
+                .done(function () {
+                    chatHub.server.start();
+                });
+        });
+    </script>
+</body>
+</html>

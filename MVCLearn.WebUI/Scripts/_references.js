@@ -10,3 +10,4 @@
 /// <reference path="jquery-3.1.1.js" />
 /// <reference path="js-cookie/js.cookie.js" />
 /// <reference path="modernizr-2.8.3.js" />
+/// <reference path="jquery.signalR-2.2.1.js" />

@@ -21,7 +21,11 @@ namespace MVCLearn.WebSignalR
                 server: ConfigurationManager.AppSettings["redis_server"],
                 port: Convert.ToInt32(ConfigurationManager.AppSettings["redis_port"]),
                 password: ConfigurationManager.AppSettings["redis_password"],
-                eventKey: "Broadcaster");
+                eventKey: "MVCLearn-SignalR");
+            app.Map("", conf =>
+            {
+                
+            });
             app.MapSignalR();
         }
     }

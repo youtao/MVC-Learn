@@ -42,4 +42,4 @@ var _layout = {
         }
         $pageFooter.show();//初始化完后再显示
     }
-}
+};
