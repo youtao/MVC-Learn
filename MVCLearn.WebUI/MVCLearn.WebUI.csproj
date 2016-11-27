@@ -141,6 +141,18 @@
     <Content Include="assets\css\Admin\Home\Index.min.css">
       <DependentUpon>Index.css</DependentUpon>
     </Content>
+    <Content Include="assets\css\Admin\left-menu.css">
+      <DependentUpon>left-menu.less</DependentUpon>
+    </Content>
+    <Content Include="assets\css\Admin\left-menu.min.css">
+      <DependentUpon>left-menu.css</DependentUpon>
+    </Content>
+    <Content Include="assets\css\Admin\nav-menu.css">
+      <DependentUpon>nav-menu.less</DependentUpon>
+    </Content>
+    <Content Include="assets\css\Admin\nav-menu.min.css">
+      <DependentUpon>nav-menu.css</DependentUpon>
+    </Content>
     <Content Include="assets\css\Admin\_iframe.layout.css">
       <DependentUpon>_iframe.layout.less</DependentUpon>
     </Content>
@@ -233,6 +245,8 @@
     <Content Include="Areas\Admin\Views\Shared\_IFrameLayout.cshtml" />
     <Content Include="assets\css\Admin\_iframe.layout.less" />
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="assets\css\Admin\left-menu.less" />
+    <Content Include="assets\css\Admin\nav-menu.less" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">

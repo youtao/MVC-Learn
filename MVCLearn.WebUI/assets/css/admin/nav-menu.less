@@ -1,0 +1,108 @@
+﻿ul.nav-menu {
+    margin: 0;
+    padding: 0;
+
+    > li.item {
+        position: relative;
+        display: block;
+        float: left;
+        height: 80px;
+        margin: 0;
+        padding: 0;
+        border: 1px solid transparent;
+        border-top: none;
+        border-bottom: none;
+
+        &::before {
+            position: absolute;
+            display: none;
+            content: '';
+            height: 2px;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #68b828;
+        }
+
+        &:hover::before {
+            display: block;
+        }
+
+        & > a {
+            position: relative;
+            display: block;
+            padding: 30px 20px;
+            z-index: 5;
+
+            span.fa {
+                font-size: 15px;
+            }
+
+            span.badge {
+                position: absolute;
+                padding: 4px;
+                min-width: 18px;
+                font-size: 9px;
+                top: 20px;
+                right: 10px;
+            }
+
+            span.badge-green {
+                background-color: #8dc63f;
+            }
+
+            span.badge-purple {
+                background-color: #7c38bc;
+            }
+        }
+
+        & > ul.messages {
+            position: absolute;
+            display: none;
+            top: 80px;
+            left: -1px;
+            z-index: 3;
+            margin: 0;
+            padding: 0;
+            width: 370px;
+            height: 280px;
+            font-size: 12px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+
+            a {
+                position: relative;
+                display: block;
+                padding: 20px 30px;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 30px;
+                    right: 30px;
+                    height: 1px;
+                    background-color: #ededed;
+                }
+            }
+        }
+
+        &.open {
+            border-left-color: #dddddd;
+            border-right-color: #dddddd;
+
+            & > a {
+                border-bottom: 1px solid #ffffff;
+            }
+
+            &::before {
+                display: block;
+            }
+
+            & > ul.messages {
+                display: block;
+            }
+        }
+    }
+}

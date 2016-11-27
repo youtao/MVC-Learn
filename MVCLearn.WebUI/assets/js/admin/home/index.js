@@ -16,10 +16,10 @@ var _page = {
         var _this = this;
         $.get('/assets/json/menus.json', null, function (res) {
             var html = _this.recursiveMenu(res);
-            var id = ' id="menu-main" ';
+            var attr = ' id="menu-main" class="menu-main" ';
             var start = html.substr(0, 3);
             var end = html.substring(3, html.length);
-            html = start + id + end;
+            html = start + attr + end;
             $('#menu-inner').append(html);
             _this.menuListener();
         });
@@ -56,7 +56,7 @@ var _page = {
     },
     menuListener: function () {
         var _this = this;
-        $('#menu-inner').on('click', 'li', function (e) {
+        $('#left-menu').on('click', 'li', function (e) {
             e.stopPropagation(); // 阻止事件冒泡
             var $li = $(this);
             if ($li.hasClass('has-sub')) { // 有子菜单
@@ -68,7 +68,7 @@ var _page = {
                 var url = $a.attr('data-url');
                 if (url !== 'javascript:void(0);') {
                     _this.initIframe(url);
-                    $('#menu-inner a.active').removeClass('active');
+                    $('#left-menu a.active').removeClass('active');
                     $li.children('a').addClass('active');
                 }
             }
@@ -111,7 +111,7 @@ var _page = {
         $pageIframe.css('height', height);
     },
     eventListener: function () {
-        $('#page-heard li.menu-nav-item')
+        $('#page-heard ul.nav-menu > li.item')
             .click(function () {
                 $(this).siblings().removeClass('open');
                 if ($(this).hasClass('open')) $(this).removeClass('open');
@@ -120,7 +120,7 @@ var _page = {
     },
     scrollbalMenu: function () {
         $('#menu-inner').perfectScrollbar();
-        $('.menu-message').perfectScrollbar();
+        $('ul.nav-menu ul.messages').perfectScrollbar();
     }
 };
 

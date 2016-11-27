@@ -10,5 +10,13 @@
   {
     "outputFile": "assets/css/Admin/_iframe.layout.css",
     "inputFile": "assets/css/Admin/_iframe.layout.less"
+  },
+  {
+    "outputFile": "assets/css/Admin/left-menu.css",
+    "inputFile": "assets/css/Admin/left-menu.less"
+  },
+  {
+    "outputFile": "assets/css/Admin/nav-menu.css",
+    "inputFile": "assets/css/Admin/nav-menu.less"
   }
 ]
