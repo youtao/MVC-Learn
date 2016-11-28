@@ -153,6 +153,12 @@
     <Content Include="assets\css\Admin\nav-menu.min.css">
       <DependentUpon>nav-menu.css</DependentUpon>
     </Content>
+    <Content Include="assets\css\Admin\timeline.css">
+      <DependentUpon>timeline.less</DependentUpon>
+    </Content>
+    <Content Include="assets\css\Admin\timeline.min.css">
+      <DependentUpon>timeline.css</DependentUpon>
+    </Content>
     <Content Include="assets\css\Admin\_iframe.layout.css">
       <DependentUpon>_iframe.layout.less</DependentUpon>
     </Content>
@@ -247,6 +253,8 @@
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="assets\css\Admin\left-menu.less" />
     <Content Include="assets\css\Admin\nav-menu.less" />
+    <Content Include="Areas\Admin\Views\Chat\Index.cshtml" />
+    <Content Include="assets\css\Admin\timeline.less" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -351,6 +359,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChatController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />

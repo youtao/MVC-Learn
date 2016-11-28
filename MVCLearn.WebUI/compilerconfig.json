@@ -18,5 +18,9 @@
   {
     "outputFile": "assets/css/Admin/nav-menu.css",
     "inputFile": "assets/css/Admin/nav-menu.less"
+  },
+  {
+    "outputFile": "assets/css/Admin/timeline.css",
+    "inputFile": "assets/css/Admin/timeline.less"
   }
 ]

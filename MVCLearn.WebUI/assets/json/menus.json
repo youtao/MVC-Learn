@@ -106,7 +106,7 @@
   },
   {
     "title": "菜单",
-    "icon": "",
+    "icon": "fa fa-bars",
     "url": "/Admin/Menu/Index",
     "children": []
   },
@@ -142,8 +142,9 @@
     "children": []
   },
   {
-    "title": "第一级--07",
-    "url": "javascript:void(0);",
+    "title": "聊天室",
+    "icon": "fa fa-comments-o",
+    "url": "/Admin/Chat/Index",
     "children": []
   },
   {

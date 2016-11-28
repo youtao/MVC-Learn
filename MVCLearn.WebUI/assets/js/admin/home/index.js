@@ -36,7 +36,7 @@ var _page = {
                 style = ' style="padding-left:' + px + 'px;" ';
             }
             li += '<a href="javascript:void(0);"' + style + 'data-url="' + item.url + '">';
-            var icon = 'fa fa-bars'; // 默认图标
+            var icon = 'fa fa-sitemap'; // 默认图标
             if (item.icon) icon = item.icon;
             li += '<span class="' + icon + ' menu-icon"></span> ';
             li += '<span class="menu-title">' + item.title + '</span>';

@@ -1,0 +1,41 @@
+﻿/*时间轴*/
+ul.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /*&::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 5px;
+        background-color: #ffffff;
+    }*/
+}
+ul.timeline li {
+  position: relative;
+}
+ul.timeline div.time {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+ul.timeline div.icon {
+  position: absolute;
+}
+ul.timeline div.content {
+  position: relative;
+  margin: 0 0 30px 20%;
+  padding: 20px;
+  color: #737881;
+  background-color: #ffffff;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
