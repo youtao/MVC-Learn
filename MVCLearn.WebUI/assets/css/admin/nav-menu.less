@@ -2,9 +2,22 @@
     margin: 0;
     padding: 0;
 
-    > li.item {
-        position: relative;
+    a {
+        text-decoration: none;
+        color: #979898;
+    }
+
+    li {
+        list-style: none;
+    }
+}
+
+/*水平*/
+ul.horizontal {
+
+    > li {
         display: block;
+        position: relative;
         float: left;
         height: 80px;
         margin: 0;
@@ -12,25 +25,25 @@
         border: 1px solid transparent;
         border-top: none;
         border-bottom: none;
-
+        /*top横线*/
         &::before {
-            position: absolute;
-            display: none;
             content: '';
-            height: 2px;
+            display: none;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
+            content: '';
             background-color: #68b828;
         }
-
+        /*显示top横线*/
         &:hover::before {
             display: block;
         }
-
+        /*图标*/
         & > a {
-            position: relative;
             display: block;
+            position: relative;
             padding: 30px 20px;
             z-index: 5;
 
@@ -56,24 +69,68 @@
             }
         }
 
-        & > ul.messages {
-            position: absolute;
-            display: none;
-            top: 80px;
-            left: -1px;
-            z-index: 3;
-            margin: 0;
-            padding: 0;
-            width: 370px;
-            height: 280px;
-            font-size: 12px;
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
+        &.open { /*展开样式*/
+            border-left-color: #dddddd;
+            border-right-color: #dddddd;
+
+            & > a {
+                border-bottom: 1px solid #ffffff;
+            }
+            /*显示top横线*/
+            &::before {
+                display: block;
+            }
+
+            & > ul.vertical {
+                display: block;
+            }
+        }
+    }
+}
+
+/*垂直*/
+ul.vertical {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: -1px;
+    margin: 0;
+    padding: 0;
+    width: 370px;
+    font-size: 12px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    z-index: 3;
+
+    ul.messages {
+        overflow: hidden;
+        position: relative;
+        max-height: 300px;
+        padding-left: 0;
+
+        li {
+            position: relative;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                margin-top: -2.5px;
+                right: 30px;
+                width: 5px;
+                height: 5px;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background-color: #8dc63f;
+            }
 
             a {
                 position: relative;
                 display: block;
                 padding: 20px 30px;
+                color: #606161;
 
                 &::after {
                     content: '';
@@ -83,26 +140,71 @@
                     left: 30px;
                     right: 30px;
                     height: 1px;
-                    background-color: #ededed;
+                    background: #ededed;
+                }
+
+                span.heard {
+                    display: block;
+                }
+
+                span.title {
+                    color: #606161;
+                    font-weight: bold;
+                }
+
+                span.time {
+                    font-size: 12px;
+                }
+
+                span.desc {
+                    display: block;
+                    margin-top: 10px;
+                    margin-right: 10px;
+                    white-space: nowrap; /*不换行*/
+                    overflow: hidden;
+                    -ms-text-overflow: ellipsis;
+                    -o-text-overflow: ellipsis;
+                    text-overflow: ellipsis; /*超出部分显示省略号*/
+                    overflow: hidden;
+                    font-size: 12px;
                 }
             }
         }
 
-        &.open {
-            border-left-color: #dddddd;
-            border-right-color: #dddddd;
-
-            & > a {
-                border-bottom: 1px solid #ffffff;
+        li.read {
+            &::after {
+                background-color: #cccccc;
             }
 
-            &::before {
-                display: block;
-            }
+            a {
+                color: #979898;
 
-            & > ul.messages {
-                display: block;
+                span.title {
+                    color: #979898;
+                }
             }
+        }
+    }
+
+    li.more {
+        position: relative;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -1px;
+            height: 1px;
+            background-color: #ededed;
+        }
+
+        > a {
+            display: block;
+            padding: 20px 30px;
+            color: #979898;
+            background-color: #f5f5f5;
         }
     }
 }

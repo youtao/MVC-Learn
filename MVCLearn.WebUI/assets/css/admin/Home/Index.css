@@ -15,7 +15,7 @@ body {
 }
 div.left-menu {
   display: table-cell;
-  width: 340px;
+  width: 300px;
   height: 100%;
   background-color: #2c2e2f;
 }
@@ -94,124 +94,22 @@ ul.menu-main a span.menu-title {
 #page-heard {
   background-color: #ffffff;
   height: 80px;
-  /*ul.menu-nav {
-        margin: 0;
-        padding: 0;
-        float: left;
-
-        li.menu-nav-item {
-            height: 80px;
-            display: block;
-            margin: 0;
-            padding: 0;
-            float: left;
-            position: relative;
-            border: 1px solid #ffffff;
-            border-top: 0;
-            border-bottom: 0;
-
-            &::before {
-                content: '';
-                position: absolute;
-                height: 2px;
-                top: 0px;
-                left: 0;
-                right: 0;
-                background: #68b828;
-                display: none;
-            }
-
-            &:hover::before {
-                display: block;
-            }
-
-            & > a {
-                display: block;
-                padding: 30px 20px;
-                position: relative;
-                z-index: 5;
-
-                .fa {
-                    font-size: 15px;
-                }
-
-                .badge {
-                    min-width: 18px;
-                    padding: 4px;
-                    font-size: 9px;
-                    position: absolute;
-                    top: 20px;
-                    right: 10px;
-                }
-
-                .badge-green {
-                    background-color: #8dc63f;
-                }
-
-                .badge-purple {
-                    background-color: #7c38bc;
-                }
-            }
-        }
-
-        li.open {
-            border-left-color: #dddddd;
-            border-right-color: #dddddd;
-
-            & > a {
-                border-bottom: 1px solid #ffffff;
-            }
-
-            &::before {
-                display: block;
-            }
-
-            .menu-message {
-                display: block;
-            }
-        }
-
-        .menu-message {
-            display: none;
-            width: 370px;
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            list-style: none;
-            font-size: 12px;
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-            left: -1px;
-            z-index: 3;
-            top: 80px;
-            height: 280px;
-
-            a {
-                position: relative;
-                display: block;
-                padding: 20px 30px;
-
-                &::after {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    height: 1px;
-                    background: #ededed;
-                    bottom: 0;
-                    left: 30px;
-                    right: 30px;
-                }
-            }
-        }
-    }*/
 }
-#page-heard ul.nav-menu {
+ul.nav-menu {
   margin: 0;
   padding: 0;
 }
-#page-heard ul.nav-menu > li.item {
-  position: relative;
+ul.nav-menu a {
+  text-decoration: none;
+  color: #979898;
+}
+ul.nav-menu li {
+  list-style: none;
+}
+/*水平*/
+ul.horizontal > li {
   display: block;
+  position: relative;
   float: left;
   height: 80px;
   margin: 0;
@@ -219,30 +117,32 @@ ul.menu-main a span.menu-title {
   border: 1px solid transparent;
   border-top: none;
   border-bottom: none;
+  /*top横线*/
+  /*显示top横线*/
+  /*图标*/
 }
-#page-heard ul.nav-menu > li.item::before {
-  position: absolute;
+ul.horizontal > li::before {
   display: none;
-  content: '';
-  height: 2px;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  content: '';
   background-color: #68b828;
 }
-#page-heard ul.nav-menu > li.item:hover::before {
+ul.horizontal > li:hover::before {
   display: block;
 }
-#page-heard ul.nav-menu > li.item > a {
-  position: relative;
+ul.horizontal > li > a {
   display: block;
+  position: relative;
   padding: 30px 20px;
   z-index: 5;
 }
-#page-heard ul.nav-menu > li.item > a span.fa {
+ul.horizontal > li > a span.fa {
   font-size: 15px;
 }
-#page-heard ul.nav-menu > li.item > a span.badge {
+ul.horizontal > li > a span.badge {
   position: absolute;
   padding: 4px;
   min-width: 18px;
@@ -250,32 +150,71 @@ ul.menu-main a span.menu-title {
   top: 20px;
   right: 10px;
 }
-#page-heard ul.nav-menu > li.item > a span.badge-green {
+ul.horizontal > li > a span.badge-green {
   background-color: #8dc63f;
 }
-#page-heard ul.nav-menu > li.item > a span.badge-purple {
+ul.horizontal > li > a span.badge-purple {
   background-color: #7c38bc;
 }
-#page-heard ul.nav-menu > li.item > ul.messages {
-  position: absolute;
+ul.horizontal > li.open {
+  /*展开样式*/
+  border-left-color: #dddddd;
+  border-right-color: #dddddd;
+  /*显示top横线*/
+}
+ul.horizontal > li.open > a {
+  border-bottom: 1px solid #ffffff;
+}
+ul.horizontal > li.open::before {
+  display: block;
+}
+ul.horizontal > li.open > ul.vertical {
+  display: block;
+}
+/*垂直*/
+ul.vertical {
   display: none;
+  position: absolute;
   top: 80px;
   left: -1px;
-  z-index: 3;
   margin: 0;
   padding: 0;
   width: 370px;
-  height: 280px;
   font-size: 12px;
   background-color: #ffffff;
   border: 1px solid #dddddd;
+  z-index: 3;
 }
-#page-heard ul.nav-menu > li.item > ul.messages a {
+ul.vertical ul.messages {
+  overflow: hidden;
+  position: relative;
+  max-height: 300px;
+  padding-left: 0;
+}
+ul.vertical ul.messages li {
+  position: relative;
+}
+ul.vertical ul.messages li::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -2.5px;
+  right: 30px;
+  width: 5px;
+  height: 5px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #8dc63f;
+}
+ul.vertical ul.messages li a {
   position: relative;
   display: block;
   padding: 20px 30px;
+  color: #606161;
 }
-#page-heard ul.nav-menu > li.item > ul.messages a::after {
+ul.vertical ul.messages li a::after {
   content: '';
   display: block;
   position: absolute;
@@ -283,27 +222,58 @@ ul.menu-main a span.menu-title {
   left: 30px;
   right: 30px;
   height: 1px;
+  background: #ededed;
+}
+ul.vertical ul.messages li a span.heard {
+  display: block;
+}
+ul.vertical ul.messages li a span.title {
+  color: #606161;
+  font-weight: bold;
+}
+ul.vertical ul.messages li a span.time {
+  font-size: 12px;
+}
+ul.vertical ul.messages li a span.desc {
+  display: block;
+  margin-top: 10px;
+  margin-right: 10px;
+  white-space: nowrap;
+  /*不换行*/
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  /*超出部分显示省略号*/
+  overflow: hidden;
+  font-size: 12px;
+}
+ul.vertical ul.messages li.read::after {
+  background-color: #cccccc;
+}
+ul.vertical ul.messages li.read a {
+  color: #979898;
+}
+ul.vertical ul.messages li.read a span.title {
+  color: #979898;
+}
+ul.vertical li.more {
+  position: relative;
+}
+ul.vertical li.more::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
   background-color: #ededed;
 }
-#page-heard ul.nav-menu > li.item.open {
-  border-left-color: #dddddd;
-  border-right-color: #dddddd;
-}
-#page-heard ul.nav-menu > li.item.open > a {
-  border-bottom: 1px solid #ffffff;
-}
-#page-heard ul.nav-menu > li.item.open::before {
+ul.vertical li.more > a {
   display: block;
-}
-#page-heard ul.nav-menu > li.item.open > ul.messages {
-  display: block;
-}
-#page-heard li {
-  list-style: none;
-}
-#page-heard a {
-  text-decoration: none;
+  padding: 20px 30px;
   color: #979898;
+  background-color: #f5f5f5;
 }
 .iframe {
   overflow: hidden;

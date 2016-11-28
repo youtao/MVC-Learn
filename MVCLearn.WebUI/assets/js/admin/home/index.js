@@ -56,20 +56,19 @@ var _page = {
     },
     menuListener: function () {
         var _this = this;
-        $('#left-menu').on('click', 'li', function (e) {
-            e.stopPropagation(); // 阻止事件冒泡
-            var $li = $(this);
-            if ($li.hasClass('has-sub')) { // 有子菜单
-                if ($li.hasClass('expanded')) _this.collapseMenu($li); // 已经展开过了,折叠
-                else _this.expandMenu($li); // 没有展开过,展开
+        $('#left-menu').on('click', 'a', function (e) {
+            var $a = $(this);
+            var $li = $a.parent();
+            if ($li.hasClass('has-sub')) {
+                if ($li.hasClass('expanded')) _this.collapseMenu($li);
+                else _this.expandMenu($li);
             } else {
-                _this.collapseMenu($li.siblings('.expanded')); // 折叠同级菜单
-                var $a = $li.find('> a');
+                _this.collapseMenu($li.siblings('.expanded'));
                 var url = $a.attr('data-url');
                 if (url !== 'javascript:void(0);') {
                     _this.initIframe(url);
                     $('#left-menu a.active').removeClass('active');
-                    $li.children('a').addClass('active');
+                    $a.addClass('active');
                 }
             }
         });
@@ -120,7 +119,7 @@ var _page = {
     },
     scrollbalMenu: function () {
         $('#menu-inner').perfectScrollbar();
-        $('ul.nav-menu ul.messages').perfectScrollbar();
+        $('#page-heard ul.messages').perfectScrollbar();
     }
 };
 
