@@ -20,7 +20,7 @@ ul.timeline {
         position: relative;
     }
 
-    div.time {
+    div.timeline-time {
         position: absolute;
 
         span {
@@ -40,7 +40,7 @@ ul.timeline {
         }
     }
 
-    div.icon {
+    div.timeline-icon {
         position: absolute;
         left: 70px;
         width: 40px;
@@ -58,7 +58,7 @@ ul.timeline {
         background-color: #7c38bc;
     }
 
-    div.content {
+    div.timeline-content {
         position: relative;
         margin: 0 0 30px 150px;
         padding: 20px;
@@ -72,12 +72,11 @@ ul.timeline {
             content: ' ';
             position: absolute;
             right: 100%;
+            top: 10px;
             width: 0;
             height: 0;
-            border: solid transparent;
-            border-width: 10px;
+            border: solid 10px transparent;
             border-right-color: #ffffff;
-            top: 10px;
         }
 
         h2 {
@@ -90,9 +89,173 @@ ul.timeline {
 
         p {
             margin: 0;
-            margin-bottom:2px;
+            margin-bottom: 2px;
             color: #737881;
             font-size: 13px;
+        }
+    }
+}
+
+/*中心时间轴*/
+div.timeline-centered {
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 20px;
+        bottom: 20px;
+        left: 50%;
+        margin-left: -5px;
+        width: 5px;
+        background-color: #ffffff;
+    }
+
+    &::after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+
+    > div.timeline-entry {
+        position: relative;
+        margin-bottom: 50px;
+
+        width: 50%;
+        clear: both;
+    }
+
+
+    .left-aligned {
+        float: left;
+
+        div.timeline-entry-inner {
+            position: relative;
+            margin-right:-18px;
+        }
+
+        div.timeline-time {
+            position: absolute;
+            right:-70px;
+
+            span {
+                display: block;
+                text-align:left;
+
+                &:first-child {
+                    margin-bottom: 2px;
+                    font-weight: bold;
+                    font-size: 15px;
+                    color: #575858;
+                }
+
+                &:last-child {
+                    font-size: 12px;
+                    color: #979898;
+                }
+            }
+        }
+
+        div.timeline-icon {
+            float: right;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            -moz-border-radius: 20px;
+            -webkit-border-radius: 20px;
+            border-radius: 20px;
+            text-align: center;
+            -moz-box-shadow: 0 0 0 5px;
+            -webkit-box-shadow: 0 0 0 5px;
+            box-shadow: 0 0 0 5px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #8dc63f;
+        }
+
+        div.timeline-content {
+            position: relative;
+            background-color: #ffffff;
+            padding: 1.7em;
+            margin-right: 70px;
+
+            &::after {
+                content:'';
+                position:absolute;
+                left:100%;
+                top:10px;
+                width:0;
+                height:0;
+                border:solid 10px transparent;
+                border-left-color:#ffffff;
+            }
+        }
+    }
+
+    .right-aligned {
+        float: right;
+
+        div.timeline-entry-inner {
+            position: relative;
+            margin-left: -23px;
+        }
+
+        div.timeline-time {
+            position: absolute;
+            left: -70px;
+
+            span {
+                display: block;
+                text-align:right;
+
+                &:first-child {
+                    margin-bottom: 2px;
+                    font-weight: bold;
+                    font-size: 15px;
+                    color: #575858;
+                }
+
+                &:last-child {
+                    font-size: 12px;
+                    color: #979898;
+                }
+            }
+        }
+
+        div.timeline-icon {
+            float: left;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            -moz-border-radius: 20px;
+            -webkit-border-radius: 20px;
+            border-radius: 20px;
+            text-align: center;
+            -moz-box-shadow: 0 0 0 5px;
+            -webkit-box-shadow: 0 0 0 5px;
+            box-shadow: 0 0 0 5px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #8dc63f;
+        }
+
+        div.timeline-content {
+            position: relative;
+            background-color: #ffffff;
+            padding: 1.7em;
+            margin-left: 70px;
+
+            &::after {
+                content:'';
+                position:absolute;
+                right:100%;
+                top:10px;
+                width:0;
+                height:0;
+                border:solid 10px transparent;
+                border-right-color:#ffffff;
+            }
         }
     }
 }

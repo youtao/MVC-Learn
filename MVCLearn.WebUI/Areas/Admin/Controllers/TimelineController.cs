@@ -6,9 +6,14 @@ using System.Web.Mvc;
 
 namespace MVCLearn.WebUI.Areas.Admin.Controllers
 {
-    public class ChatController : Controller
+    public class TimelineController : Controller
     {
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Centered()
         {
             return View();
         }

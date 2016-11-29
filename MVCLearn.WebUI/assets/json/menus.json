@@ -142,10 +142,23 @@
     "children": []
   },
   {
-    "title": "聊天室",
-    "icon": "fa fa-comments-o",
-    "url": "/Admin/Chat/Index",
-    "children": []
+    "title": "时间轴",
+    "icon": "fa fa-italic",
+    "url": "javascript:void(0);",
+    "children": [
+      {
+        "title": "时间轴",
+        "icon": "fa fa-align-left",
+        "url": "/Admin/Timeline/Index",
+        "children": []
+      },
+      {
+        "title": "中心时间轴",
+        "icon": "fa fa-align-center",
+        "url": "/Admin/Timeline/Centered",
+        "children": []
+      }
+    ]
   },
   {
     "title": "第一级--08",

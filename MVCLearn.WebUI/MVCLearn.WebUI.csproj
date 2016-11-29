@@ -253,8 +253,9 @@
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="assets\css\Admin\left-menu.less" />
     <Content Include="assets\css\Admin\nav-menu.less" />
-    <Content Include="Areas\Admin\Views\Chat\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Timeline\Index.cshtml" />
     <Content Include="assets\css\Admin\timeline.less" />
+    <Content Include="Areas\Admin\Views\Timeline\Centered.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -359,7 +360,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\ChatController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TimelineController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
