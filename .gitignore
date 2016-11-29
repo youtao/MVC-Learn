@@ -244,3 +244,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /MVCLearn.WebUI/logs
+/MVCLearn.WebAPI/logs/2016-11-30.log

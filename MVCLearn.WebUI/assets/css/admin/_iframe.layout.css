@@ -1,7 +1,7 @@
 ﻿body {
   background-color: #eeeeee;
   font-family: 'Microsoft YaHei';
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 #page-title {
   display: none;
@@ -292,14 +292,24 @@ div.timeline-centered .right-aligned div.timeline-content::after {
   border: solid 10px transparent;
   border-right-color: #ffffff;
 }
-div.chat-conversaton div.conversaton-item {
-  margin-bottom: 20px;
+div.chat-conversation {
+  position: relative;
 }
-div.chat-conversaton div.left-aligned {
-  float: left;
+div.chat-conversation::after {
+  content: '';
+  display: block;
   clear: both;
 }
-div.chat-conversaton div.left-aligned div.chat-icon {
+div.chat-conversation > div.conversation-item {
+  margin-bottom: 20px;
+  position: relative;
+  clear: both;
+}
+div.chat-conversation > div.conversation-item.left-aligned {
+  float: left;
+  margin-right: 70px;
+}
+div.chat-conversation > div.conversation-item.left-aligned > div.chat-icon {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -315,21 +325,21 @@ div.chat-conversaton div.left-aligned div.chat-icon {
   color: #ffffff;
   background-color: #7c38bc;
 }
-div.chat-conversaton div.left-aligned div.chat-heard {
+div.chat-conversation > div.conversation-item.left-aligned > div.chat-heard {
   position: relative;
   left: 50px;
 }
-div.chat-conversaton div.left-aligned div.chat-heard span {
+div.chat-conversation > div.conversation-item.left-aligned > div.chat-heard span {
   font-size: 12px;
   color: #979898;
 }
-div.chat-conversaton div.left-aligned div.chat-content {
+div.chat-conversation > div.conversation-item.left-aligned > div.chat-content {
   position: relative;
   padding: 10px 20px;
   margin-left: 50px;
   background-color: #ffffff;
 }
-div.chat-conversaton div.left-aligned div.chat-content::after {
+div.chat-conversation > div.conversation-item.left-aligned > div.chat-content::after {
   content: '';
   position: absolute;
   right: 100%;
@@ -339,11 +349,11 @@ div.chat-conversaton div.left-aligned div.chat-content::after {
   border: solid 8px transparent;
   border-right-color: #ffffff;
 }
-div.chat-conversaton div.right-aligned {
+div.chat-conversation > div.conversation-item.right-aligned {
   float: right;
-  clear: both;
+  margin-left: 70px;
 }
-div.chat-conversaton div.right-aligned div.chat-icon {
+div.chat-conversation > div.conversation-item.right-aligned > div.chat-icon {
   float: right;
   position: relative;
   width: 40px;
@@ -360,24 +370,23 @@ div.chat-conversaton div.right-aligned div.chat-icon {
   color: #ffffff;
   background-color: #7c38bc;
 }
-div.chat-conversaton div.right-aligned div.chat-heard {
+div.chat-conversation > div.conversation-item.right-aligned > div.chat-heard {
   position: relative;
   float: right;
   right: 10px;
 }
-div.chat-conversaton div.right-aligned div.chat-heard span {
+div.chat-conversation > div.conversation-item.right-aligned > div.chat-heard span {
   font-size: 12px;
   color: #979898;
 }
-div.chat-conversaton div.right-aligned div.chat-content {
-  clear: both;
-  top: -20px;
+div.chat-conversation > div.conversation-item.right-aligned > div.chat-content {
   position: relative;
-  padding: 10px 20px;
+  margin-top: 20px;
   margin-right: 50px;
+  padding: 10px 20px;
   background-color: #ffffff;
 }
-div.chat-conversaton div.right-aligned div.chat-content::after {
+div.chat-conversation > div.conversation-item.right-aligned > div.chat-content::after {
   content: '';
   position: absolute;
   left: 100%;

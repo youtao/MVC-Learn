@@ -11,7 +11,7 @@ var _layout = {
             var $pageFooter = $('#page-footer');
             if ($pageFooter.is(':hidden')) {
                 _this.onresize();
-           }
+            }
         }, 100);
     },
     initPageTitle: function () {
@@ -27,7 +27,7 @@ var _layout = {
         var $pageFooter = $('#page-footer');
         var marginTop = height -
             $pageBody.outerHeight() -
-            $pageFooter.outerHeight();
+            $pageFooter.outerHeight() - 20;
         if (!$pageTitle.is(':hidden')) { // 如果隐藏了就不减去高度
             marginTop -= $pageTitle.outerHeight();
         }
