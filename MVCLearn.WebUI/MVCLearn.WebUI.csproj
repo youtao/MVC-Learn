@@ -256,6 +256,7 @@
     <Content Include="Areas\Admin\Views\Timeline\Index.cshtml" />
     <Content Include="assets\css\Admin\timeline.less" />
     <Content Include="Areas\Admin\Views\Timeline\Centered.cshtml" />
+    <Content Include="Areas\Admin\Views\Timeline\Chat.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">

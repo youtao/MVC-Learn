@@ -292,3 +292,98 @@ div.timeline-centered .right-aligned div.timeline-content::after {
   border: solid 10px transparent;
   border-right-color: #ffffff;
 }
+div.chat-conversaton div.conversaton-item {
+  margin-bottom: 20px;
+}
+div.chat-conversaton div.left-aligned {
+  float: left;
+  clear: both;
+}
+div.chat-conversaton div.left-aligned div.chat-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  font-size: 1.4em;
+  line-height: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -moz-box-shadow: 0 0 0 3px #ffffff;
+  -webkit-box-shadow: 0 0 0 3px #ffffff;
+  box-shadow: 0 0 0 3px #ffffff;
+  text-align: center;
+  color: #ffffff;
+  background-color: #7c38bc;
+}
+div.chat-conversaton div.left-aligned div.chat-heard {
+  position: relative;
+  left: 50px;
+}
+div.chat-conversaton div.left-aligned div.chat-heard span {
+  font-size: 12px;
+  color: #979898;
+}
+div.chat-conversaton div.left-aligned div.chat-content {
+  position: relative;
+  padding: 10px 20px;
+  margin-left: 50px;
+  background-color: #ffffff;
+}
+div.chat-conversaton div.left-aligned div.chat-content::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 5px;
+  width: 0;
+  height: 0;
+  border: solid 8px transparent;
+  border-right-color: #ffffff;
+}
+div.chat-conversaton div.right-aligned {
+  float: right;
+  clear: both;
+}
+div.chat-conversaton div.right-aligned div.chat-icon {
+  float: right;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  font-size: 1.4em;
+  line-height: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -moz-box-shadow: 0 0 0 3px #ffffff;
+  -webkit-box-shadow: 0 0 0 3px #ffffff;
+  box-shadow: 0 0 0 3px #ffffff;
+  text-align: center;
+  color: #ffffff;
+  background-color: #7c38bc;
+}
+div.chat-conversaton div.right-aligned div.chat-heard {
+  position: relative;
+  float: right;
+  right: 10px;
+}
+div.chat-conversaton div.right-aligned div.chat-heard span {
+  font-size: 12px;
+  color: #979898;
+}
+div.chat-conversaton div.right-aligned div.chat-content {
+  clear: both;
+  top: -20px;
+  position: relative;
+  padding: 10px 20px;
+  margin-right: 50px;
+  background-color: #ffffff;
+}
+div.chat-conversaton div.right-aligned div.chat-content::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 5px;
+  width: 0;
+  height: 0;
+  border: solid 8px transparent;
+  border-left-color: #ffffff;
+}

@@ -157,6 +157,12 @@
         "icon": "fa fa-align-center",
         "url": "/Admin/Timeline/Centered",
         "children": []
+      },
+      {
+        "title": "聊天",
+        "icon": "fa fa-wechat",
+        "url": "/Admin/Timeline/Chat",
+        "children": []
       }
     ]
   },
