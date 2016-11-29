@@ -43,6 +43,7 @@ div.menu-heard {
 }
 ul.menu-main {
   padding: 20px 40px;
+  list-style: none;
 }
 ul.menu-main ul {
   display: none;

@@ -8,10 +8,10 @@ var _layout = {
         $('#page-body').resize(this.onresize);
         $(window).resize(this.onresize);
         setTimeout(function () { // 防止第一次初始化与ajax冲突
-            var marginTop = $('#page-footer').css('margin-top');
-            if (!marginTop) {
+            var $pageFooter = $('#page-footer');
+            if ($pageFooter.is(':hidden')) {
                 _this.onresize();
-            }
+           }
         }, 100);
     },
     initPageTitle: function () {
