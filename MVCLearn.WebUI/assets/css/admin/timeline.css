@@ -234,7 +234,7 @@ div.chat-conversation::after {
   clear: both;
 }
 div.chat-conversation > div.conversation-item {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   position: relative;
   clear: both;
 }
@@ -268,9 +268,10 @@ div.chat-conversation > div.conversation-item.left-aligned > div.chat-heard span
 }
 div.chat-conversation > div.conversation-item.left-aligned > div.chat-content {
   position: relative;
-  padding: 10px 20px;
+  padding: 5px 8px;
   margin-left: 50px;
   background-color: #ffffff;
+  font-size: 12px;
 }
 div.chat-conversation > div.conversation-item.left-aligned > div.chat-content::after {
   content: '';
@@ -316,8 +317,9 @@ div.chat-conversation > div.conversation-item.right-aligned > div.chat-content {
   position: relative;
   margin-top: 20px;
   margin-right: 50px;
-  padding: 10px 20px;
+  padding: 5px 8px;
   background-color: #ffffff;
+  font-size: 12px;
 }
 div.chat-conversation > div.conversation-item.right-aligned > div.chat-content::after {
   content: '';
