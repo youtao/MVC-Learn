@@ -6,7 +6,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FB2AF458-58E0-4B17-B5FB-8D953FD7912C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -21,7 +22,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -140,10 +142,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\js\chat.js" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\lytlc.cn.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js">
       <DependentUpon>jquery-3.1.1.js</DependentUpon>
     </None>
+    <Content Include="html\chat.html" />
     <Content Include="html\index.html" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js">
@@ -159,6 +164,7 @@
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js">
       <DependentUpon>jquery.signalR-2.2.1.js</DependentUpon>
     </Content>
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -245,7 +251,8 @@
           <IISUrl>http://localhost:26949/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

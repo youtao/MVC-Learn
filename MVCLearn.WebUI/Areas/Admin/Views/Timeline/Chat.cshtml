@@ -2,108 +2,36 @@
 @{
     ViewBag.Title = "Chat";
 }
+@section LibScripts
+{
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+}
+@section CustScripts
+{
+    <script src="http://localhost:26949/signalr/hubs"></script>
+    <script src="~/assets/js/Admin/Timeline/Chat.js"></script>
+}
 
-<div class="chat-conversation">
-    <div class="conversation-item left-aligned">
-        <div class="chat-icon">
-            <span class="fa fa-lastfm"></span>
-        </div>
-        <div class="chat-heard">
-            <span class="nickname">小宝宝</span>
-            <span class="time">03:45</span>
-        </div>
-        <div class="chat-content">
-            你好呀O(∩_∩)O哈哈哈~
+<div class="row">
+    <div class="col-md-12">
+        <div class="input-group">
+            <input type="text" class="form-control" id="messages">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="send-messages">发送</button>
+            </span>
         </div>
     </div>
-    <div class="conversation-item left-aligned">
+</div>
+<hr />
+<div class="chat-conversation" id="app">
+    <div class="conversation-item " v-bind:class="message.aligned" v-for="message in messages">
         <div class="chat-icon">
-            <span class="fa fa-lastfm"></span>
+            <span class="fa" v-bind:class="message.icon"></span>
         </div>
         <div class="chat-heard">
-            <span class="nickname">小宝宝</span>
-            <span class="time">03:45</span>
+            <span class="nickname" v-if="message.username">{{message.username}}</span>
+            <span class="time">{{message.time}}</span>
         </div>
-        <div class="chat-content">
-            这是什么呢?^_^
-        </div>
-    </div>
-    <div class="conversation-item right-aligned">
-        <div class="chat-icon">
-            <span class="fa fa-database"></span>
-        </div>
-        <div class="chat-heard">
-            <span class="time">03:45</span>
-
-        </div>
-        <div class="chat-content">
-            这是内容
-        </div>
-    </div>
-
-    <div class="conversation-item left-aligned">
-        <div class="chat-icon">
-            <span class="fa fa-lastfm"></span>
-        </div>
-        <div class="chat-heard">
-            <span class="nickname">小宝宝</span>
-            <span class="time">03:45</span>
-        </div>
-        <div class="chat-content">
-            这是内容这是内容这是内容这是内容这是
-            内容这是内容这是内容这是内容这是内容这是内容
-        </div>
-    </div>
-    <div class="conversation-item right-aligned">
-        <div class="chat-icon">
-            <span class="fa fa-database"></span>
-        </div>
-        <div class="chat-heard">
-            <span class="time">03:45</span>
-
-        </div>
-        <div class="chat-content">
-            这是内容这是内容这是内容这
-            这是内容这是内容这是内容这是内容这是内容
-        </div>
-    </div>
-    <div class="conversation-item right-aligned">
-        <div class="chat-icon">
-            <span class="fa fa-database"></span>
-        </div>
-        <div class="chat-heard">
-            <span class="time">03:45</span>
-
-        </div>
-        <div class="chat-content">
-            这是内容这是内容这是内容这是内容
-            这是内容这是内容这是内容这是内容
-        </div>
-    </div>
-
-    <div class="conversation-item left-aligned">
-        <div class="chat-icon">
-            <span class="fa fa-lastfm"></span>
-        </div>
-        <div class="chat-heard">
-            <span class="nickname">小宝宝</span>
-            <span class="time">03:45</span>
-        </div>
-        <div class="chat-content">
-            这是内容这是内容这是内
-            这是内容这是内容这是内
-        </div>
-    </div>
-    <div class="conversation-item right-aligned">
-        <div class="chat-icon">
-            <span class="fa fa-database"></span>
-        </div>
-        <div class="chat-heard">
-            <span class="time">03:45</span>
-
-        </div>
-        <div class="chat-content">
-            ( ^_^ )/~~拜拜
-        </div>
+        <div class="chat-content">{{message.content}}</div>
     </div>
 </div>

@@ -3,6 +3,8 @@ using System.Configuration;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
+using MVCLearn.WebSignalR.SignalR;
 using Owin;
 
 [assembly: OwinStartup(typeof(MVCLearn.WebSignalR.Startup))]
@@ -22,10 +24,7 @@ namespace MVCLearn.WebSignalR
                 port: Convert.ToInt32(ConfigurationManager.AppSettings["redis_port"]),
                 password: ConfigurationManager.AppSettings["redis_password"],
                 eventKey: "MVCLearn-SignalR");
-            app.Map("", conf =>
-            {
-                
-            });
+            app.UseCors(CorsOptions.AllowAll);
             app.MapSignalR();
         }
     }

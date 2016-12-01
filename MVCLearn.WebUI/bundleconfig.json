@@ -40,5 +40,11 @@
     "inputFiles": [
       "assets/js/global.config.js"
     ]
+  },
+  {
+    "outputFileName": "assets/js/Admin/Timeline/Chat.min.js",
+    "inputFiles": [
+      "assets/js/Admin/Timeline/Chat.js"
+    ]
   }
 ]
