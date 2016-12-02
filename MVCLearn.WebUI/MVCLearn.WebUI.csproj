@@ -159,6 +159,12 @@
     <Content Include="assets\css\Admin\timeline.min.css">
       <DependentUpon>timeline.css</DependentUpon>
     </Content>
+    <Content Include="assets\css\Admin\_app.layout.css">
+      <DependentUpon>_app.layout.less</DependentUpon>
+    </Content>
+    <Content Include="assets\css\Admin\_app.layout.min.css">
+      <DependentUpon>_app.layout.css</DependentUpon>
+    </Content>
     <Content Include="assets\css\Admin\_iframe.layout.css">
       <DependentUpon>_iframe.layout.less</DependentUpon>
     </Content>
@@ -190,6 +196,9 @@
     <Content Include="assets\js\global.config.js" />
     <Content Include="assets\js\global.config.min.js">
       <DependentUpon>global.config.js</DependentUpon>
+    </Content>
+    <Content Include="assets\js\_app.layout.min.js">
+      <DependentUpon>_app.layout.js</DependentUpon>
     </Content>
     <Content Include="assets\js\_iframe.layout.js" />
     <Content Include="assets\js\_iframe.layout.min.js">
@@ -261,6 +270,7 @@
     <Content Include="assets\css\Admin\timeline.less" />
     <Content Include="Areas\Admin\Views\Timeline\Centered.cshtml" />
     <Content Include="Areas\Admin\Views\Timeline\Chat.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AppLayout.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -438,6 +448,12 @@
       <Project>{4f854e06-d046-45e5-b561-bb14b30119f7}</Project>
       <Name>MVCLearn.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\css\Admin\_app.layout.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\js\_app.layout.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

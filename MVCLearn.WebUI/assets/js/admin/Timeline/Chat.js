@@ -1,6 +1,9 @@
 ﻿$(function () {
+    onresize();
+    $(window).resize(onresize);
+    $('#input-area').resize(onresize);
     var vue = new Vue({
-        el: '#app',
+        el: '#chat-app',
         data: {
             messages: []
         }
@@ -18,8 +21,8 @@
             aligned: 'left-aligned',
             icon: 'fa-lastfm',
             //username: connectionid,
-            username: '对方',
-            time: new Date().toLocaleTimeString(),
+            username: '',
+            time: new Date().Format('hh:mm:ss'),
             content: messages
         });
     };
@@ -27,15 +30,39 @@
 
     });
     $('#send-messages').click(function () {
-        var messages = $('#messages').val();
-        $('#messages').val('');
+        var messages = $('#chat-input').text();
+        $('#chat-input').text('');
         vue.messages.push({
             aligned: 'right-aligned',
             icon: 'fa-database',
             username: '',
-            time: new Date().toLocaleTimeString(),
+            time: new Date().Format('hh:mm:ss'),
             content: messages
         });
         chathub.server.sendMessages(messages);
+        $('#send-messages').attr('disabled', 'disabled');
+    });
+
+    $('#chat-conversation').perfectScrollbar();
+    $('div.chat-input').perfectScrollbar();
+
+    $('#chat-input').bind('input propertychange', function () {
+        var text = $(this).text();
+        if (text.trim().length>0) {
+            $('#send-messages').removeAttr('disabled');
+        } else {
+            $('#send-messages').attr('disabled', 'disabled')
+        }
     });
 });
+
+
+function onresize(e) {
+    var height = $(window).height();
+    var $inputArea = $('#input-area');
+    var $chatConversation = $('#chat-conversation');
+    var maxHeight = height -
+        $inputArea.outerHeight();
+    $chatConversation.css('height', maxHeight);
+    $('#chat-conversation').scrollTop($('#chat-conversation')[0].scrollHeight);
+}

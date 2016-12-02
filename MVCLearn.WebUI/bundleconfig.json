@@ -46,5 +46,11 @@
     "inputFiles": [
       "assets/js/Admin/Timeline/Chat.js"
     ]
+  },
+  {
+    "outputFileName": "assets/js/_app.layout.min.js",
+    "inputFiles": [
+      "assets/js/_app.layout.js"
+    ]
   }
 ]

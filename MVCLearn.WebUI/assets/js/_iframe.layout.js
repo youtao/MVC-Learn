@@ -4,9 +4,10 @@
 var _layout = {
     init: function () {
         var _this = this;
-        this.initPageTitle();
-        $('#page-body').resize(this.onresize);
-        $(window).resize(this.onresize);
+        _this.initPageTitle();
+        $('#page-body').resize(_this.onresize);
+        $(window).resize(_this.onresize);
+        _this.scrollbalMenu();
         setTimeout(function () { // 防止第一次初始化与ajax冲突
             var $pageFooter = $('#page-footer');
             if ($pageFooter.is(':hidden')) {
@@ -41,5 +42,8 @@ var _layout = {
             });
         }
         $pageFooter.show();//初始化完后再显示
+    },
+    scrollbalMenu: function () {
+        $('div.chat-input').perfectScrollbar();
     }
 };

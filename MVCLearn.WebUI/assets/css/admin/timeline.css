@@ -227,6 +227,8 @@ div.timeline-centered .right-aligned div.timeline-content::after {
 }
 div.chat-conversation {
   position: relative;
+  overflow: hidden;
+  padding: 20px;
 }
 div.chat-conversation::after {
   content: '';
@@ -330,4 +332,42 @@ div.chat-conversation > div.conversation-item.right-aligned > div.chat-content::
   height: 0;
   border: solid 8px transparent;
   border-left-color: #ffffff;
+}
+div.chat-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+div.input-area {
+  position: fixed;
+  display: table;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+div.input-area div.left {
+  margin: 0;
+  padding: 0;
+  display: table-cell;
+  vertical-align: bottom;
+}
+div.input-area div.left div.chat-input {
+  position: relative;
+  padding: 6px;
+  overflow: hidden;
+  min-height: 21px;
+  max-height: 200px;
+  width: 100%;
+  background-color: #ffffff;
+}
+div.input-area div.right {
+  vertical-align: bottom;
+  display: table-cell;
+  margin: 0;
+  padding-left: 5px;
+  width: 40px;
 }

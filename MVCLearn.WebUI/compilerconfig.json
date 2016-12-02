@@ -22,5 +22,9 @@
   {
     "outputFile": "assets/css/Admin/timeline.css",
     "inputFile": "assets/css/Admin/timeline.less"
+  },
+  {
+    "outputFile": "assets/css/Admin/_app.layout.css",
+    "inputFile": "assets/css/Admin/_app.layout.less"
   }
 ]

@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Chat";
+    Layout = "~/Areas/Admin/Views/Shared/_AppLayout.cshtml";
 }
 @section LibScripts
 {
@@ -11,27 +12,28 @@
     <script src="http://localhost:26949/signalr/hubs"></script>
     <script src="~/assets/js/Admin/Timeline/Chat.js"></script>
 }
+<div class="chat-app" id="chat-app">
+    <div class="chat-conversation" id="chat-conversation">
+        <div class="conversation-item " v-bind:class="message.aligned" v-for="message in messages">
+            <div class="chat-icon">
+                <span class="fa" v-bind:class="message.icon"></span>
+            </div>
+            <div class="chat-heard">
+                <span class="nickname" v-if="message.username">{{message.username}}</span>
+                <span class="time">{{message.time}}</span>
+            </div>
+            <div class="chat-content">{{message.content}}</div>
+        </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="input-group">
-            <input type="text" class="form-control" id="messages">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="send-messages">发送</button>
-            </span>
-        </div>
     </div>
-</div>
-<hr />
-<div class="chat-conversation" id="app">
-    <div class="conversation-item " v-bind:class="message.aligned" v-for="message in messages">
-        <div class="chat-icon">
-            <span class="fa" v-bind:class="message.icon"></span>
+
+
+    <div class="input-area" id="input-area">
+        <div class="left">
+            <div contenteditable="true" class="chat-input" id="chat-input"></div>
         </div>
-        <div class="chat-heard">
-            <span class="nickname" v-if="message.username">{{message.username}}</span>
-            <span class="time">{{message.time}}</span>
+        <div class="right">
+            <button class="btn btn-default" disabled="disabled" id="send-messages">发送</button>
         </div>
-        <div class="chat-content">{{message.content}}</div>
     </div>
 </div>

@@ -1,69 +1,12 @@
-﻿body {
-  background-color: #eeeeee;
+﻿html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: 'Microsoft YaHei';
-  padding: 20px 20px 0 20px;
 }
-#page-title {
-  display: none;
-  background: #f8f8f8;
-  box-shadow: 0 1px 0 rgba(0, 1, 1, 0.08), inset 0 1px 0 #ededed;
-}
-.breadcrumb {
-  line-height: 30px;
-  background: none;
-  margin: 0;
-}
-.breadcrumb a,
-.breadcrumb .fa {
-  text-decoration: none;
-  color: #979898;
-}
-.breadcrumb .active {
-  color: #777777;
-}
-#page-footer {
-  display: none;
-  padding: 20px 30px;
-  border-top: 1px solid #dddddd;
-}
-table {
-  font-size: 12px;
-  text-align: center;
-}
-table th {
-  text-align: center;
-}
-.panel-body {
-  padding: 10px 15px;
-}
-div.btn-group.pull-right ul.dropdown-menu {
-  min-width: inherit;
-}
-div.btn-group.pull-right ul.dropdown-menu .divider {
-  margin: 0;
-}
-div.btn-group.pull-right ul.dropdown-menu a {
-  padding: 3px 12px;
-}
-.panel-footer .pagination-right {
-  height: 34px;
-}
-.panel-footer .pagination-right .pagination {
-  margin: 0;
-  float: right;
-}
-table.table-tree .tree-operator:hover {
-  color: mediumseagreen;
-  cursor: pointer;
-}
-table.table-tree .tree-folder {
-  width: 12px;
-}
-.fa-file-excel-o {
-  color: green;
-}
-.fa-share-alt-square {
-  color: #FF6C00;
+body {
+  background-color: #eeeeee;
 }
 /*时间轴*/
 ul.timeline {
