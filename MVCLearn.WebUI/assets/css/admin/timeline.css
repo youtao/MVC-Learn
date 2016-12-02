@@ -228,21 +228,12 @@ div.timeline-centered .right-aligned div.timeline-content::after {
 div.chat-conversation {
   position: relative;
   overflow: hidden;
-  padding: 20px;
-}
-div.chat-conversation::after {
-  content: '';
-  display: block;
-  clear: both;
+  margin: 0;
+  padding: 0;
 }
 div.chat-conversation > div.conversation-item {
   margin-bottom: 10px;
-  position: relative;
-  clear: both;
-}
-div.chat-conversation > div.conversation-item.left-aligned {
-  float: left;
-  margin-right: 70px;
+  padding: 15px;
 }
 div.chat-conversation > div.conversation-item.left-aligned > div.chat-icon {
   position: absolute;
@@ -262,18 +253,21 @@ div.chat-conversation > div.conversation-item.left-aligned > div.chat-icon {
 }
 div.chat-conversation > div.conversation-item.left-aligned > div.chat-heard {
   position: relative;
-  left: 50px;
+  margin: 0;
+  text-align: left;
 }
 div.chat-conversation > div.conversation-item.left-aligned > div.chat-heard span {
   font-size: 12px;
   color: #979898;
+  margin-left: 50px;
 }
 div.chat-conversation > div.conversation-item.left-aligned > div.chat-content {
   position: relative;
+  margin: 0 70px 0 50px;
   padding: 5px 8px;
-  margin-left: 50px;
   background-color: #ffffff;
-  font-size: 12px;
+  font-size: 14px;
+  word-wrap: break-word;
 }
 div.chat-conversation > div.conversation-item.left-aligned > div.chat-content::after {
   content: '';
@@ -284,10 +278,6 @@ div.chat-conversation > div.conversation-item.left-aligned > div.chat-content::a
   height: 0;
   border: solid 8px transparent;
   border-right-color: #ffffff;
-}
-div.chat-conversation > div.conversation-item.right-aligned {
-  float: right;
-  margin-left: 70px;
 }
 div.chat-conversation > div.conversation-item.right-aligned > div.chat-icon {
   float: right;
@@ -308,20 +298,21 @@ div.chat-conversation > div.conversation-item.right-aligned > div.chat-icon {
 }
 div.chat-conversation > div.conversation-item.right-aligned > div.chat-heard {
   position: relative;
-  float: right;
-  right: 10px;
+  margin: 0;
+  text-align: right;
 }
 div.chat-conversation > div.conversation-item.right-aligned > div.chat-heard span {
   font-size: 12px;
   color: #979898;
+  margin-right: 10px;
 }
 div.chat-conversation > div.conversation-item.right-aligned > div.chat-content {
   position: relative;
-  margin-top: 20px;
-  margin-right: 50px;
+  margin: 0 50px 0 70px;
   padding: 5px 8px;
   background-color: #ffffff;
-  font-size: 12px;
+  font-size: 14px;
+  word-wrap: break-word;
 }
 div.chat-conversation > div.conversation-item.right-aligned > div.chat-content::after {
   content: '';
@@ -342,32 +333,23 @@ div.chat-app {
   height: 100%;
 }
 div.input-area {
-  position: fixed;
-  display: table;
+  display: none;
+  position: relative;
   bottom: 0;
   margin: 0;
   padding: 0;
-  width: 100%;
 }
-div.input-area div.left {
-  margin: 0;
-  padding: 0;
-  display: table-cell;
-  vertical-align: bottom;
-}
-div.input-area div.left div.chat-input {
-  position: relative;
-  padding: 6px;
+div.input-area div.chat-input {
+  padding: 7px;
+  margin-right: 54px;
   overflow: hidden;
-  min-height: 21px;
+  min-height: 20px;
   max-height: 200px;
-  width: 100%;
   background-color: #ffffff;
+  word-wrap: break-word;
 }
-div.input-area div.right {
-  vertical-align: bottom;
-  display: table-cell;
-  margin: 0;
-  padding-left: 5px;
-  width: 40px;
+div.input-area button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
