@@ -1,8 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using MVCLearn.Config;
-using StackExchange.Profiling;
-using StackExchange.Profiling.EntityFramework6;
 
 namespace MVCLearn.WebUI
 {
@@ -13,19 +11,11 @@ namespace MVCLearn.WebUI
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            MiniProfilerEF6.Initialize();
+#if !DEBUG
             EntityFramewokConfig.HeatLoad();
+#endif
             AutoMapperConfig.MapperInitialize();
             AutofacConfig.ConfigureContainer();
-        }
-        protected void Application_BeginRequest()
-        {
-            MiniProfiler.Start();
-        }
-
-        protected void Application_EndRequest()
-        {
-            MiniProfiler.Stop();
         }
     }
 }

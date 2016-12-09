@@ -1,26 +1,15 @@
-﻿@using StackExchange.Profiling
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @RenderSection("Styles", false)
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.css" rel="stylesheet" />
-    <link href="~/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" rel="stylesheet" />
-    <link href="~/node_modules/toastr/build/toastr.min.css" rel="stylesheet" />
-    <link href="~/assets/css/Admin/_iframe.layout.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/node_modules/vue/dist/vue.js"></script>
-    <script src="~/Scripts/js-cookie/js.cookie.js"></script>
-    <script src="~/Scripts/jquery.ba-resize.min.js"></script>
-    <script src="~/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
-    <script src="~/node_modules/toastr/build/toastr.min.js"></script>
-    <script src="~/assets/js/utils.min.js"></script>
-    <script src="~/assets/js/global.config.min.js"></script>
-    <script src="~/assets/js/_iframe.layout.min.js"></script>
+    <link href="~/Content/bootstrap.min.css?v=@FileVersion.CSS" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css?v=@FileVersion.CSS" rel="stylesheet" />
+    <link href="~/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css?v=@FileVersion.CSS" rel="stylesheet" />
+    <link href="~/node_modules/toastr/build/toastr.min.css?v=@FileVersion.CSS" rel="stylesheet" />
+    <link href="~/assets/css/Admin/_iframe.layout.min.css?v=@FileVersion.CSS" rel="stylesheet" />
 </head>
 <body>
     <div id="page-title">@RenderSection("PageTitle", false)</div>
@@ -28,10 +17,21 @@
         @RenderBody()
     </div>
     <footer id="page-footer">
-        <p>© @DateTime.Now.Year <strong>MVC-Learn</strong> - by youtao</p>
+        <p>
+            © @DateTime.Now.Year <strong>MVC-Learn</strong> - by youtao
+        </p>
     </footer>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js?v=@FileVersion.JS"></script>
+    <script src="~/node_modules/vue/dist/vue.min.js?v=@FileVersion.JS"></script>
+    <script src="~/Scripts/js-cookie/js.cookie-2.1.3.min.js"></script>
+    <script src="~/Scripts/jquery.ba-resize.min.js?v=@FileVersion.JS"></script>
+    <script src="~/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js?v=@FileVersion.JS"></script>
+    <script src="~/node_modules/toastr/build/toastr.min.js?v=@FileVersion.JS"></script>
+    <script src="~/assets/js/utils.min.js?v=@FileVersion.JS"></script>
+    <script src="~/assets/js/global.config.min.js?v=@FileVersion.JS"></script>
+    <script src="~/assets/js/_iframe.layout.min.js?v=@FileVersion.JS"></script>
     @RenderSection("LibScripts", false)
     @RenderSection("CustScripts", false)
-    @StackExchange.Profiling.MiniProfiler.RenderIncludes(showTimeWithChildren: true, position: RenderPosition.BottomRight)
 </body>
 </html>

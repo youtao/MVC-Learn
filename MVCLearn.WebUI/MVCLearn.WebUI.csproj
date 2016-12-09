@@ -74,14 +74,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
-      <HintPath>C:\Global NuGet Packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MiniProfiler.EntityFramework6, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
-      <HintPath>C:\Global NuGet Packages\MiniProfiler.EF6.3.0.11\lib\net40\MiniProfiler.EntityFramework6.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>C:\Global NuGet Packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -387,6 +379,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalConfig\FileVersion.cs" />
     <Compile Include="JsonNET\JsonNetController.cs" />
     <Compile Include="JsonNET\JsonNetResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
