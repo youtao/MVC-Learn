@@ -8,7 +8,7 @@ var _page = {
     init: function () {
         $(window).resize(this.onresize);
         this.initMenu();
-        this.initIframe(GlobalConfig.IframeSrc);
+        this.initIframe(GlobalConfig.Iframe);
         this.eventListener();
         this.scrollbalMenu();
     },

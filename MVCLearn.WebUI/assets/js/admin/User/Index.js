@@ -13,7 +13,7 @@ var _page = {
     },
     loadData: function (vue_users) {
         var _this = this;
-        $.get(GlobalConfig.Server + 'User', null, function (res) {
+        $.get(GlobalConfig.WebApi + 'User', null, function (res) {
             _this.fillData(vue_users, res);
         });
     },

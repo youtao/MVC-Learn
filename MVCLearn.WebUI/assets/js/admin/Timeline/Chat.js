@@ -1,67 +1,66 @@
 ﻿$(function () {
-
-    var lastHeight = $('#chat-input').outerHeight();
-
-
-    onresize();
-    $(window).resize(onresize);
-    $('#chat-input').resize(onresize);
-    var vue = new Vue({
-        el: '#chat-app',
-        data: {
-            messages: []
-        }
-    });
-    $.connection.hub.url = 'http://localhost:26949/signalr';
-    var chathub = $.connection.chatHub;
-    chathub.client.sendMessages = function (connectionid, messages) {
-        vue.messages.push({
-            aligned: 'left-aligned',
-            icon: 'fa-lastfm',
-            //username: connectionid,
-            username: '',
-            time: new Date().Format('hh:mm:ss'),
-            content: messages
+    $.getScript(GlobalConfig.SignalrHub, function (data, status, jqXHR) {
+        var lastHeight = $('#chat-input').outerHeight();
+        onresize();
+        $(window).resize(onresize);
+        $('#chat-input').resize(onresize);
+        var vue = new Vue({
+            el: '#chat-app',
+            data: {
+                messages: []
+            }
         });
-    };
-    $.connection.hub.start();
-    $('#send-messages').click(function () {
-        var messages = $('#chat-input').text();
-        $('#chat-input').text('');
-        vue.messages.push({
-            aligned: 'right-aligned',
-            icon: 'fa-database',
-            username: '',
-            time: new Date().Format('hh:mm:ss'),
-            content: messages
+        $.connection.hub.url = GlobalConfig.SignalR;
+        var chathub = $.connection.chatHub;
+        chathub.client.sendMessages = function (connectionid, messages) {
+            vue.messages.push({
+                aligned: 'left-aligned',
+                icon: 'fa-lastfm',
+                //username: connectionid,
+                username: '',
+                time: new Date().Format('hh:mm:ss'),
+                content: messages
+            });
+        };
+        $.connection.hub.start();
+        $('#send-messages').click(function () {
+            var messages = $('#chat-input').text();
+            $('#chat-input').text('');
+            vue.messages.push({
+                aligned: 'right-aligned',
+                icon: 'fa-database',
+                username: '',
+                time: new Date().Format('hh:mm:ss'),
+                content: messages
+            });
+            chathub.server.sendMessages(messages);
+            $('#send-messages').attr('disabled', 'disabled');
+            lastHeight = $(this).outerHeight();
         });
-        chathub.server.sendMessages(messages);
-        $('#send-messages').attr('disabled', 'disabled');
-        lastHeight = $(this).outerHeight();
-    });
 
-    $('#chat-conversation').perfectScrollbar();
-    $('div.chat-input').perfectScrollbar();
+        $('#chat-conversation').perfectScrollbar();
+        $('div.chat-input').perfectScrollbar();
 
-    $('#chat-input').bind('input propertychange', function () {
-        if ($(this).outerHeight() !== lastHeight) {
+        $('#chat-input').bind('input propertychange', function () {
+            if ($(this).outerHeight() !== lastHeight) {
+                $('#chat-conversation').perfectScrollbar('update');
+                $('#chat-conversation').scrollTop($('#chat-conversation')[0].scrollHeight);
+                onresize();
+            }
+            lastHeight = $(this).outerHeight();
+            var text = $(this).text();
+            if (text.trim().length > 0) {
+                $('#send-messages').removeAttr('disabled');
+            } else {
+                $('#send-messages').attr('disabled', 'disabled')
+            }
+        });
+
+        vue.$watch('messages', function () {
             $('#chat-conversation').perfectScrollbar('update');
             $('#chat-conversation').scrollTop($('#chat-conversation')[0].scrollHeight);
             onresize();
-        }
-        lastHeight = $(this).outerHeight();
-        var text = $(this).text();
-        if (text.trim().length > 0) {
-            $('#send-messages').removeAttr('disabled');
-        } else {
-            $('#send-messages').attr('disabled', 'disabled')
-        }
-    });
-
-    vue.$watch('messages', function () {
-        $('#chat-conversation').perfectScrollbar('update');
-        $('#chat-conversation').scrollTop($('#chat-conversation')[0].scrollHeight);
-        onresize();
+        });
     });
 });
 

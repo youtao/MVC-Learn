@@ -25,7 +25,15 @@ namespace MVCLearn.WebSignalR
                 password: ConfigurationManager.AppSettings["redis_password"],
                 eventKey: "MVCLearn-SignalR");
             app.UseCors(CorsOptions.AllowAll);
-            app.MapSignalR();
+            app.MapSignalR(new HubConfiguration()
+            {
+#if DEBUG
+                EnableDetailedErrors = true
+#else
+                EnableDetailedErrors = false,
+                EnableJavaScriptProxies = false
+#endif
+            });
         }
     }
 }

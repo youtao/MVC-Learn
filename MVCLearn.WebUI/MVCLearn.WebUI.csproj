@@ -333,6 +333,7 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js">
       <DependentUpon>jquery-3.1.1.js</DependentUpon>
     </None>
+    <Content Include="Scripts\hubs.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js">
       <DependentUpon>jquery-3.1.1.js</DependentUpon>

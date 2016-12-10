@@ -9,7 +9,6 @@
 }
 @section CustScripts
 {
-    <script src="http://localhost:26949/signalr/hubs"></script>
     <script src="~/assets/js/Admin/Timeline/Chat.min.js?v=@FileVersion.JS"></script>
 }
 <div class="chat-app" id="chat-app">
@@ -25,7 +24,6 @@
             <div class="chat-content">{{message.content}}</div>
         </div>
     </div>
-
 
     <div class="input-area" id="input-area">
         <button class="btn btn-default" disabled="disabled" id="send-messages">发送</button>
