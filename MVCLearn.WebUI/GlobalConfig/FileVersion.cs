@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 
 namespace MVCLearn.WebUI.GlobalConfig
 {
@@ -14,7 +15,7 @@ namespace MVCLearn.WebUI.GlobalConfig
 #if DEBUG
                 return DateTime.Now.Ticks.ToString();
 #else
-                return "201612092124";
+                return ConfigurationManager.AppSettings["JSVersion"];
 #endif
             }
         }
@@ -26,7 +27,7 @@ namespace MVCLearn.WebUI.GlobalConfig
 #if DEBUG
                 return DateTime.Now.Ticks.ToString();
 #else
-                return "201612092124";
+                return ConfigurationManager.AppSettings["CSSVersion"];
 #endif
             }
         }
