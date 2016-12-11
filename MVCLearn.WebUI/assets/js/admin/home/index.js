@@ -129,7 +129,7 @@ function iframeOnLoad() {
     var now = new Date();
     var time = now.getTime() - start;
     time = (time / 1000).toFixed(2);
-    var title = now.Format('yyyy-MM-dd hh:mm');
+    var title = moment().format('L');
     var message = '页面加载完成(耗时:' + time + 's)';
     window.toastr.success(message, title, {
         closeButton: true,

@@ -18,7 +18,7 @@
                 icon: 'fa-lastfm',
                 //username: connectionid,
                 username: '',
-                time: new Date().Format('hh:mm:ss'),
+                time: moment().format('HH:mm:ss'),
                 content: messages
             });
         };
@@ -30,7 +30,7 @@
                 aligned: 'right-aligned',
                 icon: 'fa-database',
                 username: '',
-                time: new Date().Format('hh:mm:ss'),
+                time: moment().format('HH:mm:ss'),
                 content: messages
             });
             chathub.server.sendMessages(messages);
