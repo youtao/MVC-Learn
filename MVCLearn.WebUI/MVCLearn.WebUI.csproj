@@ -256,9 +256,14 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="node_modules\font-awesome\css\font-awesome.css" />
-    <Content Include="node_modules\font-awesome\css\font-awesome.min.css" />
+    <Content Include="node_modules\font-awesome\css\font-awesome.min.css">
+      <DependentUpon>font-awesome.css</DependentUpon>
+    </Content>
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="node_modules\highcharts\css\highcharts.css" />
+    <Content Include="node_modules\highcharts\css\highcharts.min.css">
+      <DependentUpon>highcharts.css</DependentUpon>
+    </Content>
     <Content Include="node_modules\highcharts\js\highcharts-3d.js" />
     <Content Include="node_modules\highcharts\js\highcharts-3d.src.js">
       <DependentUpon>highcharts-3d.js</DependentUpon>
@@ -288,18 +293,36 @@
     <Content Include="node_modules\highcharts\js\themes\sand-signika.js" />
     <Content Include="node_modules\highcharts\js\themes\skies.js" />
     <Content Include="node_modules\js-cookie\src\js.cookie.js" />
+    <Content Include="node_modules\js-cookie\src\js.cookie.min.js">
+      <DependentUpon>js.cookie.js</DependentUpon>
+    </Content>
     <Content Include="node_modules\moment\locale\zh-cn.js" />
+    <Content Include="node_modules\moment\locale\zh-cn.min.js">
+      <DependentUpon>zh-cn.js</DependentUpon>
+    </Content>
     <Content Include="node_modules\moment\min\locales.js" />
-    <Content Include="node_modules\moment\min\locales.min.js" />
+    <Content Include="node_modules\moment\min\locales.min.js">
+      <DependentUpon>locales.js</DependentUpon>
+    </Content>
     <Content Include="node_modules\moment\min\moment-with-locales.js" />
-    <Content Include="node_modules\moment\min\moment-with-locales.min.js" />
+    <Content Include="node_modules\moment\min\moment-with-locales.min.js">
+      <DependentUpon>moment-with-locales.js</DependentUpon>
+    </Content>
     <Content Include="node_modules\moment\min\moment.min.js" />
     <Content Include="node_modules\perfect-scrollbar\dist\css\perfect-scrollbar.css" />
-    <Content Include="node_modules\perfect-scrollbar\dist\css\perfect-scrollbar.min.css" />
-    <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.jquery.js" />
-    <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.jquery.min.js" />
+    <Content Include="node_modules\perfect-scrollbar\dist\css\perfect-scrollbar.min.css">
+      <DependentUpon>perfect-scrollbar.css</DependentUpon>
+    </Content>
+    <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.jquery.js">
+      <DependentUpon>perfect-scrollbar.js</DependentUpon>
+    </Content>
+    <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.jquery.min.js">
+      <DependentUpon>perfect-scrollbar.jquery.js</DependentUpon>
+    </Content>
     <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.js" />
-    <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.min.js" />
+    <Content Include="node_modules\perfect-scrollbar\dist\js\perfect-scrollbar.min.js">
+      <DependentUpon>perfect-scrollbar.js</DependentUpon>
+    </Content>
     <Content Include="node_modules\toastr\build\toastr.css" />
     <Content Include="node_modules\toastr\build\toastr.min.css">
       <DependentUpon>toastr.css</DependentUpon>
@@ -319,7 +342,9 @@
       <DependentUpon>vue.runtime.js</DependentUpon>
     </Content>
     <Content Include="node_modules\toastr\build\toastr.js.map" />
-    <Content Include="node_modules\font-awesome\css\font-awesome.css.map" />
+    <Content Include="node_modules\font-awesome\css\font-awesome.css.map">
+      <DependentUpon>font-awesome.css</DependentUpon>
+    </Content>
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.woff" />

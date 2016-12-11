@@ -64,5 +64,23 @@
     "inputFiles": [
       "Scripts/modernizr-2.8.3.js"
     ]
+  },
+  {
+    "outputFileName": "node_modules/highcharts/css/highcharts.min.css",
+    "inputFiles": [
+      "node_modules/highcharts/css/highcharts.css"
+    ]
+  },
+  {
+    "outputFileName": "node_modules/js-cookie/src/js.cookie.min.js",
+    "inputFiles": [
+      "node_modules/js-cookie/src/js.cookie.js"
+    ]
+  },
+  {
+    "outputFileName": "node_modules/moment/locale/zh-cn.min.js",
+    "inputFiles": [
+      "node_modules/moment/locale/zh-cn.js"
+    ]
   }
 ]
