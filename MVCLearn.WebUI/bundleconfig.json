@@ -46,5 +46,23 @@
     "inputFiles": [
       "assets/js/_app.layout.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/hubs.min.js",
+    "inputFiles": [
+      "Scripts/hubs.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/jquery.ba-resize.min.js",
+    "inputFiles": [
+      "Scripts/jquery.ba-resize.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/modernizr-2.8.3.min.js",
+    "inputFiles": [
+      "Scripts/modernizr-2.8.3.js"
+    ]
   }
 ]
