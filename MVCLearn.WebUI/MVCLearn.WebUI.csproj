@@ -186,9 +186,6 @@
     </Content>
     <Content Include="assets\js\Admin\Home\Index.js" />
     <Content Include="assets\js\global.config.js" />
-    <Content Include="assets\js\global.config.min.js">
-      <DependentUpon>global.config.js</DependentUpon>
-    </Content>
     <Content Include="assets\js\_app.layout.min.js">
       <DependentUpon>_app.layout.js</DependentUpon>
     </Content>
