@@ -15,7 +15,18 @@ namespace MVCLearn.Service.Test
         [Fact]
         public async Task AllUser_Valid_NotNull()
         {
-            var result = await this._service.AllUserAsync().ConfigureAwait(true);
+            var result = await this._service
+                .AllUserAsync()
+                .ConfigureAwait(true);
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public async Task AllUserWidthDapper_Valid_NotNull()
+        {
+            var result = await this._service
+                .AllUserWidthDapperAsync()
+                .ConfigureAwait(true);
             Assert.NotNull(result);
         }
     }

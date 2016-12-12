@@ -11,5 +11,11 @@ namespace MVCLearn.Service.Interface
         /// </summary>
         /// <returns></returns>
         Task<List<UserInfoDTO>> AllUserAsync();
+
+        /// <summary>
+        /// 全部用户(使用Dapper)
+        /// </summary>
+        /// <returns></returns>
+        Task<List<UserInfoDTO>> AllUserWidthDapperAsync();
     }
 }

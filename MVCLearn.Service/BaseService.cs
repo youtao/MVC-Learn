@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using MVCLearn.ModelBCL;
@@ -11,6 +13,8 @@ namespace MVCLearn.Service
         where TCurrentDbContext : DbContext, new()
         where TEntity : BaseModel, new()
     {
+        #region constructor
+
         protected BaseService() { }
 
         protected BaseService(HttpContextBase httpContext)
@@ -18,18 +22,20 @@ namespace MVCLearn.Service
             this.HttpContext = httpContext;
         }
 
+        #endregion
+
+        #region property
+
         /// <summary>
         /// 当前请求HTTP上下文
         /// </summary>
-        protected HttpContextBase HttpContext { get; set; }
-
+        protected HttpContextBase HttpContext { get; }
 
         #region CurrentDB
         /// <summary>
         /// 当前实体模型数据库上下文
         /// </summary>
         private TCurrentDbContext _currentDB;
-
         /// <summary>
         /// 当前实体模型数据库上下文
         /// </summary>
@@ -56,7 +62,6 @@ namespace MVCLearn.Service
         /// LearnDB数据库上下文
         /// </summary>
         private LearnDbContext _learnDB;
-
         /// <summary>
         /// LearnDB数据库上下文
         /// </summary>
@@ -75,17 +80,42 @@ namespace MVCLearn.Service
             }
         }
 
-        #endregion
-
+        /// <summary>
+        /// <para>LearnDB数据库上下文(多线程版,Multi Thread).</para>
+        /// <para>每次获取时重新再实例化一个,主要用于大量数据并发查询.</para>
+        /// </summary>
+        protected LearnDbContext LearnDbMT()
+        {
+            return new LearnDbContext();
+        }
 
         /// <summary>
-        /// 所有没被软删除的数据(当前实体模型)
+        /// LearnDB数据库SqlConnection.(每次获取重新实例化,没有打开连接)
+        /// </summary>
+        protected SqlConnection LearnDBConn()
+        {
+            var connStr = ConfigurationManager.ConnectionStrings["LearnDbContext"].ConnectionString;
+            return new SqlConnection(connStr);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region protected method
+
+        /// <summary>
+        /// 所有没被软删除的数据(当前实体模型).
         /// </summary>
         /// <returns></returns>
         protected IQueryable<TEntity> AllNotDelete()
         {
             return this.CurrentDB.Set<TEntity>().Where(e => e.Delete == false);
         }
+
+        #endregion
+
+        #region private method
 
         /// <summary>
         /// 获取数据库上下文,缓存到当前HTTP请求上下文中
@@ -108,5 +138,7 @@ namespace MVCLearn.Service
             }
             return dbContext;
         }
+
+        #endregion
     }
 }
