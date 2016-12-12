@@ -7,7 +7,7 @@ namespace MVCLearn.Model
     /// 权限
     /// </summary>
     [Table("Privilege_Privilege")]
-    public class Privilege : BaseModel
+    public class Privilege : IntBaseModel
     {
         /// <summary>
         /// 权限名

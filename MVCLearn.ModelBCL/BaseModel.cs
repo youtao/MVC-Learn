@@ -15,12 +15,6 @@ namespace MVCLearn.ModelBCL
         }
 
         /// <summary>
-        /// 主键Id
-        /// </summary>
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
-
-        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; }

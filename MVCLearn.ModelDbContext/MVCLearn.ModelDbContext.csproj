@@ -54,6 +54,10 @@
     <Compile Include="Migrations\201611210847241_初始化.Designer.cs">
       <DependentUpon>201611210847241_初始化.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612121349168_修改主键类型.cs" />
+    <Compile Include="Migrations\201612121349168_修改主键类型.Designer.cs">
+      <DependentUpon>201612121349168_修改主键类型.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +78,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611210847241_初始化.resx">
       <DependentUpon>201611210847241_初始化.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612121349168_修改主键类型.resx">
+      <DependentUpon>201612121349168_修改主键类型.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

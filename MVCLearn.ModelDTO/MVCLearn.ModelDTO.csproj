@@ -46,8 +46,8 @@
   <ItemGroup>
     <Compile Include="JsonExtensions\StringDateTimeConverter.cs" />
     <Compile Include="JsonExtensions\StringNumberConverter.cs" />
-    <Compile Include="Privilege\MenuDto.cs" />
-    <Compile Include="Privilege\UserInfoDto.cs" />
+    <Compile Include="Privilege\MenuDTO.cs" />
+    <Compile Include="Privilege\UserInfoDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseDto.cs" />
     <Compile Include="ResponseUtils.cs" />

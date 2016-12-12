@@ -8,9 +8,9 @@ namespace MVCLearn.WebAPI.AutofacModules
         protected override void Load(Autofac.ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(Assembly.Load("MVCLearn.Service"))
-                      .Where(t => t.Name.EndsWith("Service"))
-                      .AsImplementedInterfaces()
-                      .InstancePerLifetimeScope();
+                    .Where(t => t.Name.EndsWith("Service"))
+                    .AsImplementedInterfaces()
+                    .InstancePerLifetimeScope();
             base.Load(builder);
         }
 

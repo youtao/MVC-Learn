@@ -7,7 +7,7 @@ namespace MVCLearn.Model
     /// 角色
     /// </summary>
     [Table("Privilege_RoleInfo")]
-    public class RoleInfo : BaseModel
+    public class RoleInfo : IntBaseModel
     {
         /// <summary>
         /// 角色名

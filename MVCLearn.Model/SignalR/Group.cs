@@ -9,7 +9,7 @@ namespace MVCLearn.Model
     /// SignalR组
     /// </summary>
     [Table("SignalR_Group")]
-    public class Group : BaseModel
+    public class Group : LongBaseModel
     {
         /// <summary>
         /// 组名

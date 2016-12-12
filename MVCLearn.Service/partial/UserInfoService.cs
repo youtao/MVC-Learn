@@ -8,10 +8,10 @@ namespace MVCLearn.Service
 {
     public partial class UserInfoService
     {
-        public async Task<List<UserInfoDto>> AllUserAsync()
+        public async Task<List<UserInfoDTO>> AllUserAsync()
         {
             var dtoList = await this.AllNotDelete()
-                .ProjectTo<UserInfoDto>()
+                .ProjectTo<UserInfoDTO>()
                 .AsNoTracking()
                 .ToListAsync()
                 .ConfigureAwait(false);

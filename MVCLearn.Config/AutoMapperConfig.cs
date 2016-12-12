@@ -20,7 +20,7 @@ namespace MVCLearn.Config
         public DefaultProfile()
         {
             // model->dto this.CreateMap<model, dto>();
-            this.CreateMap<UserInfo, UserInfoDto>() // UserInfo-->UserInfoDto
+            this.CreateMap<UserInfo, UserInfoDTO>() // UserInfo-->UserInfoDTO
                 .ForMember(dto => dto.UserID, conf => conf.MapFrom(model => model.ID));
         }
     }

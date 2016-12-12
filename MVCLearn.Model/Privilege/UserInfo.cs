@@ -10,7 +10,7 @@ namespace MVCLearn.Model
     /// 用户
     /// </summary>
     [Table("Privilege_UserInfo")]
-    public class UserInfo : BaseModel
+    public class UserInfo : IntBaseModel
     {
         /// <summary>
         /// 用户名

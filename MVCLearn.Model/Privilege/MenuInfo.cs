@@ -5,7 +5,7 @@ using MVCLearn.ModelBCL;
 namespace MVCLearn.Model
 {
     [Table("Privilege_MenuInfo")]
-    public class MenuInfo : BaseModel
+    public class MenuInfo : IntBaseModel
     {
         public MenuInfo()
         {
@@ -38,8 +38,7 @@ namespace MVCLearn.Model
         /// 父级菜单Id
         /// </summary>
         [ForeignKey("Parent")]
-        public long? ParentID { get; set; }
-
+        public int? ParentID { get; set; }
         public virtual MenuInfo Parent { get; set; }
 
         /// <summary>

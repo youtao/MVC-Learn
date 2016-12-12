@@ -4,17 +4,17 @@ using Newtonsoft.Json;
 
 namespace MVCLearn.ModelDTO
 {
-    public class MenuDto
+    public class MenuDTO
     {
         /// <summary>
         /// 父级菜单Id
         /// </summary>
-        public long? ParentId { get; set; }
+        public int? ParentID { get; set; }
 
         /// <summary>
         /// 菜单Id
         /// </summary>
-        public long Id { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// 标题

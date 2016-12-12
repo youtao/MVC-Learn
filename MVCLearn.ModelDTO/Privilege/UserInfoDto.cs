@@ -7,9 +7,9 @@ namespace MVCLearn.ModelDTO
     /// <summary>
     /// UserInfo DTO
     /// </summary>
-    public class UserInfoDto
+    public class UserInfoDTO
     {
-        public long UserID { get; set; }
+        public int UserID { get; set; }
 
         /// <summary>
         /// 用户名

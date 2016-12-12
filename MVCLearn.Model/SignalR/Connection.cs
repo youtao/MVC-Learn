@@ -8,7 +8,7 @@ namespace MVCLearn.Model
     /// SignalR连接信息
     /// </summary>
     [Table("SignalR_Connection")]
-    public class Connection : BaseModel
+    public class Connection : IntBaseModel
     {
         public Connection()
         {
@@ -34,7 +34,7 @@ namespace MVCLearn.Model
         #region 导航属性
 
         [ForeignKey("UserInfo")]
-        public long UserInfoID { get; set; }
+        public int UserInfoID { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
 

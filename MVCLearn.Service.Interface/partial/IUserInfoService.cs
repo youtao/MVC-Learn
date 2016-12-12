@@ -10,6 +10,6 @@ namespace MVCLearn.Service.Interface
         /// 全部用户
         /// </summary>
         /// <returns></returns>
-        Task<List<UserInfoDto>> AllUserAsync();
+        Task<List<UserInfoDTO>> AllUserAsync();
     }
 }
