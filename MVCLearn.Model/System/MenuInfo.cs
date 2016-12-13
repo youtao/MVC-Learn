@@ -4,7 +4,7 @@ using MVCLearn.ModelBCL;
 
 namespace MVCLearn.Model
 {
-    [Table("Privilege_MenuInfo")]
+    [Table("System_MenuInfo")]
     public class MenuInfo : IntBaseModel
     {
         public MenuInfo()
@@ -12,6 +12,9 @@ namespace MVCLearn.Model
             this.Title = "Title";
             this.Url = "javascript:void(0);";
             this.Icon = "";
+            this.IsIframe = true;
+            this.IsMenu = true;
+            this.IsPublick = false;
         }
 
         /// <summary>
@@ -33,6 +36,22 @@ namespace MVCLearn.Model
         /// 排序
         /// </summary>
         public int Order { get; set; }
+
+        /// <summary>
+        /// 是否是iframe(默认:true)
+        /// </summary>
+        public bool IsIframe { get; set; }
+
+        /// <summary>
+        /// 是否是菜单权限(否则是访问权限,默认:true)
+        /// </summary>
+        public bool IsMenu { get; set; }
+
+        /// <summary>
+        /// 是否公共可见(默认:false)
+        /// </summary>
+        public bool IsPublick { get; set; }
+
 
         /// <summary>
         /// 父级菜单Id

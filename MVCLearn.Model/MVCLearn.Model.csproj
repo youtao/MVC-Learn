@@ -49,13 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Privilege\MenuInfo.cs" />
+    <Compile Include="System\MenuInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalR\Connection.cs" />
     <Compile Include="SignalR\Group.cs" />
-    <Compile Include="Privilege\Privilege.cs" />
-    <Compile Include="Privilege\RoleInfo.cs" />
-    <Compile Include="Privilege\UserInfo.cs" />
+    <Compile Include="System\RoleInfo.cs" />
+    <Compile Include="System\UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

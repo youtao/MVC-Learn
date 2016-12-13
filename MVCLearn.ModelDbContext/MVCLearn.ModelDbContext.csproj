@@ -58,6 +58,18 @@
     <Compile Include="Migrations\201612121349168_修改主键类型.Designer.cs">
       <DependentUpon>201612121349168_修改主键类型.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612130810571_添加菜单权限中间表.cs" />
+    <Compile Include="Migrations\201612130810571_添加菜单权限中间表.Designer.cs">
+      <DependentUpon>201612130810571_添加菜单权限中间表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612130815405_修改表名.cs" />
+    <Compile Include="Migrations\201612130815405_修改表名.Designer.cs">
+      <DependentUpon>201612130815405_修改表名.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612130822444_用户角色中间表.cs" />
+    <Compile Include="Migrations\201612130822444_用户角色中间表.Designer.cs">
+      <DependentUpon>201612130822444_用户角色中间表.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -81,6 +93,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612121349168_修改主键类型.resx">
       <DependentUpon>201612121349168_修改主键类型.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612130810571_添加菜单权限中间表.resx">
+      <DependentUpon>201612130810571_添加菜单权限中间表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612130815405_修改表名.resx">
+      <DependentUpon>201612130815405_修改表名.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612130822444_用户角色中间表.resx">
+      <DependentUpon>201612130822444_用户角色中间表.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

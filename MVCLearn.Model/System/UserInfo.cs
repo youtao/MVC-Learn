@@ -9,7 +9,7 @@ namespace MVCLearn.Model
     /// <summary>
     /// 用户
     /// </summary>
-    [Table("Privilege_UserInfo")]
+    [Table("System_UserInfo")]
     public class UserInfo : IntBaseModel
     {
         /// <summary>
@@ -39,5 +39,10 @@ namespace MVCLearn.Model
         /// 上次登出时间
         /// </summary>
         public DateTime? SignoutTime { get; set; }
+
+        /// <summary>
+        ///用户角色
+        /// </summary>
+        public virtual List<RoleInfo> RoleInfos { get; set; }
     }
 }

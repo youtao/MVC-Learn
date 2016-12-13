@@ -19,6 +19,26 @@ namespace MVCLearn.ModelDbContext
                     e.MapLeftKey("UserInfo_ID");
                     e.MapRightKey("Group_ID");
                 });
+
+            modelBuilder.Entity<UserInfo>() // UserInfo_RoleInfo中间表
+                .HasMany(e => e.RoleInfos)
+                .WithMany()
+                .Map(e =>
+                {
+                    e.ToTable("Privilege_MT_UserInfo_RoleInfo");
+                    e.MapLeftKey("UserInfo_ID");
+                    e.MapRightKey("RoleInfo_ID");
+                });
+
+            modelBuilder.Entity<RoleInfo>() // RoleInfo_MenuInfo中间表
+                .HasMany(e => e.MenuPrivileges)
+                .WithMany()
+                .Map(e =>
+                {
+                    e.ToTable("Privilege_MT_RoleInfo_MenuInfo");
+                    e.MapLeftKey("RoleInfo_ID");
+                    e.MapRightKey("MenuInfo_ID");
+                });
             base.OnModelCreating(modelBuilder);
         }
 
@@ -28,10 +48,6 @@ namespace MVCLearn.ModelDbContext
         /// 菜单
         /// </summary>
         public virtual DbSet<MenuInfo> MenuInfo { get; set; }
-        /// <summary>
-        /// 权限
-        /// </summary>
-        public virtual DbSet<Privilege> Privilege { get; set; }
         /// <summary>
         /// 角色
         /// </summary>

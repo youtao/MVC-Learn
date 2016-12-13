@@ -10,11 +10,6 @@ namespace MVCLearn.Service
 		public MenuInfoService() { }
 		public MenuInfoService(HttpContextBase httpContext) : base(httpContext) { }
 	}
-	public partial class PrivilegeService : BaseService<LearnDbContext,Privilege>, IPrivilegeService
-	{
-		public PrivilegeService() { }
-		public PrivilegeService(HttpContextBase httpContext) : base(httpContext) { }
-	}
 	public partial class RoleInfoService : BaseService<LearnDbContext,RoleInfo>, IRoleInfoService
 	{
 		public RoleInfoService() { }
