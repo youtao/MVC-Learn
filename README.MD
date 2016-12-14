@@ -2,5 +2,5 @@
 
 ## 使用技术
 - ASP.MVC 5
-- WEB.API 2
+- WebApi 2
 - SignalR
