@@ -5,6 +5,9 @@ using Xunit.Abstractions;
 
 namespace MVCLearn.Service.Test
 {
+    /// <summary>
+    /// 用户 Service Fact.
+    /// </summary>
     public class UserInfoServiceFact : BaseFact
     {
         private readonly UserInfoService _service;
@@ -13,7 +16,10 @@ namespace MVCLearn.Service.Test
             this._service = new UserInfoService();
         }
 
-
+        /// <summary>
+        /// 获取全部用户.
+        /// </summary>
+        /// <returns>Task.</returns>
         [Fact]
         public async Task AllUserAsync_Valid_NotNull()
         {
@@ -26,6 +32,10 @@ namespace MVCLearn.Service.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// 获取全部用户.
+        /// </summary>
+        /// <returns>Task.</returns>
         [Fact]
         public async Task AllUserWidthDapperAsync_Valid_NotNull()
         {

@@ -8,6 +8,9 @@ using MVCLearn.ModelDbContext;
 
 namespace MVCLearn.Service
 {
+    /// <summary>
+    /// Service 基础类(非泛型).
+    /// </summary>
     public class BaseService
     {
         #region constructor

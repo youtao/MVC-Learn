@@ -7,7 +7,7 @@ using MVCLearn.ModelDTO;
 namespace MVCLearn.WebAPI.Filter
 {
     /// <summary>
-    /// WebApi异常过滤器
+    /// WebApi异常过滤器.
     /// </summary>
     public class WebApiExceptionFilter : ExceptionFilterAttribute
     {

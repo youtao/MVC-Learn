@@ -10,6 +10,9 @@ using MVCLearn.Service.Interface;
 
 namespace MVCLearn.WebAPI.Controllers
 {
+    /// <summary>
+    /// 权限.
+    /// </summary>
     public class PrivilegeController : ApiController
     {
         private readonly IPrivilegeService PrivilegeService;
@@ -19,6 +22,11 @@ namespace MVCLearn.WebAPI.Controllers
             PrivilegeService = privilegeService;
         }
 
+        /// <summary>
+        /// 根据用户ID获取按钮权限.
+        /// </summary>
+        /// <param name="userID">用户ID.</param>
+        /// <returns>Task&lt;IHttpActionResult&gt;.</returns>
         public async Task<IHttpActionResult> GetButtonByUserID(int userID)
         {
             var result = await this.PrivilegeService
@@ -27,6 +35,11 @@ namespace MVCLearn.WebAPI.Controllers
             return Ok(ResponseUtils.Converter(result));
         }
 
+        /// <summary>
+        /// 根据角色ID获取按钮权限.
+        /// </summary>
+        /// <param name="roleID">角色ID.</param>
+        /// <returns>Task&lt;IHttpActionResult&gt;.</returns>
         public async Task<IHttpActionResult> GetButtonByRoleID(int roleID)
         {
             var result = await this.PrivilegeService

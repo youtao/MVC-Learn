@@ -5,6 +5,9 @@ using Xunit.Abstractions;
 
 namespace MVCLearn.Service.Test
 {
+    /// <summary>
+    /// 权限 Service Fact.
+    /// </summary>
     public class PrivilegeServiceFact : BaseFact
     {
         private readonly PrivilegeService _service;
@@ -14,6 +17,10 @@ namespace MVCLearn.Service.Test
             this._service = new PrivilegeService();
         }
 
+        /// <summary>
+        /// 获取按钮权限根据用户ID.
+        /// </summary>
+        /// <returns>Task.</returns>
         [Fact]
         public async Task GetButtonByUserIDAsync_Valid_NotNull()
         {
@@ -25,6 +32,11 @@ namespace MVCLearn.Service.Test
             this.Output.WriteLine("GetButtonByUserIDAsync_Valid_NotNull:" + stopwatch.ElapsedMilliseconds + "ms");
             Assert.NotNull(result);
         }
+
+        /// <summary>
+        /// 获取菜单权限根据角色ID.
+        /// </summary>
+        /// <returns>Task.</returns>
         [Fact]
         public async Task GetButtonByRoleIDAsync_Valid_NotNull()
         {

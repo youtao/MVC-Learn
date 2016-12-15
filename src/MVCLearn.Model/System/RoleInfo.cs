@@ -11,17 +11,17 @@ namespace MVCLearn.Model
     public class RoleInfo : IntBaseModel
     {
         /// <summary>
-        /// 角色名
+        /// 角色名.
         /// </summary>
         public string RoleName { get; set; }
 
         /// <summary>
-        /// 菜单权限
+        /// 菜单权限(导航).
         /// </summary>
         public virtual List<MenuInfo> MenuPrivileges { get; set; }
 
         /// <summary>
-        /// 按钮权限
+        /// 按钮权限(导航).
         /// </summary>
         public virtual List<ButtonInfo> ButtonPrivileges { get; set; }
     }

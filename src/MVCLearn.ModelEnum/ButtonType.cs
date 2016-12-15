@@ -1,7 +1,7 @@
 ﻿namespace MVCLearn.ModelEnum
 {
     /// <summary>
-    /// 按钮类型
+    /// 按钮类型.
     /// </summary>
     public enum ButtonType
     {

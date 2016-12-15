@@ -7,6 +7,9 @@ using MVCLearn.ModelDbContext;
 
 namespace MVCLearn.Config
 {
+    /// <summary>
+    ///  EntityFramewok Config.
+    /// </summary>
     public class EntityFramewokConfig
     {
         /// <summary>

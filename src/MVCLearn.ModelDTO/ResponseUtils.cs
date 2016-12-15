@@ -2,7 +2,7 @@
 {
     public class ResponseUtils
     {
-        public static ResponseDto<TData> Converter<TData>(TData data, int state = 1, string message = "")
+        public static ResponseDTO<TData> Converter<TData>(TData data, int state = 1, string message = "")
         {
             if (string.IsNullOrEmpty(message))
             {
@@ -19,7 +19,7 @@
                         break;
                 }
             }
-            return new ResponseDto<TData>()
+            return new ResponseDTO<TData>()
             {
                 State = state.ToString(),
                 Message = message,

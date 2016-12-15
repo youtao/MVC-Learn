@@ -8,9 +8,18 @@ using Xunit.Abstractions;
 
 namespace MVCLearn.Service.Test
 {
+    /// <summary>
+    /// 基础 Fact.
+    /// </summary>
     public class BaseFact
     {
+        /// <summary>
+        /// HTTP 上下文
+        /// </summary>
         protected readonly HttpContextBase HttpContext;
+        /// <summary>
+        /// 输出
+        /// </summary>
         protected readonly ITestOutputHelper Output;
         public BaseFact(ITestOutputHelper output)
         {

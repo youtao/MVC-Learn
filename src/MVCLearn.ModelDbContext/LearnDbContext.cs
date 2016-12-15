@@ -3,6 +3,9 @@ using MVCLearn.Model;
 
 namespace MVCLearn.ModelDbContext
 {
+    /// <summary>
+    /// LearnDbContext 数据库上下文.
+    /// </summary>
     public class LearnDbContext : DbContext
     {
         public LearnDbContext() : base("LearnDbContext")
@@ -53,24 +56,22 @@ namespace MVCLearn.ModelDbContext
             base.OnModelCreating(modelBuilder);
         }
 
-
-
         #region System
 
         /// <summary>
-        /// 按钮
+        /// 按钮.
         /// </summary>
         public virtual DbSet<ButtonInfo> ButtonInfo { get; set; }
         /// <summary>
-        /// 菜单
+        /// 菜单.
         /// </summary>
         public virtual DbSet<MenuInfo> MenuInfo { get; set; }
         /// <summary>
-        /// 角色
+        /// 角色.
         /// </summary>
         public virtual DbSet<RoleInfo> RoleInfo { get; set; }
         /// <summary>
-        /// 用户
+        /// 用户.
         /// </summary>
         public virtual DbSet<UserInfo> UserInfo { get; set; }
 
@@ -79,16 +80,15 @@ namespace MVCLearn.ModelDbContext
         #region SignalR
 
         /// <summary>
-        /// SignalR-连接
+        /// SignalR-连接.
         /// </summary>
         public virtual DbSet<Connection> Connection { get; set; }
 
         /// <summary>
-        /// SignalR-组
+        /// SignalR-组.
         /// </summary>
         public virtual DbSet<Group> Group { get; set; }
 
         #endregion
-
     }
 }
