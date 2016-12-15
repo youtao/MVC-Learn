@@ -5,6 +5,11 @@ using MVCLearn.Service.Interface;
 
 namespace MVCLearn.Service
 {
+	public partial class ButtonInfoService : BaseService<LearnDbContext,ButtonInfo>, IButtonInfoService
+	{
+		public ButtonInfoService() { }
+		public ButtonInfoService(HttpContextBase httpContext) : base(httpContext) { }
+	}
 	public partial class MenuInfoService : BaseService<LearnDbContext,MenuInfo>, IMenuInfoService
 	{
 		public MenuInfoService() { }

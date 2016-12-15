@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201612130822444_用户角色中间表.Designer.cs">
       <DependentUpon>201612130822444_用户角色中间表.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612150344044_添加用户按钮表.cs" />
+    <Compile Include="Migrations\201612150344044_添加用户按钮表.Designer.cs">
+      <DependentUpon>201612150344044_添加用户按钮表.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612130822444_用户角色中间表.resx">
       <DependentUpon>201612130822444_用户角色中间表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612150344044_添加用户按钮表.resx">
+      <DependentUpon>201612150344044_添加用户按钮表.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

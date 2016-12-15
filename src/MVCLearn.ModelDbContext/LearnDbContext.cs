@@ -39,11 +39,28 @@ namespace MVCLearn.ModelDbContext
                     e.MapLeftKey("RoleInfo_ID");
                     e.MapRightKey("MenuInfo_ID");
                 });
+
+            modelBuilder.Entity<RoleInfo>() // RoleInfo_MenuInfo中间表
+                .HasMany(e => e.ButtonPrivileges)
+                .WithMany()
+                .Map(e =>
+                {
+                    e.ToTable("Privilege_MT_RoleInfo_ButtonInfo");
+                    e.MapLeftKey("RoleInfo_ID");
+                    e.MapRightKey("ButtonInfo_ID");
+                });
+
             base.OnModelCreating(modelBuilder);
         }
 
+
+
         #region System
 
+        /// <summary>
+        /// 按钮
+        /// </summary>
+        public virtual DbSet<ButtonInfo> ButtonInfo { get; set; }
         /// <summary>
         /// 菜单
         /// </summary>

@@ -19,5 +19,10 @@ namespace MVCLearn.Model
         /// 菜单权限
         /// </summary>
         public virtual List<MenuInfo> MenuPrivileges { get; set; }
+
+        /// <summary>
+        /// 按钮权限
+        /// </summary>
+        public virtual List<ButtonInfo> ButtonPrivileges { get; set; }
     }
 }
