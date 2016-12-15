@@ -14,6 +14,7 @@ var _layout = {
                 _this.onresize();
             }
         }, 100);
+        this.documentOnClick();
     },
     initPageTitle: function () {
         var $pageTitle = $('#page-title');
@@ -45,5 +46,14 @@ var _layout = {
     },
     scrollbalMenu: function () {
         $('div.chat-input').perfectScrollbar();
+    },
+    documentOnClick: function () {
+        if (window != window.parent) { // 如果是在iframe中
+            $(document).click(function (event) {
+                $(window.parent.document)
+                    .find('#page-heard ul.nav-menu > li.item') //收起父级通知栏
+                    .removeClass('open');
+            });
+        }
     }
 };

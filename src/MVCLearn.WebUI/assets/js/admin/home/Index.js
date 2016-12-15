@@ -10,6 +10,7 @@ var _page = {
         this.initMenu();
         this.loadIframe(GlobalConfig.Iframe);
         this.initNotification();
+        this.documentOnClick();
     },
     initMenu: function () { // 初始化菜单
         var _this = this;
@@ -119,6 +120,14 @@ var _page = {
                 else $(this).addClass('open');
             });
         $('#page-heard ul.messages').perfectScrollbar();
+    },
+    documentOnClick: function () {
+        $(document).click(function (event) {
+            var inArea = $(event.target).isChildAndSelfOf('#page-heard ul.nav-menu > li.item');
+            if (!inArea) { // 只要点了其它区域就收起通知栏
+                $('#page-heard ul.nav-menu > li.item').removeClass('open');
+            }
+        });
     }
 };
 

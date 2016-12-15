@@ -1,5 +1,6 @@
 ﻿/// <autosync enabled="false" />
 /// <reference path="../assets/js/global.config.js" />
+/// <reference path="../assets/js/utils.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="hubs.js" />
 /// <reference path="jquery-3.1.1.js" />
