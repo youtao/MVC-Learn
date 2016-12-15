@@ -42,7 +42,7 @@ namespace MVCLearn.ModelDbContext
             base.OnModelCreating(modelBuilder);
         }
 
-        #region Privilege
+        #region System
 
         /// <summary>
         /// 菜单

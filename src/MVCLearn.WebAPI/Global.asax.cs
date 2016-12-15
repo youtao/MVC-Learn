@@ -9,7 +9,9 @@ namespace MVCLearn.WebAPI
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+#if !DEBUG
             EntityFramewokConfig.HeatLoad();
+#endif
             AutoMapperConfig.MapperInitialize();
             AutofacConfig.ConfigureContainer();
         }

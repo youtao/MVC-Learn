@@ -16,9 +16,17 @@ namespace MVCLearn.WebAPI.Filter
             if (actionExecutedContext.Exception != null)
             {
                 MyLog.Error(actionExecutedContext.Exception);
+
+#if DEBUG
+                actionExecutedContext.Response = actionExecutedContext
+                    .Request
+                    .CreateResponse(HttpStatusCode.OK,
+                                    ResponseUtils.Converter(actionExecutedContext.Exception.ToString(), -1));
+#else
                 actionExecutedContext.Response = actionExecutedContext
                     .Request
                     .CreateResponse(HttpStatusCode.OK, ResponseUtils.Converter(new object(), -1));
+#endif
             }
         }
     }

@@ -24,7 +24,7 @@ namespace MVCLearn.Service
         {
             using (var conn = this.LearnDBConn())
             {
-                var sql = "select ID as UserID,UserName,NickName,LoginTime from Privilege_UserInfo;";
+                var sql = "select ID as UserID,UserName,NickName,LoginTime from System_UserInfo;";
                 await conn.OpenAsync().ConfigureAwait(false);
                 var results = await conn.QueryAsync<UserInfoDTO>(sql)
                     .ConfigureAwait(false);

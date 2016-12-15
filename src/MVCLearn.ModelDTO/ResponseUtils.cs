@@ -2,7 +2,7 @@
 {
     public class ResponseUtils
     {
-        public static ResponseDto<TData> Converter<TData>(TData data, int state = 1, string message = "成功")
+        public static ResponseDto<TData> Converter<TData>(TData data, int state = 1, string message = "")
         {
             if (string.IsNullOrEmpty(message))
             {
