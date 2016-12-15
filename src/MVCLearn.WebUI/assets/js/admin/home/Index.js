@@ -8,11 +8,10 @@ var _page = {
     init: function () {
         $(window).resize(this.onresize);
         this.initMenu();
-        this.initIframe(GlobalConfig.Iframe);
-        this.eventListener();
-        this.scrollbalMenu();
+        this.loadIframe(GlobalConfig.Iframe);
+        this.initNotification();
     },
-    initMenu: function () {
+    initMenu: function () { // 初始化菜单
         var _this = this;
         $.get('/assets/json/menus.json', null, function (res) {
             var html = _this.recursiveMenu(res);
@@ -20,11 +19,12 @@ var _page = {
             var start = html.substr(0, 3);
             var end = html.substring(3, html.length);
             html = start + attr + end;
-            $('#menu-inner').append(html);
+            $('#menu-inner').append(html)
+                            .perfectScrollbar();
             _this.menuListener();
         });
     },
-    recursiveMenu: function (children, level) {
+    recursiveMenu: function (children, level) { // 递归加载菜单
         if (!level) level = 0;
         var ul = '<ul>';
         for (var i = 0; i < children.length; i++) {
@@ -54,9 +54,9 @@ var _page = {
         ul += '</ul>';
         return ul;
     },
-    menuListener: function () {
+    menuListener: function () { // 监听菜单点击事件
         var _this = this;
-        $('#left-menu').on('click', 'a', function (e) {
+        $('#left-menu').on('click', 'a', function (event) {
             var $a = $(this);
             var $li = $a.parent();
             if ($li.hasClass('has-sub')) {
@@ -66,14 +66,14 @@ var _page = {
                 _this.collapseMenu($li.siblings('.expanded'));
                 var url = $a.attr('data-url');
                 if (url !== 'javascript:void(0);') {
-                    _this.initIframe(url);
+                    _this.loadIframe(url);
                     $('#left-menu a.active').removeClass('active');
                     $a.addClass('active');
                 }
             }
         });
     },
-    expandMenu: function ($li) {
+    expandMenu: function ($li) {//展开菜单
         $li.addClass('expanded');
         this.collapseMenu($li.siblings('.expanded')); // 折叠同级菜单
         var $ul = $li.children('ul');
@@ -82,9 +82,10 @@ var _page = {
         $ul.css('height', 0);
         $ul.animate({ height: height }, 500, function () {
             $ul.css('height', '');
+            $('#menu-inner').perfectScrollbar('update'); // 每次展开或折叠菜单就更新滚动条
         });
     },
-    collapseMenu: function ($li) {
+    collapseMenu: function ($li) { // 折叠菜单
         $li.removeClass('expanded');
         var $ul = $li.children('ul');
         $ul.css('height', $ul.outerHeight());
@@ -92,9 +93,10 @@ var _page = {
             $ul.css('height', '');
             $li.find('ul').css('display', 'none'); // 子元素
             $li.find('li').removeClass('expanded'); // 子元素
+            $('#menu-inner').perfectScrollbar('update'); // 每次展开或折叠菜单就更新滚动条
         });
     },
-    initIframe: function (src) {
+    loadIframe: function (src) { // 加载iframe
         if (!src) return;
         this.onresize();
         this.lastLoadIframeTime = new Date().getTime();
@@ -102,23 +104,20 @@ var _page = {
         $('#page-iframe').html(iframe);
         this.iframeSrc = src;
     },
-    onresize: function () {
+    onresize: function () { // 页面大小改变事件
         var height = $(window).height();
         var $pageHeard = $('#page-heard');
         var $pageIframe = $('#page-iframe');
         height = height - $pageHeard.outerHeight();
         $pageIframe.css('height', height);
     },
-    eventListener: function () {
+    initNotification: function () { // 初始化通知栏
         $('#page-heard ul.nav-menu > li.item')
             .click(function () {
                 $(this).siblings().removeClass('open');
                 if ($(this).hasClass('open')) $(this).removeClass('open');
                 else $(this).addClass('open');
             });
-    },
-    scrollbalMenu: function () {
-        $('#menu-inner').perfectScrollbar();
         $('#page-heard ul.messages').perfectScrollbar();
     }
 };

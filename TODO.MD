@@ -1,5 +1,4 @@
 ### 界面
-- 左菜单展开与收起update 滚动条
 - WebSignalR移除无用MVC程序集
 - jquery请求hub.js使用缓存
 - 通知处理全局点击事件
