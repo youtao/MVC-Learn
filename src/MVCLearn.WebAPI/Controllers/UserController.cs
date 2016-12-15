@@ -19,10 +19,10 @@ namespace MVCLearn.WebAPI.Controllers
 
         private readonly IUserInfoService UserInfoService;
 
-        public async Task<IHttpActionResult> GetAll()
+        public async Task<IHttpActionResult> GetAllUsers()
         {
             var data = await this.UserInfoService
-                .AllUserWidthDapperAsync()
+                .GetAllUserWidthDapperAsync()
                 .ConfigureAwait(true);
             return Ok(ResponseUtils.Converter(data));
         }

@@ -8,9 +8,16 @@ using MVCLearn.ModelDTO;
 
 namespace MVCLearn.Service
 {
+    /// <summary>
+    /// 用户Service.
+    /// </summary>
     public partial class UserInfoService
     {
-        public async Task<List<UserInfoDTO>> AllUserAsync()
+        /// <summary>
+        /// 获取全部用户(EF).
+        /// </summary>
+        /// <returns>Task&lt;List&lt;UserInfoDTO&gt;&gt;.</returns>
+        public async Task<List<UserInfoDTO>> GetAllUserAsync()
         {
             var dtoList = await this.AllNotDelete()
                 .ProjectTo<UserInfoDTO>()
@@ -19,10 +26,13 @@ namespace MVCLearn.Service
                 .ConfigureAwait(false);
             return dtoList;
         }
-
-        public async Task<List<UserInfoDTO>> AllUserWidthDapperAsync()
+        /// <summary>
+        /// 获取全部用户(Dapper).
+        /// </summary>
+        /// <returns>Task&lt;List&lt;UserInfoDTO&gt;&gt;.</returns>
+        public async Task<List<UserInfoDTO>> GetAllUserWidthDapperAsync()
         {
-            using (var conn = this.LearnDBConn())
+            using (var conn = this.GetLearnDBConn())
             {
                 var sql = "select ID as UserID,UserName,NickName,LoginTime from System_UserInfo;";
                 await conn.OpenAsync().ConfigureAwait(false);

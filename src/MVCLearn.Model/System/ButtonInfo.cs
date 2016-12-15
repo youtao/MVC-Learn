@@ -4,6 +4,9 @@ using MVCLearn.ModelEnum;
 
 namespace MVCLearn.Model
 {
+    /// <summary>
+    /// 用户Model.
+    /// </summary>
     [Table("System_ButtonInfo")]
     public class ButtonInfo : IntBaseModel
     {

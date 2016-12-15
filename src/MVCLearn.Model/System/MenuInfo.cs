@@ -4,6 +4,9 @@ using MVCLearn.ModelBCL;
 
 namespace MVCLearn.Model
 {
+    /// <summary>
+    /// 菜单Model.
+    /// </summary>
     [Table("System_MenuInfo")]
     public class MenuInfo : IntBaseModel
     {

@@ -5,7 +5,7 @@ using MVCLearn.ModelBCL;
 namespace MVCLearn.Model
 {
     /// <summary>
-    /// 角色
+    /// 角色Model.
     /// </summary>
     [Table("System_RoleInfo")]
     public class RoleInfo : IntBaseModel

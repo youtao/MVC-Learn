@@ -57,7 +57,7 @@ namespace MVCLearn.Service
         /// <para>LearnDB数据库上下文(多线程版,Multi Thread).</para>
         /// <para>每次获取时重新再实例化一个,主要用于大量数据并发查询.</para>
         /// </summary>
-        protected LearnDbContext LearnDbMT()
+        protected LearnDbContext GetLearnDbMT()
         {
             return new LearnDbContext();
         }
@@ -65,7 +65,7 @@ namespace MVCLearn.Service
         /// <summary>
         /// LearnDB数据库SqlConnection.(每次获取重新实例化,没有打开连接)
         /// </summary>
-        protected SqlConnection LearnDBConn()
+        protected SqlConnection GetLearnDBConn()
         {
             var connStr = ConfigurationManager.ConnectionStrings["LearnDbContext"].ConnectionString;
             return new SqlConnection(connStr);

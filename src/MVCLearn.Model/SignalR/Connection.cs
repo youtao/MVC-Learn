@@ -5,7 +5,7 @@ using MVCLearn.ModelBCL;
 namespace MVCLearn.Model
 {
     /// <summary>
-    /// SignalR连接信息
+    /// SignalR连接信息Model.
     /// </summary>
     [Table("SignalR_Connection")]
     public class Connection : IntBaseModel

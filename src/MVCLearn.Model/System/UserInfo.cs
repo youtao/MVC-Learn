@@ -7,7 +7,7 @@ using MVCLearn.ModelBCL;
 namespace MVCLearn.Model
 {
     /// <summary>
-    /// 用户
+    /// 用户Model.
     /// </summary>
     [Table("System_UserInfo")]
     public class UserInfo : IntBaseModel

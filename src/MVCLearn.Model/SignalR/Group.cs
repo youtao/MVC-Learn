@@ -6,7 +6,7 @@ using MVCLearn.ModelBCL;
 namespace MVCLearn.Model
 {
     /// <summary>
-    /// SignalR组
+    /// SignalR组Model.
     /// </summary>
     [Table("SignalR_Group")]
     public class Group : LongBaseModel

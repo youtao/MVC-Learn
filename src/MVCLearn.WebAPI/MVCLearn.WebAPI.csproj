@@ -113,6 +113,7 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AutofacModules\ServiceModule.cs" />
+    <Compile Include="Controllers\PrivilegeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filter\WebApiExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">

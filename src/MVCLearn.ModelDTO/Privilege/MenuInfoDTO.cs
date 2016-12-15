@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace MVCLearn.ModelDTO
 {
-    public class MenuDTO
+    public class MenuInfoDTO
     {
         /// <summary>
         /// 父级菜单Id
