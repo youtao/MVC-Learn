@@ -6,11 +6,14 @@ var _page = {
     iframeSrc: '',
     lastLoadIframeTime: -1,
     init: function () {
-        $(window).resize(this.onresize);
-        this.initMenu();
-        this.loadIframe(GlobalConfig.Iframe);
-        this.initNotification();
-        this.documentOnClick();
+        var _this = this;
+        $(window).resize(function () {
+            _this.onresize();
+        });
+        _this.initMenu();
+        _this.loadIframe(GlobalConfig.Iframe);
+        _this.initNotification();
+        _this.documentOnClick();
     },
     initMenu: function () { // 初始化菜单
         var _this = this;

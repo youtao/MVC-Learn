@@ -5,24 +5,28 @@ var _layout = {
     init: function () {
         var _this = this;
         _this.initPageTitle();
-        $('#page-body').resize(_this.onresize);
-        $(window).resize(_this.onresize);
-        _this.scrollbalMenu();
+        $('#page-body').resize(function () {
+            _this.onresize();
+        });
+        $(window).resize(function () {
+            _this.onresize();
+        });
+        _this.chatScrollbal();
         setTimeout(function () { // 防止第一次初始化与ajax冲突
             var $pageFooter = $('#page-footer');
             if ($pageFooter.is(':hidden')) {
                 _this.onresize();
             }
         }, 100);
-        this.documentOnClick();
+        _this.documentOnClick();
     },
-    initPageTitle: function () {
+    initPageTitle: function () { // 头部导航
         var $pageTitle = $('#page-title');
-        if ($pageTitle.html().trim().length > 0)
+        if ($pageTitle.html().trim().length > 0) {
             $pageTitle.show();// 没有内容就显示
-
+        }
     },
-    onresize: function (e) {
+    onresize: function (event) { // 页面大小改变事件
         var height = $(window).height();
         var $pageTitle = $('#page-title');
         var $pageBody = $('#page-body');
@@ -44,7 +48,7 @@ var _layout = {
         }
         $pageFooter.show();//初始化完后再显示
     },
-    scrollbalMenu: function () {
+    chatScrollbal: function () { // 聊天框滚动条
         $('div.chat-input').perfectScrollbar();
     },
     documentOnClick: function () {
