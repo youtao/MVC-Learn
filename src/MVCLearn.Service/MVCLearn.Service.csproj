@@ -70,6 +70,7 @@
       <DependentUpon>AllService.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseService.cs" />
+    <Compile Include="BaseService`T.cs" />
     <Compile Include="partial\UserInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

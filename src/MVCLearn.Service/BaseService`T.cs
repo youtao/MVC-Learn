@@ -4,11 +4,14 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using MVCLearn.ModelBCL;
 using MVCLearn.ModelDbContext;
 
 namespace MVCLearn.Service
 {
-    public class BaseService
+    public abstract class BaseService<TCurrentDbContext, TEntity>
+        where TCurrentDbContext : DbContext, new()
+        where TEntity : BaseModel, new()
     {
         #region constructor
 
@@ -28,6 +31,30 @@ namespace MVCLearn.Service
         /// </summary>
         protected HttpContextBase HttpContext { get; }
 
+        #region CurrentDB
+        /// <summary>
+        /// 当前实体模型数据库上下文
+        /// </summary>
+        private TCurrentDbContext _currentDB;
+        /// <summary>
+        /// 当前实体模型数据库上下文
+        /// </summary>
+        protected TCurrentDbContext CurrentDB
+        {
+            get
+            {
+                if (this.HttpContext != null)
+                {
+                    return this.GetDbContext<TCurrentDbContext>();
+                }
+                else
+                {
+                    return this._currentDB ?? (this._currentDB = new TCurrentDbContext());
+                }
+            }
+        }
+
+        #endregion
 
         #region LearnDB
 
@@ -72,6 +99,19 @@ namespace MVCLearn.Service
         }
 
         #endregion
+
+        #endregion
+
+        #region protected method
+
+        /// <summary>
+        /// 所有没被软删除的数据(当前实体模型).
+        /// </summary>
+        /// <returns></returns>
+        protected IQueryable<TEntity> AllNotDelete()
+        {
+            return this.CurrentDB.Set<TEntity>().Where(e => e.Delete == false);
+        }
 
         #endregion
 
