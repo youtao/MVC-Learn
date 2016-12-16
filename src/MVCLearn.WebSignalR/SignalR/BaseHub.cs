@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
-using MVCLearn.Model;
-using MVCLearn.ModelDbContext;
 
 namespace MVCLearn.WebSignalR.SignalR
 {
+    /*
     public class BaseHub<T> : Hub<T> where T : class
     {
         protected readonly LearnDbContext Db = new LearnDbContext();
@@ -77,4 +76,5 @@ namespace MVCLearn.WebSignalR.SignalR
             base.Dispose(disposing);
         }
     }
+    */
 }

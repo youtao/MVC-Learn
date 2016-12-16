@@ -77,11 +77,6 @@
             registerHubProxies(proxies, false);
         });
 
-        proxies['baseHub'] = this.createHubProxy('baseHub');
-        proxies['baseHub'].client = {};
-        proxies['baseHub'].server = {
-        };
-
         proxies['chatHub'] = this.createHubProxy('chatHub');
         proxies['chatHub'].client = {};
         proxies['chatHub'].server = {
