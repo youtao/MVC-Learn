@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using MVCLearn.ModelDTO;
 using MVCLearn.Service.Interface;
@@ -31,7 +33,8 @@ namespace MVCLearn.WebAPI.Controllers
             var data = await this.UserInfoService
                 .GetAllUserWidthDapperAsync()
                 .ConfigureAwait(true);
-            return Ok(ResponseUtils.Converter(data));
+            var session = HttpContext.Current.Request.Cookies["session"];
+            return this.Ok(ResponseUtils.Converter(data));
         }
     }
 }

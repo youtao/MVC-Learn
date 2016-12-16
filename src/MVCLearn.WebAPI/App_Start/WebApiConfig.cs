@@ -12,13 +12,14 @@ namespace MVCLearn.WebAPI
 
             // Web API 路由
             config.MapHttpAttributeRoutes();
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            config.EnableCors(new EnableCorsAttribute("http://localhost:47986", "*", "*"));
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Filters.Add(new WebApiExceptionFilter());
+            config.Filters.Add(new WebApiActionFilter());
         }
     }
 }

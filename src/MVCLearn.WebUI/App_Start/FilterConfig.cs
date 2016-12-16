@@ -8,7 +8,7 @@ namespace MVCLearn.WebUI
         public static void RegisterGlobalFilters(GlobalFilterCollection filter)
         {
             filter.Add(new MvcExceptionAttribute());
-            //filter.Add(new AllowCrosAttribute());
+            filter.Add(new AllowCrosAttribute());
         }
     }
 }

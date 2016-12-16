@@ -115,6 +115,7 @@
     <Compile Include="AutofacModules\ServiceModule.cs" />
     <Compile Include="Controllers\PrivilegeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filter\WebApiActionFilter.cs" />
     <Compile Include="Filter\WebApiExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

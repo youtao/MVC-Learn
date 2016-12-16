@@ -13,9 +13,18 @@ var _page = {
     },
     loadData: function (vue_users) {
         var _this = this;
-        $.get(GlobalConfig.WebApi + 'User/GetAllUsers', null, function (res) {
-            _this.fillData(vue_users, res);
-        });
+        $.ajax({
+            url: GlobalConfig.WebApi + 'User/GetAllUsers',
+            type: 'GET',
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (res) {
+                _this.fillData(vue_users, res);
+            }
+        })
+
     },
     fillData: function (vue_users, res) {
         vue_users.users = res.data;
