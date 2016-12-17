@@ -265,6 +265,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="html\NotLogin.html" />
     <Content Include="node_modules\font-awesome\css\font-awesome.css" />
     <Content Include="node_modules\font-awesome\css\font-awesome.min.css">
       <DependentUpon>font-awesome.css</DependentUpon>

@@ -25,7 +25,11 @@ namespace MVCLearn.WebUI.Filter
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectResult("/Admin/Account/Login");
+            var iframe = filterContext.RequestContext
+                .HttpContext.Request.QueryString["fromiframe"];
+            filterContext.Result = iframe=="true" ?
+                new RedirectResult("/html/NotLogin.html") :
+                new RedirectResult("/Admin/Account/Login");
         }
     }
 }
