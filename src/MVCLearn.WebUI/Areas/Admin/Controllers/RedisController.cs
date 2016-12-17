@@ -13,6 +13,7 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
         // GET: Admin/Redis
         public ActionResult Index()
         {
+            var sessions = Request.Cookies["session"];
             ConnectionMultiplexer conn = ConnectionMultiplexer.Connect("localhost");
             var db = conn.GetDatabase();
             var session = new RedisSession<int>(123456789);
@@ -22,7 +23,7 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
             HttpCookie cookie = new HttpCookie("session", session.SessionID.ToString());
             cookie.Path = "/";
             cookie.Domain = "localhost";
-            cookie.Expires = DateTime.MaxValue;
+            cookie.Expires = DateTime.Now.AddSeconds(10);
             Response.Cookies.Add(cookie);
 
             return View();

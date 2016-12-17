@@ -20,6 +20,7 @@ var _page = {
             xhrFields: {
                 withCredentials: true
             },
+            crossdomain: true,
             success: function (res) {
                 _this.fillData(vue_users, res);
             }

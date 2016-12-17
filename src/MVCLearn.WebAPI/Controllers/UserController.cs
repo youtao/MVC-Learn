@@ -33,7 +33,6 @@ namespace MVCLearn.WebAPI.Controllers
             var data = await this.UserInfoService
                 .GetAllUserWidthDapperAsync()
                 .ConfigureAwait(true);
-            var session = HttpContext.Current.Request.Cookies["session"];
             return this.Ok(ResponseUtils.Converter(data));
         }
     }
