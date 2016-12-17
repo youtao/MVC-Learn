@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="BaseService.cs" />
     <Compile Include="BaseService`T.cs" />
+    <Compile Include="NotGeneric\AccountService.cs" />
     <Compile Include="NotGeneric\PrivilegeService.cs" />
     <Compile Include="Generic\UserInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +104,10 @@
     <ProjectReference Include="..\MVCLearn.Service.Interface\MVCLearn.Service.Interface.csproj">
       <Project>{ab987f93-de64-49f6-81f9-02626bda0453}</Project>
       <Name>MVCLearn.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCLearn.Utilities\MVCLearn.Utilities.csproj">
+      <Project>{0594cebf-7a45-4d92-959b-b9d4d2cc9be4}</Project>
+      <Name>MVCLearn.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

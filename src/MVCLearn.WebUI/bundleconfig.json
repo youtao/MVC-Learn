@@ -82,5 +82,11 @@
     "inputFiles": [
       "node_modules/moment/locale/zh-cn.js"
     ]
+  },
+  {
+    "outputFileName": "assets/js/Admin/Accunt/Login.min.js",
+    "inputFiles": [
+      "assets/js/Admin/Accunt/Login.js"
+    ]
   }
 ]

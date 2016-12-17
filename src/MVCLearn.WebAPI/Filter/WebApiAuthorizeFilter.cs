@@ -11,9 +11,15 @@ namespace MVCLearn.WebAPI.Filter
     {
         protected override bool IsAuthorized(HttpActionContext actionContext)
         {
+            var uri = actionContext.Request.RequestUri;
+            if (uri.AbsolutePath == "/api/Account/Login")
+            {
+                return true;
+            }
             var result = true;
-            var session = HttpContext.Current.Request.Cookies["session"];
-            if (session == null)
+            //web端使用cookie,todo:app端使用Base64认证(默认)
+            var authorizeId = HttpContext.Current.Request.Cookies["MVCLearn_AuthorizeId"];
+            if (authorizeId == null)
             {
                 result = false;
             }
