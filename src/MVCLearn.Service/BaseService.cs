@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using MongoDB.Driver;
 using MVCLearn.ModelDbContext;
 
 namespace MVCLearn.Service
@@ -75,6 +76,33 @@ namespace MVCLearn.Service
         }
 
         #endregion
+
+
+        #region Mongo
+
+        private MongoDatabase _mongoDB;
+
+        public MongoDatabase MongoDB
+        {
+            get
+            {
+                if (this._mongoDB == null)
+                {
+                    MongoServerSettings settings = new MongoServerSettings()
+                    {
+                        Server = new MongoServerAddress("localhost")
+                    };
+                    MongoServer server = new MongoServer(settings);
+                    this._mongoDB = server.GetDatabase("MVCLearn");
+
+                }
+                return this._mongoDB;
+            }
+        }
+
+
+        #endregion
+
 
         #endregion
 

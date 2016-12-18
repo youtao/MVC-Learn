@@ -6,8 +6,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using MVCLearn.ModelDTO;
+using MVCLearn.ModelDTO.Privilege;
 using MVCLearn.Service.Interface;
-using MVCLearn.WebAPI.Session;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 

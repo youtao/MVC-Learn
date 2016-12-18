@@ -22,6 +22,8 @@ namespace MVCLearn.WebAPI.Controllers
             PrivilegeService = privilegeService;
         }
 
+        #region 按钮权限
+
         /// <summary>
         /// 根据用户ID获取按钮权限.
         /// </summary>
@@ -47,5 +49,24 @@ namespace MVCLearn.WebAPI.Controllers
                 .ConfigureAwait(true);
             return Ok(ResponseUtils.Converter(result));
         }
+
+        #endregion
+
+        #region 用户权限
+
+        /// <summary>
+        /// 获取权限根据用户ID.
+        /// </summary>
+        /// <param name="userID">用户ID.</param>
+        /// <returns>Task&lt;IHttpActionResult&gt;.</returns>
+        public async Task<IHttpActionResult> GetPrivilege(int userID)
+        {
+            var result = await this.PrivilegeService
+                .GetPrivilegeAsync(userID)
+                .ConfigureAwait(true);
+            return Ok(ResponseUtils.Converter(result));
+        }
+
+        #endregion
     }
 }

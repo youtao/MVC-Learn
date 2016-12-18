@@ -1,8 +1,8 @@
 ﻿using System;
-using MVCLearn.ModelDTO;
+using System.Collections.Generic;
 using MVCLearn.Utilities;
 
-namespace MVCLearn.WebAPI.Session
+namespace MVCLearn.ModelDTO.Privilege
 {
     public class RedisAuthorize
     {
@@ -11,9 +11,16 @@ namespace MVCLearn.WebAPI.Session
             this.Value = value;
             this.AuthorizeId = (value.UserID + value.UserName).MD5();
         }
-
+        /// <summary>
+        /// 授权Id.
+        /// </summary>
+        /// <value>The authorize identifier.</value>
         public string AuthorizeId { get; }
 
+        /// <summary>
+        /// 创建时间.
+        /// </summary>
+        /// <value>The create time.</value>
         public DateTime CreateTime { get; set; } = DateTime.Now;
 
         /// <summary>
@@ -22,6 +29,10 @@ namespace MVCLearn.WebAPI.Session
         /// <value>The expiry.</value>
         public TimeSpan Expiry { get; set; } = TimeSpan.FromDays(7);
 
+        /// <summary>
+        ///用户信息.
+        /// </summary>
+        /// <value>The value.</value>
         public UserInfoDTO Value { get; set; }
     }
 }
