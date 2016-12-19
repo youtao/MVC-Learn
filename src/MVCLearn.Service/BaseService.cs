@@ -13,7 +13,7 @@ namespace MVCLearn.Service
     /// <summary>
     /// Service 基础类(非泛型).
     /// </summary>
-    public class BaseService
+    public abstract class BaseService
     {
         #region constructor
 
@@ -78,7 +78,6 @@ namespace MVCLearn.Service
 
         #endregion
 
-
         #region Mongo
 
         private MongoDatabase _mongoDB;
@@ -124,14 +123,14 @@ namespace MVCLearn.Service
 
         #endregion
 
-        #region private method
+        #region Http Cache DBContext
 
         /// <summary>
         /// 获取数据库上下文,缓存到当前HTTP请求上下文中
         /// </summary>
         /// <typeparam name="TAnyDbContext"></typeparam>
         /// <returns></returns>
-        private TAnyDbContext GetDbContext<TAnyDbContext>()
+        protected TAnyDbContext GetDbContext<TAnyDbContext>()
             where TAnyDbContext : DbContext, new()
         {
             if (this.HttpContext == null)
