@@ -7,13 +7,13 @@ namespace MVCLearn.ModelDbContext.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class 修改主键类型 : IMigrationMetadata
+    public sealed partial class 初始化 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(修改主键类型));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(初始化));
         
         string IMigrationMetadata.Id
         {
-            get { return "201612121349168_修改主键类型"; }
+            get { return "201612191400368_初始化"; }
         }
         
         string IMigrationMetadata.Source

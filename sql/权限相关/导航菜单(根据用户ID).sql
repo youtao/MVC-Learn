@@ -1,36 +1,35 @@
 select
     menuinfo.ID as MenuID,
-    menuinfo.Title,
-    menuinfo.Url,
+    accessinfo.Title,
+    accessinfo.Url,
     menuinfo.Icon,
     menuinfo.[Order],
-    menuinfo.ParentID,    
-    menuinfo.IsIframe    
+    menuinfo.ParentID,
+    menuinfo.IsIframe
 from
     dbo.System_UserInfo as userinfo
-    join dbo.Privilege_MT_UserInfo_RoleInfo userrole on userrole.UserInfo_ID = userinfo.ID
-    join dbo.System_RoleInfo roleinfo on roleinfo.ID = userrole.RoleInfo_ID
-    join dbo.Privilege_MT_RoleInfo_MenuInfo rolemenu on rolemenu.RoleInfo_ID = roleinfo.ID
-    join dbo.System_MenuInfo menuinfo on menuinfo.ID = rolemenu.MenuInfo_ID
+    join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
+    join dbo.System_RoleInfo as roleinfo on roleinfo.ID = userrole.RoleInfo_ID
+    join dbo.Privilege_MT_RoleInfo_AccessInfo as roleaccess on roleaccess.RoleInfo_ID = roleinfo.ID
+    join dbo.System_AccessInfo as accessinfo on accessinfo.ID = roleaccess.AccessInfo_ID
+    join dbo.System_MenuInfo as menuinfo on menuinfo.ID = accessinfo.ID
 where
-    userinfo.ID = 1 and
+    userinfo.ID = 1 and--用户ID
     userinfo.[Delete] = 0 and
     roleinfo.[Delete] = 0 and
-    menuinfo.[Delete] = 0 and
-    menuinfo.IsMenu = 1
+    accessinfo.[Delete] = 0
 union
 select
-    ID as MenuID,
-    Title,
-    Url,
-    Icon,
-    [Order],
-    ParentID,
-    IsIframe
+    menuinfo.ID as MenuID,
+    accessinfo.Title,
+    accessinfo.Url,
+    menuinfo.Icon,
+    menuinfo.[Order],
+    menuinfo.ParentID,
+    menuinfo.IsIframe
 from
-    dbo.System_MenuInfo
+    dbo.System_AccessInfo as accessinfo
+    join dbo.System_MenuInfo as menuinfo on menuinfo.ID = accessinfo.ID
 where
-    IsPublick = 1 and
-    IsMenu = 1 and
-    [Delete] = 0;
-    
+    accessinfo.IsPublick = 1 and
+    accessinfo.[Delete] = 0;

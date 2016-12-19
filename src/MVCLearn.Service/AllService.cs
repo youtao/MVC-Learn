@@ -10,6 +10,11 @@ namespace MVCLearn.Service
 		public ButtonInfoService() { }
 		public ButtonInfoService(HttpContextBase httpContext) : base(httpContext) { }
 	}
+	public partial class AccessInfoService : BaseService<LearnDbContext,AccessInfo>, IAccessInfoService
+	{
+		public AccessInfoService() { }
+		public AccessInfoService(HttpContextBase httpContext) : base(httpContext) { }
+	}
 	public partial class MenuInfoService : BaseService<LearnDbContext,MenuInfo>, IMenuInfoService
 	{
 		public MenuInfoService() { }

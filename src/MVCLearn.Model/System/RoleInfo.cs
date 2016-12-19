@@ -16,9 +16,9 @@ namespace MVCLearn.Model
         public string RoleName { get; set; }
 
         /// <summary>
-        /// 菜单权限(导航).
+        /// 访问权限(导航).
         /// </summary>
-        public virtual List<MenuInfo> MenuPrivileges { get; set; }
+        public virtual List<AccessInfo> AccessPrivileges { get; set; }
 
         /// <summary>
         /// 按钮权限(导航).

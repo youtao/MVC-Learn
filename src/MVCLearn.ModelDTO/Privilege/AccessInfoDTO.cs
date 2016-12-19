@@ -8,7 +8,7 @@
         /// <summary>
         /// 菜单ID.
         /// </summary>
-        public int ID { get; set; }
+        public int AccessID { get; set; }
 
         /// <summary>
         /// 标题.

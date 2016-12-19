@@ -14,6 +14,7 @@ namespace MVCLearn.Service
 {
     public class PrivilegeService : BaseService, IPrivilegeService
     {
+        #region constructor
         public PrivilegeService()
         {
         }
@@ -21,6 +22,7 @@ namespace MVCLearn.Service
         public PrivilegeService(HttpContextBase httpContext) : base(httpContext)
         {
         }
+        #endregion
 
         #region 按钮权限
 
@@ -105,39 +107,39 @@ namespace MVCLearn.Service
 
             var sql = @"select
                             menuinfo.ID as MenuID,
-                            menuinfo.Title,
-                            menuinfo.Url,
+                            accessinfo.Title,
+                            accessinfo.Url,
                             menuinfo.Icon,
                             menuinfo.[Order],
                             menuinfo.ParentID,
                             menuinfo.IsIframe
                         from
                             dbo.System_UserInfo as userinfo
-                            join dbo.Privilege_MT_UserInfo_RoleInfo userrole on userrole.UserInfo_ID = userinfo.ID
-                            join dbo.System_RoleInfo roleinfo on roleinfo.ID = userrole.RoleInfo_ID
-                            join dbo.Privilege_MT_RoleInfo_MenuInfo rolemenu on rolemenu.RoleInfo_ID = roleinfo.ID
-                            join dbo.System_MenuInfo menuinfo on menuinfo.ID = rolemenu.MenuInfo_ID
+                            join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
+                            join dbo.System_RoleInfo as roleinfo on roleinfo.ID = userrole.RoleInfo_ID
+                            join dbo.Privilege_MT_RoleInfo_AccessInfo as roleaccess on roleaccess.RoleInfo_ID = roleinfo.ID
+                            join dbo.System_AccessInfo as accessinfo on accessinfo.ID = roleaccess.AccessInfo_ID
+                            join dbo.System_MenuInfo as menuinfo on menuinfo.ID = accessinfo.ID
                         where
-                            userinfo.ID = @UserID and
+                            userinfo.ID = @UserID and--用户ID
                             userinfo.[Delete] = 0 and
                             roleinfo.[Delete] = 0 and
-                            menuinfo.[Delete] = 0 and
-                            menuinfo.IsMenu = 1
+                            accessinfo.[Delete] = 0
                         union
                         select
-                            ID as MenuID,
-                            Title,
-                            Url,
-                            Icon,
-                            [Order],
-                            ParentID,
-                            IsIframe
+                            menuinfo.ID as MenuID,
+                            accessinfo.Title,
+                            accessinfo.Url,
+                            menuinfo.Icon,
+                            menuinfo.[Order],
+                            menuinfo.ParentID,
+                            menuinfo.IsIframe
                         from
-                            dbo.System_MenuInfo
+                            dbo.System_AccessInfo as accessinfo
+                            join dbo.System_MenuInfo as menuinfo on menuinfo.ID = accessinfo.ID
                         where
-                            IsPublick = 1 and
-                            IsMenu = 1 and
-                            [Delete] = 0;";
+                            accessinfo.IsPublick = 1 and
+                            accessinfo.[Delete] = 0;";
 
             #endregion
             using (var conn = this.GetLearnDBConn())
@@ -159,27 +161,27 @@ namespace MVCLearn.Service
             #region sql
 
             var sql = @"select
-                            menuinfo.ID as MenuID,
-                            menuinfo.Title,
-                            menuinfo.Url
+                            accessinfo.ID as AccessID,
+                            accessinfo.Title,
+                            accessinfo.Url
                         from
                             dbo.System_UserInfo as userinfo
-                            join dbo.Privilege_MT_UserInfo_RoleInfo userrole on userrole.UserInfo_ID = userinfo.ID
-                            join dbo.System_RoleInfo roleinfo on roleinfo.ID = userrole.RoleInfo_ID
-                            join dbo.Privilege_MT_RoleInfo_MenuInfo rolemenu on rolemenu.RoleInfo_ID = roleinfo.ID
-                            join dbo.System_MenuInfo menuinfo on menuinfo.ID = rolemenu.MenuInfo_ID
+                            join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
+                            join dbo.System_RoleInfo as roleinfo on roleinfo.ID = userrole.RoleInfo_ID
+                            join dbo.Privilege_MT_RoleInfo_AccessInfo as roleaccess on roleaccess.RoleInfo_ID = roleinfo.ID
+                            join dbo.System_AccessInfo as accessinfo on accessinfo.ID = roleaccess.AccessInfo_ID
                         where
-                            userinfo.ID = @UserID and --用户ID
+                            userinfo.ID = @UserID and--用户ID
                             userinfo.[Delete] = 0 and
                             roleinfo.[Delete] = 0 and
-                            menuinfo.[Delete] = 0
+                            accessinfo.[Delete] = 0
                         union
                         select
                             ID as MenuID,
                             Title,
                             Url
                         from
-                            dbo.System_MenuInfo
+                            dbo.System_AccessInfo
                         where
                             IsPublick = 1 and
                             [Delete] = 0;";
@@ -272,17 +274,17 @@ namespace MVCLearn.Service
                 privilege = new PrivilegeDTO();
                 var buttonTask = Task.Run(async () =>
                 {
-                    privilege.Buttons = await this.GetButtonByUserIDAsync(userID);
+                    privilege.Buttons = await this.GetButtonByUserIDAsync(userID).ConfigureAwait(false);
                 });
                 var menuTask = Task.Run(async () =>
                 {
-                    privilege.Menus = await this.GetMenuByUserIDAsync(userID);
+                    privilege.Menus = await this.GetMenuByUserIDAsync(userID).ConfigureAwait(false);
                 });
                 var accessTask = Task.Run(async () =>
                 {
-                    privilege.Accesses = await this.GetAccessByUserIDAsync(userID);
+                    privilege.Accesses = await this.GetAccessByUserIDAsync(userID).ConfigureAwait(false);
                 });
-                await Task.WhenAll(buttonTask, menuTask, accessTask);
+                await Task.WhenAll(buttonTask, menuTask, accessTask).ConfigureAwait(false);
                 this.UpdatePrivilegeToMongo(userID, privilege);
             }
             return privilege;

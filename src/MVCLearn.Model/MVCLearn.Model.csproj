@@ -50,10 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="System\ButtonInfo.cs" />
-    <Compile Include="System\MenuInfo.cs" />
+    <Compile Include="System\AccessInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalR\Connection.cs" />
     <Compile Include="SignalR\Group.cs" />
+    <Compile Include="System\MenuInfo.cs" />
     <Compile Include="System\RoleInfo.cs" />
     <Compile Include="System\UserInfo.cs" />
   </ItemGroup>

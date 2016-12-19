@@ -177,7 +177,7 @@ namespace MVCLearn.Service.Test
         public async Task GetPrivilege_Valid_True()
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
-            await this._service.GetPrivilegeAsync(1);
+            await this._service.GetPrivilegeAsync(1).ConfigureAwait(true);
             stopwatch.Stop();
             this.Output.WriteLine("UpdateButtonToMongo_Valid_True:" + stopwatch.ElapsedMilliseconds + "ms");
         }

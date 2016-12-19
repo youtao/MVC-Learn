@@ -23,7 +23,7 @@ namespace MVCLearn.ModelDbContext
                     e.MapRightKey("Group_ID");
                 });
 
-            modelBuilder.Entity<UserInfo>() // UserInfo_RoleInfo中间表
+            modelBuilder.Entity<UserInfo>() // UserInfo_RoleInfo 中间表
                 .HasMany(e => e.RoleInfos)
                 .WithMany()
                 .Map(e =>
@@ -33,17 +33,17 @@ namespace MVCLearn.ModelDbContext
                     e.MapRightKey("RoleInfo_ID");
                 });
 
-            modelBuilder.Entity<RoleInfo>() // RoleInfo_MenuInfo中间表
-                .HasMany(e => e.MenuPrivileges)
+            modelBuilder.Entity<RoleInfo>() // RoleInfo_MenuInfo 中间表
+                .HasMany(e => e.AccessPrivileges)
                 .WithMany()
                 .Map(e =>
                 {
-                    e.ToTable("Privilege_MT_RoleInfo_MenuInfo");
+                    e.ToTable("Privilege_MT_RoleInfo_AccessInfo");
                     e.MapLeftKey("RoleInfo_ID");
-                    e.MapRightKey("MenuInfo_ID");
+                    e.MapRightKey("AccessInfo_ID");
                 });
 
-            modelBuilder.Entity<RoleInfo>() // RoleInfo_MenuInfo中间表
+            modelBuilder.Entity<RoleInfo>() // RoleInfo_ButtonInfo 中间表
                 .HasMany(e => e.ButtonPrivileges)
                 .WithMany()
                 .Map(e =>
@@ -59,19 +59,23 @@ namespace MVCLearn.ModelDbContext
         #region System
 
         /// <summary>
-        /// 按钮.
+        /// 按钮
         /// </summary>
         public virtual DbSet<ButtonInfo> ButtonInfo { get; set; }
         /// <summary>
-        /// 菜单.
+        /// 访问
+        /// </summary>
+        public virtual DbSet<AccessInfo> AccessInfo { get; set; }
+        /// <summary>
+        /// 菜单
         /// </summary>
         public virtual DbSet<MenuInfo> MenuInfo { get; set; }
         /// <summary>
-        /// 角色.
+        /// 角色
         /// </summary>
         public virtual DbSet<RoleInfo> RoleInfo { get; set; }
         /// <summary>
-        /// 用户.
+        /// 用户
         /// </summary>
         public virtual DbSet<UserInfo> UserInfo { get; set; }
 

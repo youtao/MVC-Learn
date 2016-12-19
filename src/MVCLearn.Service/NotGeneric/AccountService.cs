@@ -16,6 +16,7 @@ namespace MVCLearn.Service
     /// </summary>
     public class AccountService : BaseService, IAccountService
     {
+        #region constructor
         public AccountService()
         {
         }
@@ -23,6 +24,7 @@ namespace MVCLearn.Service
         public AccountService(HttpContextBase httpContext) : base(httpContext)
         {
         }
+        #endregion
 
         public async Task<UserInfoDTO> LoginAsync(string username, string password)
         {

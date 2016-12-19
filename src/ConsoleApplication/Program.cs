@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MVCLearn.Model;
 using MVCLearn.ModelBCL;
 using MVCLearn.ModelDbContext;
 using Newtonsoft.Json;
@@ -21,10 +22,10 @@ namespace ConsoleApplication
 {
     class Program
     {
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        //private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {
-            //ConfigurationItemFactory.Default.Targets.RegisterDefinition("hello-world", typeof(HelloWorldLayoutRenderer));
+            ConfigurationItemFactory.Default.Targets.RegisterDefinition("hello-world", typeof(HelloWorldLayoutRenderer));
             //LogManager.Configuration.Variables["name"] = "youtao";
             ////for (int i = 0; i < 100; i++)
             ////{
@@ -36,6 +37,11 @@ namespace ConsoleApplication
             ////    _logger.Fatal("Sample fatal error message");
             ////}
             //Logger.Trace("Sample trace message");
+
+            using (LearnDbContext db = new LearnDbContext())
+            {
+
+            }
 
             Console.WriteLine("ok");
             Console.ReadKey();
