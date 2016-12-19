@@ -11,7 +11,7 @@ using StackExchange.Redis;
 namespace MVCLearn.Service
 {
     /// <summary>
-    /// Service 基础类(非泛型).
+    /// Service 基础类(非泛型)
     /// </summary>
     public abstract class BaseService
     {
@@ -59,8 +59,8 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
-        /// <para>LearnDB数据库上下文(多线程版,Multi Thread).</para>
-        /// <para>每次获取时重新再实例化一个,主要用于大量数据并发查询.</para>
+        /// <para>LearnDB数据库上下文(多线程版,Multi Thread)</para>
+        /// <para>每次获取时重新再实例化一个,主要用于大量数据并发查询</para>
         /// </summary>
         protected LearnDbContext GetLearnDbMT()
         {
@@ -68,7 +68,7 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
-        /// LearnDB数据库SqlConnection.(每次获取重新实例化,没有打开连接)
+        /// LearnDB数据库SqlConnection(每次获取重新实例化,没有打开连接)
         /// </summary>
         protected SqlConnection GetLearnDBConn()
         {
@@ -88,6 +88,7 @@ namespace MVCLearn.Service
             {
                 if (this._mongoDB == null)
                 {
+                    //todo:mongodb配置到web.config
                     MongoServerSettings settings = new MongoServerSettings()
                     {
                         Server = new MongoServerAddress("localhost")
@@ -110,6 +111,7 @@ namespace MVCLearn.Service
         {
             get
             {
+                //todo:redis配置到web.config
                 if (this._redisDB == null)
                 {
                     ConnectionMultiplexer conn = ConnectionMultiplexer.Connect("localhost");
@@ -129,7 +131,6 @@ namespace MVCLearn.Service
         /// 获取数据库上下文,缓存到当前HTTP请求上下文中
         /// </summary>
         /// <typeparam name="TAnyDbContext"></typeparam>
-        /// <returns></returns>
         protected TAnyDbContext GetDbContext<TAnyDbContext>()
             where TAnyDbContext : DbContext, new()
         {

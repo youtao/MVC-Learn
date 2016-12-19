@@ -5,7 +5,7 @@ using MVCLearn.ModelBCL;
 namespace MVCLearn.Model
 {
     /// <summary>
-    /// SignalR连接信息Model.
+    /// SignalR连接信息Model
     /// </summary>
     [Table("SignalR_Connection")]
     public class Connection : IntBaseModel
@@ -16,33 +16,31 @@ namespace MVCLearn.Model
         }
 
         /// <summary>
-        /// 连接Id.
+        /// 连接Id
         /// </summary>
         [Required]
         public string ConnectionId { get; set; }
 
         /// <summary>
-        /// 浏览器标识.
+        /// 浏览器标识
         /// </summary>
         public string UserAgent { get; set; }
 
         /// <summary>
-        /// 是否连接.
+        /// 是否连接
         /// </summary>
         public bool Connected { get; set; }
 
         #region 导航属性
 
         /// <summary>
-        /// 用户ID(外键).
+        /// 用户ID(外键)
         /// </summary>
-        /// <value>The user information identifier.</value>
         [ForeignKey("UserInfo")]
         public int UserInfoID { get; set; }
         /// <summary>
-        /// 用户(导航).
+        /// 用户(导航)
         /// </summary>
-        /// <value>The user information.</value>
         public virtual UserInfo UserInfo { get; set; }
 
         #endregion

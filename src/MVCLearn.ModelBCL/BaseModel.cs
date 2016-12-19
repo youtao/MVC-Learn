@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MVCLearn.ModelBCL
 {
     /// <summary>
-    /// 模型基础类.
+    /// 模型基础类
     /// </summary>
     public class BaseModel
     {
@@ -15,12 +15,12 @@ namespace MVCLearn.ModelBCL
         }
 
         /// <summary>
-        /// 创建时间.
+        /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; }
 
         /// <summary>
-        /// 是否删除.
+        /// 是否删除
         /// </summary>
         public bool Delete { get; set; }
     }

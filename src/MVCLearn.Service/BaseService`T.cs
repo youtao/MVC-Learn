@@ -10,10 +10,10 @@ using MVCLearn.ModelDbContext;
 namespace MVCLearn.Service
 {
     /// <summary>
-    /// Service 基础类(泛型)..
+    /// Service 基础类(泛型)
     /// </summary>
-    /// <typeparam name="TCurrentDbContext">当前实体模型所在的数据库上下文.</typeparam>
-    /// <typeparam name="TEntity">当前的实体类型.</typeparam>
+    /// <typeparam name="TCurrentDbContext">当前实体模型所在的数据库上下文</typeparam>
+    /// <typeparam name="TEntity">当前的实体类型</typeparam>
     public abstract class BaseService<TCurrentDbContext, TEntity> : BaseService
         where TCurrentDbContext : DbContext, new()
         where TEntity : BaseModel, new()
@@ -58,7 +58,7 @@ namespace MVCLearn.Service
         #region protected method
 
         /// <summary>
-        /// 所有没被软删除的数据(当前实体模型).
+        /// 所有没被软删除的数据(当前实体模型)
         /// </summary>
         /// <returns></returns>
         protected IQueryable<TEntity> AllNotDelete()

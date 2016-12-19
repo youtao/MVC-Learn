@@ -4,7 +4,7 @@ using MVCLearn.Model;
 namespace MVCLearn.ModelDbContext
 {
     /// <summary>
-    /// LearnDbContext 数据库上下文.
+    /// LearnDbContext 数据库上下文
     /// </summary>
     public class LearnDbContext : DbContext
     {
@@ -84,12 +84,12 @@ namespace MVCLearn.ModelDbContext
         #region SignalR
 
         /// <summary>
-        /// SignalR-连接.
+        /// SignalR-连接
         /// </summary>
         public virtual DbSet<Connection> Connection { get; set; }
 
         /// <summary>
-        /// SignalR-组.
+        /// SignalR-组
         /// </summary>
         public virtual DbSet<Group> Group { get; set; }
 

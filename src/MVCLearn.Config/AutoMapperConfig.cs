@@ -5,12 +5,12 @@ using MVCLearn.ModelDTO;
 namespace MVCLearn.Config
 {
     /// <summary>
-    ///  AutoMapper Config.
+    /// AutoMapper Config
     /// </summary>
     public class AutoMapperConfig
     {
         /// <summary>
-        /// 初始化 AutoMapper Config.
+        /// 初始化 AutoMapper Config
         /// </summary>
         public static void MapperInitialize()
         {
@@ -21,7 +21,7 @@ namespace MVCLearn.Config
         }
     }
     /// <summary>
-    /// 默认 AutoMapper Profile.
+    /// 默认 AutoMapper Profile
     /// </summary>
     public class DefaultProfile : Profile
     {

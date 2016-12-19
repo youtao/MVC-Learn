@@ -27,10 +27,9 @@ namespace MVCLearn.Service
         #region 按钮权限
 
         /// <summary>
-        /// 根据用户ID获取按钮权限.
+        /// 根据用户ID获取按钮权限
         /// </summary>
-        /// <param name="userID">用户ID.</param>
-        /// <returns>Task&lt;List&lt;ButtonInfoDTO&gt;&gt;.</returns>
+        /// <param name="userID">用户ID</param>
         public async Task<List<ButtonInfoDTO>> GetButtonByUserIDAsync(int userID)
         {
             #region sql
@@ -66,8 +65,7 @@ namespace MVCLearn.Service
         /// <summary>
         /// 根据角色ID获取按钮权限.
         /// </summary>
-        /// <param name="roleID">角色ID.</param>
-        /// <returns>Task&lt;List&lt;ButtonInfoDTO&gt;&gt;.</returns>
+        /// <param name="roleID">角色ID</param>
         public async Task<List<ButtonInfoDTO>> GetButtonByRoleIDAsync(int roleID)
         {
             #region sql
@@ -202,10 +200,10 @@ namespace MVCLearn.Service
         #region mongodb
 
         /// <summary>
-        /// 更新用户权限.
+        /// 更新用户权限
         /// </summary>
-        /// <param name="userID">用户ID.</param>
-        /// <param name="privilege">用户权限.</param>
+        /// <param name="userID">用户ID</param>
+        /// <param name="privilege">用户权限</param>
         public void UpdatePrivilegeToMongo(int userID, PrivilegeDTO privilege)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
@@ -219,10 +217,10 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
-        /// 更新用户访问权限.
+        /// 更新用户访问权限
         /// </summary>
-        /// <param name="userID">用户ID.</param>
-        /// <param name="access">权限列表.</param>
+        /// <param name="userID">用户ID</param>
+        /// <param name="access">权限列表</param>
         public void UpdateAccessToMongo(int userID, List<AccessInfoDTO> access)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
@@ -232,10 +230,10 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
-        /// 更新用户菜单权限.
+        /// 更新用户菜单权限
         /// </summary>
-        /// <param name="userID">用户ID.</param>
-        /// <param name="menus">菜单列表.</param>
+        /// <param name="userID">用户ID</param>
+        /// <param name="menus">菜单列表</param>
         public void UpdateMenuToMongo(int userID, List<MenuInfoDTO> menus)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
@@ -245,10 +243,10 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
-        /// 更新用户按钮权限.
+        /// 更新用户按钮权限
         /// </summary>
-        /// <param name="userID">用户ID.</param>
-        /// <param name="buttons">按钮列表.</param>
+        /// <param name="userID">用户ID</param>
+        /// <param name="buttons">按钮列表</param>
         public void UpdateButtonToMongo(int userID, List<ButtonInfoDTO> buttons)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
@@ -258,10 +256,9 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
-        /// 获取用户权限.
+        /// 获取用户权限
         /// </summary>
-        /// <param name="userID">The user identifier.</param>
-        /// <returns>PrivilegeDTO.</returns>
+        /// <param name="userID">用户ID</param>
         public async Task<PrivilegeDTO> GetPrivilegeAsync(int userID)
         {
             //todo:如果权限相关的表改变了,则删除所有mongo缓存
@@ -295,10 +292,9 @@ namespace MVCLearn.Service
         #region redis
 
         /// <summary>
-        /// 更新用户授权信息.
+        /// 更新用户授权信息
         /// </summary>
-        /// <param name="user">用户.</param>
-        /// <returns>Task&lt;RedisAuthorize&gt;.</returns>
+        /// <param name="user">用户</param>
         /// <exception cref="System.Exception">redis更新失败</exception>
         public async Task<RedisAuthorize> UpdateAuthorizeAsync(UserInfoDTO user)
         {
@@ -314,10 +310,9 @@ namespace MVCLearn.Service
             throw new Exception("redis更新失败");
         }
         /// <summary>
-        /// 获取用户授权信息.
+        /// 获取用户授权信息
         /// </summary>
-        /// <param name="authorizeId">授权Id.</param>
-        /// <returns>Task&lt;RedisAuthorize&gt;.</returns>
+        /// <param name="authorizeId">授权Id</param>
         public async Task<RedisAuthorize> GetAuthorizeAsync(string authorizeId)
         {
             var json = await this.RedisDB.HashGetAsync("MVCLearn_AuthorizeId", authorizeId)
@@ -334,10 +329,9 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
-        /// 删除用户授权信息.
+        /// 删除用户授权信息
         /// </summary>
-        /// <param name="authorizeId">授权Id.</param>
-        /// <returns>Task&lt;System.Boolean&gt;.</returns>
+        /// <param name="authorizeId">授权Id</param>
         public async Task<bool> DeleteAuthorizeAsync(string authorizeId)
         {
             var result = await this.RedisDB.HashDeleteAsync("MVCLearn_AuthorizeId", authorizeId)

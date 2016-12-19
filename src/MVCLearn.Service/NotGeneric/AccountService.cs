@@ -12,7 +12,7 @@ using MVCLearn.Utilities;
 namespace MVCLearn.Service
 {
     /// <summary>
-    /// 账户相关 Service.
+    /// 账户相关 Service
     /// </summary>
     public class AccountService : BaseService, IAccountService
     {
@@ -43,10 +43,9 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
-        /// 根据用户名获取用户.
+        /// 根据用户名获取用户
         /// </summary>
-        /// <param name="userName">用户名.</param>
-        /// <returns>Task&lt;UserInfo&gt;.</returns>
+        /// <param name="userName">用户名</param>
         private async Task<UserInfo> GetUserByUserIDAsync(string userName)
         {
             var user = await this.LearnDB

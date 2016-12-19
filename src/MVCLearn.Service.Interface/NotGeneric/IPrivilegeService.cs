@@ -13,16 +13,14 @@ namespace MVCLearn.Service.Interface
         #region 按钮权限
 
         /// <summary>
-        /// 根据用户ID获取按钮权限.
+        /// 根据用户ID获取按钮权限
         /// </summary>
         /// <param name="userID">用户ID.</param>
-        /// <returns>Task&lt;List&lt;ButtonInfoDTO&gt;&gt;.</returns>
         Task<List<ButtonInfoDTO>> GetButtonByUserIDAsync(int userID);
         /// <summary>
-        /// 根据角色ID获取按钮权限.
+        /// 根据角色ID获取按钮权限
         /// </summary>
-        /// <param name="roleID">角色ID.</param>
-        /// <returns>Task&lt;List&lt;ButtonInfoDTO&gt;&gt;.</returns>
+        /// <param name="roleID">角色ID</param>
         Task<List<ButtonInfoDTO>> GetButtonByRoleIDAsync(int roleID);
 
         #endregion
@@ -48,25 +46,22 @@ namespace MVCLearn.Service.Interface
         #region redis
 
         /// <summary>
-        /// 更新用户授权信息.
+        /// 更新用户授权信息
         /// </summary>
-        /// <param name="user">用户.</param>
-        /// <returns>Task&lt;RedisAuthorize&gt;.</returns>
+        /// <param name="user">用户</param>
         /// <exception cref="System.Exception">redis更新失败</exception>
        Task<RedisAuthorize> UpdateAuthorizeAsync(UserInfoDTO user);
 
         /// <summary>
-        /// 获取用户授权信息.
+        /// 获取用户授权信息
         /// </summary>
-        /// <param name="authorizeId">授权Id.</param>
-        /// <returns>Task&lt;RedisAuthorize&gt;.</returns>
+        /// <param name="authorizeId">授权Id</param>
         Task<RedisAuthorize> GetAuthorizeAsync(string authorizeId);
 
         /// <summary>
         /// 删除用户授权信息.
         /// </summary>
-        /// <param name="authorizeId">授权Id.</param>
-        /// <returns>Task&lt;System.Boolean&gt;.</returns>
+        /// <param name="authorizeId">授权Id</param>
         Task<bool> DeleteAuthorizeAsync(string authorizeId);
 
         #endregion

@@ -9,14 +9,13 @@ using MVCLearn.ModelDTO;
 namespace MVCLearn.Service
 {
     /// <summary>
-    /// 用户Service.
+    /// 用户Service
     /// </summary>
     public partial class UserInfoService
     {
         /// <summary>
-        /// 获取全部用户(EF).
+        /// 获取全部用户(EF) //todo:如果用户过多弃用此方法
         /// </summary>
-        /// <returns>Task&lt;List&lt;UserInfoDTO&gt;&gt;.</returns>
         public async Task<List<UserInfoDTO>> GetAllUserAsync()
         {
             var dtoList = await this.AllNotDelete()
@@ -27,9 +26,8 @@ namespace MVCLearn.Service
             return dtoList;
         }
         /// <summary>
-        /// 获取全部用户(Dapper).
+        /// 获取全部用户(Dapper) //todo:如果用户过多弃用此方法
         /// </summary>
-        /// <returns>Task&lt;List&lt;UserInfoDTO&gt;&gt;.</returns>
         public async Task<List<UserInfoDTO>> GetAllUserWidthDapperAsync()
         {
             using (var conn = this.GetLearnDBConn())
