@@ -44,5 +44,31 @@ namespace MVCLearn.Service.Interface
         Task<PrivilegeDTO> GetPrivilegeAsync(int userID);
 
         #endregion
+
+        #region redis
+
+        /// <summary>
+        /// 更新用户授权信息.
+        /// </summary>
+        /// <param name="user">用户.</param>
+        /// <returns>Task&lt;RedisAuthorize&gt;.</returns>
+        /// <exception cref="System.Exception">redis更新失败</exception>
+       Task<RedisAuthorize> UpdateAuthorizeAsync(UserInfoDTO user);
+
+        /// <summary>
+        /// 获取用户授权信息.
+        /// </summary>
+        /// <param name="authorizeId">授权Id.</param>
+        /// <returns>Task&lt;RedisAuthorize&gt;.</returns>
+        Task<RedisAuthorize> GetAuthorizeAsync(string authorizeId);
+
+        /// <summary>
+        /// 删除用户授权信息.
+        /// </summary>
+        /// <param name="authorizeId">授权Id.</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
+        Task<bool> DeleteAuthorizeAsync(string authorizeId);
+
+        #endregion
     }
 }

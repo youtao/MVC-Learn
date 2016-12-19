@@ -11,7 +11,7 @@ namespace MVCLearn.WebAPI.Filter
     {
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            actionExecutedContext.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
+            actionExecutedContext.Response?.Headers.Add("Access-Control-Allow-Credentials", "true");
             base.OnActionExecuted(actionExecutedContext);
         }
     }

@@ -7,8 +7,8 @@ using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MVCLearn.ModelDTO;
 using MVCLearn.ModelDTO.Privilege;
+using Newtonsoft.Json;
 using MVCLearn.Service.Interface;
-
 namespace MVCLearn.Service
 {
     public class PrivilegeService : BaseService, IPrivilegeService
@@ -281,5 +281,59 @@ namespace MVCLearn.Service
 
         #endregion
 
+        #region redis
+
+        /// <summary>
+        /// 更新用户授权信息.
+        /// </summary>
+        /// <param name="user">用户.</param>
+        /// <returns>Task&lt;RedisAuthorize&gt;.</returns>
+        /// <exception cref="System.Exception">redis更新失败</exception>
+        public async Task<RedisAuthorize> UpdateAuthorizeAsync(UserInfoDTO user)
+        {
+            RedisAuthorize authorize = new RedisAuthorize(user);
+            var json = JsonConvert.SerializeObject(authorize);
+            await this.DeleteAuthorizeAsync(authorize.AuthorizeId).ConfigureAwait(false);
+            var result = await this.RedisDB.HashSetAsync("MVCLearn_AuthorizeId", authorize.AuthorizeId, json)
+                .ConfigureAwait(false);
+            if (result)
+            {
+                return authorize;
+            }
+            throw new Exception("redis更新失败");
+        }
+        /// <summary>
+        /// 获取用户授权信息.
+        /// </summary>
+        /// <param name="authorizeId">授权Id.</param>
+        /// <returns>Task&lt;RedisAuthorize&gt;.</returns>
+        public async Task<RedisAuthorize> GetAuthorizeAsync(string authorizeId)
+        {
+            var json = await this.RedisDB.HashGetAsync("MVCLearn_AuthorizeId", authorizeId)
+                .ConfigureAwait(false);
+            if (json.HasValue)
+            {
+                var authorize = JsonConvert.DeserializeObject<RedisAuthorize>(json);
+                return authorize;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 删除用户授权信息.
+        /// </summary>
+        /// <param name="authorizeId">授权Id.</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
+        public async Task<bool> DeleteAuthorizeAsync(string authorizeId)
+        {
+            var result = await this.RedisDB.HashDeleteAsync("MVCLearn_AuthorizeId", authorizeId)
+                .ConfigureAwait(false);
+            return result;
+        }
+
+        #endregion
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using MongoDB.Driver;
 using MVCLearn.ModelDbContext;
+using StackExchange.Redis;
 
 namespace MVCLearn.Service
 {
@@ -100,9 +101,26 @@ namespace MVCLearn.Service
             }
         }
 
-
         #endregion
 
+        #region redis
+
+        private IDatabase _redisDB;
+
+        public IDatabase RedisDB
+        {
+            get
+            {
+                if (this._redisDB == null)
+                {
+                    ConnectionMultiplexer conn = ConnectionMultiplexer.Connect("localhost");
+                    this._redisDB = conn.GetDatabase();
+                }
+                return this._redisDB;
+            }
+        }
+
+        #endregion
 
         #endregion
 

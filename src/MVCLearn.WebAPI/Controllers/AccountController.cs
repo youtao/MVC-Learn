@@ -8,34 +8,32 @@ using System.Web.Http;
 using MVCLearn.ModelDTO;
 using MVCLearn.ModelDTO.Privilege;
 using MVCLearn.Service.Interface;
-using Newtonsoft.Json;
-using StackExchange.Redis;
 
 namespace MVCLearn.WebAPI.Controllers
 {
     public class AccountController : ApiController
     {
-        public readonly IAccountService AccuntService;
+        private readonly IAccountService AccountService;
+        private readonly IPrivilegeService PrivilegeService;
 
-        public AccountController(IAccountService accuntService)
+        public AccountController(IAccountService accountService, IPrivilegeService privilegeService)
         {
-            AccuntService = accuntService;
+            AccountService = accountService;
+            this.PrivilegeService = privilegeService;
         }
         [HttpPost]
         public async Task<IHttpActionResult> Login(LoginDTO login)
         {
-            var user = await this.AccuntService.LoginAsync(login.UserName, login.Password);
+            var user = await this.AccountService
+                .LoginAsync(login.UserName, login.Password)
+                .ConfigureAwait(true);
             if (user == null)
             {
                 return Ok(ResponseUtils.Converter(new object(), 0, "登录失败"));
             }
-
-            // todo:放到其他地方(每个接口都要认证权限)
-            ConnectionMultiplexer conn = ConnectionMultiplexer.Connect("localhost");
-            var db = conn.GetDatabase();
-            RedisAuthorize authorize = new RedisAuthorize(user);
-            var json = JsonConvert.SerializeObject(authorize);
-            await db.HashSetAsync("MVCLearn_AuthorizeId", authorize.AuthorizeId, json);
+            RedisAuthorize authorize = await this.PrivilegeService
+                .UpdateAuthorizeAsync(user)
+                .ConfigureAwait(true);
             return Ok(ResponseUtils.Converter(authorize.AuthorizeId));
         }
     }
