@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MVCLearn.Model;
@@ -15,6 +16,14 @@ namespace MVCLearn.Service
     /// </summary>
     public class AccountService : BaseService, IAccountService
     {
+        public AccountService()
+        {
+        }
+
+        public AccountService(HttpContextBase httpContext) : base(httpContext)
+        {
+        }
+
         public async Task<UserInfoDTO> LoginAsync(string username, string password)
         {
             var user = await this.GetUserByUserIDAsync(username)

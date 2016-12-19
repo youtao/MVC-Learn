@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using Dapper;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
@@ -13,6 +14,14 @@ namespace MVCLearn.Service
 {
     public class PrivilegeService : BaseService, IPrivilegeService
     {
+        public PrivilegeService()
+        {
+        }
+
+        public PrivilegeService(HttpContextBase httpContext) : base(httpContext)
+        {
+        }
+
         #region 按钮权限
 
         /// <summary>

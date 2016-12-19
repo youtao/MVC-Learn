@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using MVCLearn.ModelDTO;
 using MVCLearn.ModelDTO.Privilege;
+using MVCLearn.Service;
 using MVCLearn.Service.Interface;
 
 namespace MVCLearn.WebAPI.Controllers
