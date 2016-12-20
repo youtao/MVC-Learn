@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -24,71 +25,50 @@ namespace MVCLearn.Service
         }
         #endregion
 
-        #region 按钮权限
+        #region 访问权限
+
+        #region async
 
         /// <summary>
-        /// 根据用户ID获取按钮权限
+        /// 获取访问权限(根据用户ID)
         /// </summary>
         /// <param name="userID">用户ID</param>
-        public async Task<List<ButtonInfoDTO>> GetButtonByUserIDAsync(int userID)
+        /// <returns></returns>
+        public async Task<List<AccessInfoDTO>> GetAccessByUserIDAsync(int userID)
         {
             #region sql
 
             var sql = @"select
-	                        distinct
-                            button.ID as ButtonID,
-	                        button.ButtonName,
-                            button.ButtonType
+                            accessinfo.ID as AccessID,
+                            accessinfo.Title,
+                            accessinfo.Url
                         from
                             dbo.System_UserInfo as userinfo
                             join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
                             join dbo.System_RoleInfo as roleinfo on roleinfo.ID = userrole.RoleInfo_ID
-                            join dbo.Privilege_MT_RoleInfo_ButtonInfo as rolebutton on rolebutton.RoleInfo_ID = roleinfo.ID
-                            join dbo.System_ButtonInfo as button on button.ID = rolebutton.ButtonInfo_ID
+                            join dbo.Privilege_MT_RoleInfo_AccessInfo as roleaccess on roleaccess.RoleInfo_ID = roleinfo.ID
+                            join dbo.System_AccessInfo as accessinfo on accessinfo.ID = roleaccess.AccessInfo_ID
                         where
-                            userinfo.ID = @UserID and
+                            userinfo.ID = @UserID and--用户ID
                             userinfo.[Delete] = 0 and
                             roleinfo.[Delete] = 0 and
-                            button.[Delete] = 0;";
-
-            #endregion
-            using (var conn = this.GetLearnDBConn())
-            {
-                await conn.OpenAsync().ConfigureAwait(false);
-                var list = await conn.QueryAsync<ButtonInfoDTO>(sql, new { UserID = userID })
-                    .ConfigureAwait(false);
-                conn.Close();
-                return list.ToList();
-            }
-        }
-
-        /// <summary>
-        /// 根据角色ID获取按钮权限.
-        /// </summary>
-        /// <param name="roleID">角色ID</param>
-        public async Task<List<ButtonInfoDTO>> GetButtonByRoleIDAsync(int roleID)
-        {
-            #region sql
-
-            var sql = @"select
-	                        distinct
-                            button.ID as ButtonID,
-                            button.ButtonName,
-                            button.ButtonType
+                            accessinfo.[Delete] = 0
+                        union
+                        select
+                            ID as MenuID,
+                            Title,
+                            Url
                         from
-                            dbo.System_RoleInfo as roleinfo
-                            join dbo.Privilege_MT_RoleInfo_ButtonInfo as rolebutton on rolebutton.RoleInfo_ID = roleinfo.ID
-                            join dbo.System_ButtonInfo as button on button.ID = rolebutton.ButtonInfo_ID
+                            dbo.System_AccessInfo
                         where
-                            roleinfo.ID = @RoleID and
-                            roleinfo.[Delete] = 0 and
-                            button.[Delete] = 0;";
+                            IsPublick = 1 and
+                            [Delete] = 0;";
 
             #endregion
             using (var conn = this.GetLearnDBConn())
             {
                 await conn.OpenAsync().ConfigureAwait(false);
-                var list = await conn.QueryAsync<ButtonInfoDTO>(sql, new { RoleID = roleID })
+                var list = await conn.QueryAsync<AccessInfoDTO>(sql, new { UserID = userID })
                     .ConfigureAwait(false);
                 conn.Close();
                 return list.ToList();
@@ -97,8 +77,66 @@ namespace MVCLearn.Service
 
         #endregion
 
+        #region sync
+
+        /// <summary>
+        /// 获取访问权限(根据用户ID)
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns></returns>
+        public List<AccessInfoDTO> GetAccessByUserID(int userID)
+        {
+            #region sql
+
+            var sql = @"select
+                            accessinfo.ID as AccessID,
+                            accessinfo.Title,
+                            accessinfo.Url
+                        from
+                            dbo.System_UserInfo as userinfo
+                            join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
+                            join dbo.System_RoleInfo as roleinfo on roleinfo.ID = userrole.RoleInfo_ID
+                            join dbo.Privilege_MT_RoleInfo_AccessInfo as roleaccess on roleaccess.RoleInfo_ID = roleinfo.ID
+                            join dbo.System_AccessInfo as accessinfo on accessinfo.ID = roleaccess.AccessInfo_ID
+                        where
+                            userinfo.ID = @UserID and--用户ID
+                            userinfo.[Delete] = 0 and
+                            roleinfo.[Delete] = 0 and
+                            accessinfo.[Delete] = 0
+                        union
+                        select
+                            ID as MenuID,
+                            Title,
+                            Url
+                        from
+                            dbo.System_AccessInfo
+                        where
+                            IsPublick = 1 and
+                            [Delete] = 0;";
+
+            #endregion
+            using (var conn = this.GetLearnDBConn())
+            {
+                conn.Open();
+                var list = conn.Query<AccessInfoDTO>(sql, new { UserID = userID });
+                conn.Close();
+                return list.ToList();
+            }
+        }
+
+        #endregion
+
+        #endregion
+
         #region 菜单权限
 
+        #region async
+
+        /// <summary>
+        /// 获取菜单权限(根据用户ID)
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns></returns>
         public async Task<List<MenuInfoDTO>> GetMenuByUserIDAsync(int userID)
         {
             #region sql
@@ -152,22 +190,32 @@ namespace MVCLearn.Service
 
         #endregion
 
-        #region 访问权限
+        #region sync
 
-        public async Task<List<AccessInfoDTO>> GetAccessByUserIDAsync(int userID)
+        /// <summary>
+        /// 获取菜单权限(根据用户ID)
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns></returns>
+        public List<MenuInfoDTO> GetMenuByUserID(int userID)
         {
             #region sql
 
             var sql = @"select
-                            accessinfo.ID as AccessID,
+                            menuinfo.ID as MenuID,
                             accessinfo.Title,
-                            accessinfo.Url
+                            accessinfo.Url,
+                            menuinfo.Icon,
+                            menuinfo.[Order],
+                            menuinfo.ParentID,
+                            menuinfo.IsIframe
                         from
                             dbo.System_UserInfo as userinfo
                             join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
                             join dbo.System_RoleInfo as roleinfo on roleinfo.ID = userrole.RoleInfo_ID
                             join dbo.Privilege_MT_RoleInfo_AccessInfo as roleaccess on roleaccess.RoleInfo_ID = roleinfo.ID
                             join dbo.System_AccessInfo as accessinfo on accessinfo.ID = roleaccess.AccessInfo_ID
+                            join dbo.System_MenuInfo as menuinfo on menuinfo.ID = accessinfo.ID
                         where
                             userinfo.ID = @UserID and--用户ID
                             userinfo.[Delete] = 0 and
@@ -175,20 +223,101 @@ namespace MVCLearn.Service
                             accessinfo.[Delete] = 0
                         union
                         select
-                            ID as MenuID,
-                            Title,
-                            Url
+                            menuinfo.ID as MenuID,
+                            accessinfo.Title,
+                            accessinfo.Url,
+                            menuinfo.Icon,
+                            menuinfo.[Order],
+                            menuinfo.ParentID,
+                            menuinfo.IsIframe
                         from
-                            dbo.System_AccessInfo
+                            dbo.System_AccessInfo as accessinfo
+                            join dbo.System_MenuInfo as menuinfo on menuinfo.ID = accessinfo.ID
                         where
-                            IsPublick = 1 and
-                            [Delete] = 0;";
+                            accessinfo.IsPublick = 1 and
+                            accessinfo.[Delete] = 0;";
+
+            #endregion
+            using (var conn = this.GetLearnDBConn())
+            {
+                conn.Open();
+                var list = conn.Query<MenuInfoDTO>(sql, new { UserID = userID });
+                conn.Close();
+                return list.ToList();
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region 按钮权限
+
+        #region async
+
+        /// <summary>
+        /// 获取按钮权限(根据用户ID)
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        public async Task<List<ButtonInfoDTO>> GetButtonByUserIDAsync(int userID)
+        {
+            #region sql
+
+            var sql = @"select
+	                        distinct
+                            button.ID as ButtonID,
+	                        button.ButtonName,
+                            button.ButtonType
+                        from
+                            dbo.System_UserInfo as userinfo
+                            join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
+                            join dbo.System_RoleInfo as roleinfo on roleinfo.ID = userrole.RoleInfo_ID
+                            join dbo.Privilege_MT_RoleInfo_ButtonInfo as rolebutton on rolebutton.RoleInfo_ID = roleinfo.ID
+                            join dbo.System_ButtonInfo as button on button.ID = rolebutton.ButtonInfo_ID
+                        where
+                            userinfo.ID = @UserID and
+                            userinfo.[Delete] = 0 and
+                            roleinfo.[Delete] = 0 and
+                            button.[Delete] = 0;";
 
             #endregion
             using (var conn = this.GetLearnDBConn())
             {
                 await conn.OpenAsync().ConfigureAwait(false);
-                var list = await conn.QueryAsync<AccessInfoDTO>(sql, new { UserID = userID })
+                var list = await conn.QueryAsync<ButtonInfoDTO>(sql, new { UserID = userID })
+                    .ConfigureAwait(false);
+                conn.Close();
+                return list.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 获取按钮权限(根据角色ID)
+        /// </summary>
+        /// <param name="roleID">角色ID</param>
+        public async Task<List<ButtonInfoDTO>> GetButtonByRoleIDAsync(int roleID)
+        {
+            #region sql
+
+            var sql = @"select
+	                        distinct
+                            button.ID as ButtonID,
+                            button.ButtonName,
+                            button.ButtonType
+                        from
+                            dbo.System_RoleInfo as roleinfo
+                            join dbo.Privilege_MT_RoleInfo_ButtonInfo as rolebutton on rolebutton.RoleInfo_ID = roleinfo.ID
+                            join dbo.System_ButtonInfo as button on button.ID = rolebutton.ButtonInfo_ID
+                        where
+                            roleinfo.ID = @RoleID and
+                            roleinfo.[Delete] = 0 and
+                            button.[Delete] = 0;";
+
+            #endregion
+            using (var conn = this.GetLearnDBConn())
+            {
+                await conn.OpenAsync().ConfigureAwait(false);
+                var list = await conn.QueryAsync<ButtonInfoDTO>(sql, new { RoleID = roleID })
                     .ConfigureAwait(false);
                 conn.Close();
                 return list.ToList();
@@ -197,24 +326,118 @@ namespace MVCLearn.Service
 
         #endregion
 
-        #region mongodb
+        #region sync
 
         /// <summary>
-        /// 更新用户权限
+        /// 获取按钮权限(根据用户ID)
         /// </summary>
         /// <param name="userID">用户ID</param>
-        /// <param name="privilege">用户权限</param>
-        public void UpdatePrivilegeToMongo(int userID, PrivilegeDTO privilege)
+        public List<ButtonInfoDTO> GetButtonByUserID(int userID)
         {
-            var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
-            collection.Update(
-                Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
-                Update<PrivilegeDTO>
-                .Set(e => e.Accesses, privilege.Accesses)
-                .Set(e => e.Buttons, privilege.Buttons)
-                .Set(e => e.Menus, privilege.Menus),
-                UpdateFlags.Upsert);
+            #region sql
+
+            var sql = @"select
+	                        distinct
+                            button.ID as ButtonID,
+	                        button.ButtonName,
+                            button.ButtonType
+                        from
+                            dbo.System_UserInfo as userinfo
+                            join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
+                            join dbo.System_RoleInfo as roleinfo on roleinfo.ID = userrole.RoleInfo_ID
+                            join dbo.Privilege_MT_RoleInfo_ButtonInfo as rolebutton on rolebutton.RoleInfo_ID = roleinfo.ID
+                            join dbo.System_ButtonInfo as button on button.ID = rolebutton.ButtonInfo_ID
+                        where
+                            userinfo.ID = @UserID and
+                            userinfo.[Delete] = 0 and
+                            roleinfo.[Delete] = 0 and
+                            button.[Delete] = 0;";
+
+            #endregion
+            using (var conn = this.GetLearnDBConn())
+            {
+                conn.Open();
+                var list = conn.Query<ButtonInfoDTO>(sql, new { UserID = userID });
+                conn.Close();
+                return list.ToList();
+            }
         }
+
+        /// <summary>
+        /// 获取按钮权限(根据角色ID)
+        /// </summary>
+        /// <param name="roleID">角色ID</param>
+        public List<ButtonInfoDTO> GetButtonByRoleID(int roleID)
+        {
+            #region sql
+
+            var sql = @"select
+	                        distinct
+                            button.ID as ButtonID,
+                            button.ButtonName,
+                            button.ButtonType
+                        from
+                            dbo.System_RoleInfo as roleinfo
+                            join dbo.Privilege_MT_RoleInfo_ButtonInfo as rolebutton on rolebutton.RoleInfo_ID = roleinfo.ID
+                            join dbo.System_ButtonInfo as button on button.ID = rolebutton.ButtonInfo_ID
+                        where
+                            roleinfo.ID = @RoleID and
+                            roleinfo.[Delete] = 0 and
+                            button.[Delete] = 0;";
+
+            #endregion
+            using (var conn = this.GetLearnDBConn())
+            {
+                conn.Open();
+                var list = conn.Query<ButtonInfoDTO>(sql, new { RoleID = roleID });
+                conn.Close();
+                return list.ToList();
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region mongodb
+
+        #region async
+
+        /// <summary>
+        /// 获取用户权限
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        public async Task<PrivilegeDTO> GetPrivilegeAsync(int userID)
+        {
+            //todo:如果权限相关的表改变了,则删除所有mongo缓存
+            //todo:如果只改变了某一个用户的权限,只删除该用户的mongodb
+            //todo:没有权限的用户
+            var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
+            var privilege = collection.FindOneAs<PrivilegeDTO>(Query<PrivilegeDTO>.EQ(e => e.UserID, userID));
+            if (privilege == null)
+            {
+                privilege = new PrivilegeDTO();
+                var buttonTask = Task.Run(async () =>
+                {
+                    privilege.Buttons = await this.GetButtonByUserIDAsync(userID).ConfigureAwait(false);
+                });
+                var menuTask = Task.Run(async () =>
+                {
+                    privilege.Menus = await this.GetMenuByUserIDAsync(userID).ConfigureAwait(false);
+                });
+                var accessTask = Task.Run(async () =>
+                {
+                    privilege.Accesses = await this.GetAccessByUserIDAsync(userID).ConfigureAwait(false);
+                });
+                await Task.WhenAll(buttonTask, menuTask, accessTask).ConfigureAwait(false);
+                this.UpdatePrivilegeToMongo(userID, privilege);
+            }
+            return privilege;
+        }
+
+        #endregion
+
+        #region sync
 
         /// <summary>
         /// 更新用户访问权限
@@ -256,10 +479,28 @@ namespace MVCLearn.Service
         }
 
         /// <summary>
+        /// 更新用户权限
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <param name="privilege">用户权限</param>
+        public void UpdatePrivilegeToMongo(int userID, PrivilegeDTO privilege)
+        {
+            var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
+            collection.Update(
+                Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
+                Update<PrivilegeDTO>
+                .Set(e => e.Accesses, privilege.Accesses)
+                .Set(e => e.Buttons, privilege.Buttons)
+                .Set(e => e.Menus, privilege.Menus),
+                UpdateFlags.Upsert);
+        }
+
+
+        /// <summary>
         /// 获取用户权限
         /// </summary>
         /// <param name="userID">用户ID</param>
-        public async Task<PrivilegeDTO> GetPrivilegeAsync(int userID)
+        public PrivilegeDTO GetPrivilege(int userID)
         {
             //todo:如果权限相关的表改变了,则删除所有mongo缓存
             //todo:如果只改变了某一个用户的权限,只删除该用户的mongodb
@@ -269,19 +510,9 @@ namespace MVCLearn.Service
             if (privilege == null)
             {
                 privilege = new PrivilegeDTO();
-                var buttonTask = Task.Run(async () =>
-                {
-                    privilege.Buttons = await this.GetButtonByUserIDAsync(userID).ConfigureAwait(false);
-                });
-                var menuTask = Task.Run(async () =>
-                {
-                    privilege.Menus = await this.GetMenuByUserIDAsync(userID).ConfigureAwait(false);
-                });
-                var accessTask = Task.Run(async () =>
-                {
-                    privilege.Accesses = await this.GetAccessByUserIDAsync(userID).ConfigureAwait(false);
-                });
-                await Task.WhenAll(buttonTask, menuTask, accessTask).ConfigureAwait(false);
+                privilege.Buttons = this.GetButtonByUserID(userID);
+                privilege.Menus = this.GetMenuByUserID(userID);
+                privilege.Accesses = this.GetAccessByUserID(userID);
                 this.UpdatePrivilegeToMongo(userID, privilege);
             }
             return privilege;
@@ -289,7 +520,11 @@ namespace MVCLearn.Service
 
         #endregion
 
+        #endregion
+
         #region redis
+
+        #region async
 
         /// <summary>
         /// 更新用户授权信息
@@ -338,6 +573,57 @@ namespace MVCLearn.Service
                 .ConfigureAwait(false);
             return result;
         }
+
+        #endregion
+
+        #region sync
+
+        /// <summary>
+        /// 更新用户授权信息
+        /// </summary>
+        /// <param name="user">用户</param>
+        /// <exception cref="System.Exception">redis更新失败</exception>
+        public RedisAuthorize UpdateAuthorize(UserInfoDTO user)
+        {
+            RedisAuthorize authorize = new RedisAuthorize(user);
+            var json = JsonConvert.SerializeObject(authorize);
+            this.DeleteAuthorize(authorize.AuthorizeId);
+            var result = this.RedisDB.HashSet("MVCLearn_AuthorizeId", authorize.AuthorizeId, json);
+            if (result)
+            {
+                return authorize;
+            }
+            throw new Exception("redis更新失败");
+        }
+        /// <summary>
+        /// 获取用户授权信息
+        /// </summary>
+        /// <param name="authorizeId">授权Id</param>
+        public RedisAuthorize GetAuthorize(string authorizeId)
+        {
+            var json = this.RedisDB.HashGet("MVCLearn_AuthorizeId", authorizeId);
+            if (json.HasValue)
+            {
+                var authorize = JsonConvert.DeserializeObject<RedisAuthorize>(json);
+                return authorize;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 删除用户授权信息
+        /// </summary>
+        /// <param name="authorizeId">授权Id</param>
+        public bool DeleteAuthorize(string authorizeId)
+        {
+            var result = this.RedisDB.HashDelete("MVCLearn_AuthorizeId", authorizeId);
+            return result;
+        }
+
+        #endregion
 
         #endregion
     }

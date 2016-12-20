@@ -104,7 +104,7 @@ var _page = {
         if (!src) return;
         this.onresize();
         this.lastLoadIframeTime = new Date().getTime();
-        src += '?fromiframe=true';
+        src += '?from=iframe';
         var iframe = '<iframe src="' + src + '" onload="iframeOnLoad();"></iframe>';
         $('#page-iframe').html(iframe);
         this.iframeSrc = src;

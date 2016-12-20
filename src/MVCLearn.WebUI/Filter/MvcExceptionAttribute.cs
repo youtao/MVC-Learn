@@ -22,7 +22,7 @@ namespace MVCLearn.WebUI.Filter
                 }
                 else
                 {
-                    filterContext.Result = new RedirectResult("/"); // 返回首页
+                    filterContext.Result = new RedirectResult("/html/500.html"); // 返回错误页
                 }
                 filterContext.ExceptionHandled = true;
             }

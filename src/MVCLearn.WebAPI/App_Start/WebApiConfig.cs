@@ -18,6 +18,13 @@ namespace MVCLearn.WebAPI
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            // 1 controller constructor
+            // 2 AuthorizeAttribute OnAuthorization
+            // 3 AuthorizeAttribute IsAuthorized
+            // 4 ActionFilterAttribute OnActionExecuting
+            // 5 controler action
+            // 6 ActionFilterAttribute OnActionExecuted
+
             config.Filters.Add(new WebApiAuthorizeFilter());
             config.Filters.Add(new WebApiActionFilter());
             config.Filters.Add(new WebApiExceptionFilter());

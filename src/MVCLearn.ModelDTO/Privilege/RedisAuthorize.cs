@@ -9,10 +9,10 @@ namespace MVCLearn.ModelDTO.Privilege
     /// </summary>
     public class RedisAuthorize
     {
-        public RedisAuthorize(UserInfoDTO value)
+        public RedisAuthorize(UserInfoDTO user)
         {
-            this.Value = value;
-            this.AuthorizeId = (value.UserID + value.UserName).MD5();
+            this.User = user;
+            this.AuthorizeId = (user.UserID + user.UserName).MD5();
         }
         /// <summary>
         /// 授权Id
@@ -32,6 +32,6 @@ namespace MVCLearn.ModelDTO.Privilege
         /// <summary>
         ///用户信息
         /// </summary>
-        public UserInfoDTO Value { get; set; }
+        public UserInfoDTO User { get; set; }
     }
 }
