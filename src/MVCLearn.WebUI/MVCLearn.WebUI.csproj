@@ -265,6 +265,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="html\403.html" />
     <Content Include="html\401.html" />
     <Content Include="html\404.html" />
     <Content Include="html\500.html" />

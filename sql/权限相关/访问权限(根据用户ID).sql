@@ -1,7 +1,7 @@
 select
     accessinfo.ID as AccessID,
     accessinfo.Title,
-    accessinfo.Url
+    lower(accessinfo.Url) as Url -- ×ª»»Ð¡Ð´
 from
     dbo.System_UserInfo as userinfo
     join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID

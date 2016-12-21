@@ -1,7 +1,7 @@
 select
     menuinfo.ID as MenuID,
     accessinfo.Title,
-    accessinfo.Url,
+    lower(accessinfo.Url) as Url, -- 转换小写
     menuinfo.Icon,
     menuinfo.[Order],
     menuinfo.ParentID,

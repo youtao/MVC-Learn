@@ -41,7 +41,7 @@ namespace MVCLearn.Service
             var sql = @"select
                             accessinfo.ID as AccessID,
                             accessinfo.Title,
-                            accessinfo.Url
+                            lower(accessinfo.Url) as Url -- 转换小写
                         from
                             dbo.System_UserInfo as userinfo
                             join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
@@ -91,7 +91,7 @@ namespace MVCLearn.Service
             var sql = @"select
                             accessinfo.ID as AccessID,
                             accessinfo.Title,
-                            accessinfo.Url
+                            lower(accessinfo.Url) as Url -- 转换小写
                         from
                             dbo.System_UserInfo as userinfo
                             join dbo.Privilege_MT_UserInfo_RoleInfo as userrole on userrole.UserInfo_ID = userinfo.ID
@@ -144,7 +144,7 @@ namespace MVCLearn.Service
             var sql = @"select
                             menuinfo.ID as MenuID,
                             accessinfo.Title,
-                            accessinfo.Url,
+                            lower(accessinfo.Url) as Url, -- 转换小写
                             menuinfo.Icon,
                             menuinfo.[Order],
                             menuinfo.ParentID,
@@ -204,7 +204,7 @@ namespace MVCLearn.Service
             var sql = @"select
                             menuinfo.ID as MenuID,
                             accessinfo.Title,
-                            accessinfo.Url,
+                            lower(accessinfo.Url) as Url, -- 转换小写
                             menuinfo.Icon,
                             menuinfo.[Order],
                             menuinfo.ParentID,
@@ -430,7 +430,8 @@ namespace MVCLearn.Service
                     privilege.Accesses = await this.GetAccessByUserIDAsync(userID).ConfigureAwait(false);
                 });
                 await Task.WhenAll(buttonTask, menuTask, accessTask).ConfigureAwait(false);
-                this.UpdatePrivilegeToMongo(userID, privilege);
+                privilege.UserID = userID;
+                this.UpdatePrivilegeToMongo(privilege);
             }
             return privilege;
         }
@@ -481,13 +482,12 @@ namespace MVCLearn.Service
         /// <summary>
         /// 更新用户权限
         /// </summary>
-        /// <param name="userID">用户ID</param>
         /// <param name="privilege">用户权限</param>
-        public void UpdatePrivilegeToMongo(int userID, PrivilegeDTO privilege)
+        public void UpdatePrivilegeToMongo(PrivilegeDTO privilege)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
             collection.Update(
-                Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
+                Query<PrivilegeDTO>.EQ(e => e.UserID, privilege.UserID),
                 Update<PrivilegeDTO>
                 .Set(e => e.Accesses, privilege.Accesses)
                 .Set(e => e.Buttons, privilege.Buttons)
@@ -513,7 +513,8 @@ namespace MVCLearn.Service
                 privilege.Buttons = this.GetButtonByUserID(userID);
                 privilege.Menus = this.GetMenuByUserID(userID);
                 privilege.Accesses = this.GetAccessByUserID(userID);
-                this.UpdatePrivilegeToMongo(userID, privilege);
+                privilege.UserID = userID;
+                this.UpdatePrivilegeToMongo(privilege);
             }
             return privilege;
         }
