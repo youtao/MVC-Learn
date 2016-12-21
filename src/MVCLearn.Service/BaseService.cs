@@ -114,7 +114,10 @@ namespace MVCLearn.Service
                 //todo:redis配置到web.config
                 if (this._redisDB == null)
                 {
-                    ConnectionMultiplexer conn = ConnectionMultiplexer.Connect("localhost");
+                    var server = ConfigurationManager.AppSettings["redis_server"];
+                    var port = ConfigurationManager.AppSettings["redis_port"];
+                    var password = ConfigurationManager.AppSettings["redis_password"];
+                    ConnectionMultiplexer conn = ConnectionMultiplexer.Connect($"{server}:{port},password={password}");
                     this._redisDB = conn.GetDatabase();
                 }
                 return this._redisDB;
@@ -138,7 +141,7 @@ namespace MVCLearn.Service
             {
                 throw new ArgumentException();
             }
-            var key = typeof(TAnyDbContext).FullName + "__HttpContext";
+            var key = "MVCLearn_" + typeof(TAnyDbContext).FullName;
             var dbContext = this.HttpContext.Items[key] as TAnyDbContext;
             if (dbContext == null)
             {

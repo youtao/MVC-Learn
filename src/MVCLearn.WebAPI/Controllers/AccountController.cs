@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using MVCLearn.ModelDTO;
 using MVCLearn.ModelDTO.Privilege;
-using MVCLearn.Service;
+using MVCLearn.ModelEnum;
 using MVCLearn.Service.Interface;
 
 namespace MVCLearn.WebAPI.Controllers
@@ -30,7 +30,7 @@ namespace MVCLearn.WebAPI.Controllers
                 .ConfigureAwait(true);
             if (user == null)
             {
-                return Ok(ResponseUtils.Converter(new object(), 0, "登录失败"));
+                return Ok(ResponseUtils.Converter(new object(), ResponseState.失败));
             }
             RedisAuthorize authorize = await this.PrivilegeService
                 .UpdateAuthorizeAsync(user)

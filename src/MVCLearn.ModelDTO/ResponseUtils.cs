@@ -1,27 +1,35 @@
-﻿namespace MVCLearn.ModelDTO
+﻿using MVCLearn.ModelEnum;
+
+namespace MVCLearn.ModelDTO
 {
     public class ResponseUtils
     {
-        public static ResponseDTO<TData> Converter<TData>(TData data, int state = 1, string message = "")
+        public static ResponseDTO<TData> Converter<TData>(TData data, ResponseState state = ResponseState.成功, string message = "")
         {
             if (string.IsNullOrEmpty(message))
             {
                 switch (state)
                 {
-                    case -1:
-                        message = "服务器错误";
-                        break;
-                    case 0:
+                    case ResponseState.失败:
                         message = "失败";
                         break;
-                    case 1:
+                    case ResponseState.成功:
                         message = "成功";
+                        break;
+                    case ResponseState.未登录:
+                        message = "未登录";
+                        break;
+                    case ResponseState.权限不足:
+                        message = "权限不足";
+                        break;
+                    case ResponseState.服务器错误:
+                        message = "服务器错误";
                         break;
                 }
             }
             return new ResponseDTO<TData>()
             {
-                State = state.ToString(),
+                State = (int)state + string.Empty,
                 Message = message,
                 Data = data
             };

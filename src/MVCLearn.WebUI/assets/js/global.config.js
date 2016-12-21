@@ -7,5 +7,6 @@ var GlobalConfig = {
     //SignalR-Hub
     SignalrHub: 'http://localhost:26949/signalr/hubs/',
     //默认iframe
-    Iframe: '/admin/user/index'
+    Iframe: '/admin/user/index',
+    CookieDomain: 'localhost'
 };

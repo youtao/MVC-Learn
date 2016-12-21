@@ -124,9 +124,10 @@ namespace MVCLearn.Service.Test
             {
                 Accesses = accesses,
                 Buttons = buttons,
-                Menus = menus
+                Menus = menus,
+                UserID = 2
             };
-            this._service.UpdatePrivilegeToMongo(2, privilege);
+            this._service.UpdatePrivilegeToMongo(privilege);
             stopwatch.Stop();
             this.Output.WriteLine("UpdatePrivilegeToMongo_Valid_True:" + stopwatch.ElapsedMilliseconds + "ms");
         }

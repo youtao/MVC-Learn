@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using MVCLearn.Log;
 using MVCLearn.ModelDTO;
+using MVCLearn.ModelEnum;
 using MVCLearn.WebUI.JsonNET;
 
 namespace MVCLearn.WebUI.Filter
@@ -16,7 +17,7 @@ namespace MVCLearn.WebUI.Filter
                 {
                     filterContext.Result = new JsonNetResult()
                     {
-                        Data = ResponseUtils.Converter(new object(), -1),
+                        Data = ResponseUtils.Converter(new object(), ResponseState.服务器错误),
                         JsonRequestBehavior = JsonRequestBehavior.AllowGet
                     };
                 }

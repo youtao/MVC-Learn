@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
-using Autofac;
+using MVCLearn.ModelEnum;
 using MVCLearn.Service;
 using MVCLearn.Service.Interface;
 
@@ -19,7 +19,7 @@ namespace MVCLearn.WebUI.Filter
             Stopwatch stopwatch = Stopwatch.StartNew(); // todo:认证耗时
             var httpContext = filterContext.HttpContext;
             httpContext.Items["MVCLearn_IsAuthorized"] = false;
-            httpContext.Items["MVCLearn_AuthorizeType"] = AuthorizeType.没有登录;
+            httpContext.Items["MVCLearn_AuthorizeState"] = AuthorizeState.没有登录;
 
             var area = filterContext.RouteData.DataTokens["area"]?.ToString().ToLower();
             var controller = filterContext.RouteData.Values["controller"]?.ToString().ToLower();
@@ -43,6 +43,7 @@ namespace MVCLearn.WebUI.Filter
                         if (isAuthorized)
                         {
                             httpContext.Items["MVCLearn_IsAuthorized"] = true;
+                            httpContext.Items["MVCLearn_Authorize"] = authorize;
                             httpContext.Items["MVCLearn_Privilege"] = privilege; // 缓存当前用户权限
                             /*
                             * GenericIdentity identity = new GenericIdentity(authorizeId.Value);
@@ -50,10 +51,14 @@ namespace MVCLearn.WebUI.Filter
                             * httpContext.User = principal;
                             */
                         }
-                        else
+                        else // 没有权限
                         {
-                            httpContext.Items["MVCLearn_AuthorizeType"] = AuthorizeType.权限不足;
+                            httpContext.Items["MVCLearn_AuthorizeState"] = AuthorizeState.没有权限;
                         }
+                    }
+                    else // 传来了认证,但是服务器没通过
+                    {
+                        // httpContext.Items["MVCLearn_AuthorizeType"] = AuthorizeState.认证失败;
                     }
                 }
             }
@@ -70,10 +75,13 @@ namespace MVCLearn.WebUI.Filter
         {
             var iframe = filterContext.RequestContext
                 .HttpContext.Request.QueryString["from"]?.ToLower();
-            var type = (AuthorizeType)filterContext.HttpContext.Items["MVCLearn_AuthorizeType"];
-            if (type == AuthorizeType.权限不足)
+            var type = (AuthorizeState)filterContext.HttpContext.Items["MVCLearn_AuthorizeState"];
+            if (type == AuthorizeState.没有权限)
             {
                 filterContext.Result = new RedirectResult("/html/403.html");
+            }else if (type == AuthorizeState.认证失败)
+            {
+                filterContext.Result = new RedirectResult("/html/402.html"); // todo:是否在iframe中
             }
             else
             {
@@ -82,11 +90,5 @@ namespace MVCLearn.WebUI.Filter
                     new RedirectResult("/Admin/Account/Login");
             }
         }
-    }
-
-    public enum AuthorizeType
-    {
-        没有登录 = 0,
-        权限不足 = 1
     }
 }

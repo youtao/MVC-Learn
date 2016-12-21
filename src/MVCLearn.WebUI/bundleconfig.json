@@ -84,9 +84,9 @@
     ]
   },
   {
-    "outputFileName": "assets/js/Admin/Accunt/Login.min.js",
+    "outputFileName": "assets/js/Admin/Account/Login.min.js",
     "inputFiles": [
-      "assets/js/Admin/Accunt/Login.js"
+      "assets/js/Admin/Account/Login.js"
     ]
   }
 ]

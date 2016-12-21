@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Configuration;
+using System.Web.Http;
 using System.Web.Http.Cors;
 using MVCLearn.WebAPI.Filter;
 
@@ -12,7 +13,9 @@ namespace MVCLearn.WebAPI
 
             // Web API 路由
             config.MapHttpAttributeRoutes();
-            config.EnableCors(new EnableCorsAttribute("http://localhost:47986", "*", "*"));
+            var corsHost = ConfigurationManager.AppSettings["cors_host"];
+            var enable = new EnableCorsAttribute(corsHost, "*", "*");
+            config.EnableCors(enable);
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",

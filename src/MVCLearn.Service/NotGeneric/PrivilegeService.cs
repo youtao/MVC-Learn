@@ -510,10 +510,11 @@ namespace MVCLearn.Service
             if (privilege == null)
             {
                 privilege = new PrivilegeDTO();
+                privilege.UserID = userID;
                 privilege.Buttons = this.GetButtonByUserID(userID);
                 privilege.Menus = this.GetMenuByUserID(userID);
                 privilege.Accesses = this.GetAccessByUserID(userID);
-                privilege.UserID = userID;
+
                 this.UpdatePrivilegeToMongo(privilege);
             }
             return privilege;
