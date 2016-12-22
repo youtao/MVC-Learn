@@ -17,8 +17,6 @@ var _page = {
     },
     initMenu: function () { // 初始化菜单
         var _this = this;
-
-
         $.ajax({
             url: GlobalConfig.WebApi + 'Privilege/GetMenus',
             type: 'GET',
@@ -95,7 +93,7 @@ var _page = {
         $ul.css('display', 'block');
         var height = $ul.outerHeight();
         $ul.css('height', 0);
-        $ul.animate({ height: height }, 500, function () {
+        $ul.animate({ height: height }, 200, function () {
             $ul.css('height', '');
             $('#menu-inner').perfectScrollbar('update'); // 每次展开或折叠菜单就更新滚动条
         });
@@ -104,7 +102,7 @@ var _page = {
         $li.removeClass('expanded');
         var $ul = $li.children('ul');
         $ul.css('height', $ul.outerHeight());
-        $ul.animate({ height: 0 }, 500, function () {
+        $ul.animate({ height: 0 }, 200, function () {
             $ul.css('height', '');
             $li.find('ul').css('display', 'none'); // 子元素
             $li.find('li').removeClass('expanded'); // 子元素

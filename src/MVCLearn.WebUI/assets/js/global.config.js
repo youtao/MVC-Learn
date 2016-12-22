@@ -10,27 +10,10 @@ var GlobalConfig = {
     Iframe: '/admin/user/index',
     // cookie domain
     CookieDomain: 'localhost',
-    // 全部按钮权限
-    buttons: [{
-        name: '增加',
-        type: 0
-    }, {
-        name: '删除',
-        type: 1
-    }, {
-        name: '修改',
-        type: 2
-    }, {
-        name: '查询',
-        type: 3
-    }, {
-        name: '报表',
-        type: 4
-    }, {
-        name: '打印',
-        type: 5
-    }, {
-        name: '分享',
-        type: 6
-    }]
+    // 按钮权限
+    UserButtons: []
 };
+var UserButtons = $('#user-privilege-buttons').text().trim();
+if (UserButtons.length > 0) {
+    GlobalConfig.UserButtons = JSON.parse(UserButtons);
+}

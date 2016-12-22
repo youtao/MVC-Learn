@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Newtonsoft.Json
+@{
     ViewBag.Title = "User";
     List<ButtonInfoDTO> buttons = ViewBag.Buttons;
 }
@@ -19,7 +20,6 @@
             <li class="active">Index</li>
         </ol>*@
 }
-
 <div class="panel panel-default" id="vue-users">
     <div class="panel-heading">
         用户列表
@@ -29,25 +29,25 @@
             @{
                 if (buttons.Any(e => e.ButtonType == ButtonType.添加))
                 {
-                    <button class="btn btn-default">
-                        <span class="fa fa-plus text-success"></span> 添加
-                    </button>
+            <button class="btn btn-default">
+                <span class="fa fa-plus text-success"></span> 添加
+            </button>
                 }
             }
             @{
                 if (buttons.Any(e => e.ButtonType == ButtonType.修改))
                 {
-                    <button class="btn btn-default">
-                        <span class="fa fa-edit text-info"></span> 编辑
-                    </button>
+            <button class="btn btn-default">
+                <span class="fa fa-edit text-info"></span> 编辑
+            </button>
                 }
             }
             @{
                 if (buttons.Any(e => e.ButtonType == ButtonType.删除))
                 {
-                    <button class="btn btn-default">
-                        <span class="fa fa-trash text-danger"></span> 删除
-                    </button>
+            <button class="btn btn-default">
+                <span class="fa fa-trash text-danger"></span> 删除
+            </button>
                 }
             }
 
@@ -60,30 +60,30 @@
 
                     @if (buttons.Any(e => e.ButtonType == ButtonType.报表))
                     {
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span class="fa fa-file-excel-o"></span> Excel
-                            </a>
-                        </li>
-                        <li class="divider"></li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="fa fa-file-excel-o"></span> Excel
+                        </a>
+                    </li>
+                    <li class="divider"></li>
                     }
 
                     @if (buttons.Any(e => e.ButtonType == ButtonType.打印))
                     {
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span class="fa fa-print"></span> 打印
-                            </a>
-                        </li>
-                        <li class="divider"></li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="fa fa-print"></span> 打印
+                        </a>
+                    </li>
+                    <li class="divider"></li>
                     }
                     @if (buttons.Any(e => e.ButtonType == ButtonType.分享))
                     {
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span class="fa fa-share-alt-square"></span> 分享
-                            </a>
-                        </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="fa fa-share-alt-square"></span> 分享
+                        </a>
+                    </li>
                     }
                 </ul>
             </div>
@@ -122,3 +122,7 @@
         </div>
     </div>
 </div>
+
+<span id="user-privilege-buttons" style="display: none;">
+    @ViewBag.ButtonsJson
+</span>

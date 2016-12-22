@@ -48,10 +48,10 @@ ul.menu-main li.has-sub > a:before {
   -o-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -moz-transition: all 500ms ease-in-out;
-  -o-transition: all 500ms ease-in-out;
-  -webkit-transition: all 500ms ease-in-out;
-  transition: all 500ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 ul.menu-main li.has-sub.expanded > a:before {
   -moz-transform: rotate(0deg);

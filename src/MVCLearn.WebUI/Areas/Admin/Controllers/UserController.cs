@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVCLearn.ModelDTO;
 using MVCLearn.ModelDTO.Privilege;
+using Newtonsoft.Json;
 
 namespace MVCLearn.WebUI.Areas.Admin.Controllers
 {
@@ -14,9 +15,12 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var privilege = this.HttpContext.Items["MVCLearn_Privilege"] as PrivilegeDTO;
-            ViewBag.Buttons = privilege != null ?
+            List<ButtonInfoDTO> buttons= privilege != null ?
                 privilege.Buttons :
                 new List<ButtonInfoDTO>();
+
+            ViewBag.Buttons = buttons;
+            ViewBag.ButtonsJson = JsonConvert.SerializeObject(buttons);
             return View();
         }
     }
