@@ -1,9 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using EntityFramework.Extensions;
 using MVCLearn.Model;
 using MVCLearn.ModelDTO;
 using MVCLearn.Service.Interface;
@@ -38,6 +40,7 @@ namespace MVCLearn.Service
             {
                 return null;
             }
+            await this.UpdateUserLoginTime(user.ID).ConfigureAwait(false);
             var result = Mapper.Map<UserInfoDTO>(user);
             return result;
         }
@@ -54,6 +57,22 @@ namespace MVCLearn.Service
                 .FirstOrDefaultAsync(e => e.UserName == userName)
                 .ConfigureAwait(false);
             return user;
+        }
+
+        /// <summary>
+        /// 更新用户登陆时间
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns></returns>
+        private async Task<bool> UpdateUserLoginTime(int userID)
+        {
+            var result = await this.LearnDB.UserInfo
+               .Where(e => e.ID == userID)
+               .UpdateAsync(e => new UserInfo()
+               {
+                   LoginTime = DateTime.Now
+               }).ConfigureAwait(false); // 更新登陆时间
+            return result > 0;
         }
     }
 }

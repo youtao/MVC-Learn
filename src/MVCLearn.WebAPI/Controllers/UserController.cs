@@ -30,7 +30,7 @@ namespace MVCLearn.WebAPI.Controllers
         public async Task<IHttpActionResult> GetAllUsers()
         {
             var data = await this.UserInfoService
-                .GetAllUserWidthDapperAsync()
+                .GetAllUserAsync()
                 .ConfigureAwait(true);
             return this.Ok(ResponseUtils.Converter(data));
         }

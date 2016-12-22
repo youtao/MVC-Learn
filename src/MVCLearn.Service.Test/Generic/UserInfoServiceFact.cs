@@ -31,20 +31,5 @@ namespace MVCLearn.Service.Test
             this.Output.WriteLine("AllUserAsync_Valid_NotNull:" + stopwatch.ElapsedMilliseconds + "ms");
             Assert.NotNull(result);
         }
-
-        /// <summary>
-        /// 获取全部用户.
-        /// </summary>
-        /// <returns>Task.</returns>
-        [Fact]
-        public async Task AllUserWidthDapperAsync_Valid_NotNull()
-        {
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            var result = await this._service
-                .GetAllUserWidthDapperAsync()
-                .ConfigureAwait(true);
-            this.Output.WriteLine("AllUserWidthDapperAsync_Valid_NotNull:" + stopwatch.ElapsedMilliseconds + "ms");
-            Assert.NotNull(result);
-        }
     }
 }

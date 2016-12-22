@@ -27,6 +27,11 @@ var _page = {
         });
     },
     fillData: function (vue_users, res) {
-        vue_users.users = res.data;
+        var users = res.data;
+        for (var i = 0; i < users.length; i++) {
+            var item = users[i];
+            item.LoginTimeStr = moment(item.LoginTime).format('YYYY-MM-DD HH:mm:ss');
+        }
+        vue_users.users = users;
     }
 };
