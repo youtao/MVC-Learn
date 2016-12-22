@@ -1,6 +1,6 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "User";
+    List<ButtonInfoDTO> buttons = ViewBag.Buttons;
 }
 @section CustScripts
 {
@@ -9,15 +9,15 @@
 
 @section PageTitle{
     @*<ol class="breadcrumb">
-        <li>
-            <span class="fa fa-home"></span>
-            <a href="javascript:void(0);">Admin</a>
-        </li>
-        <li>
-            <a href="javascript:void(0);">User</a>
-        </li>
-        <li class="active">Index</li>
-    </ol>*@
+            <li>
+                <span class="fa fa-home"></span>
+                <a href="javascript:void(0);">Admin</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">User</a>
+            </li>
+            <li class="active">Index</li>
+        </ol>*@
 }
 
 <div class="panel panel-default" id="vue-users">
@@ -26,38 +26,65 @@
     </div>
     <div class="panel-body">
         <div class="btn-group pull-right">
-            <button class="btn btn-default">
-                <span class="fa fa-plus text-success"></span> 添加
-            </button>
-            <button class="btn btn-default">
-                <span class="fa fa-edit text-info"></span> 编辑
-            </button>
-            <button class="btn btn-default">
-                <span class="fa fa-trash text-danger"></span> 删除
-            </button>
+            @{
+                if (buttons.Any(e => e.ButtonType == ButtonType.添加))
+                {
+                    <button class="btn btn-default">
+                        <span class="fa fa-plus text-success"></span> 添加
+                    </button>
+                }
+            }
+            @{
+                if (buttons.Any(e => e.ButtonType == ButtonType.修改))
+                {
+                    <button class="btn btn-default">
+                        <span class="fa fa-edit text-info"></span> 编辑
+                    </button>
+                }
+            }
+            @{
+                if (buttons.Any(e => e.ButtonType == ButtonType.删除))
+                {
+                    <button class="btn btn-default">
+                        <span class="fa fa-trash text-danger"></span> 删除
+                    </button>
+                }
+            }
+
             <div class="btn-group">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     <span class="fa fa-list text-primary"></span>
-                    更多<span class="caret"></span>
+                    其它<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span class="fa fa-file-excel-o"></span> Excel
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span class="fa fa-print"></span> 打印
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span class="fa fa-share-alt-square"></span> 分享
-                        </a>
-                    </li>
+
+                    @if (buttons.Any(e => e.ButtonType == ButtonType.报表))
+                    {
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span class="fa fa-file-excel-o"></span> Excel
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                    }
+
+                    @if (buttons.Any(e => e.ButtonType == ButtonType.打印))
+                    {
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span class="fa fa-print"></span> 打印
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                    }
+                    @if (buttons.Any(e => e.ButtonType == ButtonType.分享))
+                    {
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span class="fa fa-share-alt-square"></span> 分享
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
