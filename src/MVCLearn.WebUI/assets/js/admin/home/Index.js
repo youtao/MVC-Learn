@@ -17,33 +17,44 @@ var _page = {
     },
     initMenu: function () { // 初始化菜单
         var _this = this;
-        $.get('/assets/json/menus.json', null, function (res) {
-            var html = _this.recursiveMenu(res);
-            var attr = ' id="menu-main" class="menu-main" ';
-            var start = html.substr(0, 3);
-            var end = html.substring(3, html.length);
-            html = start + attr + end;
-            $('#menu-inner').append(html)
-                            .perfectScrollbar();
-            _this.menuListener();
+
+
+        $.ajax({
+            url: GlobalConfig.WebApi + 'Privilege/GetMenus',
+            type: 'GET',
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true
+            },
+            crossdomain: true,
+            success: function (res) {
+                var html = _this.recursiveMenu(res.data);
+                var attr = ' id="menu-main" class="menu-main" ';
+                var start = html.substr(0, 3);
+                var end = html.substring(3, html.length);
+                html = start + attr + end;
+                $('#menu-inner').append(html)
+                                .perfectScrollbar();
+                _this.menuListener();
+            }
         });
     },
     recursiveMenu: function (children, level) { // 递归加载菜单
         if (!level) level = 0;
         var ul = '<ul>';
         for (var i = 0; i < children.length; i++) {
-            var item = children[i];
+            var item = children[i]; // children
             var li = '<li>';
             var style = '';
             if (level >= 1) {
                 var px = 30 + (level - 1) * 25;
                 style = ' style="padding-left:' + px + 'px;" ';
             }
-            li += '<a href="javascript:void(0);"' + style + 'data-url="' + item.url + '">';
+            li += '<a href="javascript:void(0);"' + style + 'data-url="' + item.url + '">'; // url
             var icon = 'fa fa-sitemap'; // 默认图标
-            if (item.icon) icon = item.icon;
+            if (item.icon) icon = item.icon; // icon
             li += '<span class="' + icon + ' menu-icon"></span> ';
-            li += '<span class="menu-title">' + item.title + '</span>';
+            li += '<span class="menu-title">' + item.title + '</span>'; // title
             li += '</a>';
             if (item.children.length > 0) {
                 var classStr = ' class="has-sub" ';

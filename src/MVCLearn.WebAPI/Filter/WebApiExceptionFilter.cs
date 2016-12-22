@@ -36,7 +36,7 @@ namespace MVCLearn.WebAPI.Filter
                 if (referrer != null)
                 {
                     var allow = referrer.Scheme + "://" + referrer.Authority;
-                    actionExecutedContext.Response?.Headers.Add("Access-Control-Allow-Origin", allow);
+                    response.Headers.Add("Access-Control-Allow-Origin", allow);
                 }
             }
         }

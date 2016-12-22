@@ -21,8 +21,8 @@ where
 union
 select
     menuinfo.ID as MenuID,
-    accessinfo.Title,
-    accessinfo.Url,
+    accessinfo.Title,    
+	lower(accessinfo.Url) as Url, -- 转换小写
     menuinfo.Icon,
     menuinfo.[Order],
     menuinfo.ParentID,

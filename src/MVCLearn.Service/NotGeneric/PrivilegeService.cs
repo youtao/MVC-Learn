@@ -57,7 +57,7 @@ namespace MVCLearn.Service
                         select
                             ID as MenuID,
                             Title,
-                            Url
+                            lower(Url) as Url -- 转换小写
                         from
                             dbo.System_AccessInfo
                         where
@@ -107,7 +107,7 @@ namespace MVCLearn.Service
                         select
                             ID as MenuID,
                             Title,
-                            Url
+                            lower(Url) as Url -- 转换小写
                         from
                             dbo.System_AccessInfo
                         where
@@ -165,7 +165,7 @@ namespace MVCLearn.Service
                         select
                             menuinfo.ID as MenuID,
                             accessinfo.Title,
-                            accessinfo.Url,
+                            lower(accessinfo.Url) as Url, -- 转换小写
                             menuinfo.Icon,
                             menuinfo.[Order],
                             menuinfo.ParentID,
@@ -186,6 +186,23 @@ namespace MVCLearn.Service
                 conn.Close();
                 return list.ToList();
             }
+        }
+
+        /// <summary>
+        /// 获取菜单树权限(根据用户ID)
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns></returns>
+        public async Task<List<MenuInfoDTO>>  GetMenuTreeByUserIDAsync(int userID)
+        {
+            var allMenus = await this.GetMenuByUserIDAsync(userID).ConfigureAwait(false);
+            var topMenus = allMenus.Where(e => e.ParentID == null).ToList();
+            foreach (var top in topMenus)
+            {
+                RecursiveMenuTree(allMenus, top);
+            }
+            // Parallel.ForEach(topMenus, (top, state) => RecursiveMenuTree(topMenus, top)); //todo: 如果菜单过多,使用并行处理
+            return topMenus;
         }
 
         #endregion
@@ -225,7 +242,7 @@ namespace MVCLearn.Service
                         select
                             menuinfo.ID as MenuID,
                             accessinfo.Title,
-                            accessinfo.Url,
+                            lower(accessinfo.Url) as Url, -- 转换小写
                             menuinfo.Icon,
                             menuinfo.[Order],
                             menuinfo.ParentID,
@@ -245,6 +262,23 @@ namespace MVCLearn.Service
                 conn.Close();
                 return list.ToList();
             }
+        }
+
+        /// <summary>
+        /// 获取菜单树权限(根据用户ID)
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns></returns>
+        public List<MenuInfoDTO> GetMenuTreeByUserID(int userID)
+        {
+            var allMenus = this.GetMenuByUserID(userID);
+            var topMenus = allMenus.Where(e => e.ParentID == null).ToList();
+            foreach (var top in topMenus)
+            {
+                RecursiveMenuTree(allMenus, top);
+            }
+            // Parallel.ForEach(topMenus, (top, state) => RecursiveMenuTree(topMenus, top)); //todo: 如果菜单过多,使用并行处理
+            return topMenus;
         }
 
         #endregion
@@ -417,19 +451,19 @@ namespace MVCLearn.Service
             if (privilege == null)
             {
                 privilege = new PrivilegeDTO();
-                var buttonTask = Task.Run(async () =>
-                {
-                    privilege.Buttons = await this.GetButtonByUserIDAsync(userID).ConfigureAwait(false);
-                });
-                var menuTask = Task.Run(async () =>
-                {
-                    privilege.Menus = await this.GetMenuByUserIDAsync(userID).ConfigureAwait(false);
-                });
                 var accessTask = Task.Run(async () =>
                 {
                     privilege.Accesses = await this.GetAccessByUserIDAsync(userID).ConfigureAwait(false);
                 });
-                await Task.WhenAll(buttonTask, menuTask, accessTask).ConfigureAwait(false);
+                var menuTask = Task.Run(async () =>
+                {
+                    privilege.Menus = await this.GetMenuTreeByUserIDAsync(userID).ConfigureAwait(false);
+                });
+                var buttonTask = Task.Run(async () =>
+                {
+                    privilege.Buttons = await this.GetButtonByUserIDAsync(userID).ConfigureAwait(false);
+                });
+                await Task.WhenAll(accessTask, menuTask,buttonTask).ConfigureAwait(false);
                 privilege.UserID = userID;
                 this.UpdatePrivilegeToMongo(privilege);
             }
@@ -511,10 +545,9 @@ namespace MVCLearn.Service
             {
                 privilege = new PrivilegeDTO();
                 privilege.UserID = userID;
-                privilege.Buttons = this.GetButtonByUserID(userID);
-                privilege.Menus = this.GetMenuByUserID(userID);
                 privilege.Accesses = this.GetAccessByUserID(userID);
-
+                privilege.Menus = this.GetMenuTreeByUserID(userID);
+                privilege.Buttons = this.GetButtonByUserID(userID);
                 this.UpdatePrivilegeToMongo(privilege);
             }
             return privilege;
@@ -626,6 +659,35 @@ namespace MVCLearn.Service
         }
 
         #endregion
+
+        #endregion
+
+        #region private
+
+        /// <summary>
+        /// 获取菜单树
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="parent"></param>
+        private void RecursiveMenuTree(List<MenuInfoDTO> source, MenuInfoDTO parent)
+        {
+            var children = source
+                .Where(e => e.ParentID == parent.MenuID)
+                .OrderBy(e => e.Order)
+                .ToList();
+            foreach (var child in children)
+            {
+                if (parent.Children == null)
+                {
+                    parent.Children = new List<MenuInfoDTO>();
+                }
+                parent.Children.Add(child);
+                if (source.Any(e => e.ParentID == child.MenuID))
+                {
+                    RecursiveMenuTree(source, child);
+                }
+            }
+        }
 
         #endregion
     }

@@ -47,6 +47,13 @@ namespace MVCLearn.Service.Interface
         /// <returns></returns>
         Task<List<MenuInfoDTO>> GetMenuByUserIDAsync(int userID);
 
+        /// <summary>
+        /// 获取菜单树权限(根据用户ID)
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns></returns>
+        Task<List<MenuInfoDTO>> GetMenuTreeByUserIDAsync(int userID);
+
         #endregion
 
         #region sync
@@ -57,6 +64,13 @@ namespace MVCLearn.Service.Interface
         /// <param name="userID">用户ID</param>
         /// <returns></returns>
         List<MenuInfoDTO> GetMenuByUserID(int userID);
+
+        /// <summary>
+        /// 获取菜单(根据用户ID)
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns></returns>
+        List<MenuInfoDTO> GetMenuTreeByUserID(int userID);
 
         #endregion
 

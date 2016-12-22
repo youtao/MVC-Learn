@@ -14,6 +14,7 @@ using MVCLearn.ModelDTO;
 using MVCLearn.ModelEnum;
 using MVCLearn.Service;
 using MVCLearn.Service.Interface;
+using MVCLearn.WebAPI.Commons;
 
 namespace MVCLearn.WebAPI.Filter
 {
@@ -23,8 +24,10 @@ namespace MVCLearn.WebAPI.Filter
             HttpActionContext actionContext,
             CancellationToken cancellationToken)
         {
-            Stopwatch stopwatch = Stopwatch.StartNew(); // todo:认证耗时
-            var httpContext = this.CurrentHttpContextBase(actionContext.Request); // HttpContextBase
+#if DEBUG
+            Stopwatch stopwatch = Stopwatch.StartNew();
+#endif
+            var httpContext = Utils.CurrentHttpContextBase(actionContext.Request); // HttpContextBase
             httpContext.Items["MVCLearn_IsAuthorized"] = false;
             httpContext.Items["MVCLearn_AuthorizeState"] = AuthorizeState.没有登录;
             var url = actionContext.Request.RequestUri.AbsolutePath.ToLower();
@@ -93,22 +96,23 @@ namespace MVCLearn.WebAPI.Filter
                     }
                 }
             }
+#if DEBUG
             stopwatch.Stop();
-
+#endif
             await base.OnAuthorizationAsync(actionContext, cancellationToken)
                 .ConfigureAwait(true);
         }
 
         protected override bool IsAuthorized(HttpActionContext actionContext)
         {
-            var httpContext = this.CurrentHttpContextBase(actionContext.Request); // HttpContextBase
+            var httpContext = Utils.CurrentHttpContextBase(actionContext.Request); // HttpContextBase
             var isAuthorized = (bool)httpContext.Items["MVCLearn_IsAuthorized"];
             return isAuthorized;  // 当前请求
         }
 
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {
-            var httpContext = this.CurrentHttpContextBase(actionContext.Request); // HttpContextBase
+            var httpContext = Utils.CurrentHttpContextBase(actionContext.Request); // HttpContextBase
             var type = (AuthorizeState)httpContext.Items["MVCLearn_AuthorizeState"];
 
             var responseState = type == AuthorizeState.没有权限 ?
@@ -117,28 +121,16 @@ namespace MVCLearn.WebAPI.Filter
             var response = actionContext.Request.CreateResponse(
                            HttpStatusCode.OK,
                            ResponseUtils.Converter(new object(), responseState));
+
             //todo:如果不是跨域请求,不要Access-Control-Allow-Credentials:true
             response.Headers.Add("Access-Control-Allow-Credentials", "true");
             var referrer = actionContext.Request.Headers.Referrer;
             if (referrer != null)
             {
                 var allow = referrer.Scheme + "://" + referrer.Authority;
-                actionContext.Response?.Headers.Add("Access-Control-Allow-Origin", allow);
+                response.Headers.Add("Access-Control-Allow-Origin", allow);
             }
             actionContext.Response = response;
-        }
-
-        private HttpContextBase CurrentHttpContextBase(HttpRequestMessage httpRequest)
-        {
-            if (HttpContext.Current != null)
-            {
-                return new HttpContextWrapper(HttpContext.Current);
-            }
-            else
-            {
-                return (HttpContextBase)httpRequest.Properties["MS_HttpContext"];
-            }
-
         }
     }
 }

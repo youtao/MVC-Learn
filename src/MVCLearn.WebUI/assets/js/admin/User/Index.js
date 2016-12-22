@@ -24,8 +24,7 @@ var _page = {
             success: function (res) {
                 _this.fillData(vue_users, res);
             }
-        })
-
+        });
     },
     fillData: function (vue_users, res) {
         vue_users.users = res.data;

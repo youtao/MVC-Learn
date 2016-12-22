@@ -17,7 +17,7 @@ union
 select
     ID as MenuID,
     Title,
-    Url
+    lower(Url) as Url -- ×ª»»Ð¡Ð´
 from
     dbo.System_AccessInfo
 where

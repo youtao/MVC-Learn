@@ -6,7 +6,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using MVCLearn.ModelDTO;
+using MVCLearn.ModelDTO.Privilege;
+using MVCLearn.ModelEnum;
 using MVCLearn.Service.Interface;
+using MVCLearn.WebAPI.Commons;
 
 namespace MVCLearn.WebAPI.Controllers
 {
@@ -21,6 +24,27 @@ namespace MVCLearn.WebAPI.Controllers
         {
             PrivilegeService = privilegeService;
         }
+
+        #region 菜单权限
+
+        /// <summary>
+        /// 获取菜单权限(当前登录用户)
+        /// </summary>
+        public IHttpActionResult GetMenus()
+        {
+            var httpContext = Utils.CurrentHttpContextBase(this.Request);
+            var privilege = httpContext.Items["MVCLearn_Privilege"] as PrivilegeDTO;
+            if (privilege != null)
+            {
+                return Ok(ResponseUtils.Converter(privilege.Menus));
+            }
+            else
+            {
+                return Ok(ResponseUtils.Converter(new object(), ResponseState.失败));
+            }
+        }
+
+        #endregion
 
         #region 按钮权限
 
@@ -65,5 +89,6 @@ namespace MVCLearn.WebAPI.Controllers
         }
 
         #endregion
+
     }
 }

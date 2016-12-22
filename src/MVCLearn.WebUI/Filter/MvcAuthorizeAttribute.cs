@@ -16,7 +16,9 @@ namespace MVCLearn.WebUI.Filter
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            Stopwatch stopwatch = Stopwatch.StartNew(); // todo:认证耗时
+#if DEBUG
+            Stopwatch stopwatch = Stopwatch.StartNew();
+#endif
             var httpContext = filterContext.HttpContext;
             httpContext.Items["MVCLearn_IsAuthorized"] = false;
             httpContext.Items["MVCLearn_AuthorizeState"] = AuthorizeState.没有登录;
@@ -62,7 +64,9 @@ namespace MVCLearn.WebUI.Filter
                     }
                 }
             }
+#if DEBUG
             stopwatch.Stop();
+#endif
             base.OnAuthorization(filterContext);
         }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
@@ -79,7 +83,8 @@ namespace MVCLearn.WebUI.Filter
             if (type == AuthorizeState.没有权限)
             {
                 filterContext.Result = new RedirectResult("/html/403.html");
-            }else if (type == AuthorizeState.认证失败)
+            }
+            else if (type == AuthorizeState.认证失败)
             {
                 filterContext.Result = new RedirectResult("/html/402.html"); // todo:是否在iframe中
             }
