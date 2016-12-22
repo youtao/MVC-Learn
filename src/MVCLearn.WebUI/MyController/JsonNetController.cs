@@ -2,7 +2,7 @@
 using System.Text;
 using System.Web.Mvc;
 
-namespace MVCLearn.WebUI.JsonNET
+namespace MVCLearn.WebUI.MyController
 {
     public class JsonNetController : Controller
     {

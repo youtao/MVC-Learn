@@ -260,6 +260,7 @@
     <Content Include="Areas\Admin\Views\Timeline\Chat.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AppLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_DefaultButton.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -433,8 +434,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalConfig\FileVersion.cs" />
-    <Compile Include="JsonNET\JsonNetController.cs" />
-    <Compile Include="JsonNET\JsonNetResult.cs" />
+    <Compile Include="MyController\PrivilegeController.cs" />
+    <Compile Include="MyController\JsonNetController.cs" />
+    <Compile Include="MyController\JsonNetResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

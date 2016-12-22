@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 
-namespace MVCLearn.WebUI.JsonNET
+namespace MVCLearn.WebUI.MyController
 {
     public class JsonNetResult : JsonResult
     {
