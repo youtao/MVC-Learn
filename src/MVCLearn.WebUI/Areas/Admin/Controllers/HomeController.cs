@@ -7,8 +7,8 @@ namespace MVCLearn.WebUI.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            var authorize = (RedisAuthorize)this.HttpContext.Items["MVCLearn_Authorize"];
-            ViewBag.NikeName = authorize.User.NickName;
+            var authorize = this.HttpContext.Items["MVCLearn_Authorize"] as RedisAuthorize;
+            if (authorize != null) ViewBag.NikeName = authorize.User.NickName;
             return View();
         }
     }

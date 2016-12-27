@@ -193,7 +193,7 @@ namespace MVCLearn.Service
         /// </summary>
         /// <param name="userID">用户ID</param>
         /// <returns></returns>
-        public async Task<List<MenuInfoDTO>>  GetMenuTreeByUserIDAsync(int userID)
+        public async Task<List<MenuInfoDTO>> GetMenuTreeByUserIDAsync(int userID)
         {
             var allMenus = await this.GetMenuByUserIDAsync(userID).ConfigureAwait(false);
             var topMenus = allMenus.Where(e => e.ParentID == null).ToList();
@@ -450,7 +450,7 @@ namespace MVCLearn.Service
             var privilege = collection.FindOneAs<PrivilegeDTO>(Query<PrivilegeDTO>.EQ(e => e.UserID, userID));
             if (privilege == null)
             {
-                privilege = new PrivilegeDTO();
+                privilege = new PrivilegeDTO { UserID = userID };
                 var accessTask = Task.Run(async () =>
                 {
                     privilege.Accesses = await this.GetAccessByUserIDAsync(userID).ConfigureAwait(false);
@@ -463,8 +463,7 @@ namespace MVCLearn.Service
                 {
                     privilege.Buttons = await this.GetButtonByUserIDAsync(userID).ConfigureAwait(false);
                 });
-                await Task.WhenAll(accessTask, menuTask,buttonTask).ConfigureAwait(false);
-                privilege.UserID = userID;
+                await Task.WhenAll(accessTask, menuTask, buttonTask).ConfigureAwait(false);
                 this.UpdatePrivilegeToMongo(privilege);
             }
             return privilege;
@@ -571,30 +570,41 @@ namespace MVCLearn.Service
             RedisAuthorize authorize = new RedisAuthorize(user);
             var json = JsonConvert.SerializeObject(authorize);
             await this.DeleteAuthorizeAsync(authorize.AuthorizeId).ConfigureAwait(false);
-            var result = await this.RedisDB.HashSetAsync("MVCLearn_AuthorizeId", authorize.AuthorizeId, json)
-                .ConfigureAwait(false);
-            if (result)
+            using (var conn = this.GetRedisConn())
             {
-                return authorize;
+                var db = conn.GetDatabase();
+                var result = await db.HashSetAsync("MVCLearn_AuthorizeId", authorize.AuthorizeId, json)
+                .ConfigureAwait(false);
+                await conn.CloseAsync().ConfigureAwait(false);
+                if (result)
+                {
+                    return authorize;
+                }
+                throw new Exception("redis更新失败");
             }
-            throw new Exception("redis更新失败");
         }
+
         /// <summary>
         /// 获取用户授权信息
         /// </summary>
         /// <param name="authorizeId">授权Id</param>
         public async Task<RedisAuthorize> GetAuthorizeAsync(string authorizeId)
         {
-            var json = await this.RedisDB.HashGetAsync("MVCLearn_AuthorizeId", authorizeId)
+            using (var conn = this.GetRedisConn())
+            {
+                var db = conn.GetDatabase();
+                var json = await db.HashGetAsync("MVCLearn_AuthorizeId", authorizeId)
                 .ConfigureAwait(false);
-            if (json.HasValue)
-            {
-                var authorize = JsonConvert.DeserializeObject<RedisAuthorize>(json);
-                return authorize;
-            }
-            else
-            {
-                return null;
+                await conn.CloseAsync().ConfigureAwait(false);
+                if (json.HasValue)
+                {
+                    var authorize = JsonConvert.DeserializeObject<RedisAuthorize>(json);
+                    return authorize;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -604,9 +614,14 @@ namespace MVCLearn.Service
         /// <param name="authorizeId">授权Id</param>
         public async Task<bool> DeleteAuthorizeAsync(string authorizeId)
         {
-            var result = await this.RedisDB.HashDeleteAsync("MVCLearn_AuthorizeId", authorizeId)
+            using (var conn = this.GetRedisConn())
+            {
+                var db = conn.GetDatabase();
+                var result = await db.HashDeleteAsync("MVCLearn_AuthorizeId", authorizeId)
                 .ConfigureAwait(false);
-            return result;
+                await conn.CloseAsync().ConfigureAwait(false);
+                return result;
+            }
         }
 
         #endregion
@@ -623,28 +638,40 @@ namespace MVCLearn.Service
             RedisAuthorize authorize = new RedisAuthorize(user);
             var json = JsonConvert.SerializeObject(authorize);
             this.DeleteAuthorize(authorize.AuthorizeId);
-            var result = this.RedisDB.HashSet("MVCLearn_AuthorizeId", authorize.AuthorizeId, json);
-            if (result)
+
+            using (var conn = this.GetRedisConn())
             {
-                return authorize;
+                var db = conn.GetDatabase();
+                var result = db.HashSet("MVCLearn_AuthorizeId", authorize.AuthorizeId, json);
+                conn.Close();
+                if (result)
+                {
+                    return authorize;
+                }
+                throw new Exception("redis更新失败");
             }
-            throw new Exception("redis更新失败");
         }
+
         /// <summary>
         /// 获取用户授权信息
         /// </summary>
         /// <param name="authorizeId">授权Id</param>
         public RedisAuthorize GetAuthorize(string authorizeId)
         {
-            var json = this.RedisDB.HashGet("MVCLearn_AuthorizeId", authorizeId);
-            if (json.HasValue)
+            using (var conn = this.GetRedisConn())
             {
-                var authorize = JsonConvert.DeserializeObject<RedisAuthorize>(json);
-                return authorize;
-            }
-            else
-            {
-                return null;
+                var db = conn.GetDatabase();
+                var json = db.HashGet("MVCLearn_AuthorizeId", authorizeId);
+                conn.Close();
+                if (json.HasValue)
+                {
+                    var authorize = JsonConvert.DeserializeObject<RedisAuthorize>(json);
+                    return authorize;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -654,8 +681,13 @@ namespace MVCLearn.Service
         /// <param name="authorizeId">授权Id</param>
         public bool DeleteAuthorize(string authorizeId)
         {
-            var result = this.RedisDB.HashDelete("MVCLearn_AuthorizeId", authorizeId);
-            return result;
+            using (var conn = this.GetRedisConn())
+            {
+                var db = conn.GetDatabase();
+                var result = db.HashDelete("MVCLearn_AuthorizeId", authorizeId);
+                conn.Close();
+                return result;
+            }
         }
 
         #endregion

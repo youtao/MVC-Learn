@@ -16,9 +16,6 @@ namespace MVCLearn.WebUI.Filter
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-#if DEBUG
-            Stopwatch stopwatch = Stopwatch.StartNew();
-#endif
             var httpContext = filterContext.HttpContext;
             httpContext.Items["MVCLearn_IsAuthorized"] = false;
             httpContext.Items["MVCLearn_AuthorizeState"] = AuthorizeState.没有登录;
@@ -64,9 +61,6 @@ namespace MVCLearn.WebUI.Filter
                     }
                 }
             }
-#if DEBUG
-            stopwatch.Stop();
-#endif
             base.OnAuthorization(filterContext);
         }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
@@ -77,7 +71,7 @@ namespace MVCLearn.WebUI.Filter
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            var iframe = filterContext.RequestContext
+            var from = filterContext.RequestContext
                 .HttpContext.Request.QueryString["from"]?.ToLower();
             var type = (AuthorizeState)filterContext.HttpContext.Items["MVCLearn_AuthorizeState"];
             if (type == AuthorizeState.没有权限)
@@ -90,7 +84,7 @@ namespace MVCLearn.WebUI.Filter
             }
             else
             {
-                filterContext.Result = iframe == "iframe" ?
+                filterContext.Result = from == "iframe" ?
                     new RedirectResult("/html/401.html") :
                     new RedirectResult("/Admin/Account/Login");
             }

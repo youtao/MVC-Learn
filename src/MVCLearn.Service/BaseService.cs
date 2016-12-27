@@ -82,7 +82,7 @@ namespace MVCLearn.Service
 
         private MongoDatabase _mongoDB;
 
-        public MongoDatabase MongoDB
+        protected MongoDatabase MongoDB
         {
             get
             {
@@ -95,7 +95,6 @@ namespace MVCLearn.Service
                     };
                     MongoServer server = new MongoServer(settings);
                     this._mongoDB = server.GetDatabase("MVCLearn");
-
                 }
                 return this._mongoDB;
             }
@@ -105,23 +104,13 @@ namespace MVCLearn.Service
 
         #region redis
 
-        private IDatabase _redisDB;
-
-        public IDatabase RedisDB
+        protected ConnectionMultiplexer GetRedisConn()
         {
-            get
-            {
-                //todo:redis配置到web.config
-                if (this._redisDB == null)
-                {
-                    var server = ConfigurationManager.AppSettings["redis_server"];
-                    var port = ConfigurationManager.AppSettings["redis_port"];
-                    var password = ConfigurationManager.AppSettings["redis_password"];
-                    ConnectionMultiplexer conn = ConnectionMultiplexer.Connect($"{server}:{port},password={password}");
-                    this._redisDB = conn.GetDatabase();
-                }
-                return this._redisDB;
-            }
+            var server = ConfigurationManager.AppSettings["redis_server"];
+            var port = ConfigurationManager.AppSettings["redis_port"];
+            var password = ConfigurationManager.AppSettings["redis_password"];
+            ConnectionMultiplexer conn = ConnectionMultiplexer.Connect($"{server}:{port},password={password}");
+            return conn;
         }
 
         #endregion
