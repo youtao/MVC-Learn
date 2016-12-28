@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Dapper;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MVCLearn.ModelDTO;
@@ -447,7 +448,9 @@ namespace MVCLearn.Service
             //todo:如果只改变了某一个用户的权限,只删除该用户的mongodb
             //todo:没有权限的用户
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
-            var privilege = collection.FindOneAs<PrivilegeDTO>(Query<PrivilegeDTO>.EQ(e => e.UserID, userID));
+            var document = await collection.FindAsync(e => e.UserID == userID).ConfigureAwait(false);
+            var privilege = await document.FirstOrDefaultAsync().ConfigureAwait(false);
+            //var privilege = collection.FindOneAs<PrivilegeDTO>(Query<PrivilegeDTO>.EQ(e => e.UserID, userID));
             if (privilege == null)
             {
                 privilege = new PrivilegeDTO { UserID = userID };
@@ -481,9 +484,13 @@ namespace MVCLearn.Service
         public void UpdateAccessToMongo(int userID, List<AccessInfoDTO> access)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
-            collection.Update(
-                Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
-                Update<PrivilegeDTO>.Set(e => e.Accesses, access), UpdateFlags.Upsert);
+            collection.UpdateOne(e =>
+                    e.UserID == userID,
+                    new ObjectUpdateDefinition<PrivilegeDTO>(new object()).Set(e => e.Accesses, access),
+                    new UpdateOptions() { IsUpsert = true });
+            //collection.Update(
+            //    Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
+            //    Update<PrivilegeDTO>.Set(e => e.Accesses, access), UpdateFlags.Upsert);
         }
 
         /// <summary>
@@ -494,9 +501,13 @@ namespace MVCLearn.Service
         public void UpdateMenuToMongo(int userID, List<MenuInfoDTO> menus)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
-            collection.Update(
-                Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
-                Update<PrivilegeDTO>.Set(e => e.Menus, menus), UpdateFlags.Upsert);
+            collection.UpdateOne(e =>
+                    e.UserID == userID,
+                    new ObjectUpdateDefinition<PrivilegeDTO>(new object()).Set(e => e.Menus, menus),
+                    new UpdateOptions() { IsUpsert = true });
+            //collection.Update(
+            //    Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
+            //    Update<PrivilegeDTO>.Set(e => e.Menus, menus), UpdateFlags.Upsert);
         }
 
         /// <summary>
@@ -507,9 +518,13 @@ namespace MVCLearn.Service
         public void UpdateButtonToMongo(int userID, List<ButtonInfoDTO> buttons)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
-            collection.Update(
-                Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
-                Update<PrivilegeDTO>.Set(e => e.Buttons, buttons), UpdateFlags.Upsert);
+            collection.UpdateOne(e =>
+                    e.UserID == userID,
+                    new ObjectUpdateDefinition<PrivilegeDTO>(new object()).Set(e => e.Buttons, buttons),
+                    new UpdateOptions() { IsUpsert = true });
+            //collection.Update(
+            //    Query<PrivilegeDTO>.EQ(e => e.UserID, userID),
+            //    Update<PrivilegeDTO>.Set(e => e.Buttons, buttons), UpdateFlags.Upsert);
         }
 
         /// <summary>
@@ -519,15 +534,21 @@ namespace MVCLearn.Service
         public void UpdatePrivilegeToMongo(PrivilegeDTO privilege)
         {
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
-            collection.Update(
-                Query<PrivilegeDTO>.EQ(e => e.UserID, privilege.UserID),
-                Update<PrivilegeDTO>
-                .Set(e => e.Accesses, privilege.Accesses)
-                .Set(e => e.Buttons, privilege.Buttons)
-                .Set(e => e.Menus, privilege.Menus),
-                UpdateFlags.Upsert);
+            collection.UpdateOne(e =>
+                    e.UserID == privilege.UserID,
+                    new ObjectUpdateDefinition<PrivilegeDTO>(new object())
+                    .Set(e => e.Accesses, privilege.Accesses)
+                    .Set(e => e.Menus, privilege.Menus)
+                    .Set(e => e.Buttons, privilege.Buttons),
+                    new UpdateOptions() { IsUpsert = true });
+            //collection.Update(
+            //    Query<PrivilegeDTO>.EQ(e => e.UserID, privilege.UserID),
+            //    Update<PrivilegeDTO>
+            //    .Set(e => e.Accesses, privilege.Accesses)
+            //    .Set(e => e.Buttons, privilege.Buttons)
+            //    .Set(e => e.Menus, privilege.Menus),
+            //    UpdateFlags.Upsert);
         }
-
 
         /// <summary>
         /// 获取用户权限
@@ -539,7 +560,9 @@ namespace MVCLearn.Service
             //todo:如果只改变了某一个用户的权限,只删除该用户的mongodb
             //todo:没有权限的用户
             var collection = this.MongoDB.GetCollection<PrivilegeDTO>("privilege");
-            var privilege = collection.FindOneAs<PrivilegeDTO>(Query<PrivilegeDTO>.EQ(e => e.UserID, userID));
+            var document =  collection.Find(e => e.UserID == userID);
+            var privilege =  document.FirstOrDefault();
+            //PrivilegeDTO privilege = collection.FindOneAs<PrivilegeDTO>(Query<PrivilegeDTO>.EQ(e => e.UserID, userID));
             if (privilege == null)
             {
                 privilege = new PrivilegeDTO();

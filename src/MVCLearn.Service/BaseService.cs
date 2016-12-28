@@ -80,21 +80,18 @@ namespace MVCLearn.Service
 
         #region Mongo
 
-        private MongoDatabase _mongoDB;
+        private IMongoDatabase _mongoDB;
 
-        protected MongoDatabase MongoDB
+        protected IMongoDatabase MongoDB
         {
             get
             {
                 if (this._mongoDB == null)
                 {
                     //todo:mongodb配置到web.config
-                    MongoServerSettings settings = new MongoServerSettings()
-                    {
-                        Server = new MongoServerAddress("localhost")
-                    };
-                    MongoServer server = new MongoServer(settings);
-                    this._mongoDB = server.GetDatabase("MVCLearn");
+                    var conn = ConfigurationManager.AppSettings["mongodb_conn"];
+                    var client = new MongoClient(conn);
+                    this._mongoDB = client.GetDatabase("MVCLearn");
                 }
                 return this._mongoDB;
             }
